@@ -1,0 +1,31 @@
+/*
+Theme Name: Cocoon Child
+Theme URI: https://wp-cocoon.com/
+Description: 「大人の学びなおし」サイト用 Cocoon 子テーマ
+Author: （あなたの名前）
+Template: cocoon-master
+Version: 1.0.0
+*/
+
+/* =====================================================
+   子テーマ用カスタム CSS
+   ここに追加スタイルを書く（親テーマを上書きできる）
+   ===================================================== */
+
+/* --- 共通 --- */
+
+
+/* --- 1023px以下（タブレット） --- */
+@media screen and (max-width: 1023px) {
+
+}
+
+/* --- 834px以下（スマートフォン横） --- */
+@media screen and (max-width: 834px) {
+
+}
+
+/* --- 480px以下（スマートフォン縦） --- */
+@media screen and (max-width: 480px) {
+
+}
