@@ -1,1 +1,19 @@
+# このリポジトリは cocoon-child/ フォルダのみを管理します
 
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/
+
+# 秘密情報の誤コミット防止
+.env
+wp-config.php
+
+# WordPress本体（このリポジトリでは管理しない）
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/cache/
