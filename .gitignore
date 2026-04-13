@@ -17,3 +17,11 @@ wp-admin/
 wp-includes/
 wp-content/uploads/
 wp-content/cache/
+
+# short-video-tool
+short-video-tool/node_modules/
+short-video-tool/src/client/node_modules/
+short-video-tool/temp/
+short-video-tool/output/*.mp4
+short-video-tool/__pycache__/
+short-video-tool/src/server/__pycache__/

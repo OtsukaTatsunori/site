@@ -1,0 +1,153 @@
+.preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.preview-container {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.preview-header h3 {
+  font-size: 16px;
+  color: #eee;
+  margin: 0;
+}
+.btn-close {
+  padding: 4px 12px;
+  background: #0f3460;
+  color: #ccc;
+  border: 1px solid #1a4a80;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.btn-close:hover {
+  background: #1a4a80;
+}
+
+.preview-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 500px;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-screen-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.preview-screen-bg.black {
+  background: #111;
+}
+
+.preview-screen-telop {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 18px;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 12%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  max-width: 80%;
+}
+.preview-screen-telop.visible {
+  opacity: 1;
+}
+
+.preview-scene-num {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  z-index: 3;
+}
+
+/* コントロール */
+.preview-controls {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-play {
+  padding: 6px 16px;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.btn-play:hover {
+  background: #c73650;
+}
+
+.preview-progress {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #0f3460;
+  border-radius: 3px;
+  position: relative;
+  overflow: visible;
+}
+.progress-fill {
+  height: 100%;
+  background: #e94560;
+  border-radius: 3px;
+  transition: width 0.05s linear;
+}
+.scene-marker {
+  position: absolute;
+  top: -2px;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.time-display {
+  font-size: 11px;
+  color: #888;
+  white-space: nowrap;
+}

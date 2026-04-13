@@ -1,0 +1,105 @@
+.asset-picker {
+  padding: 8px 0;
+}
+.asset-picker h3 {
+  font-size: 13px;
+  color: #a0a0c0;
+  margin-bottom: 8px;
+}
+
+/* タグフィルタ */
+.tag-filter {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.tag-btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  background: #0f3460;
+  color: #aaa;
+  border: 1px solid #1a4a80;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.tag-btn.active {
+  background: #e94560;
+  color: #fff;
+  border-color: #e94560;
+}
+
+/* グリッド */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.asset-item {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
+  background: #0f3460;
+  transition: border-color 0.2s;
+}
+.asset-item:hover {
+  border-color: #1a4a80;
+}
+.asset-item.selected {
+  border-color: #e94560;
+}
+
+.asset-thumb {
+  width: 100%;
+  height: 64px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.none-thumb {
+  color: #666;
+  font-size: 12px;
+  background: #16213e;
+}
+.video-thumb {
+  background: #1a3a5c;
+  color: #7ab;
+  font-size: 12px;
+}
+.audio-thumb {
+  background: #1a3a5c;
+}
+.play-btn {
+  background: none;
+  border: 2px solid #53d769;
+  color: #53d769;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+}
+.play-btn:hover {
+  background: rgba(83, 215, 105, 0.2);
+}
+
+.asset-name {
+  display: block;
+  font-size: 10px;
+  color: #888;
+  padding: 2px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-assets {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 16px;
+}

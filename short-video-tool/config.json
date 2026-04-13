@@ -1,0 +1,24 @@
+{
+  "tts": {
+    "default_engine": "voicevox",
+    "voicevox": {
+      "host": "http://localhost:50021"
+    },
+    "google_cloud_tts": {
+      "api_key": ""
+    },
+    "openai_tts": {
+      "api_key": ""
+    }
+  },
+  "output": {
+    "default_aspect_ratio": "9:16",
+    "default_resolution": {
+      "9:16": [1080, 1920],
+      "1:1": [1080, 1080],
+      "16:9": [1920, 1080]
+    }
+  },
+  "tts_speed": 1.0,
+  "scene_padding": 0.3
+}
