@@ -3,6 +3,7 @@ Short Video Generator Tool - Backend (FastAPI)
 """
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import os
@@ -36,6 +37,19 @@ app.add_middleware(
 # 静的ファイルの配信（素材・出力ファイル）
 app.mount("/assets", StaticFiles(directory=os.path.join(BASE_DIR, "assets")), name="assets")
 app.mount("/output", StaticFiles(directory=os.path.join(BASE_DIR, "output")), name="output")
+
+# Docker用: ビルド済みフロントエンドを配信
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+if os.path.isdir(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+    @app.get("/{full_path:path}")
+    def serve_spa(full_path: str):
+        """フロントエンドのSPAルーティング"""
+        file_path = os.path.join(STATIC_DIR, full_path)
+        if os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(STATIC_DIR, "index.html"))
 
 
 # --- リクエスト/レスポンスモデル ---

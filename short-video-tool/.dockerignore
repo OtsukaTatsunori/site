@@ -1,0 +1,7 @@
+node_modules
+src/client/node_modules
+temp
+output/*.mp4
+__pycache__
+src/server/__pycache__
+.git

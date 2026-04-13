@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # これらのフォルダはPCと共有（素材の追加・出力の取得用）
+      - ./assets/backgrounds:/app/assets/backgrounds
+      - ./assets/bgm:/app/assets/bgm
+      - ./assets/fonts:/app/assets/fonts
+      - ./output:/app/output
+      - ./projects:/app/projects
+      - ./templates:/app/templates
+    restart: unless-stopped
