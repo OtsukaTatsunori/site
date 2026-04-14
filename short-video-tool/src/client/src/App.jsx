@@ -29,6 +29,7 @@ function App() {
   const [projectName, setProjectName] = useState('')
   const [showProjectList, setShowProjectList] = useState(false)
   const [telopPresets, setTelopPresets] = useState([])
+  const [fonts, setFonts] = useState([])
 
   // Undo/Redo
   const [history, setHistory] = useState([])
@@ -73,6 +74,7 @@ function App() {
     loadTemplates()
     loadProjects()
     fetch('/api/telop-presets').then(r => r.json()).then(d => setTelopPresets(d.presets || []))
+    fetch('/api/assets/fonts').then(r => r.json()).then(d => setFonts(d.assets || []))
     fetch('/api/tts/status').then(r => r.json()).then(d => {
       setTtsAvailable(d.available)
       if (d.available) fetch('/api/tts/speakers').then(r => r.json()).then(d2 => setTtsSpeakers(d2.speakers || []))
@@ -239,26 +241,38 @@ function App() {
     updateScenes(scenes.map((s, i) => i === idx ? { ...s, custom_box: { ...cur, ...boxProps } } : s))
   }
 
+  // scene field update (generic)
+  const updateSceneField = (idx, field, val) => {
+    updateScenes(scenes.map((s, i) => i === idx ? { ...s, [field]: val } : s))
+  }
+
+  // apply fields to all scenes (一括適用)
+  const applyToAll = (fields) => {
+    updateScenes(scenes.map(s => ({ ...s, ...fields })))
+  }
+
   const sel = selectedSceneIdx !== null ? scenes[selectedSceneIdx] : null
   const totalDuration = scenes.reduce((sum, s) => sum + (s.duration || 0), 0)
 
-  // get preset style for preview
-  const getPresetStyle = (preset) => {
-    const p = telopPresets.find(t => t.id === preset) || {}
-    return {
-      fontSize: (p.fontsize || 48) * 0.35,
-      color: p.fontcolor || 'white',
-      WebkitTextStroke: `${(p.borderw || 2) * 0.4}px ${p.bordercolor || 'black'}`,
-      textAlign: 'center',
-    }
-  }
+  // プレビューのスタイル計算 (9:16 = 270 x 480 の比率)
+  const PREVIEW_W = 270
+  const PREVIEW_H = 480
+  // 元の解像度は 1080x1920 → スケール
+  const SCALE = PREVIEW_W / 1080
 
-  const getPresetPosition = (preset) => {
-    const p = telopPresets.find(t => t.id === preset) || {}
-    if (p.position === 'center') return { top: '50%', transform: 'translateY(-50%)' }
-    if (p.position === 'top') return { top: '10%' }
-    if (p.position === 'very_bottom') return { bottom: '5%' }
-    return { bottom: '12%' }
+  const getPresetStyle = (scene) => {
+    const p = telopPresets.find(t => t.id === scene?.telop_style) || {}
+    const fontsize = scene?.telop_fontsize || p.fontsize || 56
+    return {
+      fontSize: `${fontsize * SCALE}px`,
+      color: p.fontcolor || 'white',
+      WebkitTextStroke: `${(p.borderw || 2) * SCALE}px ${p.bordercolor || 'black'}`,
+      textAlign: 'center',
+      lineHeight: 1.2,
+      fontWeight: 'bold',
+      fontFamily: scene?.telop_font ? 'system-ui' : 'inherit',
+      whiteSpace: 'pre-wrap',
+    }
   }
 
   return (
@@ -372,29 +386,42 @@ function App() {
                 <p className="result-info">{renderResult.filename} ({renderResult.duration?.toFixed(1)}s)</p>
               </div>
             ) : (
-              <div className="preview-placeholder">
-                {sel?.background ? (
-                  <img src={sel.background} alt="" className="preview-bg" />
-                ) : (
-                  <div className="preview-bg-black" />
-                )}
-                {sel?.overlay_image && <img src={sel.overlay_image} alt="" className="preview-overlay-img" />}
-                {sel && (
-                  <div className="preview-telop"
-                    style={{
-                      ...getPresetStyle(sel.telop_style),
-                      ...getPresetPosition(sel.telop_style),
-                      ...(sel.telop_x != null ? { left: `${sel.telop_x / 10.8}%`, right: 'auto', transform: 'none' } : {}),
-                      ...(sel.telop_y != null ? { top: `${sel.telop_y / 19.2}%`, bottom: 'auto' } : {}),
-                      ...(sel.custom_box?.enabled ? {
-                        background: sel.custom_box.color + Math.round((sel.custom_box.opacity || 0.6) * 255).toString(16).padStart(2, '0'),
-                        borderRadius: (sel.custom_box.radius || 6) + 'px',
-                        padding: (sel.custom_box.padding || 10) + 'px',
-                      } : {}),
-                    }}>
-                    {sel.text}
-                  </div>
-                )}
+              <div className="preview-frame">
+                <div className="preview-screen-9x16">
+                  {sel?.background ? (
+                    <img src={sel.background} alt="" className="preview-bg-img" />
+                  ) : (
+                    <div className="preview-bg-black" />
+                  )}
+                  {sel?.overlay_image && (
+                    <img src={sel.overlay_image} alt="" className="preview-overlay-img"
+                      style={{
+                        width: `${(sel.overlay_scale ?? 80)}%`,
+                        left: sel.overlay_x != null ? `${sel.overlay_x / 10.8}%` : '50%',
+                        top: sel.overlay_y != null ? `${sel.overlay_y / 19.2}%` : '50%',
+                        transform: sel.overlay_x != null ? 'none' : 'translate(-50%, -50%)',
+                      }} />
+                  )}
+                  {sel && (
+                    <div className="preview-telop-inner"
+                      style={{
+                        ...getPresetStyle(sel),
+                        position: 'absolute',
+                        left: sel.telop_x != null ? `${sel.telop_x / 10.8}%` : '50%',
+                        top: sel.telop_y != null ? `${sel.telop_y / 19.2}%` : 'auto',
+                        bottom: sel.telop_y != null ? 'auto' : '12%',
+                        transform: sel.telop_x != null ? 'none' : 'translateX(-50%)',
+                        maxWidth: '85%',
+                        ...(sel.custom_box?.enabled ? {
+                          background: sel.custom_box.color + Math.round((sel.custom_box.opacity || 0.6) * 255).toString(16).padStart(2, '0'),
+                          borderRadius: (sel.custom_box.radius || 6) + 'px',
+                          padding: ((sel.custom_box.padding || 10) * SCALE * 2) + 'px',
+                        } : {}),
+                      }}>
+                      {sel.text}
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -423,10 +450,10 @@ function App() {
                   )}
                 </div>
 
-                {/* Telop position */}
+                {/* Telop position & size */}
                 {sel && (
                   <div className="panel-section">
-                    <h3 className="section-title">Telop Position</h3>
+                    <h3 className="section-title">文字 位置・サイズ・フォント</h3>
                     <div className="setting-row">
                       <label>X: {sel.telop_x ?? 'auto'}</label>
                       <input type="range" min="0" max="1080" step="10" value={sel.telop_x ?? 540}
@@ -437,14 +464,82 @@ function App() {
                       <input type="range" min="0" max="1920" step="10" value={sel.telop_y ?? 1600}
                         onChange={e => setTelopPos(selectedSceneIdx, 'telop_y', e.target.value)} />
                     </div>
-                    <button className="btn-small" onClick={() => updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, telop_x: null, telop_y: null } : s))}>Reset to Auto</button>
+                    <div className="setting-row">
+                      <label>サイズ: {sel.telop_fontsize ?? 'auto'}</label>
+                      <input type="range" min="20" max="120" step="2"
+                        value={sel.telop_fontsize ?? (telopPresets.find(t => t.id === sel.telop_style)?.fontsize || 56)}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'telop_fontsize', parseInt(e.target.value))} />
+                    </div>
+                    {fonts.length > 0 && (
+                      <div className="setting-row">
+                        <label>フォント</label>
+                        <select value={sel.telop_font || ''} onChange={e => updateSceneField(selectedSceneIdx, 'telop_font', e.target.value || null)} className="select-input">
+                          <option value="">デフォルト</option>
+                          {fonts.map(f => <option key={f.path} value={f.path}>{f.filename}</option>)}
+                        </select>
+                      </div>
+                    )}
+                    <div className="btn-row">
+                      <button className="btn-small" onClick={() => {
+                        updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, telop_x: null, telop_y: null, telop_fontsize: null } : s))
+                      }}>リセット</button>
+                      <button className="btn-small btn-apply-all" onClick={() => applyToAll({
+                        telop_x: sel.telop_x, telop_y: sel.telop_y,
+                        telop_fontsize: sel.telop_fontsize, telop_font: sel.telop_font,
+                      })}>全シーンに適用</button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Overlay position & size */}
+                {sel?.overlay_image && (
+                  <div className="panel-section">
+                    <h3 className="section-title">画像オーバーレイ 位置</h3>
+                    <div className="setting-row">
+                      <label>X: {sel.overlay_x ?? 'center'}</label>
+                      <input type="range" min="0" max="1080" step="10" value={sel.overlay_x ?? 540}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'overlay_x', parseInt(e.target.value))} />
+                    </div>
+                    <div className="setting-row">
+                      <label>Y: {sel.overlay_y ?? 'center'}</label>
+                      <input type="range" min="0" max="1920" step="10" value={sel.overlay_y ?? 960}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'overlay_y', parseInt(e.target.value))} />
+                    </div>
+                    <div className="setting-row">
+                      <label>サイズ: {sel.overlay_scale ?? 80}%</label>
+                      <input type="range" min="10" max="100" step="5"
+                        value={sel.overlay_scale ?? 80}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'overlay_scale', parseInt(e.target.value))} />
+                    </div>
+                    <div className="btn-row">
+                      <button className="btn-small" onClick={() => {
+                        updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, overlay_x: null, overlay_y: null, overlay_scale: 80 } : s))
+                      }}>リセット</button>
+                      <button className="btn-small btn-apply-all" onClick={() => applyToAll({
+                        overlay_x: sel.overlay_x, overlay_y: sel.overlay_y, overlay_scale: sel.overlay_scale,
+                      })}>全シーンに適用</button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Telop style (preset) */}
+                {sel && (
+                  <div className="panel-section">
+                    <h3 className="section-title">文字デザイン（プリセット）</h3>
+                    <div className="setting-row">
+                      <select className="select-input" value={sel.telop_style || 'standard'}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'telop_style', e.target.value)}>
+                        {telopPresets.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
+                      </select>
+                    </div>
+                    <button className="btn-small btn-apply-all" onClick={() => applyToAll({ telop_style: sel.telop_style })}>全シーンに適用</button>
                   </div>
                 )}
 
                 {/* Telop background box */}
                 {sel && (
                   <div className="panel-section">
-                    <h3 className="section-title">Telop Background</h3>
+                    <h3 className="section-title">文字の背景帯</h3>
                     <div className="setting-row">
                       <label>
                         <input type="checkbox" checked={sel.custom_box?.enabled || false}
@@ -476,6 +571,7 @@ function App() {
                         </div>
                       </>
                     )}
+                    <button className="btn-small btn-apply-all" onClick={() => applyToAll({ custom_box: sel.custom_box })}>全シーンに適用</button>
                   </div>
                 )}
 

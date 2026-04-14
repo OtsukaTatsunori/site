@@ -9,61 +9,55 @@ import glob as glob_module
 
 # テロッププリセット
 TELOP_PRESETS = {
-    # --- ベーシック系 ---
     "standard": {
         "label": "標準（白+黒縁）",
-        "fontsize": 48, "fontcolor": "white",
+        "fontsize": 56, "fontcolor": "white",
         "borderw": 3, "bordercolor": "black",
         "position": "bottom",
     },
-    "standard_top": {
-        "label": "標準（上部）",
-        "fontsize": 48, "fontcolor": "white",
-        "borderw": 3, "bordercolor": "black",
-        "position": "top",
-    },
-    # --- インパクト系 ---
-    "impact": {
-        "label": "インパクト（黄色）",
-        "fontsize": 64, "fontcolor": "yellow",
-        "borderw": 4, "bordercolor": "black",
-        "position": "center",
+    "impact_yellow": {
+        "label": "インパクト（黄）",
+        "fontsize": 72, "fontcolor": "yellow",
+        "borderw": 5, "bordercolor": "black",
+        "position": "bottom",
     },
     "impact_red": {
         "label": "インパクト（赤）",
-        "fontsize": 64, "fontcolor": "#FF3333",
-        "borderw": 4, "bordercolor": "white",
-        "position": "center",
+        "fontsize": 72, "fontcolor": "#FF3333",
+        "borderw": 5, "bordercolor": "white",
+        "position": "bottom",
     },
-    # --- 字幕系 ---
     "subtitle": {
         "label": "字幕（黒帯）",
-        "fontsize": 36, "fontcolor": "white",
+        "fontsize": 42, "fontcolor": "white",
         "borderw": 2, "bordercolor": "black",
-        "position": "very_bottom",
-        "box": True, "boxcolor": "black@0.6", "boxborderw": 10,
-        "box_round": 0,
+        "position": "bottom",
+        "box": True, "boxcolor": "black@0.65", "boxborderw": 14,
     },
     "subtitle_glass": {
         "label": "字幕（すりガラス）",
-        "fontsize": 36, "fontcolor": "white",
-        "borderw": 1, "bordercolor": "#333333",
-        "position": "very_bottom",
-        "box": True, "boxcolor": "#1a1a2e@0.7", "boxborderw": 14,
-        "box_round": 0,
+        "fontsize": 42, "fontcolor": "white",
+        "borderw": 1, "bordercolor": "#1a1a2e",
+        "position": "bottom",
+        "box": True, "boxcolor": "#1a1a2e@0.7", "boxborderw": 16,
     },
-    # --- ポップ系 ---
-    "pop": {
+    "pop_pink": {
         "label": "ポップ（ピンク）",
-        "fontsize": 56, "fontcolor": "#FF6B9D",
-        "borderw": 3, "bordercolor": "white",
-        "position": "center",
+        "fontsize": 64, "fontcolor": "#FF6B9D",
+        "borderw": 4, "bordercolor": "white",
+        "position": "bottom",
     },
     "pop_neon": {
         "label": "ネオン（水色）",
-        "fontsize": 52, "fontcolor": "#00FFFF",
-        "borderw": 3, "bordercolor": "#0066FF",
-        "position": "center",
+        "fontsize": 60, "fontcolor": "#00FFFF",
+        "borderw": 4, "bordercolor": "#0066FF",
+        "position": "bottom",
+    },
+    "plain_black": {
+        "label": "シンプル（黒）",
+        "fontsize": 52, "fontcolor": "black",
+        "borderw": 1, "bordercolor": "black",
+        "position": "bottom",
     },
 }
 
@@ -83,10 +77,16 @@ def get_video_duration(filepath: str) -> float:
     return 0
 
 
-def find_font(base_dir: str) -> str:
-    """assets/fonts/ からフォントファイルを探す"""
+def find_font(base_dir: str, preferred_path: str | None = None) -> str:
+    """フォントファイルを探す。preferred_pathがあればそれを優先。"""
+    if preferred_path:
+        # /assets/fonts/xxx.ttf 形式なら解決
+        p = preferred_path.lstrip("/")
+        full = os.path.join(base_dir, p)
+        if os.path.exists(full):
+            return full
     font_dir = os.path.join(base_dir, "assets", "fonts")
-    for ext in ("*.ttf", "*.otf"):
+    for ext in ("*.ttf", "*.otf", "*.ttc"):
         fonts = glob_module.glob(os.path.join(font_dir, ext))
         if fonts:
             return fonts[0]
@@ -112,13 +112,12 @@ def build_drawtext_filter(
     preset_name: str,
     font_path: str,
     duration: float,
-    fade_in: bool = True,
-    fade_out: bool = True,
     custom_x: int | None = None,
     custom_y: int | None = None,
     custom_box: dict | None = None,
+    custom_fontsize: int | None = None,
 ) -> str:
-    """drawtextフィルタ文字列を構築する"""
+    """drawtextフィルタ文字列を構築する（フェード無し・即切替）"""
     preset = TELOP_PRESETS.get(preset_name, TELOP_PRESETS["standard"])
 
     # テキスト内の特殊文字をエスケープ
@@ -130,11 +129,12 @@ def build_drawtext_filter(
         .replace("]", "\\]")
     )
 
-    pos = get_telop_position(preset["position"], preset["fontsize"], custom_x, custom_y)
+    fontsize = custom_fontsize if custom_fontsize else preset["fontsize"]
+    pos = get_telop_position(preset["position"], fontsize, custom_x, custom_y)
 
     parts = [
         f"drawtext=text='{escaped_text}'",
-        f"fontsize={preset['fontsize']}",
+        f"fontsize={fontsize}",
         f"fontcolor={preset['fontcolor']}",
         f"borderw={preset['borderw']}",
         f"bordercolor={preset['bordercolor']}",
@@ -158,15 +158,8 @@ def build_drawtext_filter(
         parts.append(f"boxcolor={box_color}")
         parts.append(f"boxborderw={box_padding}")
 
-    # フェードイン/フェードアウト
+    # フェード無し（即切替）
     alpha_parts = []
-    if fade_in:
-        alpha_parts.append(f"if(lt(t\\,0.3)\\,t/0.3\\,1)")
-    if fade_out:
-        fade_start = max(0, duration - 0.3)
-        alpha_parts.append(
-            f"if(gt(t\\,{fade_start:.1f})\\,(({duration:.1f}-t)/0.3)\\,1)"
-        )
 
     if alpha_parts:
         if len(alpha_parts) == 2:
@@ -199,13 +192,18 @@ def generate_scene_video(
     ken_burns = scene.get("ken_burns", False)
     bg_path = scene.get("background")
     telop_style = scene.get("telop_style", "standard")
-    overlay_image = scene.get("overlay_image")  # 画像オーバーレイ
-    telop_x = scene.get("telop_x")  # カスタムテロップ位置
+    overlay_image = scene.get("overlay_image")
+    overlay_x = scene.get("overlay_x")
+    overlay_y = scene.get("overlay_y")
+    overlay_scale = scene.get("overlay_scale", 80)  # 幅のパーセンテージ
+    telop_x = scene.get("telop_x")
     telop_y = scene.get("telop_y")
-    custom_box = scene.get("custom_box")  # カスタム背景帯
+    telop_fontsize = scene.get("telop_fontsize")
+    telop_font = scene.get("telop_font")
+    custom_box = scene.get("custom_box")
     width, height = resolution
 
-    font_path = find_font(base_dir)
+    font_path = find_font(base_dir, telop_font)
 
     # 背景の入力ソース
     if bg_path and not bg_path.startswith("/"):
@@ -279,6 +277,7 @@ def generate_scene_video(
             text, telop_style, font_path, duration,
             custom_x=telop_x, custom_y=telop_y,
             custom_box=custom_box,
+            custom_fontsize=telop_fontsize,
         )
         filters.append(drawtext)
 
@@ -295,7 +294,14 @@ def generate_scene_video(
         cmd += ["-i", overlay_full]
         bg_filter = ",".join(filters[:-1]) if text else ",".join(filters)
         telop_filter = filters[-1] if text else ""
-        fc = f"[0:v]{bg_filter}[bg];[1:v]scale={width}:{height}:force_original_aspect_ratio=decrease,format=rgba[ov];[bg][ov]overlay=(W-w)/2:(H-h)/2[merged]"
+        # オーバーレイサイズ（幅の%で指定）
+        ov_w = int(width * (overlay_scale / 100))
+        # 位置（None の場合は中央）
+        if overlay_x is not None and overlay_y is not None:
+            ov_pos = f"{overlay_x}:{overlay_y}"
+        else:
+            ov_pos = "(W-w)/2:(H-h)/2"
+        fc = f"[0:v]{bg_filter}[bg];[1:v]scale={ov_w}:-1,format=rgba[ov];[bg][ov]overlay={ov_pos}[merged]"
         if telop_filter:
             fc += f";[merged]{telop_filter}[outv]"
             map_label = "[outv]"

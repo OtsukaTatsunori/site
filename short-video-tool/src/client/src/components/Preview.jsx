@@ -23,9 +23,7 @@ export default function Preview({ scenes, telopPresets, onClose }) {
     let idx = 0
     for (let i = 0; i < sceneStarts.length; i++) { if (t >= sceneStarts[i]) idx = i }
     setCurrentIdx(idx)
-    const se = t - sceneStarts[idx]
-    const sd = scenes[idx]?.duration || 3
-    setTelopVisible(se > 0.15 && se < sd - 0.15)
+    setTelopVisible(true)
     timerRef.current = requestAnimationFrame(tick)
   }
 
@@ -36,12 +34,18 @@ export default function Preview({ scenes, telopPresets, onClose }) {
     timerRef.current = requestAnimationFrame(tick)
   }
 
-  const getStyle = (preset) => {
-    const p = (telopPresets || []).find(t => t.id === preset) || {}
+  const SCALE = 270 / 1080
+  const getStyle = (scene) => {
+    const p = (telopPresets || []).find(t => t.id === scene?.telop_style) || {}
+    const fs = scene?.telop_fontsize || p.fontsize || 56
     return {
-      fontSize: (p.fontsize || 48) * 0.35,
+      fontSize: `${fs * SCALE}px`,
       color: p.fontcolor || 'white',
-      WebkitTextStroke: `${(p.borderw || 2) * 0.4}px ${p.bordercolor || 'black'}`,
+      WebkitTextStroke: `${(p.borderw || 2) * SCALE}px ${p.bordercolor || 'black'}`,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      lineHeight: 1.2,
+      whiteSpace: 'pre-wrap',
     }
   }
 
@@ -54,8 +58,30 @@ export default function Preview({ scenes, telopPresets, onClose }) {
         <div className="preview-header"><h3>Preview</h3><button className="btn-close" onClick={onClose}>Close</button></div>
         <div className="preview-screen">
           {cs.background ? <img src={cs.background} alt="" className="preview-screen-bg" /> : <div className="preview-screen-bg black" />}
-          {cs.overlay_image && <img src={cs.overlay_image} alt="" style={{ position: 'absolute', width: '80%', top: '20%', zIndex: 1, objectFit: 'contain' }} />}
-          <div className={`preview-screen-telop ${telopVisible ? 'visible' : ''}`} style={getStyle(cs.telop_style)}>{cs.text}</div>
+          {cs.overlay_image && (
+            <img src={cs.overlay_image} alt=""
+              style={{
+                position: 'absolute', zIndex: 1, objectFit: 'contain',
+                width: `${(cs.overlay_scale ?? 80)}%`,
+                left: cs.overlay_x != null ? `${cs.overlay_x / 10.8}%` : '50%',
+                top: cs.overlay_y != null ? `${cs.overlay_y / 19.2}%` : '50%',
+                transform: cs.overlay_x != null ? 'none' : 'translate(-50%, -50%)',
+              }} />
+          )}
+          <div className="preview-screen-telop visible" style={{
+            ...getStyle(cs),
+            position: 'absolute',
+            left: cs.telop_x != null ? `${cs.telop_x / 10.8}%` : '50%',
+            top: cs.telop_y != null ? `${cs.telop_y / 19.2}%` : 'auto',
+            bottom: cs.telop_y != null ? 'auto' : '12%',
+            transform: cs.telop_x != null ? 'none' : 'translateX(-50%)',
+            maxWidth: '85%',
+            ...(cs.custom_box?.enabled ? {
+              background: cs.custom_box.color + Math.round((cs.custom_box.opacity || 0.6) * 255).toString(16).padStart(2, '0'),
+              borderRadius: (cs.custom_box.radius || 6) + 'px',
+              padding: ((cs.custom_box.padding || 10) * SCALE * 2) + 'px',
+            } : {}),
+          }}>{cs.text}</div>
           <div className="preview-scene-num">{currentIdx + 1} / {scenes.length}</div>
         </div>
         <div className="preview-controls">
