@@ -322,17 +322,36 @@
   height: 100%;
   object-fit: cover;
 }
-.preview-telop {
-  position: relative;
+.preview-bg-black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+.preview-overlay-img {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  max-height: 60%;
+  object-fit: contain;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.6);
+  top: 20%;
+}
+.preview-telop {
+  position: absolute;
+  z-index: 2;
   color: #fff;
   padding: 8px 16px;
   border-radius: 6px;
   font-size: 16px;
   text-align: center;
-  margin-top: auto;
-  margin-bottom: 40px;
+  left: 10%;
+  right: 10%;
+}
+.scene-overlay-badge {
+  font-size: 10px;
+  color: #00FFFF;
+  margin-bottom: 4px;
 }
 
 /* === BGM音量 === */

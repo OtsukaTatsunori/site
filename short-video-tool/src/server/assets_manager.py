@@ -27,42 +27,49 @@ def get_file_type(filename: str) -> str:
 
 def list_assets(base_dir: str, asset_type: str) -> list[dict]:
     """
-    指定フォルダの素材ファイル一覧を返す。
+    指定フォルダの素材ファイル一覧を返す。サブフォルダ（カテゴリ）にも対応。
 
-    asset_type: "backgrounds" | "bgm" | "fonts"
+    asset_type: "backgrounds" | "bgm" | "fonts" | "overlays"
     """
     folder = os.path.join(base_dir, "assets", asset_type)
     if not os.path.isdir(folder):
         return []
 
     assets = []
-    for filename in sorted(os.listdir(folder)):
-        filepath = os.path.join(folder, filename)
-        if not os.path.isfile(filepath):
-            continue
+    for root, dirs, files in os.walk(folder):
+        # .gitkeep等を除外
+        rel_root = os.path.relpath(root, folder)
+        category = "" if rel_root == "." else rel_root.replace("\\", "/")
 
-        file_type = get_file_type(filename)
-        if file_type == 'unknown':
-            continue
+        for filename in sorted(files):
+            filepath = os.path.join(root, filename)
 
-        # メタデータファイルがあれば読み込む（例: photo1.jpg.json）
-        meta_path = filepath + '.json'
-        tags = []
-        if os.path.exists(meta_path):
-            try:
-                with open(meta_path, 'r', encoding='utf-8') as f:
-                    meta = json.load(f)
-                    tags = meta.get('tags', [])
-            except (json.JSONDecodeError, IOError):
-                pass
+            file_type = get_file_type(filename)
+            if file_type == 'unknown':
+                continue
 
-        assets.append({
-            'filename': filename,
-            'path': f'/assets/{asset_type}/{filename}',
-            'type': file_type,
-            'size': os.path.getsize(filepath),
-            'tags': tags,
-        })
+            # メタデータファイルがあれば読み込む
+            meta_path = filepath + '.json'
+            tags = []
+            if os.path.exists(meta_path):
+                try:
+                    with open(meta_path, 'r', encoding='utf-8') as f:
+                        meta = json.load(f)
+                        tags = meta.get('tags', [])
+                except (json.JSONDecodeError, IOError):
+                    pass
+
+            rel_path = os.path.relpath(filepath, os.path.join(base_dir))
+            url_path = "/" + rel_path.replace("\\", "/")
+
+            assets.append({
+                'filename': filename,
+                'path': url_path,
+                'type': file_type,
+                'size': os.path.getsize(filepath),
+                'tags': tags,
+                'category': category,
+            })
 
     return assets
 

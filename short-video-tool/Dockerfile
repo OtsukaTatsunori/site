@@ -28,7 +28,7 @@ COPY src/server/ /app/src/server/
 COPY --from=frontend-build /app/client/dist /app/static
 
 # フォルダ作成
-RUN mkdir -p /app/assets/backgrounds /app/assets/bgm /app/assets/fonts \
+RUN mkdir -p /app/assets/backgrounds /app/assets/bgm /app/assets/fonts /app/assets/overlays \
     /app/templates /app/projects /app/temp/tts /app/output
 
 # 設定ファイル

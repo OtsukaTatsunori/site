@@ -9,34 +9,60 @@ import glob as glob_module
 
 # テロッププリセット
 TELOP_PRESETS = {
+    # --- ベーシック系 ---
     "standard": {
-        "fontsize": 48,
-        "fontcolor": "white",
-        "borderw": 3,
-        "bordercolor": "black",
-        "position": "bottom",  # 中央下部
+        "label": "標準（白+黒縁）",
+        "fontsize": 48, "fontcolor": "white",
+        "borderw": 3, "bordercolor": "black",
+        "position": "bottom",
     },
+    "standard_top": {
+        "label": "標準（上部）",
+        "fontsize": 48, "fontcolor": "white",
+        "borderw": 3, "bordercolor": "black",
+        "position": "top",
+    },
+    # --- インパクト系 ---
     "impact": {
-        "fontsize": 64,
-        "fontcolor": "yellow",
-        "borderw": 4,
-        "bordercolor": "black",
+        "label": "インパクト（黄色）",
+        "fontsize": 64, "fontcolor": "yellow",
+        "borderw": 4, "bordercolor": "black",
         "position": "center",
     },
-    "subtitle": {
-        "fontsize": 36,
-        "fontcolor": "white",
-        "borderw": 2,
-        "bordercolor": "black",
-        "position": "very_bottom",
-        "box": True,
-        "boxcolor": "black@0.5",
+    "impact_red": {
+        "label": "インパクト（赤）",
+        "fontsize": 64, "fontcolor": "#FF3333",
+        "borderw": 4, "bordercolor": "white",
+        "position": "center",
     },
+    # --- 字幕系 ---
+    "subtitle": {
+        "label": "字幕（黒帯）",
+        "fontsize": 36, "fontcolor": "white",
+        "borderw": 2, "bordercolor": "black",
+        "position": "very_bottom",
+        "box": True, "boxcolor": "black@0.6", "boxborderw": 10,
+        "box_round": 0,
+    },
+    "subtitle_glass": {
+        "label": "字幕（すりガラス）",
+        "fontsize": 36, "fontcolor": "white",
+        "borderw": 1, "bordercolor": "#333333",
+        "position": "very_bottom",
+        "box": True, "boxcolor": "#1a1a2e@0.7", "boxborderw": 14,
+        "box_round": 0,
+    },
+    # --- ポップ系 ---
     "pop": {
-        "fontsize": 56,
-        "fontcolor": "#FF6B9D",
-        "borderw": 3,
-        "bordercolor": "white",
+        "label": "ポップ（ピンク）",
+        "fontsize": 56, "fontcolor": "#FF6B9D",
+        "borderw": 3, "bordercolor": "white",
+        "position": "center",
+    },
+    "pop_neon": {
+        "label": "ネオン（水色）",
+        "fontsize": 52, "fontcolor": "#00FFFF",
+        "borderw": 3, "bordercolor": "#0066FF",
         "position": "center",
     },
 }
@@ -67,10 +93,14 @@ def find_font(base_dir: str) -> str:
     return ""
 
 
-def get_telop_position(position: str, fontsize: int) -> str:
-    """テロップ配置位置を取得。セーフエリア(10%)を考慮"""
+def get_telop_position(position: str, fontsize: int, custom_x: int | None = None, custom_y: int | None = None) -> str:
+    """テロップ配置位置を取得。セーフエリア(10%)を考慮。カスタム座標対応。"""
+    if custom_x is not None and custom_y is not None:
+        return f"x={custom_x}:y={custom_y}"
     if position == "center":
         return "x=(w-text_w)/2:y=(h-text_h)/2"
+    elif position == "top":
+        return "x=(w-text_w)/2:y=h*0.10"
     elif position == "very_bottom":
         return "x=(w-text_w)/2:y=h-text_h-h*0.05"
     else:  # bottom (default)
@@ -84,6 +114,9 @@ def build_drawtext_filter(
     duration: float,
     fade_in: bool = True,
     fade_out: bool = True,
+    custom_x: int | None = None,
+    custom_y: int | None = None,
+    custom_box: dict | None = None,
 ) -> str:
     """drawtextフィルタ文字列を構築する"""
     preset = TELOP_PRESETS.get(preset_name, TELOP_PRESETS["standard"])
@@ -97,7 +130,7 @@ def build_drawtext_filter(
         .replace("]", "\\]")
     )
 
-    pos = get_telop_position(preset["position"], preset["fontsize"])
+    pos = get_telop_position(preset["position"], preset["fontsize"], custom_x, custom_y)
 
     parts = [
         f"drawtext=text='{escaped_text}'",
@@ -109,15 +142,21 @@ def build_drawtext_filter(
     ]
 
     if font_path:
-        # FFmpegのfontfileパスでは : と \ をエスケープする必要がある
         escaped_font = font_path.replace("\\", "/").replace(":", "\\:")
         parts.append(f"fontfile='{escaped_font}'")
 
-    # 背景帯（subtitleプリセット用）
-    if preset.get("box"):
+    # 背景帯: カスタム設定 > プリセット設定
+    use_box = custom_box.get("enabled") if custom_box else preset.get("box")
+    if use_box:
+        box_color = custom_box.get("color", "black") if custom_box else preset.get("boxcolor", "black")
+        box_opacity = custom_box.get("opacity", 0.6) if custom_box else 0.6
+        box_padding = custom_box.get("padding", 10) if custom_box else preset.get("boxborderw", 10)
+        # boxcolorに@opacityを含むか確認
+        if "@" not in str(box_color):
+            box_color = f"{box_color}@{box_opacity}"
         parts.append("box=1")
-        parts.append(f"boxcolor={preset['boxcolor']}")
-        parts.append("boxborderw=10")
+        parts.append(f"boxcolor={box_color}")
+        parts.append(f"boxborderw={box_padding}")
 
     # フェードイン/フェードアウト
     alpha_parts = []
@@ -160,6 +199,10 @@ def generate_scene_video(
     ken_burns = scene.get("ken_burns", False)
     bg_path = scene.get("background")
     telop_style = scene.get("telop_style", "standard")
+    overlay_image = scene.get("overlay_image")  # 画像オーバーレイ
+    telop_x = scene.get("telop_x")  # カスタムテロップ位置
+    telop_y = scene.get("telop_y")
+    custom_box = scene.get("custom_box")  # カスタム背景帯
     width, height = resolution
 
     font_path = find_font(base_dir)
@@ -233,21 +276,46 @@ def generate_scene_video(
     # テロップ追加
     if text:
         drawtext = build_drawtext_filter(
-            text, telop_style, font_path, duration
+            text, telop_style, font_path, duration,
+            custom_x=telop_x, custom_y=telop_y,
+            custom_box=custom_box,
         )
         filters.append(drawtext)
 
-    filter_str = ",".join(filters)
+    # 画像オーバーレイ対応
+    overlay_full = None
+    if overlay_image:
+        ov_path = overlay_image if not overlay_image.startswith("/") else overlay_image.lstrip("/")
+        overlay_full = os.path.join(base_dir, ov_path)
+        if not os.path.exists(overlay_full):
+            overlay_full = None
 
-    cmd += [
-        "-vf", filter_str,
-        "-c:v", "libx264",
-        "-preset", "fast",
-        "-pix_fmt", "yuv420p",
-        "-t", str(duration),
-        "-r", "30",
-        output_path,
-    ]
+    if overlay_full:
+        # filter_complex で背景 + オーバーレイ + テロップ
+        cmd += ["-i", overlay_full]
+        bg_filter = ",".join(filters[:-1]) if text else ",".join(filters)
+        telop_filter = filters[-1] if text else ""
+        fc = f"[0:v]{bg_filter}[bg];[1:v]scale={width}:{height}:force_original_aspect_ratio=decrease,format=rgba[ov];[bg][ov]overlay=(W-w)/2:(H-h)/2[merged]"
+        if telop_filter:
+            fc += f";[merged]{telop_filter}[outv]"
+            map_label = "[outv]"
+        else:
+            map_label = "[merged]"
+        cmd += [
+            "-filter_complex", fc,
+            "-map", map_label,
+            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p",
+            "-t", str(duration), "-r", "30",
+            output_path,
+        ]
+    else:
+        filter_str = ",".join(filters)
+        cmd += [
+            "-vf", filter_str,
+            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p",
+            "-t", str(duration), "-r", "30",
+            output_path,
+        ]
 
     # 実行
     result = subprocess.run(

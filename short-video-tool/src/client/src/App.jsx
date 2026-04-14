@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import AssetPicker from './components/AssetPicker'
 import Preview from './components/Preview'
 import './App.css'
@@ -15,421 +15,277 @@ function App() {
   const [aspectRatio, setAspectRatio] = useState('9:16')
   const [rendering, setRendering] = useState(false)
   const [renderResult, setRenderResult] = useState(null)
-
-  // TTS関連
   const [ttsAvailable, setTtsAvailable] = useState(false)
   const [ttsSpeakers, setTtsSpeakers] = useState([])
   const [ttsSpeakerId, setTtsSpeakerId] = useState(1)
   const [ttsSpeed, setTtsSpeed] = useState(1.0)
   const [ttsGenerating, setTtsGenerating] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
-
-  // テンプレート関連
   const [templates, setTemplates] = useState([])
   const [showTemplateSave, setShowTemplateSave] = useState(false)
   const [templateName, setTemplateName] = useState('')
-
-  // プロジェクト関連
   const [projects, setProjects] = useState([])
   const [currentProjectFile, setCurrentProjectFile] = useState(null)
-  const [projectName, setProjectName] = useState('新規プロジェクト')
+  const [projectName, setProjectName] = useState('')
   const [showProjectList, setShowProjectList] = useState(false)
+  const [telopPresets, setTelopPresets] = useState([])
 
-  // テンプレート一覧を読み込み
+  // Undo/Redo
+  const [history, setHistory] = useState([])
+  const [historyIdx, setHistoryIdx] = useState(-1)
+
+  const pushHistory = useCallback((newScenes) => {
+    const newHistory = history.slice(0, historyIdx + 1)
+    newHistory.push(JSON.stringify(newScenes))
+    if (newHistory.length > 50) newHistory.shift()
+    setHistory(newHistory)
+    setHistoryIdx(newHistory.length - 1)
+  }, [history, historyIdx])
+
+  const undo = () => {
+    if (historyIdx > 0) {
+      const prev = historyIdx - 1
+      setHistoryIdx(prev)
+      setScenes(JSON.parse(history[prev]))
+    }
+  }
+  const redo = () => {
+    if (historyIdx < history.length - 1) {
+      const next = historyIdx + 1
+      setHistoryIdx(next)
+      setScenes(JSON.parse(history[next]))
+    }
+  }
+
+  const updateScenes = (newScenes) => {
+    setScenes(newScenes)
+    pushHistory(newScenes)
+  }
+
   const loadTemplates = () => {
-    fetch('/api/templates')
-      .then((res) => res.json())
-      .then((data) => setTemplates(data.templates || []))
+    fetch('/api/templates').then(r => r.json()).then(d => setTemplates(d.templates || []))
   }
-
-  // プロジェクト一覧を読み込み
   const loadProjects = () => {
-    fetch('/api/projects')
-      .then((res) => res.json())
-      .then((data) => setProjects(data.projects || []))
+    fetch('/api/projects').then(r => r.json()).then(d => setProjects(d.projects || []))
   }
 
-  // TTS接続状態を確認
   useEffect(() => {
     loadTemplates()
     loadProjects()
-    fetch('/api/tts/status')
-      .then((res) => res.json())
-      .then((data) => {
-        setTtsAvailable(data.available)
-        if (data.available) {
-          fetch('/api/tts/speakers')
-            .then((res) => res.json())
-            .then((d) => setTtsSpeakers(d.speakers || []))
-        }
-      })
-      .catch(() => setTtsAvailable(false))
+    fetch('/api/telop-presets').then(r => r.json()).then(d => setTelopPresets(d.presets || []))
+    fetch('/api/tts/status').then(r => r.json()).then(d => {
+      setTtsAvailable(d.available)
+      if (d.available) fetch('/api/tts/speakers').then(r => r.json()).then(d2 => setTtsSpeakers(d2.speakers || []))
+    }).catch(() => setTtsAvailable(false))
   }, [])
 
-  // テキストをシーンに自動分割
   const handleSplitText = async () => {
     if (!text.trim()) return
     setLoading(true)
     setRenderResult(null)
     try {
       const res = await fetch('/api/scenes/split-text', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
       })
       const data = await res.json()
-      setScenes(data.scenes)
+      updateScenes(data.scenes)
       setSelectedSceneIdx(data.scenes.length > 0 ? 0 : null)
-    } catch (err) {
-      alert('シーン分割に失敗しました: ' + err.message)
-    }
+    } catch (err) { alert('Error: ' + err.message) }
     setLoading(false)
   }
 
-  // 尺を再計算
-  const recalcDuration = async (updatedScenes, speed) => {
+  const recalcDuration = async (s, speed) => {
     try {
       const res = await fetch('/api/scenes/calc-duration', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenes: updatedScenes, global_speed: speed }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenes: s, global_speed: speed }),
       })
       const data = await res.json()
-      setScenes(data.scenes)
-    } catch (err) {
-      console.error('尺の再計算に失敗:', err)
-    }
+      updateScenes(data.scenes)
+    } catch (err) { console.error(err) }
   }
 
-  // 隣接シーンを結合
   const handleMerge = async (index) => {
-    try {
-      const res = await fetch('/api/scenes/merge', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenes, merge_indices: [index] }),
-      })
-      const data = await res.json()
-      if (data.error) {
-        alert(data.error)
-      } else {
-        await recalcDuration(data.scenes, globalSpeed)
-      }
-    } catch (err) {
-      alert('結合に失敗しました: ' + err.message)
-    }
+    const res = await fetch('/api/scenes/merge', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scenes, merge_indices: [index] }),
+    })
+    const data = await res.json()
+    if (!data.error) await recalcDuration(data.scenes, globalSpeed)
   }
 
-  // シーンを分割
   const handleSplit = async (index) => {
-    const sceneText = scenes[index].text
-    const splitPos = Math.floor(sceneText.length / 2)
+    const splitPos = Math.floor(scenes[index].text.length / 2)
     if (splitPos <= 0) return
-    try {
-      const res = await fetch('/api/scenes/split-scene', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenes, split_index: index, split_position: splitPos }),
-      })
-      const data = await res.json()
-      if (data.error) {
-        alert(data.error)
-      } else {
-        await recalcDuration(data.scenes, globalSpeed)
-      }
-    } catch (err) {
-      alert('分割に失敗しました: ' + err.message)
-    }
+    const res = await fetch('/api/scenes/split-scene', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scenes, split_index: index, split_position: splitPos }),
+    })
+    const data = await res.json()
+    if (!data.error) await recalcDuration(data.scenes, globalSpeed)
   }
 
-  // シーンの尺を手動調整
   const handleDurationChange = (index, value) => {
-    setScenes(scenes.map((s, i) =>
-      i === index ? { ...s, duration: value, manual_duration: value } : s
-    ))
+    updateScenes(scenes.map((s, i) => i === index ? { ...s, duration: value, manual_duration: value } : s))
   }
 
-  // 手動調整をリセット
   const handleDurationReset = async (index) => {
-    const newScenes = scenes.map((s, i) =>
-      i === index ? { ...s, manual_duration: null } : s
-    )
-    await recalcDuration(newScenes, globalSpeed)
+    await recalcDuration(scenes.map((s, i) => i === index ? { ...s, manual_duration: null } : s), globalSpeed)
   }
 
-  // 全体速度の変更
   const handleGlobalSpeedChange = async (speed) => {
     setGlobalSpeed(speed)
-    if (scenes.length > 0) {
-      await recalcDuration(scenes, speed)
-    }
+    if (scenes.length > 0) await recalcDuration(scenes, speed)
   }
 
-  // シーンに背景を設定
   const handleBackgroundSelect = (asset) => {
     if (selectedSceneIdx === null) return
-    setScenes(scenes.map((s, i) =>
-      i === selectedSceneIdx ? { ...s, background: asset ? asset.path : null } : s
-    ))
+    updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, background: asset ? asset.path : null } : s))
   }
 
-  // Ken Burns ON/OFF切替
-  const toggleSceneKenBurns = (index) => {
-    setScenes(scenes.map((s, i) =>
-      i === index ? { ...s, ken_burns: !s.ken_burns } : s
-    ))
+  const handleOverlaySelect = (asset) => {
+    if (selectedSceneIdx === null) return
+    updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, overlay_image: asset ? asset.path : null } : s))
   }
 
-  // シーンのTTS ON/OFF切替
-  const toggleSceneTts = (index) => {
-    setScenes(scenes.map((s, i) =>
-      i === index ? { ...s, tts_enabled: !s.tts_enabled } : s
-    ))
-  }
+  const toggleSceneKenBurns = (idx) => updateScenes(scenes.map((s, i) => i === idx ? { ...s, ken_burns: !s.ken_burns } : s))
+  const toggleSceneTts = (idx) => updateScenes(scenes.map((s, i) => i === idx ? { ...s, tts_enabled: !s.tts_enabled } : s))
+  const toggleAllTts = (on) => updateScenes(scenes.map(s => ({ ...s, tts_enabled: on })))
 
-  // 全シーンのTTS一括ON/OFF
-  const toggleAllTts = (enabled) => {
-    setScenes(scenes.map((s) => ({ ...s, tts_enabled: enabled })))
-  }
-
-  // TTS音声を一括生成
   const handleTtsBatch = async () => {
-    if (!ttsAvailable || scenes.length === 0) return
+    if (!ttsAvailable || !scenes.length) return
     setTtsGenerating(true)
     try {
       const res = await fetch('/api/tts/batch', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          scenes,
-          speaker_id: ttsSpeakerId,
-          speed: ttsSpeed,
-        }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenes, speaker_id: ttsSpeakerId, speed: ttsSpeed }),
       })
       const data = await res.json()
-      if (data.success) {
-        setScenes(data.scenes)
-      } else {
-        alert('TTS生成に失敗: ' + (data.error || ''))
-      }
-    } catch (err) {
-      alert('TTS生成に失敗: ' + err.message)
-    }
+      if (data.success) updateScenes(data.scenes)
+      else alert('TTS error: ' + (data.error || ''))
+    } catch (err) { alert(err.message) }
     setTtsGenerating(false)
   }
 
-  // 動画書き出し
   const handleRender = async () => {
-    if (scenes.length === 0) return
-    setRendering(true)
-    setRenderResult(null)
+    if (!scenes.length) return
+    setRendering(true); setRenderResult(null)
     try {
       const res = await fetch('/api/render/full', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          scenes,
-          bgm: bgm ? { path: bgm.path } : null,
-          bgm_volume: bgmVolume,
-          aspect_ratio: aspectRatio,
-          transition,
-        }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition }),
       })
       const data = await res.json()
       setRenderResult(data)
-      if (!data.success) {
-        alert('書き出しに失敗しました: ' + (data.error || '不明なエラー'))
-      }
-    } catch (err) {
-      alert('書き出しに失敗しました: ' + err.message)
-    }
+      if (!data.success) alert('Error: ' + (data.error || ''))
+    } catch (err) { alert(err.message) }
     setRendering(false)
   }
 
-  // テンプレートを保存
   const handleSaveTemplate = async () => {
     if (!templateName.trim()) return
-    try {
-      await fetch('/api/templates', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: templateName,
-          telop_style: scenes[0]?.telop_style || 'standard',
-          transition,
-          aspect_ratio: aspectRatio,
-          bgm: bgm ? { path: bgm.path } : null,
-          bgm_volume: bgmVolume,
-          tts_speaker_id: ttsSpeakerId,
-          tts_speed: ttsSpeed,
-        }),
-      })
-      loadTemplates()
-      setShowTemplateSave(false)
-      setTemplateName('')
-    } catch (err) {
-      alert('テンプレート保存に失敗: ' + err.message)
-    }
+    await fetch('/api/templates', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: templateName, telop_style: scenes[0]?.telop_style || 'standard', transition, aspect_ratio: aspectRatio, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed }),
+    })
+    loadTemplates(); setShowTemplateSave(false); setTemplateName('')
   }
 
-  // テンプレートを読み込み
-  const handleLoadTemplate = async (filename) => {
-    try {
-      const res = await fetch(`/api/templates/${filename}`)
-      const data = await res.json()
-      if (data.error) { alert(data.error); return }
-      setTransition(data.transition || 'cut')
-      setAspectRatio(data.aspect_ratio || '9:16')
-      setBgmVolume(data.bgm_volume || 80)
-      setTtsSpeakerId(data.tts_speaker_id || 1)
-      setTtsSpeed(data.tts_speed || 1.0)
-      if (data.telop_style && scenes.length > 0) {
-        setScenes(scenes.map((s) => ({ ...s, telop_style: data.telop_style })))
-      }
-    } catch (err) {
-      alert('テンプレート読み込みに失敗: ' + err.message)
-    }
+  const handleLoadTemplate = async (fn) => {
+    const data = await (await fetch(`/api/templates/${fn}`)).json()
+    if (data.error) return
+    setTransition(data.transition || 'cut'); setAspectRatio(data.aspect_ratio || '9:16')
+    setBgmVolume(data.bgm_volume || 80); setTtsSpeakerId(data.tts_speaker_id || 1); setTtsSpeed(data.tts_speed || 1.0)
+    if (data.telop_style && scenes.length) updateScenes(scenes.map(s => ({ ...s, telop_style: data.telop_style })))
   }
 
-  // テンプレートを削除
-  const handleDeleteTemplate = async (filename) => {
-    try {
-      await fetch(`/api/templates/${filename}`, { method: 'DELETE' })
-      loadTemplates()
-    } catch (err) {
-      alert('テンプレート削除に失敗: ' + err.message)
-    }
-  }
+  const handleDeleteTemplate = async (fn) => { await fetch(`/api/templates/${fn}`, { method: 'DELETE' }); loadTemplates() }
 
-  // プロジェクトを保存
   const handleSaveProject = async () => {
-    try {
-      const res = await fetch('/api/projects', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: projectName,
-          filename: currentProjectFile,
-          scenes,
-          text,
-          bgm: bgm ? { path: bgm.path } : null,
-          bgm_volume: bgmVolume,
-          transition,
-          aspect_ratio: aspectRatio,
-          tts_speaker_id: ttsSpeakerId,
-          tts_speed: ttsSpeed,
-          global_speed: globalSpeed,
-        }),
-      })
-      const data = await res.json()
-      if (data.filename) setCurrentProjectFile(data.filename)
-      loadProjects()
-    } catch (err) {
-      alert('プロジェクト保存に失敗: ' + err.message)
-    }
+    const res = await fetch('/api/projects', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: projectName, filename: currentProjectFile, scenes, text, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, transition, aspect_ratio: aspectRatio, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed, global_speed: globalSpeed }),
+    })
+    const data = await res.json()
+    if (data.filename) setCurrentProjectFile(data.filename)
+    loadProjects()
   }
 
-  // プロジェクトを読み込み
-  const handleLoadProject = async (filename) => {
-    try {
-      const res = await fetch(`/api/projects/${filename}`)
-      const data = await res.json()
-      if (data.error) { alert(data.error); return }
-      setCurrentProjectFile(filename)
-      setProjectName(data.name || 'unnamed')
-      setScenes(data.scenes || [])
-      setText(data.text || '')
-      setTransition(data.transition || 'cut')
-      setAspectRatio(data.aspect_ratio || '9:16')
-      setBgmVolume(data.bgm_volume || 80)
-      setGlobalSpeed(data.global_speed || 1.0)
-      setTtsSpeakerId(data.tts_speaker_id || 1)
-      setTtsSpeed(data.tts_speed || 1.0)
-      setSelectedSceneIdx(data.scenes?.length > 0 ? 0 : null)
-      setRenderResult(null)
-      setShowProjectList(false)
-    } catch (err) {
-      alert('プロジェクト読み込みに失敗: ' + err.message)
-    }
+  const handleLoadProject = async (fn) => {
+    const data = await (await fetch(`/api/projects/${fn}`)).json()
+    if (data.error) return
+    setCurrentProjectFile(fn); setProjectName(data.name || ''); setScenes(data.scenes || []); setText(data.text || '')
+    setTransition(data.transition || 'cut'); setAspectRatio(data.aspect_ratio || '9:16'); setBgmVolume(data.bgm_volume || 80)
+    setGlobalSpeed(data.global_speed || 1.0); setTtsSpeakerId(data.tts_speaker_id || 1); setTtsSpeed(data.tts_speed || 1.0)
+    setSelectedSceneIdx(data.scenes?.length > 0 ? 0 : null); setRenderResult(null); setShowProjectList(false)
   }
 
-  // プロジェクトを複製
-  const handleDuplicateProject = async (filename) => {
-    try {
-      await fetch(`/api/projects/${filename}/duplicate`, { method: 'POST' })
-      loadProjects()
-    } catch (err) {
-      alert('プロジェクト複製に失敗: ' + err.message)
-    }
+  const handleDuplicateProject = async (fn) => { await fetch(`/api/projects/${fn}/duplicate`, { method: 'POST' }); loadProjects() }
+  const handleDeleteProject = async (fn) => {
+    await fetch(`/api/projects/${fn}`, { method: 'DELETE' }); loadProjects()
+    if (currentProjectFile === fn) { setCurrentProjectFile(null); setProjectName('') }
+  }
+  const handleNewProject = () => { setCurrentProjectFile(null); setProjectName(''); setScenes([]); setText(''); setRenderResult(null); setSelectedSceneIdx(null); setShowProjectList(false) }
+
+  // telop position change
+  const setTelopPos = (idx, field, val) => {
+    updateScenes(scenes.map((s, i) => i === idx ? { ...s, [field]: parseInt(val) || null } : s))
   }
 
-  // プロジェクトを削除
-  const handleDeleteProject = async (filename) => {
-    try {
-      await fetch(`/api/projects/${filename}`, { method: 'DELETE' })
-      loadProjects()
-      if (currentProjectFile === filename) {
-        setCurrentProjectFile(null)
-        setProjectName('新規プロジェクト')
-      }
-    } catch (err) {
-      alert('プロジェクト削除に失敗: ' + err.message)
-    }
+  // custom box
+  const setCustomBox = (idx, boxProps) => {
+    const cur = scenes[idx].custom_box || { enabled: false, color: '#000000', opacity: 0.6, padding: 10 }
+    updateScenes(scenes.map((s, i) => i === idx ? { ...s, custom_box: { ...cur, ...boxProps } } : s))
   }
 
-  // 新規プロジェクト
-  const handleNewProject = () => {
-    setCurrentProjectFile(null)
-    setProjectName('新規プロジェクト')
-    setScenes([])
-    setText('')
-    setRenderResult(null)
-    setSelectedSceneIdx(null)
-    setShowProjectList(false)
-  }
-
-  // 合計尺
+  const sel = selectedSceneIdx !== null ? scenes[selectedSceneIdx] : null
   const totalDuration = scenes.reduce((sum, s) => sum + (s.duration || 0), 0)
+
+  // get preset style for preview
+  const getPresetStyle = (preset) => {
+    const p = telopPresets.find(t => t.id === preset) || {}
+    return {
+      fontSize: (p.fontsize || 48) * 0.35,
+      color: p.fontcolor || 'white',
+      WebkitTextStroke: `${(p.borderw || 2) * 0.4}px ${p.bordercolor || 'black'}`,
+      textAlign: 'center',
+    }
+  }
+
+  const getPresetPosition = (preset) => {
+    const p = telopPresets.find(t => t.id === preset) || {}
+    if (p.position === 'center') return { top: '50%', transform: 'translateY(-50%)' }
+    if (p.position === 'top') return { top: '10%' }
+    if (p.position === 'very_bottom') return { bottom: '5%' }
+    return { bottom: '12%' }
+  }
 
   return (
     <div className="app">
       <header className="app-header">
         <div className="header-left">
-          <h1>ショート動画ジェネレーター</h1>
-
-          {/* プロジェクト操作 */}
-          <button className="btn-small" onClick={() => setShowProjectList(true)}>
-            プロジェクト一覧
-          </button>
-          <button className="btn-small" onClick={handleNewProject}>新規</button>
-          <button className="btn-small" onClick={handleSaveProject}>保存</button>
-
-          {/* テンプレート */}
+          <h1>Short Video Gen</h1>
+          <button className="btn-small" onClick={() => setShowProjectList(true)}>PJ</button>
+          <button className="btn-small" onClick={handleNewProject}>New</button>
+          <button className="btn-small" onClick={handleSaveProject}>Save</button>
           <div className="template-dropdown">
-            <select
-              className="select-input"
-              value=""
-              onChange={(e) => { if (e.target.value) handleLoadTemplate(e.target.value) }}
-            >
-              <option value="">テンプレート</option>
-              {templates.map((t) => (
-                <option key={t.filename} value={t.filename}>{t.name}</option>
-              ))}
+            <select className="select-input" value="" onChange={e => { if (e.target.value) handleLoadTemplate(e.target.value) }}>
+              <option value="">Template</option>
+              {templates.map(t => <option key={t.filename} value={t.filename}>{t.name}</option>)}
             </select>
           </div>
-          <button className="btn-small" onClick={() => setShowTemplateSave(true)}>
-            テンプレ保存
-          </button>
+          <button className="btn-small" onClick={() => setShowTemplateSave(true)}>T+</button>
+          <button className="btn-small" onClick={undo} disabled={historyIdx <= 0} title="Undo">&#9664;</button>
+          <button className="btn-small" onClick={redo} disabled={historyIdx >= history.length - 1} title="Redo">&#9654;</button>
         </div>
         <div className="header-actions">
           {scenes.length > 0 && (
             <>
-              <span className="total-duration">合計: {totalDuration.toFixed(1)}秒</span>
-              <button className="btn-preview" onClick={() => setShowPreview(true)}>
-                プレビュー
-              </button>
+              <span className="total-duration">{totalDuration.toFixed(1)}s</span>
+              <button className="btn-preview" onClick={() => setShowPreview(true)}>Preview</button>
               <button className="btn-render" onClick={handleRender} disabled={rendering}>
-                {rendering ? '書き出し中...' : '書き出し'}
+                {rendering ? 'Rendering...' : 'Export'}
               </button>
             </>
           )}
@@ -438,217 +294,230 @@ function App() {
 
       <main className="app-main">
         <div className="layout">
-          {/* 左パネル */}
+          {/* Left panel */}
           <div className="left-panel">
             <section className="text-input-section">
-              <h2>テキスト入力</h2>
-              <textarea value={text} onChange={(e) => setText(e.target.value)}
-                placeholder={'広告文を入力してください\n（改行・句読点でシーンが自動分割されます）'} rows={6} />
-              <button className="btn-primary" onClick={handleSplitText}
-                disabled={loading || !text.trim()}>
-                {loading ? '分割中...' : 'シーンに分割'}
+              <h2>Text Input</h2>
+              <textarea value={text} onChange={e => setText(e.target.value)}
+                placeholder={'Enter ad text here\n(Split by line breaks / punctuation)'} rows={6} />
+              <button className="btn-primary" onClick={handleSplitText} disabled={loading || !text.trim()}>
+                {loading ? '...' : 'Split into Scenes'}
               </button>
             </section>
 
             {scenes.length > 0 && (
               <section className="speed-section">
-                <h2>全体速度: {globalSpeed.toFixed(1)}x</h2>
-                <input type="range" min="0.5" max="2.0" step="0.1" value={globalSpeed}
-                  onChange={(e) => handleGlobalSpeedChange(parseFloat(e.target.value))}
-                  className="speed-slider" />
-                <div className="speed-labels"><span>0.5x</span><span>1.0x</span><span>2.0x</span></div>
+                <h2>Speed: {globalSpeed.toFixed(1)}x</h2>
+                <input type="range" min="0.5" max="5.0" step="0.1" value={globalSpeed}
+                  onChange={e => handleGlobalSpeedChange(parseFloat(e.target.value))} className="speed-slider" />
+                <div className="speed-labels"><span>0.5x</span><span>1.0x</span><span>2.0x</span><span>5.0x</span></div>
               </section>
             )}
 
             {scenes.length > 0 && (
               <section className="scene-list-section">
-                <h2>シーン一覧（{scenes.length}シーン）</h2>
+                <h2>Scenes ({scenes.length})</h2>
                 <div className="scene-list">
                   {scenes.map((scene, idx) => (
-                    <div key={scene.id}
-                      className={`scene-card ${selectedSceneIdx === idx ? 'active' : ''}`}
+                    <div key={scene.id} className={`scene-card ${selectedSceneIdx === idx ? 'active' : ''}`}
                       onClick={() => setSelectedSceneIdx(idx)}>
                       <div className="scene-header">
-                        <span className="scene-number">シーン {idx + 1}</span>
+                        <span className="scene-number">#{idx + 1}</span>
                         <div className="scene-badges">
-                          <button
-                            className={`badge ${scene.tts_enabled ? 'badge-on' : 'badge-off'}`}
-                            onClick={(e) => { e.stopPropagation(); toggleSceneTts(idx) }}
-                            title="TTS ON/OFF切替">
-                            TTS:{scene.tts_enabled ? 'ON' : 'OFF'}
-                          </button>
-                          <button
-                            className={`badge ${scene.ken_burns ? 'badge-on' : 'badge-off'}`}
-                            onClick={(e) => { e.stopPropagation(); toggleSceneKenBurns(idx) }}
-                            title="Ken Burns効果 ON/OFF">
-                            KB:{scene.ken_burns ? 'ON' : 'OFF'}
-                          </button>
-                          <span className="scene-duration">{scene.duration?.toFixed(1)}秒</span>
+                          <button className={`badge ${scene.tts_enabled ? 'badge-on' : 'badge-off'}`}
+                            onClick={e => { e.stopPropagation(); toggleSceneTts(idx) }}>TTS</button>
+                          <button className={`badge ${scene.ken_burns ? 'badge-on' : 'badge-off'}`}
+                            onClick={e => { e.stopPropagation(); toggleSceneKenBurns(idx) }}>KB</button>
+                          <span className="scene-duration">{scene.duration?.toFixed(1)}s</span>
                         </div>
                       </div>
                       <p className="scene-text">{scene.text}</p>
-                      {scene.background && (
-                        <div className="scene-bg-preview"><img src={scene.background} alt="背景" /></div>
-                      )}
+                      {scene.background && <div className="scene-bg-preview"><img src={scene.background} alt="" /></div>}
+                      {scene.overlay_image && <div className="scene-overlay-badge">+ overlay</div>}
                       <div className="duration-control">
-                        <input type="range" min="0.5" max="15.0" step="0.1"
-                          value={scene.duration || 1.5}
-                          onChange={(e) => handleDurationChange(idx, parseFloat(e.target.value))}
-                          className="duration-slider" />
-                        <input type="number" min="0.5" max="30" step="0.1"
-                          value={scene.duration || 1.5}
-                          onChange={(e) => handleDurationChange(idx, parseFloat(e.target.value))}
-                          className="duration-input" />
-                        <span className="duration-unit">秒</span>
+                        <input type="range" min="0.5" max="15.0" step="0.1" value={scene.duration || 1.5}
+                          onChange={e => handleDurationChange(idx, parseFloat(e.target.value))} className="duration-slider" />
+                        <input type="number" min="0.5" max="30" step="0.1" value={scene.duration || 1.5}
+                          onChange={e => handleDurationChange(idx, parseFloat(e.target.value))} className="duration-input" />
+                        <span className="duration-unit">s</span>
                         {scene.manual_duration != null && (
-                          <button className="btn-tiny"
-                            onClick={(e) => { e.stopPropagation(); handleDurationReset(idx) }}>自動</button>
+                          <button className="btn-tiny" onClick={e => { e.stopPropagation(); handleDurationReset(idx) }}>Auto</button>
                         )}
                       </div>
                       <div className="scene-actions">
-                        <select
-                          className="select-input select-small"
-                          value={scene.telop_style || 'standard'}
-                          onChange={(e) => {
-                            e.stopPropagation()
-                            setScenes(scenes.map((s, i) =>
-                              i === idx ? { ...s, telop_style: e.target.value } : s
-                            ))
-                          }}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <option value="standard">標準</option>
-                          <option value="impact">インパクト</option>
-                          <option value="subtitle">字幕</option>
-                          <option value="pop">ポップ</option>
+                        <select className="select-input select-small" value={scene.telop_style || 'standard'}
+                          onChange={e => { e.stopPropagation(); updateScenes(scenes.map((s, i) => i === idx ? { ...s, telop_style: e.target.value } : s)) }}
+                          onClick={e => e.stopPropagation()}>
+                          {telopPresets.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
                         </select>
-                        <button className="btn-small" onClick={(e) => { e.stopPropagation(); handleSplit(idx) }}>分割</button>
+                        <button className="btn-small" onClick={e => { e.stopPropagation(); handleSplit(idx) }}>Split</button>
                         {idx < scenes.length - 1 && (
-                          <button className="btn-small" onClick={(e) => { e.stopPropagation(); handleMerge(idx) }}>次と結合</button>
+                          <button className="btn-small" onClick={e => { e.stopPropagation(); handleMerge(idx) }}>Merge</button>
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="total-bar">合計: {totalDuration.toFixed(1)}秒</div>
+                <div className="total-bar">Total: {totalDuration.toFixed(1)}s</div>
               </section>
             )}
           </div>
 
-          {/* 中央パネル */}
+          {/* Center panel - Preview */}
           <div className="center-panel">
             {renderResult?.success ? (
               <div className="render-result">
-                <h3>書き出し完了</h3>
+                <h3>Export Complete</h3>
                 <video src={renderResult.url} controls className="result-video" />
-                <p className="result-info">{renderResult.filename} ({renderResult.duration?.toFixed(1)}秒)</p>
+                <p className="result-info">{renderResult.filename} ({renderResult.duration?.toFixed(1)}s)</p>
               </div>
             ) : (
               <div className="preview-placeholder">
-                {selectedSceneIdx !== null && scenes[selectedSceneIdx]?.background ? (
-                  <img src={scenes[selectedSceneIdx].background} alt="プレビュー" className="preview-bg" />
+                {sel?.background ? (
+                  <img src={sel.background} alt="" className="preview-bg" />
                 ) : (
-                  <p>プレビューエリア</p>
+                  <div className="preview-bg-black" />
                 )}
-                {selectedSceneIdx !== null && scenes[selectedSceneIdx] && (
-                  <div className="preview-telop">{scenes[selectedSceneIdx].text}</div>
+                {sel?.overlay_image && <img src={sel.overlay_image} alt="" className="preview-overlay-img" />}
+                {sel && (
+                  <div className="preview-telop"
+                    style={{
+                      ...getPresetStyle(sel.telop_style),
+                      ...getPresetPosition(sel.telop_style),
+                      ...(sel.telop_x != null ? { left: `${sel.telop_x / 10.8}%`, right: 'auto', transform: 'none' } : {}),
+                      ...(sel.telop_y != null ? { top: `${sel.telop_y / 19.2}%`, bottom: 'auto' } : {}),
+                      ...(sel.custom_box?.enabled ? {
+                        background: sel.custom_box.color + Math.round((sel.custom_box.opacity || 0.6) * 255).toString(16).padStart(2, '0'),
+                        borderRadius: (sel.custom_box.radius || 6) + 'px',
+                        padding: (sel.custom_box.padding || 10) + 'px',
+                      } : {}),
+                    }}>
+                    {sel.text}
+                  </div>
                 )}
               </div>
             )}
           </div>
 
-          {/* 右パネル */}
+          {/* Right panel */}
           <div className="right-panel">
             {scenes.length > 0 && (
               <>
                 <div className="panel-section">
                   <AssetPicker assetType="backgrounds" onSelect={handleBackgroundSelect}
-                    selectedPath={selectedSceneIdx !== null ? scenes[selectedSceneIdx]?.background : null} />
+                    selectedPath={sel?.background} />
                 </div>
 
                 <div className="panel-section">
-                  <AssetPicker assetType="bgm" onSelect={(asset) => setBgm(asset)} selectedPath={bgm?.path} />
+                  <AssetPicker assetType="overlays" onSelect={handleOverlaySelect}
+                    selectedPath={sel?.overlay_image} label="Overlay Image" />
+                </div>
+
+                <div className="panel-section">
+                  <AssetPicker assetType="bgm" onSelect={a => setBgm(a)} selectedPath={bgm?.path} />
                   {bgm && (
                     <div className="bgm-volume">
-                      <label>BGM音量: {bgmVolume}%</label>
-                      <input type="range" min="0" max="100" value={bgmVolume}
-                        onChange={(e) => setBgmVolume(parseInt(e.target.value))} />
+                      <label>BGM Vol: {bgmVolume}%</label>
+                      <input type="range" min="0" max="100" value={bgmVolume} onChange={e => setBgmVolume(parseInt(e.target.value))} />
                     </div>
                   )}
                 </div>
 
-                {/* TTS設定 */}
-                <div className="panel-section">
-                  <h3 className="section-title">
-                    TTS（読み上げ）
-                    <span className={`tts-status ${ttsAvailable ? 'on' : 'off'}`}>
-                      {ttsAvailable ? '接続OK' : '未接続'}
-                    </span>
-                  </h3>
-
-                  <div className="tts-controls">
+                {/* Telop position */}
+                {sel && (
+                  <div className="panel-section">
+                    <h3 className="section-title">Telop Position</h3>
                     <div className="setting-row">
-                      <div className="tts-toggle-row">
-                        <button className="btn-small" onClick={() => toggleAllTts(true)}>全ON</button>
-                        <button className="btn-small" onClick={() => toggleAllTts(false)}>全OFF</button>
-                      </div>
+                      <label>X: {sel.telop_x ?? 'auto'}</label>
+                      <input type="range" min="0" max="1080" step="10" value={sel.telop_x ?? 540}
+                        onChange={e => setTelopPos(selectedSceneIdx, 'telop_x', e.target.value)} />
                     </div>
+                    <div className="setting-row">
+                      <label>Y: {sel.telop_y ?? 'auto'}</label>
+                      <input type="range" min="0" max="1920" step="10" value={sel.telop_y ?? 1600}
+                        onChange={e => setTelopPos(selectedSceneIdx, 'telop_y', e.target.value)} />
+                    </div>
+                    <button className="btn-small" onClick={() => updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? { ...s, telop_x: null, telop_y: null } : s))}>Reset to Auto</button>
+                  </div>
+                )}
 
+                {/* Telop background box */}
+                {sel && (
+                  <div className="panel-section">
+                    <h3 className="section-title">Telop Background</h3>
+                    <div className="setting-row">
+                      <label>
+                        <input type="checkbox" checked={sel.custom_box?.enabled || false}
+                          onChange={e => setCustomBox(selectedSceneIdx, { enabled: e.target.checked })} />
+                        {' '}Enable
+                      </label>
+                    </div>
+                    {sel.custom_box?.enabled && (
+                      <>
+                        <div className="setting-row">
+                          <label>Color</label>
+                          <input type="color" value={sel.custom_box?.color || '#000000'}
+                            onChange={e => setCustomBox(selectedSceneIdx, { color: e.target.value })} />
+                        </div>
+                        <div className="setting-row">
+                          <label>Opacity: {(sel.custom_box?.opacity ?? 0.6).toFixed(1)}</label>
+                          <input type="range" min="0" max="1" step="0.1" value={sel.custom_box?.opacity ?? 0.6}
+                            onChange={e => setCustomBox(selectedSceneIdx, { opacity: parseFloat(e.target.value) })} />
+                        </div>
+                        <div className="setting-row">
+                          <label>Roundness: {sel.custom_box?.radius ?? 6}px</label>
+                          <input type="range" min="0" max="30" step="1" value={sel.custom_box?.radius ?? 6}
+                            onChange={e => setCustomBox(selectedSceneIdx, { radius: parseInt(e.target.value) })} />
+                        </div>
+                        <div className="setting-row">
+                          <label>Padding: {sel.custom_box?.padding ?? 10}px</label>
+                          <input type="range" min="0" max="30" step="1" value={sel.custom_box?.padding ?? 10}
+                            onChange={e => setCustomBox(selectedSceneIdx, { padding: parseInt(e.target.value) })} />
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {/* TTS */}
+                <div className="panel-section">
+                  <h3 className="section-title">TTS <span className={`tts-status ${ttsAvailable ? 'on' : 'off'}`}>{ttsAvailable ? 'OK' : 'OFF'}</span></h3>
+                  <div className="tts-controls">
+                    <div className="tts-toggle-row">
+                      <button className="btn-small" onClick={() => toggleAllTts(true)}>All ON</button>
+                      <button className="btn-small" onClick={() => toggleAllTts(false)}>All OFF</button>
+                    </div>
                     {ttsAvailable && ttsSpeakers.length > 0 && (
                       <div className="setting-row">
-                        <label>話者</label>
-                        <select value={ttsSpeakerId} onChange={(e) => setTtsSpeakerId(parseInt(e.target.value))}
-                          className="select-input">
-                          {ttsSpeakers.map((s) => (
-                            <option key={s.id} value={s.id}>{s.name}</option>
-                          ))}
+                        <label>Speaker</label>
+                        <select value={ttsSpeakerId} onChange={e => setTtsSpeakerId(parseInt(e.target.value))} className="select-input">
+                          {ttsSpeakers.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                         </select>
                       </div>
                     )}
-
                     <div className="setting-row">
-                      <label>TTS速度: {ttsSpeed.toFixed(1)}x</label>
-                      <input type="range" min="0.5" max="2.0" step="0.1" value={ttsSpeed}
-                        onChange={(e) => setTtsSpeed(parseFloat(e.target.value))}
-                        className="speed-slider" />
+                      <label>TTS Speed: {ttsSpeed.toFixed(1)}x</label>
+                      <input type="range" min="0.5" max="2.0" step="0.1" value={ttsSpeed} onChange={e => setTtsSpeed(parseFloat(e.target.value))} className="speed-slider" />
                     </div>
-
-                    {ttsAvailable && (
-                      <button className="btn-primary" onClick={handleTtsBatch}
-                        disabled={ttsGenerating}>
-                        {ttsGenerating ? 'TTS生成中...' : 'TTS音声を生成（尺を再計算）'}
-                      </button>
-                    )}
-
-                    {!ttsAvailable && (
-                      <p className="tts-hint">
-                        VOICEVOXを起動してからリロードしてください。
-                        TTS OFFの場合は文字数から尺を自動算出します。
-                      </p>
-                    )}
+                    {ttsAvailable && <button className="btn-primary" onClick={handleTtsBatch} disabled={ttsGenerating}>{ttsGenerating ? '...' : 'Generate TTS'}</button>}
+                    {!ttsAvailable && <p className="tts-hint">Start VOICEVOX and reload.</p>}
                   </div>
                 </div>
 
-                {/* 出力設定 */}
+                {/* Output */}
                 <div className="panel-section">
-                  <h3 className="section-title">出力設定</h3>
+                  <h3 className="section-title">Output</h3>
                   <div className="setting-row">
-                    <label>トランジション</label>
-                    <select value={transition} onChange={(e) => setTransition(e.target.value)}
-                      className="select-input">
-                      <option value="cut">カット（なし）</option>
-                      <option value="crossfade">クロスフェード</option>
-                      <option value="slide">スライド</option>
-                      <option value="wipe">ワイプ</option>
+                    <label>Transition</label>
+                    <select value={transition} onChange={e => setTransition(e.target.value)} className="select-input">
+                      <option value="cut">Cut</option><option value="crossfade">Crossfade</option>
+                      <option value="slide">Slide</option><option value="wipe">Wipe</option>
                     </select>
                   </div>
                   <div className="setting-row">
-                    <label>アスペクト比</label>
-                    <select value={aspectRatio} onChange={(e) => setAspectRatio(e.target.value)}
-                      className="select-input">
-                      <option value="9:16">9:16（縦長）</option>
-                      <option value="1:1">1:1（正方形）</option>
-                      <option value="16:9">16:9（横長）</option>
+                    <label>Aspect Ratio</label>
+                    <select value={aspectRatio} onChange={e => setAspectRatio(e.target.value)} className="select-input">
+                      <option value="9:16">9:16</option><option value="1:1">1:1</option><option value="16:9">16:9</option>
                     </select>
                   </div>
                 </div>
@@ -658,66 +527,43 @@ function App() {
         </div>
       </main>
 
-      {/* プロジェクト一覧ダイアログ */}
       {showProjectList && (
         <div className="modal-overlay" onClick={() => setShowProjectList(false)}>
-          <div className="modal modal-wide" onClick={(e) => e.stopPropagation()}>
-            <h3>プロジェクト一覧</h3>
-            {projects.length === 0 ? (
-              <p className="tts-hint">保存済みプロジェクトはありません</p>
-            ) : (
+          <div className="modal modal-wide" onClick={e => e.stopPropagation()}>
+            <h3>Projects</h3>
+            {projects.length === 0 ? <p className="tts-hint">No projects</p> : (
               <div className="project-list">
-                {projects.map((p) => (
+                {projects.map(p => (
                   <div key={p.filename} className="project-item">
-                    <div className="project-info">
-                      <strong>{p.name}</strong>
-                      <span className="project-meta">
-                        {p.scene_count}シーン / {p.total_duration?.toFixed(1)}秒
-                      </span>
-                    </div>
+                    <div className="project-info"><strong>{p.name}</strong><span className="project-meta">{p.scene_count} scenes / {p.total_duration?.toFixed(1)}s</span></div>
                     <div className="project-actions">
-                      <button className="btn-small" onClick={() => handleLoadProject(p.filename)}>開く</button>
-                      <button className="btn-small" onClick={() => handleDuplicateProject(p.filename)}>複製</button>
-                      <button className="btn-tiny" onClick={() => handleDeleteProject(p.filename)}>削除</button>
+                      <button className="btn-small" onClick={() => handleLoadProject(p.filename)}>Open</button>
+                      <button className="btn-small" onClick={() => handleDuplicateProject(p.filename)}>Copy</button>
+                      <button className="btn-tiny" onClick={() => handleDeleteProject(p.filename)}>Del</button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            <div className="modal-actions" style={{ marginTop: 12 }}>
-              <button className="btn-small" onClick={() => setShowProjectList(false)}>閉じる</button>
-            </div>
+            <div className="modal-actions" style={{ marginTop: 12 }}><button className="btn-small" onClick={() => setShowProjectList(false)}>Close</button></div>
           </div>
         </div>
       )}
 
-      {/* テンプレート保存ダイアログ */}
       {showTemplateSave && (
         <div className="modal-overlay" onClick={() => setShowTemplateSave(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h3>テンプレートを保存</h3>
-            <input
-              type="text"
-              placeholder="テンプレート名"
-              value={templateName}
-              onChange={(e) => setTemplateName(e.target.value)}
-              className="modal-input"
-              autoFocus
-            />
+          <div className="modal" onClick={e => e.stopPropagation()}>
+            <h3>Save Template</h3>
+            <input type="text" placeholder="Template name" value={templateName} onChange={e => setTemplateName(e.target.value)} className="modal-input" autoFocus />
             <div className="modal-actions">
-              <button className="btn-primary" onClick={handleSaveTemplate}
-                disabled={!templateName.trim()}>保存</button>
-              <button className="btn-small" onClick={() => setShowTemplateSave(false)}>キャンセル</button>
+              <button className="btn-primary" onClick={handleSaveTemplate} disabled={!templateName.trim()}>Save</button>
+              <button className="btn-small" onClick={() => setShowTemplateSave(false)}>Cancel</button>
             </div>
             {templates.length > 0 && (
-              <div className="template-list">
-                <h4>既存テンプレート</h4>
-                {templates.map((t) => (
-                  <div key={t.filename} className="template-item">
-                    <span>{t.name}</span>
-                    <button className="btn-tiny" onClick={() => handleDeleteTemplate(t.filename)}>
-                      削除
-                    </button>
+              <div className="template-list"><h4>Existing</h4>
+                {templates.map(t => (
+                  <div key={t.filename} className="template-item"><span>{t.name}</span>
+                    <button className="btn-tiny" onClick={() => handleDeleteTemplate(t.filename)}>Del</button>
                   </div>
                 ))}
               </div>
@@ -726,10 +572,7 @@ function App() {
         </div>
       )}
 
-      {/* プレビューオーバーレイ */}
-      {showPreview && scenes.length > 0 && (
-        <Preview scenes={scenes} onClose={() => setShowPreview(false)} />
-      )}
+      {showPreview && scenes.length > 0 && <Preview scenes={scenes} telopPresets={telopPresets} onClose={() => setShowPreview(false)} />}
     </div>
   )
 }

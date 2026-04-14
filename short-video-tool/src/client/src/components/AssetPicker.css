@@ -1,10 +1,16 @@
 .asset-picker {
   padding: 8px 0;
 }
-.asset-picker h3 {
+.asset-picker-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.asset-picker-header h3 {
   font-size: 13px;
   color: #a0a0c0;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 /* タグフィルタ */

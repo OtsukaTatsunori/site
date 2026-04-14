@@ -1,7 +1,7 @@
 """
 Short Video Generator Tool - Backend (FastAPI)
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,7 +12,7 @@ from datetime import datetime
 from .scene_splitter import split_text_to_scenes
 from .duration_calc import calc_scenes_duration
 from .assets_manager import list_assets, save_asset_tags
-from .video_generator import generate_scene_video, render_full_video
+from .video_generator import generate_scene_video, render_full_video, TELOP_PRESETS
 from .tts_engine import get_tts_engine, get_audio_duration
 from .template_manager import list_templates, save_template, load_template, delete_template
 from .project_manager import (
@@ -189,15 +189,58 @@ def split_scene(req: SplitSceneRequest):
     return {"scenes": new_scenes}
 
 
+# --- テロッププリセット ---
+
+@app.get("/api/telop-presets")
+def get_telop_presets():
+    """テロッププリセット一覧を返す"""
+    presets = []
+    for key, val in TELOP_PRESETS.items():
+        presets.append({
+            "id": key,
+            "label": val.get("label", key),
+            "fontsize": val["fontsize"],
+            "fontcolor": val["fontcolor"],
+            "borderw": val["borderw"],
+            "bordercolor": val["bordercolor"],
+            "position": val["position"],
+            "box": val.get("box", False),
+            "boxcolor": val.get("boxcolor", ""),
+        })
+    return {"presets": presets}
+
+
 # --- 素材管理 ---
 
 @app.get("/api/assets/{asset_type}")
 def get_assets(asset_type: str):
     """素材一覧を取得する（backgrounds / bgm / fonts）"""
-    if asset_type not in ("backgrounds", "bgm", "fonts"):
-        return {"error": "無効な素材タイプです"}
+    if asset_type not in ("backgrounds", "bgm", "fonts", "overlays"):
+        return {"error": "Invalid asset type"}
     assets = list_assets(BASE_DIR, asset_type)
     return {"assets": assets}
+
+
+@app.post("/api/assets/{asset_type}/upload")
+async def upload_assets(asset_type: str, files: list[UploadFile] = File(...), category: str = Form("")):
+    """素材ファイルをアップロード（複数対応）"""
+    if asset_type not in ("backgrounds", "bgm", "fonts", "overlays"):
+        return {"error": "無効な素材タイプです"}
+
+    target_dir = os.path.join(BASE_DIR, "assets", asset_type)
+    if category:
+        target_dir = os.path.join(target_dir, category)
+    os.makedirs(target_dir, exist_ok=True)
+
+    uploaded = []
+    for file in files:
+        filepath = os.path.join(target_dir, file.filename)
+        with open(filepath, "wb") as f:
+            content = await file.read()
+            f.write(content)
+        uploaded.append(file.filename)
+
+    return {"status": "ok", "uploaded": uploaded, "count": len(uploaded)}
 
 
 @app.post("/api/assets/tags")

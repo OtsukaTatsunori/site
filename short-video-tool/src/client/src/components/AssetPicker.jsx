@@ -1,114 +1,73 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './AssetPicker.css'
 
-/**
- * 素材選択パネル（背景画像/動画、BGM）
- * props:
- *   assetType: "backgrounds" | "bgm"
- *   onSelect: (asset) => void  選択時のコールバック
- *   selectedPath: 現在選択中のパス
- */
-export default function AssetPicker({ assetType, onSelect, selectedPath }) {
+export default function AssetPicker({ assetType, onSelect, selectedPath, label }) {
   const [assets, setAssets] = useState([])
-  const [filterTag, setFilterTag] = useState('')
+  const [filterCat, setFilterCat] = useState('')
   const [playingAudio, setPlayingAudio] = useState(null)
+  const fileRef = useRef()
 
-  useEffect(() => {
+  const reload = () => {
     fetch(`/api/assets/${assetType}`)
-      .then((res) => res.json())
-      .then((data) => setAssets(data.assets || []))
-      .catch((err) => console.error('素材取得エラー:', err))
-  }, [assetType])
-
-  // タグでフィルタ
-  const filtered = filterTag
-    ? assets.filter((a) => a.tags.some((t) => t.includes(filterTag)))
-    : assets
-
-  // 全タグ一覧を取得
-  const allTags = [...new Set(assets.flatMap((a) => a.tags))]
-
-  // BGMプレビュー再生
-  const togglePlay = (path) => {
-    if (playingAudio) {
-      playingAudio.pause()
-      playingAudio.currentTime = 0
-      if (playingAudio._path === path) {
-        setPlayingAudio(null)
-        return
-      }
-    }
-    const audio = new Audio(path)
-    audio._path = path
-    audio.play()
-    audio.onended = () => setPlayingAudio(null)
-    setPlayingAudio(audio)
+      .then(r => r.json())
+      .then(d => setAssets(d.assets || []))
+      .catch(() => {})
   }
 
-  const title = assetType === 'backgrounds' ? '背景素材' : 'BGM'
+  useEffect(() => { reload() }, [assetType])
+
+  const categories = [...new Set(assets.map(a => a.category).filter(Boolean))]
+  const filtered = filterCat ? assets.filter(a => a.category === filterCat) : assets
+
+  const togglePlay = (path) => {
+    if (playingAudio) { playingAudio.pause(); playingAudio.currentTime = 0; if (playingAudio._path === path) { setPlayingAudio(null); return } }
+    const audio = new Audio(path); audio._path = path; audio.play(); audio.onended = () => setPlayingAudio(null); setPlayingAudio(audio)
+  }
+
+  const handleUpload = async (e) => {
+    const files = e.target.files
+    if (!files.length) return
+    const formData = new FormData()
+    for (const f of files) formData.append('files', f)
+    formData.append('category', filterCat || '')
+    await fetch(`/api/assets/${assetType}/upload`, { method: 'POST', body: formData })
+    reload()
+    e.target.value = ''
+  }
+
+  const title = label || (assetType === 'backgrounds' ? 'Background' : assetType === 'bgm' ? 'BGM' : assetType === 'overlays' ? 'Overlay' : assetType)
 
   return (
     <div className="asset-picker">
-      <h3>{title}</h3>
+      <div className="asset-picker-header">
+        <h3>{title}</h3>
+        <button className="btn-tiny" onClick={() => fileRef.current?.click()}>+ Add</button>
+        <input ref={fileRef} type="file" multiple accept="image/*,video/*,audio/*" onChange={handleUpload} style={{ display: 'none' }} />
+      </div>
 
-      {/* タグフィルタ */}
-      {allTags.length > 0 && (
+      {categories.length > 0 && (
         <div className="tag-filter">
-          <button
-            className={`tag-btn ${filterTag === '' ? 'active' : ''}`}
-            onClick={() => setFilterTag('')}
-          >
-            すべて
-          </button>
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              className={`tag-btn ${filterTag === tag ? 'active' : ''}`}
-              onClick={() => setFilterTag(tag)}
-            >
-              {tag}
-            </button>
+          <button className={`tag-btn ${filterCat === '' ? 'active' : ''}`} onClick={() => setFilterCat('')}>All</button>
+          {categories.map(cat => (
+            <button key={cat} className={`tag-btn ${filterCat === cat ? 'active' : ''}`} onClick={() => setFilterCat(cat)}>{cat}</button>
           ))}
         </div>
       )}
 
-      {/* 素材一覧 */}
       <div className="asset-grid">
-        {/* 「なし」選択肢 */}
-        <div
-          className={`asset-item ${!selectedPath ? 'selected' : ''}`}
-          onClick={() => onSelect(null)}
-        >
-          <div className="asset-thumb none-thumb">なし</div>
+        <div className={`asset-item ${!selectedPath ? 'selected' : ''}`} onClick={() => onSelect(null)}>
+          <div className="asset-thumb none-thumb">None</div>
         </div>
-
-        {filtered.map((asset) => (
-          <div
-            key={asset.filename}
-            className={`asset-item ${selectedPath === asset.path ? 'selected' : ''}`}
-            onClick={() => onSelect(asset)}
-          >
+        {filtered.map(asset => (
+          <div key={asset.path} className={`asset-item ${selectedPath === asset.path ? 'selected' : ''}`} onClick={() => onSelect(asset)}>
             {asset.type === 'image' ? (
-              <img
-                className="asset-thumb"
-                src={asset.path}
-                alt={asset.filename}
-                loading="lazy"
-              />
+              <img className="asset-thumb" src={asset.path} alt={asset.filename} loading="lazy" />
             ) : asset.type === 'video' ? (
-              <div className="asset-thumb video-thumb">
-                <span>動画</span>
-              </div>
+              <div className="asset-thumb video-thumb"><span>Video</span></div>
             ) : (
               <div className="asset-thumb audio-thumb">
-                <button
-                  className="play-btn"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    togglePlay(asset.path)
-                  }}
-                >
-                  {playingAudio && playingAudio._path === asset.path ? '■' : '▶'}
+                <button className="play-btn" onClick={e => { e.stopPropagation(); togglePlay(asset.path) }}>
+                  {playingAudio && playingAudio._path === asset.path ? '||' : '>'}
                 </button>
               </div>
             )}
@@ -118,11 +77,7 @@ export default function AssetPicker({ assetType, onSelect, selectedPath }) {
       </div>
 
       {filtered.length === 0 && assets.length === 0 && (
-        <p className="no-assets">
-          素材がありません。
-          <br />
-          assets/{assetType}/ にファイルを配置してください。
-        </p>
+        <p className="no-assets">No assets. Click "+ Add" to upload.</p>
       )}
     </div>
   )

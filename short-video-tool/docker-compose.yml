@@ -8,6 +8,7 @@ services:
       - ./assets/backgrounds:/app/assets/backgrounds
       - ./assets/bgm:/app/assets/bgm
       - ./assets/fonts:/app/assets/fonts
+      - ./assets/overlays:/app/assets/overlays
       - ./output:/app/output
       - ./projects:/app/projects
       - ./templates:/app/templates
