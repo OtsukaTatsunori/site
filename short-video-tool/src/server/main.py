@@ -41,15 +41,7 @@ app.mount("/output", StaticFiles(directory=os.path.join(BASE_DIR, "output")), na
 # Docker用: ビルド済みフロントエンドを配信
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 if os.path.isdir(STATIC_DIR):
-    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-
-    @app.get("/{full_path:path}")
-    def serve_spa(full_path: str):
-        """フロントエンドのSPAルーティング"""
-        file_path = os.path.join(STATIC_DIR, full_path)
-        if os.path.isfile(file_path):
-            return FileResponse(file_path)
-        return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+    app.mount("/_static", StaticFiles(directory=os.path.join(STATIC_DIR, "_static")), name="frontend_assets")
 
 
 # --- リクエスト/レスポンスモデル ---
@@ -436,3 +428,14 @@ def ren_project(req: ProjectRenameRequest):
     if success:
         return {"status": "ok"}
     return {"error": "プロジェクトが見つかりません"}
+
+
+# --- フロントエンド配信 (Docker用、最後に定義) ---
+
+if os.path.isdir(STATIC_DIR):
+    @app.get("/{full_path:path}")
+    def serve_spa(full_path: str):
+        file_path = os.path.join(STATIC_DIR, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(STATIC_DIR, "index.html"))
