@@ -212,10 +212,13 @@ def get_telop_presets():
 
 # --- 素材管理 ---
 
+ASSET_TYPES = ("backgrounds", "bgm", "fonts", "overlays", "se")
+
+
 @app.get("/api/assets/{asset_type}")
 def get_assets(asset_type: str):
-    """素材一覧を取得する（backgrounds / bgm / fonts）"""
-    if asset_type not in ("backgrounds", "bgm", "fonts", "overlays"):
+    """素材一覧を取得する（backgrounds / bgm / fonts / overlays / se）"""
+    if asset_type not in ASSET_TYPES:
         return {"error": "Invalid asset type"}
     assets = list_assets(BASE_DIR, asset_type)
     return {"assets": assets}
@@ -224,7 +227,7 @@ def get_assets(asset_type: str):
 @app.post("/api/assets/{asset_type}/upload")
 async def upload_assets(asset_type: str, files: list[UploadFile] = File(...), category: str = Form("")):
     """素材ファイルをアップロード（複数対応）"""
-    if asset_type not in ("backgrounds", "bgm", "fonts", "overlays"):
+    if asset_type not in ASSET_TYPES:
         return {"error": "無効な素材タイプです"}
 
     target_dir = os.path.join(BASE_DIR, "assets", asset_type)

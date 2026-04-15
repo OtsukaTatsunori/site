@@ -29,7 +29,7 @@ def list_assets(base_dir: str, asset_type: str) -> list[dict]:
     """
     指定フォルダの素材ファイル一覧を返す。サブフォルダ（カテゴリ）にも対応。
 
-    asset_type: "backgrounds" | "bgm" | "fonts" | "overlays"
+    asset_type: "backgrounds" | "bgm" | "fonts" | "overlays" | "se"
     """
     folder = os.path.join(base_dir, "assets", asset_type)
     if not os.path.isdir(folder):

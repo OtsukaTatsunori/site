@@ -54,6 +54,29 @@ def split_text_to_scenes(text: str) -> list[dict]:
             "background": None,     # Step 4 で設定
             "tts_enabled": True,
             "telop_style": "standard",
+            # --- 拡張フィールド（後方互換のため全て既定値） ---
+            "text_anim": "none",           # A-1: テキストアニメ
+            "emphasis_ranges": [],         # A-2: 強調範囲
+            "se_path": None,               # A-3: 効果音
+            "telop_layers": [],            # B-6: 複数テロップレイヤー
+            "color_adjust": None,          # C-9: 色調補正
+            "emphasis_effect": "none",     # C-10: ズーム/シェイク
         })
 
     return scenes
+
+
+def ensure_scene_defaults(scene: dict) -> dict:
+    """旧プロジェクトのシーンに新フィールドを補完する（後方互換用）"""
+    defaults = {
+        "text_anim": "none",
+        "emphasis_ranges": [],
+        "se_path": None,
+        "telop_layers": [],
+        "color_adjust": None,
+        "emphasis_effect": "none",
+    }
+    for k, v in defaults.items():
+        if k not in scene:
+            scene[k] = v
+    return scene
