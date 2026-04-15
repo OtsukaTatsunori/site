@@ -80,7 +80,34 @@ function App() {
       setTtsAvailable(d.available)
       if (d.available) fetch('/api/tts/speakers').then(r => r.json()).then(d2 => setTtsSpeakers(d2.speakers || []))
     }).catch(() => setTtsAvailable(false))
+    // オートセーブ復元確認
+    fetch('/api/autosave/check').then(r => r.json()).then(d => {
+      if (d.exists && d.scene_count > 0) {
+        if (confirm(`オートセーブが見つかりました（${d.scene_count}シーン, ${d.updated_at}）。復元しますか?`)) {
+          handleLoadProject('_autosave.json')
+        } else {
+          fetch('/api/autosave', { method: 'DELETE' })
+        }
+      }
+    })
   }, [])
+
+  // オートセーブ（30秒毎）
+  useEffect(() => {
+    if (scenes.length === 0) return
+    const timer = setInterval(() => {
+      fetch('/api/projects', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: projectName || '_autosave', filename: '_autosave.json',
+          scenes, text, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null,
+          bgm_volume: bgmVolume, transition, aspect_ratio: aspectRatio,
+          tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed, global_speed: globalSpeed,
+        }),
+      }).catch(() => {})
+    }, 30000)
+    return () => clearInterval(timer)
+  }, [scenes, text, bgm, bgmVolume, transition, aspectRatio, projectName, ttsSpeakerId, ttsSpeed, globalSpeed])
 
   // キーボードショートカット
   useEffect(() => {

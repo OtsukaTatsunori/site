@@ -468,6 +468,25 @@ def get_project(filename: str):
     return data
 
 
+@app.get("/api/autosave/check")
+def check_autosave():
+    """オートセーブファイルが存在し、復元可能か確認する"""
+    from .project_manager import load_project
+    data = load_project(BASE_DIR, "_autosave.json")
+    if data is None:
+        return {"exists": False}
+    return {"exists": True, "updated_at": data.get("updated_at", ""), "scene_count": len(data.get("scenes", []))}
+
+
+@app.delete("/api/autosave")
+def clear_autosave():
+    """オートセーブを削除"""
+    path = os.path.join(BASE_DIR, "projects", "_autosave.json")
+    if os.path.exists(path):
+        os.remove(path)
+    return {"status": "ok"}
+
+
 @app.post("/api/projects/{filename}/duplicate")
 def dup_project(filename: str):
     """プロジェクトを複製する"""

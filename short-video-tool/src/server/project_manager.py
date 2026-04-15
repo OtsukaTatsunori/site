@@ -17,6 +17,9 @@ def list_projects(base_dir: str) -> list[dict]:
     for filename in sorted(os.listdir(project_dir), reverse=True):
         if not filename.endswith(".json"):
             continue
+        # オートセーブは一覧に出さない
+        if filename.startswith("_autosave"):
+            continue
         filepath = os.path.join(project_dir, filename)
         try:
             with open(filepath, "r", encoding="utf-8") as f:
