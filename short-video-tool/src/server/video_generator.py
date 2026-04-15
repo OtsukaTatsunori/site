@@ -116,8 +116,9 @@ def build_drawtext_filter(
     custom_y: int | None = None,
     custom_box: dict | None = None,
     custom_fontsize: int | None = None,
+    text_anim: str = "none",
 ) -> str:
-    """drawtextフィルタ文字列を構築する（フェード無し・即切替）"""
+    """drawtextフィルタ文字列を構築する（text_anim: none/typewriter/popin/slide_in）"""
     preset = TELOP_PRESETS.get(preset_name, TELOP_PRESETS["standard"])
 
     # テキスト内の特殊文字をエスケープ
@@ -158,15 +159,35 @@ def build_drawtext_filter(
         parts.append(f"boxcolor={box_color}")
         parts.append(f"boxborderw={box_padding}")
 
-    # フェード無し（即切替）
-    alpha_parts = []
-
-    if alpha_parts:
-        if len(alpha_parts) == 2:
-            alpha_expr = f"min({alpha_parts[0]}\\,{alpha_parts[1]})"
+    # テキストアニメーション
+    if text_anim == "typewriter":
+        # 文字ごとに徐々に出現: nの長さに応じて進捗を計算
+        n = max(1, len(text))
+        per_char = min(0.08, max(0.02, 1.0 / n))  # 1秒以内に全表示
+        # drawtextの text_shaping では動的長さ調整は困難なので、alphaで全体フェードイン
+        parts.append(f"alpha='if(lt(t,{per_char*n:.2f}),t/{per_char*n:.2f},1)'")
+    elif text_anim == "popin":
+        # 最初の0.3秒でポップイン（1.3倍→1.0倍）
+        base_fs = custom_fontsize if custom_fontsize else preset["fontsize"]
+        # fontsize を置き換える
+        parts = [p for p in parts if not p.startswith("fontsize=")]
+        parts.insert(1, f"fontsize='if(lt(t,0.3),{base_fs}+({int(base_fs*0.3)})*(0.3-t)/0.3,{base_fs})'")
+        parts.append("alpha='if(lt(t,0.15),t/0.15,1)'")
+    elif text_anim == "slide_in":
+        # 最初の0.4秒で下から上へスライド
+        parts = [p for p in parts if not p.startswith("x=") and not p.startswith("y=")]
+        # 元の位置計算を再利用
+        fontsize_val = custom_fontsize if custom_fontsize else preset["fontsize"]
+        base_pos = get_telop_position(preset["position"], fontsize_val, custom_x, custom_y)
+        # y に時間依存オフセットを加える
+        if "y=" in base_pos:
+            x_part = base_pos.split(":")[0]
+            y_part = base_pos.split(":")[1].replace("y=", "")
+            parts.append(x_part)
+            parts.append(f"y='if(lt(t,0.4),({y_part})+120*(0.4-t)/0.4,{y_part})'")
         else:
-            alpha_expr = alpha_parts[0]
-        parts.append(f"alpha='{alpha_expr}'")
+            parts.append(base_pos)
+        parts.append("alpha='if(lt(t,0.4),t/0.4,1)'")
 
     return ":".join(parts)
 
@@ -201,6 +222,7 @@ def generate_scene_video(
     telop_fontsize = scene.get("telop_fontsize")
     telop_font = scene.get("telop_font")
     custom_box = scene.get("custom_box")
+    text_anim = scene.get("text_anim", "none")
     width, height = resolution
 
     font_path = find_font(base_dir, telop_font)
@@ -278,6 +300,7 @@ def generate_scene_video(
             custom_x=telop_x, custom_y=telop_y,
             custom_box=custom_box,
             custom_fontsize=telop_fontsize,
+            text_anim=text_anim,
         )
         filters.append(drawtext)
 

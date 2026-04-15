@@ -364,6 +364,14 @@ function App() {
                           onClick={e => e.stopPropagation()}>
                           {telopPresets.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
                         </select>
+                        <select className="select-input select-small" value={scene.text_anim || 'none'}
+                          onChange={e => { e.stopPropagation(); updateScenes(scenes.map((s, i) => i === idx ? { ...s, text_anim: e.target.value } : s)) }}
+                          onClick={e => e.stopPropagation()} title="テキストアニメーション">
+                          <option value="none">アニメ無し</option>
+                          <option value="typewriter">タイプライター</option>
+                          <option value="popin">ポップイン</option>
+                          <option value="slide_in">スライドイン</option>
+                        </select>
                         <button className="btn-small" onClick={e => { e.stopPropagation(); handleSplit(idx) }}>Split</button>
                         {idx < scenes.length - 1 && (
                           <button className="btn-small" onClick={e => { e.stopPropagation(); handleMerge(idx) }}>Merge</button>
