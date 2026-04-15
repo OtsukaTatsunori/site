@@ -346,6 +346,21 @@ def generate_scene_video(
         if is_image_bg:
             filters.append("fps=30")
 
+    # カラーフィルター（色調補正）
+    color_adjust = scene.get("color_adjust")
+    if color_adjust:
+        eq_parts = []
+        if color_adjust.get("contrast") is not None:
+            eq_parts.append(f"contrast={color_adjust['contrast']:.2f}")
+        if color_adjust.get("brightness") is not None:
+            eq_parts.append(f"brightness={color_adjust['brightness']:.2f}")
+        if color_adjust.get("saturation") is not None:
+            eq_parts.append(f"saturation={color_adjust['saturation']:.2f}")
+        if eq_parts:
+            filters.append("eq=" + ":".join(eq_parts))
+        if color_adjust.get("vignette"):
+            filters.append("vignette=PI/4")
+
     # テロップ追加（以降はテキスト系フィルタ）
     text_filters = []
     if text:

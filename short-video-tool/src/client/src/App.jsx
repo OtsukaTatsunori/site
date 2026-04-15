@@ -537,6 +537,38 @@ function App() {
 
                 {sel && (
                   <div className="panel-section">
+                    <h3 className="section-title">色調補正</h3>
+                    {['contrast','brightness','saturation'].map(k => {
+                      const range = k === 'brightness' ? [-0.5, 0.5, 0.05] : [0.5, 2.0, 0.05]
+                      const def = k === 'brightness' ? 0 : 1
+                      const cur = sel.color_adjust?.[k] ?? def
+                      return (
+                        <div key={k} className="setting-row">
+                          <label>{k}: {cur.toFixed(2)}</label>
+                          <input type="range" min={range[0]} max={range[1]} step={range[2]} value={cur}
+                            onChange={e => {
+                              const ca = { ...(sel.color_adjust || {}), [k]: parseFloat(e.target.value) }
+                              updateSceneField(selectedSceneIdx, 'color_adjust', ca)
+                            }} />
+                        </div>
+                      )
+                    })}
+                    <div className="setting-row">
+                      <label><input type="checkbox" checked={sel.color_adjust?.vignette || false}
+                        onChange={e => {
+                          const ca = { ...(sel.color_adjust || {}), vignette: e.target.checked }
+                          updateSceneField(selectedSceneIdx, 'color_adjust', ca)
+                        }} /> ビネット</label>
+                    </div>
+                    <div className="btn-row">
+                      <button className="btn-small" onClick={() => updateSceneField(selectedSceneIdx, 'color_adjust', null)}>リセット</button>
+                      <button className="btn-small btn-apply-all" onClick={() => applyToAll({ color_adjust: sel.color_adjust })}>全シーンに適用</button>
+                    </div>
+                  </div>
+                )}
+
+                {sel && (
+                  <div className="panel-section">
                     <h3 className="section-title">強調ワード</h3>
                     <textarea className="emphasis-textarea" value={sel.text || ''}
                       onChange={e => updateSceneField(selectedSceneIdx, 'text', e.target.value)}
