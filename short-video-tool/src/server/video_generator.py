@@ -192,6 +192,59 @@ def build_drawtext_filter(
     return ":".join(parts)
 
 
+def build_emphasis_filters(
+    emphasis_ranges: list[dict],
+    font_path: str,
+    base_fontsize: int,
+) -> list[str]:
+    """強調ワードを主テロップの上にアクセント表示するdrawtextフィルタを生成する。
+    emphasis_ranges: [{text: str, style: "color"|"size"|"box"}] の配列
+    """
+    filters = []
+    for i, emp in enumerate(emphasis_ranges):
+        emp_text = emp.get("text", "").strip()
+        if not emp_text:
+            continue
+        style = emp.get("style", "color")
+        escaped = (
+            emp_text.replace("\\", "\\\\")
+            .replace("'", "\\'")
+            .replace(":", "\\:")
+            .replace("[", "\\[").replace("]", "\\]")
+        )
+        # スタイルに応じてフォント設定を変える
+        if style == "size":
+            fs = int(base_fontsize * 1.8)
+            color = "#FFD93D"; border = 6; border_c = "black"; use_box = False
+        elif style == "box":
+            fs = int(base_fontsize * 1.2)
+            color = "white"; border = 2; border_c = "black"; use_box = True
+        else:  # color (default)
+            fs = int(base_fontsize * 1.3)
+            color = "#FF3333"; border = 4; border_c = "white"; use_box = False
+
+        # 主テロップの上にオフセット配置（複数の強調は水平方向にずらす）
+        y_offset = 200 + i * (fs + 10)  # 下からのオフセット
+        parts = [
+            f"drawtext=text='{escaped}'",
+            f"fontsize={fs}",
+            f"fontcolor={color}",
+            f"borderw={border}",
+            f"bordercolor={border_c}",
+            f"x=(w-text_w)/2",
+            f"y=h-text_h-h*0.12-{y_offset}",
+        ]
+        if font_path:
+            escaped_font = font_path.replace("\\", "/").replace(":", "\\:")
+            parts.append(f"fontfile='{escaped_font}'")
+        if use_box:
+            parts.append("box=1")
+            parts.append("boxcolor=#FF3333@0.85")
+            parts.append("boxborderw=12")
+        filters.append(":".join(parts))
+    return filters
+
+
 def generate_scene_video(
     base_dir: str,
     scene: dict,
@@ -293,7 +346,8 @@ def generate_scene_video(
         if is_image_bg:
             filters.append("fps=30")
 
-    # テロップ追加
+    # テロップ追加（以降はテキスト系フィルタ）
+    text_filters = []
     if text:
         drawtext = build_drawtext_filter(
             text, telop_style, font_path, duration,
@@ -302,7 +356,16 @@ def generate_scene_video(
             custom_fontsize=telop_fontsize,
             text_anim=text_anim,
         )
-        filters.append(drawtext)
+        text_filters.append(drawtext)
+
+    # 強調ワード（主テロップの上に配置）
+    emphasis_ranges = scene.get("emphasis_ranges", [])
+    if emphasis_ranges:
+        base_fs = telop_fontsize or TELOP_PRESETS.get(telop_style, TELOP_PRESETS["standard"])["fontsize"]
+        emp_filters = build_emphasis_filters(emphasis_ranges, font_path, base_fs)
+        text_filters.extend(emp_filters)
+
+    filters.extend(text_filters)
 
     # 画像オーバーレイ対応
     overlay_full = None
@@ -315,8 +378,14 @@ def generate_scene_video(
     if overlay_full:
         # filter_complex で背景 + オーバーレイ + テロップ
         cmd += ["-i", overlay_full]
-        bg_filter = ",".join(filters[:-1]) if text else ",".join(filters)
-        telop_filter = filters[-1] if text else ""
+        # テキスト系フィルタ（本文 + 強調）を分離
+        tf_count = len(text_filters)
+        if tf_count > 0:
+            bg_filter = ",".join(filters[:-tf_count])
+            telop_filter = ",".join(text_filters)
+        else:
+            bg_filter = ",".join(filters)
+            telop_filter = ""
         # オーバーレイサイズ（幅の%で指定）
         ov_w = int(width * (overlay_scale / 100))
         # 位置（None の場合は中央）

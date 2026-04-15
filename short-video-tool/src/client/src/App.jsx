@@ -507,6 +507,41 @@ function App() {
                   </div>
                 )}
 
+                {sel && (
+                  <div className="panel-section">
+                    <h3 className="section-title">強調ワード</h3>
+                    <textarea className="emphasis-textarea" value={sel.text || ''}
+                      onChange={e => updateSceneField(selectedSceneIdx, 'text', e.target.value)}
+                      rows={2} placeholder="本文を範囲選択して「強調に追加」"
+                      id={`scene-text-${selectedSceneIdx}`} />
+                    <div className="btn-row">
+                      {['color','size','box'].map(style => (
+                        <button key={style} className="btn-small" onClick={() => {
+                          const ta = document.getElementById(`scene-text-${selectedSceneIdx}`)
+                          if (!ta) return
+                          const sel_text = ta.value.substring(ta.selectionStart, ta.selectionEnd).trim()
+                          if (!sel_text) { alert('本文を範囲選択してください'); return }
+                          const cur = sel.emphasis_ranges || []
+                          updateSceneField(selectedSceneIdx, 'emphasis_ranges', [...cur, { text: sel_text, style }])
+                        }}>+ {style === 'color' ? '色' : style === 'size' ? '大' : '枠'}</button>
+                      ))}
+                    </div>
+                    {(sel.emphasis_ranges || []).length > 0 && (
+                      <div className="emphasis-list">
+                        {sel.emphasis_ranges.map((e, i) => (
+                          <div key={i} className={`emphasis-badge emphasis-${e.style}`}>
+                            <span>{e.text}</span>
+                            <button className="btn-tiny" onClick={() => {
+                              const next = sel.emphasis_ranges.filter((_, j) => j !== i)
+                              updateSceneField(selectedSceneIdx, 'emphasis_ranges', next)
+                            }}>×</button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Telop position & size */}
                 {sel && (
                   <div className="panel-section">

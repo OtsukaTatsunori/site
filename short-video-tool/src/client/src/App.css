@@ -152,6 +152,36 @@
   background: #1f2a4a;
 }
 
+.emphasis-textarea {
+  width: 100%;
+  background: #0a0e27;
+  color: #e0e0e0;
+  border: 1px solid #1a4a80;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 13px;
+  resize: vertical;
+  margin-bottom: 6px;
+}
+.emphasis-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.emphasis-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.emphasis-color { background: #FF3333; color: white; }
+.emphasis-size { background: #FFD93D; color: #222; }
+.emphasis-box { background: #0f3460; color: white; border: 1px solid #FF3333; }
+
 .scene-header {
   display: flex;
   justify-content: space-between;
