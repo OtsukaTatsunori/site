@@ -541,9 +541,11 @@ def add_bgm(
     base_dir: str,
     tts_audio_paths: list[str] | None = None,
     se_events: list[dict] | None = None,
+    bgm_offset: float = 0.0,
 ) -> dict:
     """動画にBGMを追加する。最後2秒フェードアウト。
     se_events: [{path: str, start: float}] シーン頭で鳴らす効果音
+    bgm_offset: BGMの先頭をスキップする秒数
     """
     bgm_full = os.path.join(base_dir, bgm_path.lstrip("/"))
     if not os.path.exists(bgm_full):
@@ -557,8 +559,11 @@ def add_bgm(
     cmd = [
         "ffmpeg", "-y",
         "-i", video_path,
-        "-i", bgm_full,
     ]
+    # BGMの先頭をスキップ（offset_sec）
+    if bgm_offset > 0:
+        cmd += ["-ss", str(bgm_offset)]
+    cmd += ["-i", bgm_full]
 
     # TTS音声がある場合
     input_idx = 2
@@ -692,7 +697,8 @@ def render_full_video(
     final_path = os.path.join(base_dir, "output", f"{timestamp}.mp4")
     if bgm and bgm.get("path"):
         result = add_bgm(concat_path, bgm["path"], final_path, bgm_volume, base_dir,
-                         tts_audio_paths=tts_paths, se_events=se_events)
+                         tts_audio_paths=tts_paths, se_events=se_events,
+                         bgm_offset=float(bgm.get("offset", 0) or 0))
         if not result["success"]:
             return {"success": False, "error": f"BGM追加に失敗: {result.get('error', '')}"}
     else:

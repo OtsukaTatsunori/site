@@ -198,7 +198,7 @@ function App() {
       const endpoint = quick ? '/api/render/preview' : '/api/render/full'
       const res = await fetch(endpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition }),
+        body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition }),
       })
       const data = await res.json()
       setRenderResult(data)
@@ -211,7 +211,7 @@ function App() {
     if (!templateName.trim()) return
     await fetch('/api/templates', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: templateName, telop_style: scenes[0]?.telop_style || 'standard', transition, aspect_ratio: aspectRatio, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed }),
+      body: JSON.stringify({ name: templateName, telop_style: scenes[0]?.telop_style || 'standard', transition, aspect_ratio: aspectRatio, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null, bgm_volume: bgmVolume, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed }),
     })
     loadTemplates(); setShowTemplateSave(false); setTemplateName('')
   }
@@ -229,7 +229,7 @@ function App() {
   const handleSaveProject = async () => {
     const res = await fetch('/api/projects', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: projectName, filename: currentProjectFile, scenes, text, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, transition, aspect_ratio: aspectRatio, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed, global_speed: globalSpeed }),
+      body: JSON.stringify({ name: projectName, filename: currentProjectFile, scenes, text, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null, bgm_volume: bgmVolume, transition, aspect_ratio: aspectRatio, tts_speaker_id: ttsSpeakerId, tts_speed: ttsSpeed, global_speed: globalSpeed }),
     })
     const data = await res.json()
     if (data.filename) setCurrentProjectFile(data.filename)
@@ -520,6 +520,9 @@ function App() {
                     <div className="bgm-volume">
                       <label>BGM Vol: {bgmVolume}%</label>
                       <input type="range" min="0" max="100" value={bgmVolume} onChange={e => setBgmVolume(parseInt(e.target.value))} />
+                      <label>BGM Start: {(bgm.offset || 0).toFixed(1)}s</label>
+                      <input type="range" min="0" max="60" step="0.5" value={bgm.offset || 0}
+                        onChange={e => setBgm({ ...bgm, offset: parseFloat(e.target.value) })} />
                     </div>
                   )}
                 </div>
