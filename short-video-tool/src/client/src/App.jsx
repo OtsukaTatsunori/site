@@ -613,6 +613,46 @@ function App() {
 
                 {sel && (
                   <div className="panel-section">
+                    <h3 className="section-title">追加テロップ</h3>
+                    {(sel.telop_layers || []).map((layer, li) => (
+                      <div key={li} className="telop-layer-row">
+                        <input className="select-input" value={layer.text || ''}
+                          placeholder="追加テキスト"
+                          onChange={e => {
+                            const next = [...(sel.telop_layers || [])]
+                            next[li] = { ...layer, text: e.target.value }
+                            updateSceneField(selectedSceneIdx, 'telop_layers', next)
+                          }} />
+                        <select className="select-input select-small" value={layer.telop_style || 'standard'}
+                          onChange={e => {
+                            const next = [...(sel.telop_layers || [])]
+                            next[li] = { ...layer, telop_style: e.target.value }
+                            updateSceneField(selectedSceneIdx, 'telop_layers', next)
+                          }}>
+                          {telopPresets.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
+                        </select>
+                        <input type="number" className="select-input select-small" placeholder="Y"
+                          value={layer.telop_y ?? ''}
+                          onChange={e => {
+                            const next = [...(sel.telop_layers || [])]
+                            next[li] = { ...layer, telop_y: e.target.value ? parseInt(e.target.value) : null }
+                            updateSceneField(selectedSceneIdx, 'telop_layers', next)
+                          }} />
+                        <button className="btn-tiny" onClick={() => {
+                          const next = (sel.telop_layers || []).filter((_, i) => i !== li)
+                          updateSceneField(selectedSceneIdx, 'telop_layers', next)
+                        }}>×</button>
+                      </div>
+                    ))}
+                    <button className="btn-small" onClick={() => {
+                      const next = [...(sel.telop_layers || []), { text: '', telop_style: 'standard', telop_y: 300 }]
+                      updateSceneField(selectedSceneIdx, 'telop_layers', next)
+                    }}>+ レイヤー追加</button>
+                  </div>
+                )}
+
+                {sel && (
+                  <div className="panel-section">
                     <h3 className="section-title">強調ワード</h3>
                     <textarea className="emphasis-textarea" value={sel.text || ''}
                       onChange={e => updateSceneField(selectedSceneIdx, 'text', e.target.value)}

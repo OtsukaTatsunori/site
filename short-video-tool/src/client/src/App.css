@@ -182,6 +182,17 @@
 .emphasis-size { background: #FFD93D; color: #222; }
 .emphasis-box { background: #0f3460; color: white; border: 1px solid #FF3333; }
 
+.telop-layer-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.telop-layer-row input,
+.telop-layer-row select {
+  flex: 1;
+}
+
 .project-thumb {
   width: 80px;
   height: auto;

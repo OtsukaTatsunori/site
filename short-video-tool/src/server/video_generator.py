@@ -387,6 +387,22 @@ def generate_scene_video(
         )
         text_filters.append(drawtext)
 
+    # 複数テロップレイヤー（追加テキスト）
+    telop_layers = scene.get("telop_layers", [])
+    for layer in telop_layers:
+        ltext = layer.get("text", "").strip()
+        if not ltext:
+            continue
+        lstyle = layer.get("telop_style", telop_style)
+        ldraw = build_drawtext_filter(
+            ltext, lstyle, font_path, duration,
+            custom_x=layer.get("telop_x"),
+            custom_y=layer.get("telop_y"),
+            custom_fontsize=layer.get("telop_fontsize"),
+            text_anim=layer.get("text_anim", "none"),
+        )
+        text_filters.append(ldraw)
+
     # 強調ワード（主テロップの上に配置）
     emphasis_ranges = scene.get("emphasis_ranges", [])
     if emphasis_ranges:
