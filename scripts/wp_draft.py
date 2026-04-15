@@ -126,6 +126,11 @@ DEFAULT_CATEGORIES = [
         "slug": "age-guide",
         "description": "20代・30代・40代・50代の年代別学び直しガイド",
     },
+    {
+        "name": "動画制作",
+        "slug": "video-production",
+        "description": "動画編集スクールやYouTube運営、動画制作スキルに関する比較・情報",
+    },
 ]
 
 
