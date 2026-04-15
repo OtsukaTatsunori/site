@@ -81,6 +81,27 @@ function App() {
     }).catch(() => setTtsAvailable(false))
   }, [])
 
+  // キーボードショートカット
+  useEffect(() => {
+    const handler = (e) => {
+      const tag = (e.target.tagName || '').toLowerCase()
+      const isTyping = tag === 'input' || tag === 'textarea' || e.target.isContentEditable
+      const mod = e.ctrlKey || e.metaKey
+      if (mod && e.key === 'z' && !e.shiftKey) { e.preventDefault(); undo(); return }
+      if (mod && (e.key === 'y' || (e.key === 'z' && e.shiftKey))) { e.preventDefault(); redo(); return }
+      if (mod && e.key === 's') { e.preventDefault(); handleSaveProject(); return }
+      if (!isTyping) {
+        if (e.key === 'ArrowLeft' && selectedSceneIdx !== null && selectedSceneIdx > 0) {
+          e.preventDefault(); setSelectedSceneIdx(selectedSceneIdx - 1)
+        } else if (e.key === 'ArrowRight' && selectedSceneIdx !== null && selectedSceneIdx < scenes.length - 1) {
+          e.preventDefault(); setSelectedSceneIdx(selectedSceneIdx + 1)
+        }
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [history, historyIdx, scenes, selectedSceneIdx, projectName, currentProjectFile])
+
   const handleSplitText = async () => {
     if (!text.trim()) return
     setLoading(true)
