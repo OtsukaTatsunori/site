@@ -89,6 +89,82 @@ def cmd_categories(_args: argparse.Namespace) -> int:
     return 0
 
 
+# サイト構造設計書（docs/site-structure.md）で定義したカテゴリ一覧
+DEFAULT_CATEGORIES = [
+    {
+        "name": "英語・語学",
+        "slug": "english",
+        "description": "大人・社会人の英語学び直しや語学学習サービスを比較",
+    },
+    {
+        "name": "プログラミング・IT",
+        "slug": "programming",
+        "description": "社会人向けプログラミングスクールやIT資格の比較",
+    },
+    {
+        "name": "資格・検定",
+        "slug": "qualification",
+        "description": "社会人におすすめの資格・通信講座の比較",
+    },
+    {
+        "name": "オンライン学習",
+        "slug": "online-learning",
+        "description": "Udemy、Schoo、グロービス学び放題などのオンライン学習サービス",
+    },
+    {
+        "name": "教科別やり直し",
+        "slug": "subject",
+        "description": "英語、数学、歴史などの教科別学び直しガイド",
+    },
+    {
+        "name": "補助金・制度",
+        "slug": "subsidy",
+        "description": "教育訓練給付金やリスキリング補助金の活用方法",
+    },
+    {
+        "name": "年代別ガイド",
+        "slug": "age-guide",
+        "description": "20代・30代・40代・50代の年代別学び直しガイド",
+    },
+]
+
+
+def cmd_init_categories(_args: argparse.Namespace) -> int:
+    """サイト構造設計書のカテゴリを一括作成（既存はスキップ）"""
+    wp = WPClient()
+    existing = {c["slug"]: c for c in wp.list_categories()}
+
+    # まず「Uncategorized」を「お知らせ」にリネーム
+    uncategorized = existing.get("uncategorized")
+    if uncategorized:
+        if uncategorized["name"].lower() == "uncategorized":
+            wp.update_category(
+                uncategorized["id"],
+                name="お知らせ",
+                slug="news",
+                description="サイト運営からのお知らせ",
+            )
+            print("🔄 Uncategorized → お知らせ (news) にリネーム")
+        else:
+            print(f"ℹ️  uncategorized はすでに「{uncategorized['name']}」に変更済み")
+
+    # 7カテゴリを作成
+    for cat in DEFAULT_CATEGORIES:
+        if cat["slug"] in existing:
+            print(f"⏭️  既存: {cat['slug']:<20} ({cat['name']})")
+            continue
+        result = wp.create_category(
+            name=cat["name"],
+            slug=cat["slug"],
+            description=cat["description"],
+        )
+        print(f"✅ 作成: id={result['id']:>3} slug={cat['slug']:<20} name={cat['name']}")
+
+    print("\n完了しました。確認するには:")
+    print("  python scripts/wp_draft.py categories")
+    return 0
+
+
 def cmd_push(args: argparse.Namespace) -> int:
     path = Path(args.file)
     if not path.exists():
@@ -169,6 +245,11 @@ def main() -> int:
 
     sub.add_parser("categories", help="カテゴリ一覧を表示")
 
+    sub.add_parser(
+        "init-categories",
+        help="サイト構造設計書のカテゴリ（7種）を一括作成",
+    )
+
     p_push = sub.add_parser(
         "push", help="Markdownファイルを下書きとしてアップロード/更新"
     )
@@ -180,6 +261,7 @@ def main() -> int:
         "ping": cmd_ping,
         "list": cmd_list,
         "categories": cmd_categories,
+        "init-categories": cmd_init_categories,
         "push": cmd_push,
     }
     return handlers[args.cmd](args)

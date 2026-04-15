@@ -138,6 +138,31 @@ class WPClient:
             raise ValueError(f"カテゴリが見つかりません: {missing}")
         return ids
 
+    def create_category(
+        self,
+        name: str,
+        slug: str,
+        description: str = "",
+    ) -> dict[str, Any]:
+        r = requests.post(
+            f"{self.api}/categories",
+            auth=self.auth,
+            json={"name": name, "slug": slug, "description": description},
+            timeout=15,
+        )
+        r.raise_for_status()
+        return r.json()
+
+    def update_category(self, cat_id: int, **fields: Any) -> dict[str, Any]:
+        r = requests.post(
+            f"{self.api}/categories/{cat_id}",
+            auth=self.auth,
+            json=fields,
+            timeout=15,
+        )
+        r.raise_for_status()
+        return r.json()
+
     def list_tags(self) -> list[dict[str, Any]]:
         r = requests.get(
             f"{self.api}/tags",
