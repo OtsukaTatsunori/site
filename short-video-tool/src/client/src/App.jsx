@@ -170,11 +170,12 @@ function App() {
     setTtsGenerating(false)
   }
 
-  const handleRender = async () => {
+  const handleRender = async (quick = false) => {
     if (!scenes.length) return
     setRendering(true); setRenderResult(null)
     try {
-      const res = await fetch('/api/render/full', {
+      const endpoint = quick ? '/api/render/preview' : '/api/render/full'
+      const res = await fetch(endpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition }),
       })
@@ -331,7 +332,10 @@ function App() {
             <>
               <span className="total-duration">{totalDuration.toFixed(1)}s</span>
               <button className="btn-preview" onClick={() => setShowPreview(true)}>Preview</button>
-              <button className="btn-render" onClick={handleRender} disabled={rendering}>
+              <button className="btn-small" onClick={() => handleRender(true)} disabled={rendering} title="低解像度クイックプレビュー">
+                {rendering ? '...' : 'Quick'}
+              </button>
+              <button className="btn-render" onClick={() => handleRender(false)} disabled={rendering}>
                 {rendering ? 'Rendering...' : 'Export'}
               </button>
             </>

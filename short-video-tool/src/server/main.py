@@ -300,6 +300,23 @@ def render_full(req: RenderRequest):
     return result
 
 
+@app.post("/api/render/preview")
+def render_preview(req: RenderRequest):
+    """低解像度のクイックプレビューを生成する"""
+    resolution = RESOLUTIONS.get(req.aspect_ratio, (1080, 1920))
+    result = render_full_video(
+        base_dir=BASE_DIR,
+        scenes=req.scenes,
+        bgm=req.bgm,
+        bgm_volume=req.bgm_volume,
+        aspect_ratio=req.aspect_ratio,
+        transition=req.transition,
+        resolution=resolution,
+        quick_mode=True,
+    )
+    return result
+
+
 # --- TTS ---
 
 @app.get("/api/tts/status")

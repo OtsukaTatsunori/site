@@ -634,8 +634,13 @@ def render_full_video(
     aspect_ratio: str,
     transition: str,
     resolution: tuple[int, int],
+    quick_mode: bool = False,
 ) -> dict:
-    """全シーンを結合して最終動画を生成する"""
+    """全シーンを結合して最終動画を生成する。quick_mode=True で低解像度/低fps"""
+    if quick_mode:
+        # 解像度を半分に、fpsを半分に
+        w, h = resolution
+        resolution = (max(480, w // 2), max(852, h // 2))
     from datetime import datetime
 
     temp_dir = os.path.join(base_dir, "temp")
