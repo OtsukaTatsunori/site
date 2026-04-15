@@ -346,6 +346,20 @@ def generate_scene_video(
         if is_image_bg:
             filters.append("fps=30")
 
+    # ズーム/シェイク演出
+    emphasis_effect = scene.get("emphasis_effect", "none")
+    if emphasis_effect == "zoom" and not ken_burns:
+        # 中央を徐々にズーム（1.0x → 1.15x）
+        total_frames = max(1, int(duration * 30))
+        filters.append(f"scale=-1:{height * 2}")
+        filters.append(f"zoompan=z='1+0.15*on/{total_frames}':d={total_frames}:s={width}x{height}:fps=30")
+        filters.append("setsar=1")
+    elif emphasis_effect == "shake":
+        # 小さな揺れを加える
+        filters.append(
+            f"crop=in_w-20:in_h-20:'10+4*sin(4*PI*t)':'10+4*cos(4*PI*t)'"
+        )
+
     # カラーフィルター（色調補正）
     color_adjust = scene.get("color_adjust")
     if color_adjust:

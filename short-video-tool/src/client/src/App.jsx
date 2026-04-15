@@ -537,6 +537,22 @@ function App() {
 
                 {sel && (
                   <div className="panel-section">
+                    <h3 className="section-title">映像演出</h3>
+                    <div className="setting-row">
+                      <label>効果</label>
+                      <select className="select-input" value={sel.emphasis_effect || 'none'}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'emphasis_effect', e.target.value)}>
+                        <option value="none">無し</option>
+                        <option value="zoom">ズームイン</option>
+                        <option value="shake">シェイク</option>
+                      </select>
+                    </div>
+                    <button className="btn-small btn-apply-all" onClick={() => applyToAll({ emphasis_effect: sel.emphasis_effect })}>全シーンに適用</button>
+                  </div>
+                )}
+
+                {sel && (
+                  <div className="panel-section">
                     <h3 className="section-title">色調補正</h3>
                     {['contrast','brightness','saturation'].map(k => {
                       const range = k === 'brightness' ? [-0.5, 0.5, 0.05] : [0.5, 2.0, 0.05]
