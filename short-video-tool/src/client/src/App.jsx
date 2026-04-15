@@ -346,13 +346,17 @@ function App() {
   const getPresetStyle = (scene) => {
     const p = telopPresets.find(t => t.id === scene?.telop_style) || {}
     const fontsize = scene?.telop_fontsize || p.fontsize || 56
+    const color = scene?.telop_fontcolor || p.fontcolor || 'white'
+    const borderColor = scene?.telop_bordercolor || p.bordercolor || 'black'
+    const baseBw = scene?.telop_borderw != null ? scene.telop_borderw : (p.borderw || 2)
+    const bw = scene?.telop_bold ? baseBw + 4 : baseBw
     return {
       fontSize: `${fontsize * SCALE}px`,
-      color: p.fontcolor || 'white',
-      WebkitTextStroke: `${(p.borderw || 2) * SCALE}px ${p.bordercolor || 'black'}`,
+      color,
+      WebkitTextStroke: `${bw * SCALE}px ${borderColor}`,
       textAlign: 'center',
       lineHeight: 1.2,
-      fontWeight: 'bold',
+      fontWeight: scene?.telop_bold ? '900' : 'bold',
       fontFamily: scene?.telop_font ? 'system-ui' : 'inherit',
       whiteSpace: 'pre-wrap',
     }
@@ -362,30 +366,30 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-left">
-          <h1>Short Video Gen</h1>
-          <button className="btn-small" onClick={() => setShowProjectList(true)}>PJ</button>
-          <button className="btn-small" onClick={handleNewProject}>New</button>
-          <button className="btn-small" onClick={handleSaveProject}>Save</button>
+          <h1>ショート動画ジェネレーター</h1>
+          <button className="btn-small" onClick={() => setShowProjectList(true)} title="プロジェクト一覧">PJ</button>
+          <button className="btn-small" onClick={handleNewProject} title="新規">新規</button>
+          <button className="btn-small" onClick={handleSaveProject} title="保存 (Ctrl+S)">保存</button>
           <div className="template-dropdown">
             <select className="select-input" value="" onChange={e => { if (e.target.value) handleLoadTemplate(e.target.value) }}>
-              <option value="">Template</option>
+              <option value="">テンプレート</option>
               {templates.map(t => <option key={t.filename} value={t.filename}>{t.name}</option>)}
             </select>
           </div>
-          <button className="btn-small" onClick={() => setShowTemplateSave(true)}>T+</button>
-          <button className="btn-small" onClick={undo} disabled={historyIdx <= 0} title="Undo">&#9664;</button>
-          <button className="btn-small" onClick={redo} disabled={historyIdx >= history.length - 1} title="Redo">&#9654;</button>
+          <button className="btn-small" onClick={() => setShowTemplateSave(true)} title="テンプレート保存">T+</button>
+          <button className="btn-small" onClick={undo} disabled={historyIdx <= 0} title="元に戻す (Ctrl+Z)">&#9664;</button>
+          <button className="btn-small" onClick={redo} disabled={historyIdx >= history.length - 1} title="やり直し (Ctrl+Y)">&#9654;</button>
         </div>
         <div className="header-actions">
           {scenes.length > 0 && (
             <>
-              <span className="total-duration">{totalDuration.toFixed(1)}s</span>
-              <button className="btn-preview" onClick={() => setShowPreview(true)}>Preview</button>
+              <span className="total-duration">{totalDuration.toFixed(1)}秒</span>
+              <button className="btn-preview" onClick={() => setShowPreview(true)}>プレビュー</button>
               <button className="btn-small" onClick={() => handleRender(true)} disabled={rendering} title="低解像度クイックプレビュー">
-                {rendering ? '...' : 'Quick'}
+                {rendering ? '...' : 'クイック'}
               </button>
               <button className="btn-render" onClick={() => handleRender(false)} disabled={rendering}>
-                {rendering ? 'Rendering...' : 'Export'}
+                {rendering ? '書き出し中...' : '書き出し'}
               </button>
             </>
           )}
@@ -397,17 +401,17 @@ function App() {
           {/* Left panel */}
           <div className="left-panel">
             <section className="text-input-section">
-              <h2>Text Input</h2>
+              <h2>テキスト入力</h2>
               <textarea value={text} onChange={e => setText(e.target.value)}
-                placeholder={'Enter ad text here\n(Split by line breaks / punctuation)'} rows={6} />
+                placeholder={'広告のテキストを入力\n（改行・句読点で自動分割）'} rows={6} />
               <button className="btn-primary" onClick={handleSplitText} disabled={loading || !text.trim()}>
-                {loading ? '...' : 'Split into Scenes'}
+                {loading ? '...' : 'シーンに分割'}
               </button>
             </section>
 
             {scenes.length > 0 && (
               <section className="speed-section">
-                <h2>Speed: {globalSpeed.toFixed(1)}x</h2>
+                <h2>全体速度: {globalSpeed.toFixed(1)}x</h2>
                 <input type="range" min="0.5" max="5.0" step="0.1" value={globalSpeed}
                   onChange={e => handleGlobalSpeedChange(parseFloat(e.target.value))} className="speed-slider" />
                 <div className="speed-labels"><span>0.5x</span><span>1.0x</span><span>2.0x</span><span>5.0x</span></div>
@@ -416,7 +420,7 @@ function App() {
 
             {scenes.length > 0 && (
               <section className="scene-list-section">
-                <h2>Scenes ({scenes.length})</h2>
+                <h2>シーン ({scenes.length})</h2>
                 <div className="scene-list">
                   {scenes.map((scene, idx) => (
                     <div key={scene.id} className={`scene-card ${selectedSceneIdx === idx ? 'active' : ''} ${dragIdx === idx ? 'dragging' : ''} ${dragOverIdx === idx && dragIdx !== idx ? 'drop-target' : ''}`}
@@ -464,17 +468,17 @@ function App() {
                           <option value="popin">ポップイン</option>
                           <option value="slide_in">スライドイン</option>
                         </select>
-                        <button className="btn-small" onClick={e => { e.stopPropagation(); handleSplit(idx) }}>Split</button>
+                        <button className="btn-small" onClick={e => { e.stopPropagation(); handleSplit(idx) }}>分割</button>
                         {idx < scenes.length - 1 && (
-                          <button className="btn-small" onClick={e => { e.stopPropagation(); handleMerge(idx) }}>Merge</button>
+                          <button className="btn-small" onClick={e => { e.stopPropagation(); handleMerge(idx) }}>結合</button>
                         )}
-                        <button className="btn-small" onClick={e => { e.stopPropagation(); duplicateScene(idx) }} title="複製">Dup</button>
+                        <button className="btn-small" onClick={e => { e.stopPropagation(); duplicateScene(idx) }} title="複製">複製</button>
                         <button className="btn-tiny" onClick={e => { e.stopPropagation(); deleteScene(idx) }} title="削除">×</button>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="total-bar">Total: {totalDuration.toFixed(1)}s</div>
+                <div className="total-bar">合計: {totalDuration.toFixed(1)}秒</div>
               </section>
             )}
           </div>
@@ -483,9 +487,9 @@ function App() {
           <div className="center-panel">
             {renderResult?.success ? (
               <div className="render-result">
-                <h3>Export Complete</h3>
+                <h3>書き出し完了</h3>
                 <video src={renderResult.url} controls className="result-video" />
-                <p className="result-info">{renderResult.filename} ({renderResult.duration?.toFixed(1)}s)</p>
+                <p className="result-info">{renderResult.filename} ({renderResult.duration?.toFixed(1)}秒)</p>
               </div>
             ) : (
               <div className="preview-frame">
@@ -534,21 +538,21 @@ function App() {
               <>
                 <div className="panel-section">
                   <AssetPicker assetType="backgrounds" onSelect={handleBackgroundSelect}
-                    selectedPath={sel?.background} />
+                    selectedPath={sel?.background} label="背景" />
                 </div>
 
                 <div className="panel-section">
                   <AssetPicker assetType="overlays" onSelect={handleOverlaySelect}
-                    selectedPath={sel?.overlay_image} label="Overlay Image" />
+                    selectedPath={sel?.overlay_image} label="オーバーレイ画像" />
                 </div>
 
                 <div className="panel-section">
-                  <AssetPicker assetType="bgm" onSelect={a => setBgm(a)} selectedPath={bgm?.path} />
+                  <AssetPicker assetType="bgm" onSelect={a => setBgm(a)} selectedPath={bgm?.path} label="BGM" />
                   {bgm && (
                     <div className="bgm-volume">
-                      <label>BGM Vol: {bgmVolume}%</label>
+                      <label>BGM音量: {bgmVolume}%</label>
                       <input type="range" min="0" max="100" value={bgmVolume} onChange={e => setBgmVolume(parseInt(e.target.value))} />
-                      <label>BGM Start: {(bgm.offset || 0).toFixed(1)}s</label>
+                      <label>BGM開始位置: {(bgm.offset || 0).toFixed(1)}秒</label>
                       <input type="range" min="0" max="60" step="0.5" value={bgm.offset || 0}
                         onChange={e => setBgm({ ...bgm, offset: parseFloat(e.target.value) })} />
                     </div>
@@ -758,17 +762,54 @@ function App() {
                   </div>
                 )}
 
-                {/* Telop style (preset) */}
+                {/* Telop style (preset + custom) */}
                 {sel && (
                   <div className="panel-section">
-                    <h3 className="section-title">文字デザイン（プリセット）</h3>
+                    <h3 className="section-title">文字デザイン</h3>
                     <div className="setting-row">
+                      <label>プリセット</label>
                       <select className="select-input" value={sel.telop_style || 'standard'}
                         onChange={e => updateSceneField(selectedSceneIdx, 'telop_style', e.target.value)}>
                         {telopPresets.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}
                       </select>
                     </div>
-                    <button className="btn-small btn-apply-all" onClick={() => applyToAll({ telop_style: sel.telop_style })}>全シーンに適用</button>
+                    <div className="setting-row">
+                      <label>文字色</label>
+                      <input type="color" value={sel.telop_fontcolor || (telopPresets.find(t => t.id === sel.telop_style)?.fontcolor || '#ffffff')}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'telop_fontcolor', e.target.value)} />
+                      <button className="btn-tiny" onClick={() => updateSceneField(selectedSceneIdx, 'telop_fontcolor', null)} title="プリセットの色に戻す">↺</button>
+                    </div>
+                    <div className="setting-row">
+                      <label>ふち色</label>
+                      <input type="color" value={sel.telop_bordercolor || (telopPresets.find(t => t.id === sel.telop_style)?.bordercolor || '#000000')}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'telop_bordercolor', e.target.value)} />
+                      <button className="btn-tiny" onClick={() => updateSceneField(selectedSceneIdx, 'telop_bordercolor', null)} title="プリセットのふちに戻す">↺</button>
+                    </div>
+                    <div className="setting-row">
+                      <label>ふち幅: {sel.telop_borderw ?? (telopPresets.find(t => t.id === sel.telop_style)?.borderw ?? 3)}px</label>
+                      <input type="range" min="0" max="12" step="1"
+                        value={sel.telop_borderw ?? (telopPresets.find(t => t.id === sel.telop_style)?.borderw ?? 3)}
+                        onChange={e => updateSceneField(selectedSceneIdx, 'telop_borderw', parseInt(e.target.value))} />
+                    </div>
+                    <div className="setting-row">
+                      <label>
+                        <input type="checkbox" checked={sel.telop_bold || false}
+                          onChange={e => updateSceneField(selectedSceneIdx, 'telop_bold', e.target.checked)} />
+                        {' '}太字
+                      </label>
+                    </div>
+                    <div className="btn-row">
+                      <button className="btn-small" onClick={() => {
+                        updateScenes(scenes.map((s, i) => i === selectedSceneIdx ? {
+                          ...s, telop_fontcolor: null, telop_bordercolor: null, telop_borderw: null, telop_bold: false
+                        } : s))
+                      }}>カスタム解除</button>
+                      <button className="btn-small btn-apply-all" onClick={() => applyToAll({
+                        telop_style: sel.telop_style, telop_fontcolor: sel.telop_fontcolor,
+                        telop_bordercolor: sel.telop_bordercolor, telop_borderw: sel.telop_borderw,
+                        telop_bold: sel.telop_bold,
+                      })}>全シーンに適用</button>
+                    </div>
                   </div>
                 )}
 
@@ -780,28 +821,28 @@ function App() {
                       <label>
                         <input type="checkbox" checked={sel.custom_box?.enabled || false}
                           onChange={e => setCustomBox(selectedSceneIdx, { enabled: e.target.checked })} />
-                        {' '}Enable
+                        {' '}有効
                       </label>
                     </div>
                     {sel.custom_box?.enabled && (
                       <>
                         <div className="setting-row">
-                          <label>Color</label>
+                          <label>帯の色</label>
                           <input type="color" value={sel.custom_box?.color || '#000000'}
                             onChange={e => setCustomBox(selectedSceneIdx, { color: e.target.value })} />
                         </div>
                         <div className="setting-row">
-                          <label>Opacity: {(sel.custom_box?.opacity ?? 0.6).toFixed(1)}</label>
+                          <label>透明度: {(sel.custom_box?.opacity ?? 0.6).toFixed(1)}</label>
                           <input type="range" min="0" max="1" step="0.1" value={sel.custom_box?.opacity ?? 0.6}
                             onChange={e => setCustomBox(selectedSceneIdx, { opacity: parseFloat(e.target.value) })} />
                         </div>
                         <div className="setting-row">
-                          <label>Roundness: {sel.custom_box?.radius ?? 6}px</label>
+                          <label>角丸: {sel.custom_box?.radius ?? 6}px</label>
                           <input type="range" min="0" max="30" step="1" value={sel.custom_box?.radius ?? 6}
                             onChange={e => setCustomBox(selectedSceneIdx, { radius: parseInt(e.target.value) })} />
                         </div>
                         <div className="setting-row">
-                          <label>Padding: {sel.custom_box?.padding ?? 10}px</label>
+                          <label>余白: {sel.custom_box?.padding ?? 10}px</label>
                           <input type="range" min="0" max="30" step="1" value={sel.custom_box?.padding ?? 10}
                             onChange={e => setCustomBox(selectedSceneIdx, { padding: parseInt(e.target.value) })} />
                         </div>
@@ -813,50 +854,50 @@ function App() {
 
                 {/* TTS */}
                 <div className="panel-section">
-                  <h3 className="section-title">TTS <span className={`tts-status ${ttsAvailable ? 'on' : 'off'}`}>{ttsAvailable ? 'OK' : 'OFF'}</span></h3>
+                  <h3 className="section-title">読み上げ音声 <span className={`tts-status ${ttsAvailable ? 'on' : 'off'}`}>{ttsAvailable ? '接続OK' : '未接続'}</span></h3>
                   <div className="tts-controls">
                     <div className="tts-toggle-row">
-                      <button className="btn-small" onClick={() => toggleAllTts(true)}>All ON</button>
-                      <button className="btn-small" onClick={() => toggleAllTts(false)}>All OFF</button>
+                      <button className="btn-small" onClick={() => toggleAllTts(true)}>全てON</button>
+                      <button className="btn-small" onClick={() => toggleAllTts(false)}>全てOFF</button>
                     </div>
                     {ttsAvailable && ttsSpeakers.length > 0 && (
                       <div className="setting-row">
-                        <label>Speaker</label>
+                        <label>話者</label>
                         <select value={ttsSpeakerId} onChange={e => setTtsSpeakerId(parseInt(e.target.value))} className="select-input">
                           {ttsSpeakers.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
                         </select>
                       </div>
                     )}
                     <div className="setting-row">
-                      <label>TTS Speed: {ttsSpeed.toFixed(1)}x</label>
+                      <label>読み上げ速度: {ttsSpeed.toFixed(1)}x</label>
                       <input type="range" min="0.5" max="2.0" step="0.1" value={ttsSpeed} onChange={e => setTtsSpeed(parseFloat(e.target.value))} className="speed-slider" />
                     </div>
-                    {ttsAvailable && <button className="btn-primary" onClick={handleTtsBatch} disabled={ttsGenerating}>{ttsGenerating ? '...' : 'Generate TTS'}</button>}
-                    {!ttsAvailable && <p className="tts-hint">Start VOICEVOX and reload.</p>}
+                    {ttsAvailable && <button className="btn-primary" onClick={handleTtsBatch} disabled={ttsGenerating}>{ttsGenerating ? '...' : '読み上げ音声を生成'}</button>}
+                    {!ttsAvailable && <p className="tts-hint">VOICEVOXを起動してリロードしてください。</p>}
                   </div>
                 </div>
 
                 {/* Output */}
                 <div className="panel-section">
-                  <h3 className="section-title">Output</h3>
+                  <h3 className="section-title">書き出し設定</h3>
                   <div className="setting-row">
-                    <label>Transition</label>
+                    <label>トランジション</label>
                     <select value={transition} onChange={e => setTransition(e.target.value)} className="select-input">
-                      <option value="cut">Cut</option><option value="crossfade">Crossfade</option>
-                      <option value="slide">Slide</option><option value="wipe">Wipe</option>
+                      <option value="cut">カット</option><option value="crossfade">クロスフェード</option>
+                      <option value="slide">スライド</option><option value="wipe">ワイプ</option>
                     </select>
                   </div>
                   <div className="setting-row">
-                    <label>Aspect Ratio</label>
+                    <label>アスペクト比</label>
                     <select value={aspectRatio} onChange={e => setAspectRatio(e.target.value)} className="select-input">
-                      <option value="9:16">9:16</option><option value="1:1">1:1</option><option value="16:9">16:9</option>
+                      <option value="9:16">9:16（縦動画）</option><option value="1:1">1:1（正方形）</option><option value="16:9">16:9（横動画）</option>
                     </select>
                   </div>
                   <div className="setting-row">
-                    <label>Format</label>
+                    <label>形式</label>
                     <select value={outputFormat} onChange={e => setOutputFormat(e.target.value)} className="select-input">
-                      <option value="mp4">MP4</option>
-                      <option value="gif">GIF</option>
+                      <option value="mp4">MP4（動画）</option>
+                      <option value="gif">GIF（アニメ画像）</option>
                     </select>
                   </div>
                 </div>
@@ -869,23 +910,23 @@ function App() {
       {showProjectList && (
         <div className="modal-overlay" onClick={() => setShowProjectList(false)}>
           <div className="modal modal-wide" onClick={e => e.stopPropagation()}>
-            <h3>Projects</h3>
-            {projects.length === 0 ? <p className="tts-hint">No projects</p> : (
+            <h3>プロジェクト一覧</h3>
+            {projects.length === 0 ? <p className="tts-hint">プロジェクトがありません</p> : (
               <div className="project-list">
                 {projects.map(p => (
                   <div key={p.filename} className="project-item">
                     {p.thumb_url && <img src={p.thumb_url} alt="" className="project-thumb" />}
-                    <div className="project-info"><strong>{p.name}</strong><span className="project-meta">{p.scene_count} scenes / {p.total_duration?.toFixed(1)}s</span></div>
+                    <div className="project-info"><strong>{p.name}</strong><span className="project-meta">{p.scene_count}シーン / {p.total_duration?.toFixed(1)}秒</span></div>
                     <div className="project-actions">
-                      <button className="btn-small" onClick={() => handleLoadProject(p.filename)}>Open</button>
-                      <button className="btn-small" onClick={() => handleDuplicateProject(p.filename)}>Copy</button>
-                      <button className="btn-tiny" onClick={() => handleDeleteProject(p.filename)}>Del</button>
+                      <button className="btn-small" onClick={() => handleLoadProject(p.filename)}>開く</button>
+                      <button className="btn-small" onClick={() => handleDuplicateProject(p.filename)}>複製</button>
+                      <button className="btn-tiny" onClick={() => handleDeleteProject(p.filename)}>削除</button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
-            <div className="modal-actions" style={{ marginTop: 12 }}><button className="btn-small" onClick={() => setShowProjectList(false)}>Close</button></div>
+            <div className="modal-actions" style={{ marginTop: 12 }}><button className="btn-small" onClick={() => setShowProjectList(false)}>閉じる</button></div>
           </div>
         </div>
       )}
@@ -893,17 +934,17 @@ function App() {
       {showTemplateSave && (
         <div className="modal-overlay" onClick={() => setShowTemplateSave(false)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
-            <h3>Save Template</h3>
-            <input type="text" placeholder="Template name" value={templateName} onChange={e => setTemplateName(e.target.value)} className="modal-input" autoFocus />
+            <h3>テンプレート保存</h3>
+            <input type="text" placeholder="テンプレート名" value={templateName} onChange={e => setTemplateName(e.target.value)} className="modal-input" autoFocus />
             <div className="modal-actions">
-              <button className="btn-primary" onClick={handleSaveTemplate} disabled={!templateName.trim()}>Save</button>
-              <button className="btn-small" onClick={() => setShowTemplateSave(false)}>Cancel</button>
+              <button className="btn-primary" onClick={handleSaveTemplate} disabled={!templateName.trim()}>保存</button>
+              <button className="btn-small" onClick={() => setShowTemplateSave(false)}>キャンセル</button>
             </div>
             {templates.length > 0 && (
-              <div className="template-list"><h4>Existing</h4>
+              <div className="template-list"><h4>既存のテンプレート</h4>
                 {templates.map(t => (
                   <div key={t.filename} className="template-item"><span>{t.name}</span>
-                    <button className="btn-tiny" onClick={() => handleDeleteTemplate(t.filename)}>Del</button>
+                    <button className="btn-tiny" onClick={() => handleDeleteTemplate(t.filename)}>削除</button>
                   </div>
                 ))}
               </div>

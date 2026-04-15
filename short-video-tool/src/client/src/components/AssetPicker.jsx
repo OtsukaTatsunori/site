@@ -35,19 +35,19 @@ export default function AssetPicker({ assetType, onSelect, selectedPath, label }
     e.target.value = ''
   }
 
-  const title = label || (assetType === 'backgrounds' ? 'Background' : assetType === 'bgm' ? 'BGM' : assetType === 'overlays' ? 'Overlay' : assetType)
+  const title = label || (assetType === 'backgrounds' ? '背景' : assetType === 'bgm' ? 'BGM' : assetType === 'overlays' ? 'オーバーレイ' : assetType === 'se' ? '効果音' : assetType === 'fonts' ? 'フォント' : assetType)
 
   return (
     <div className="asset-picker">
       <div className="asset-picker-header">
         <h3>{title}</h3>
-        <button className="btn-tiny" onClick={() => fileRef.current?.click()}>+ Add</button>
+        <button className="btn-tiny" onClick={() => fileRef.current?.click()}>+ 追加</button>
         <input ref={fileRef} type="file" multiple accept="image/*,video/*,audio/*" onChange={handleUpload} style={{ display: 'none' }} />
       </div>
 
       {categories.length > 0 && (
         <div className="tag-filter">
-          <button className={`tag-btn ${filterCat === '' ? 'active' : ''}`} onClick={() => setFilterCat('')}>All</button>
+          <button className={`tag-btn ${filterCat === '' ? 'active' : ''}`} onClick={() => setFilterCat('')}>全て</button>
           {categories.map(cat => (
             <button key={cat} className={`tag-btn ${filterCat === cat ? 'active' : ''}`} onClick={() => setFilterCat(cat)}>{cat}</button>
           ))}
@@ -56,14 +56,14 @@ export default function AssetPicker({ assetType, onSelect, selectedPath, label }
 
       <div className="asset-grid">
         <div className={`asset-item ${!selectedPath ? 'selected' : ''}`} onClick={() => onSelect(null)}>
-          <div className="asset-thumb none-thumb">None</div>
+          <div className="asset-thumb none-thumb">なし</div>
         </div>
         {filtered.map(asset => (
           <div key={asset.path} className={`asset-item ${selectedPath === asset.path ? 'selected' : ''}`} onClick={() => onSelect(asset)}>
             {asset.type === 'image' ? (
               <img className="asset-thumb" src={asset.path} alt={asset.filename} loading="lazy" />
             ) : asset.type === 'video' ? (
-              <div className="asset-thumb video-thumb"><span>Video</span></div>
+              <div className="asset-thumb video-thumb"><span>動画</span></div>
             ) : (
               <div className="asset-thumb audio-thumb">
                 <button className="play-btn" onClick={e => { e.stopPropagation(); togglePlay(asset.path) }}>
@@ -77,7 +77,7 @@ export default function AssetPicker({ assetType, onSelect, selectedPath, label }
       </div>
 
       {filtered.length === 0 && assets.length === 0 && (
-        <p className="no-assets">No assets. Click "+ Add" to upload.</p>
+        <p className="no-assets">素材がありません。「+ 追加」からアップロードしてください。</p>
       )}
     </div>
   )

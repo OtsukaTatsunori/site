@@ -117,6 +117,10 @@ def build_drawtext_filter(
     custom_box: dict | None = None,
     custom_fontsize: int | None = None,
     text_anim: str = "none",
+    custom_fontcolor: str | None = None,
+    custom_bordercolor: str | None = None,
+    custom_borderw: int | None = None,
+    custom_bold: bool = False,
 ) -> str:
     """drawtextフィルタ文字列を構築する（text_anim: none/typewriter/popin/slide_in）"""
     preset = TELOP_PRESETS.get(preset_name, TELOP_PRESETS["standard"])
@@ -131,14 +135,22 @@ def build_drawtext_filter(
     )
 
     fontsize = custom_fontsize if custom_fontsize else preset["fontsize"]
+    # 色・枠のカスタム上書き
+    fontcolor = custom_fontcolor if custom_fontcolor else preset["fontcolor"]
+    bordercolor = custom_bordercolor if custom_bordercolor else preset["bordercolor"]
+    borderw = custom_borderw if custom_borderw is not None else preset["borderw"]
+    # 太字: 枠を太くして擬似的に太字に
+    if custom_bold:
+        borderw = borderw + 4
+
     pos = get_telop_position(preset["position"], fontsize, custom_x, custom_y)
 
     parts = [
         f"drawtext=text='{escaped_text}'",
         f"fontsize={fontsize}",
-        f"fontcolor={preset['fontcolor']}",
-        f"borderw={preset['borderw']}",
-        f"bordercolor={preset['bordercolor']}",
+        f"fontcolor={fontcolor}",
+        f"borderw={borderw}",
+        f"bordercolor={bordercolor}",
         pos,
     ]
 
@@ -276,6 +288,10 @@ def generate_scene_video(
     telop_font = scene.get("telop_font")
     custom_box = scene.get("custom_box")
     text_anim = scene.get("text_anim", "none")
+    telop_fontcolor = scene.get("telop_fontcolor")
+    telop_bordercolor = scene.get("telop_bordercolor")
+    telop_borderw = scene.get("telop_borderw")
+    telop_bold = scene.get("telop_bold", False)
     width, height = resolution
 
     font_path = find_font(base_dir, telop_font)
@@ -384,6 +400,10 @@ def generate_scene_video(
             custom_box=custom_box,
             custom_fontsize=telop_fontsize,
             text_anim=text_anim,
+            custom_fontcolor=telop_fontcolor,
+            custom_bordercolor=telop_bordercolor,
+            custom_borderw=telop_borderw,
+            custom_bold=telop_bold,
         )
         text_filters.append(drawtext)
 

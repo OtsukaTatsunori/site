@@ -33,12 +33,14 @@
 
 /* === 左パネル === */
 .left-panel {
-  width: 340px;
-  min-width: 340px;
+  width: 400px;
+  min-width: 280px;
+  max-width: 700px;
+  resize: horizontal;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 /* === 中央パネル (プレビュー) === */
@@ -72,6 +74,7 @@
 
 .text-input-section textarea {
   width: 100%;
+  min-height: 120px;
   padding: 12px;
   border: 1px solid #0f3460;
   border-radius: 8px;
@@ -79,7 +82,7 @@
   color: #eee;
   font-size: 14px;
   font-family: inherit;
-  resize: vertical;
+  resize: both;
   outline: none;
 }
 .text-input-section textarea:focus {

@@ -15,8 +15,10 @@
   background: #16213e;
   border-radius: 12px;
   padding: 16px;
-  max-width: 400px;
-  width: 100%;
+  width: min(360px, 90vw);
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .preview-header {
@@ -47,13 +49,13 @@
   position: relative;
   width: 100%;
   aspect-ratio: 9 / 16;
-  max-height: 500px;
   background: #000;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 1;
 }
 
 .preview-screen-bg {

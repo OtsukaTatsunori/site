@@ -38,12 +38,16 @@ export default function Preview({ scenes, telopPresets, onClose }) {
   const getStyle = (scene) => {
     const p = (telopPresets || []).find(t => t.id === scene?.telop_style) || {}
     const fs = scene?.telop_fontsize || p.fontsize || 56
+    const color = scene?.telop_fontcolor || p.fontcolor || 'white'
+    const borderColor = scene?.telop_bordercolor || p.bordercolor || 'black'
+    const baseBw = scene?.telop_borderw != null ? scene.telop_borderw : (p.borderw || 2)
+    const bw = scene?.telop_bold ? baseBw + 4 : baseBw
     return {
       fontSize: `${fs * SCALE}px`,
-      color: p.fontcolor || 'white',
-      WebkitTextStroke: `${(p.borderw || 2) * SCALE}px ${p.bordercolor || 'black'}`,
+      color,
+      WebkitTextStroke: `${bw * SCALE}px ${borderColor}`,
       textAlign: 'center',
-      fontWeight: 'bold',
+      fontWeight: scene?.telop_bold ? '900' : 'bold',
       lineHeight: 1.2,
       whiteSpace: 'pre-wrap',
     }
@@ -55,7 +59,7 @@ export default function Preview({ scenes, telopPresets, onClose }) {
   return (
     <div className="preview-overlay">
       <div className="preview-container">
-        <div className="preview-header"><h3>Preview</h3><button className="btn-close" onClick={onClose}>Close</button></div>
+        <div className="preview-header"><h3>プレビュー</h3><button className="btn-close" onClick={onClose}>閉じる</button></div>
         <div className="preview-screen">
           {cs.background ? <img src={cs.background} alt="" className="preview-screen-bg" /> : <div className="preview-screen-bg black" />}
           {cs.overlay_image && (
@@ -85,7 +89,7 @@ export default function Preview({ scenes, telopPresets, onClose }) {
           <div className="preview-scene-num">{currentIdx + 1} / {scenes.length}</div>
         </div>
         <div className="preview-controls">
-          <button className="btn-play" onClick={handlePlay}>{playing ? 'Stop' : 'Play'}</button>
+          <button className="btn-play" onClick={handlePlay}>{playing ? '停止' : '再生'}</button>
           <div className="preview-progress">
             <div className="progress-bar">
               <div className="progress-fill" style={{ width: `${progress}%` }} />
