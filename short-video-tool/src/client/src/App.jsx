@@ -348,6 +348,7 @@ function App() {
                       <p className="scene-text">{scene.text}</p>
                       {scene.background && <div className="scene-bg-preview"><img src={scene.background} alt="" /></div>}
                       {scene.overlay_image && <div className="scene-overlay-badge">+ overlay</div>}
+                      {scene.se_path && <div className="scene-overlay-badge">♪ SE</div>}
                       <div className="duration-control">
                         <input type="range" min="0.5" max="15.0" step="0.1" value={scene.duration || 1.5}
                           onChange={e => handleDurationChange(idx, parseFloat(e.target.value))} className="duration-slider" />
@@ -457,6 +458,14 @@ function App() {
                     </div>
                   )}
                 </div>
+
+                {sel && (
+                  <div className="panel-section">
+                    <AssetPicker assetType="se" onSelect={a => updateSceneField(selectedSceneIdx, 'se_path', a ? a.path : null)}
+                      selectedPath={sel.se_path} label="効果音 (SE)" />
+                    <p className="tts-hint">※ SE は BGM と一緒に書き出し時のみ再生されます</p>
+                  </div>
+                )}
 
                 {/* Telop position & size */}
                 {sel && (

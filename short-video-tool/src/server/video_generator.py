@@ -471,8 +471,11 @@ def add_bgm(
     volume: int,
     base_dir: str,
     tts_audio_paths: list[str] | None = None,
+    se_events: list[dict] | None = None,
 ) -> dict:
-    """動画にBGMを追加する。最後2秒フェードアウト。"""
+    """動画にBGMを追加する。最後2秒フェードアウト。
+    se_events: [{path: str, start: float}] シーン頭で鳴らす効果音
+    """
     bgm_full = os.path.join(base_dir, bgm_path.lstrip("/"))
     if not os.path.exists(bgm_full):
         return {"success": False, "error": f"BGMファイルが見つかりません: {bgm_full}"}
@@ -499,26 +502,47 @@ def add_bgm(
                 tts_inputs.append(input_idx)
                 input_idx += 1
 
+    # SE音声がある場合（シーン頭で鳴らす）
+    se_inputs = []  # [(input_idx, delay_ms)]
+    if se_events:
+        for ev in se_events:
+            se_full = os.path.join(base_dir, ev["path"].lstrip("/"))
+            if os.path.exists(se_full):
+                cmd += ["-i", se_full]
+                delay_ms = int(ev.get("start", 0) * 1000)
+                se_inputs.append((input_idx, delay_ms))
+                input_idx += 1
+
     # BGMフィルタ: 音量調整 + フェードアウト + 動画に合わせてトリミング
     bgm_filter = f"[1:a]volume={vol:.2f},afade=t=out:st={fade_start:.2f}:d=2.0[bgm]"
 
+    # オーディオミックス構築
+    parts = [bgm_filter]
+    mix_labels = ["[bgm]"]
+
     if tts_inputs:
-        # TTS音声をミックス
-        tts_mix = ""
-        for idx in tts_inputs:
-            tts_mix += f"[{idx}:a]"
-        filter_complex = f"{bgm_filter};{tts_mix}amix=inputs={len(tts_inputs)}[tts];[bgm][tts]amix=inputs=2:duration=first[outa]"
-        cmd += [
-            "-filter_complex", filter_complex,
-            "-map", "0:v",
-            "-map", "[outa]",
-        ]
+        tts_mix = "".join(f"[{idx}:a]" for idx in tts_inputs)
+        parts.append(f"{tts_mix}amix=inputs={len(tts_inputs)}[tts]")
+        mix_labels.append("[tts]")
+
+    if se_inputs:
+        for i, (idx, delay_ms) in enumerate(se_inputs):
+            parts.append(f"[{idx}:a]adelay={delay_ms}|{delay_ms}[se{i}]")
+        se_concat = "".join(f"[se{i}]" for i in range(len(se_inputs)))
+        parts.append(f"{se_concat}amix=inputs={len(se_inputs)}:normalize=0[seall]")
+        mix_labels.append("[seall]")
+
+    if len(mix_labels) > 1:
+        parts.append(f"{''.join(mix_labels)}amix=inputs={len(mix_labels)}:duration=first:normalize=0[outa]")
+        out_label = "[outa]"
     else:
-        cmd += [
-            "-filter_complex", bgm_filter,
-            "-map", "0:v",
-            "-map", "[bgm]",
-        ]
+        out_label = "[bgm]"
+
+    cmd += [
+        "-filter_complex", ";".join(parts),
+        "-map", "0:v",
+        "-map", out_label,
+    ]
 
     cmd += [
         "-c:v", "copy",
@@ -579,15 +603,26 @@ def render_full_video(
     if not result["success"]:
         return {"success": False, "error": f"シーン結合に失敗: {result.get('error', '')}"}
 
+    # SEイベントを集める（シーン開始時刻を累積で算出）
+    se_events = []
+    tts_paths = []
+    cumulative = 0.0
+    for s in scenes:
+        if s.get("se_path"):
+            se_events.append({"path": s["se_path"], "start": cumulative})
+        if s.get("tts_path") and s.get("tts_enabled", True):
+            tts_paths.append(s["tts_path"])
+        cumulative += s.get("duration", 3.0)
+
     # 3. BGMを追加（あれば）
+    final_path = os.path.join(base_dir, "output", f"{timestamp}.mp4")
     if bgm and bgm.get("path"):
-        final_path = os.path.join(base_dir, "output", f"{timestamp}.mp4")
-        result = add_bgm(concat_path, bgm["path"], final_path, bgm_volume, base_dir)
+        result = add_bgm(concat_path, bgm["path"], final_path, bgm_volume, base_dir,
+                         tts_audio_paths=tts_paths, se_events=se_events)
         if not result["success"]:
             return {"success": False, "error": f"BGM追加に失敗: {result.get('error', '')}"}
     else:
-        final_path = os.path.join(base_dir, "output", f"{timestamp}.mp4")
-        # BGMなし: そのまま出力フォルダにコピー
+        # BGMなし: そのまま出力フォルダにコピー（SEはBGMと一緒の時のみ有効）
         import shutil
         shutil.copy2(concat_path, final_path)
 
