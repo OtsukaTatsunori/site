@@ -1,6 +1,6 @@
 #!/bin/bash
-# ショート動画ジェネレーター 起動スクリプト
-# 使い方: ダブルクリック or ターミナルで ./start.sh
+# ショート動画ジェネレーター 起動スクリプト (Node不要版)
+# 使い方: ./start.sh
 
 cd "$(dirname "$0")"
 
@@ -9,48 +9,27 @@ echo " ショート動画ジェネレーター"
 echo "==============================="
 echo ""
 
-# 依存パッケージの確認・インストール
-echo "[1/4] Python依存パッケージを確認中..."
+echo "[1/3] Python依存パッケージを確認中..."
 pip3 install -q fastapi uvicorn python-multipart aiofiles httpx 2>/dev/null
 
-echo "[2/4] Node依存パッケージを確認中..."
-cd src/client
-if [ ! -d "node_modules" ]; then
-  npm install --silent
-fi
-cd ../..
-
-# バックエンド起動
-echo "[3/4] バックエンドを起動中..."
-python3 -m uvicorn src.server.main:app --host 0.0.0.0 --port 8000 --reload &
-BACKEND_PID=$!
-
-# フロントエンド起動
-echo "[4/4] フロントエンドを起動中..."
-cd src/client
-npm run dev -- --host 0.0.0.0 &
-FRONTEND_PID=$!
-cd ../..
-
-echo ""
-echo "==============================="
-echo " 起動完了！"
-echo " ブラウザで開いてください:"
-echo " http://localhost:5173"
-echo "==============================="
-echo ""
-echo "終了するには Ctrl+C を押してください"
-echo ""
-
-# Ctrl+C で両方のプロセスを終了
-cleanup() {
+echo "[2/3] フロントエンド資材を確認中..."
+if [ ! -f "static/index.html" ]; then
   echo ""
-  echo "サーバーを停止中..."
-  kill $BACKEND_PID 2>/dev/null
-  kill $FRONTEND_PID 2>/dev/null
-  exit 0
-}
-trap cleanup INT TERM
+  echo "【警告】static/index.html が見つかりません。"
+  echo "git pull で最新を取得するか、Node.js 環境で:"
+  echo "  cd src/client && npm install && npm run build && cp -r dist/* ../../static/"
+  echo "を実行してから再度このスクリプトを実行してください。"
+  exit 1
+fi
 
-# プロセスが終了するまで待機
-wait
+echo "[3/3] サーバーを起動中..."
+echo ""
+echo "==============================="
+echo " ブラウザで開いてください:"
+echo " http://localhost:8000"
+echo "==============================="
+echo ""
+echo " 終了するには Ctrl+C を押してください"
+echo ""
+
+python3 -m uvicorn src.server.main:app --host 0.0.0.0 --port 8000

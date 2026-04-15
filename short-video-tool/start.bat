@@ -9,34 +9,32 @@ echo.
 
 cd /d "%~dp0"
 
-echo [1/4] Python依存パッケージを確認中...
+echo [1/3] Python依存パッケージを確認中...
 pip install -q fastapi uvicorn python-multipart aiofiles httpx 2>nul
 
-echo [2/4] Node依存パッケージを確認中...
-cd src\client
-if not exist "node_modules" (
-  npm install --silent
+echo [2/3] フロントエンド資材を確認中...
+if not exist "static\index.html" (
+  echo.
+  echo 【警告】static\index.html が見つかりません。
+  echo git pull で最新を取得するか、Node.js 環境で
+  echo  cd src\client ^& npm install ^& npm run build
+  echo を実行してから再度このスクリプトを実行してください。
+  echo.
+  pause
+  exit /b 1
 )
-cd ..\..
 
-echo [3/4] バックエンドを起動中...
-start /b python -m uvicorn src.server.main:app --host 0.0.0.0 --port 8000 --reload
-
-echo [4/4] フロントエンドを起動中...
-cd src\client
-start /b npm run dev -- --host 0.0.0.0
-cd ..\..
-
+echo [3/3] サーバーを起動中...
 echo.
 echo ===============================
-echo  起動完了！
 echo  ブラウザで開いてください:
-echo  http://localhost:5173
+echo  http://localhost:8000
 echo ===============================
 echo.
+echo  終了するには Ctrl+C を押してください
+echo.
 
-timeout /t 3 >nul
-start http://localhost:5173
+timeout /t 2 >nul
+start http://localhost:8000
 
-echo 終了するにはこのウィンドウを閉じてください
-pause >nul
+python -m uvicorn src.server.main:app --host 0.0.0.0 --port 8000
