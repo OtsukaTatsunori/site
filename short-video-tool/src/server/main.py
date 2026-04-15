@@ -77,6 +77,7 @@ class RenderRequest(BaseModel):
     bgm_volume: int = 80
     aspect_ratio: str = "9:16"
     transition: str = "cut"
+    output_format: str = "mp4"  # "mp4" | "gif"
 
 class ProjectSaveRequest(BaseModel):
     name: str
@@ -296,6 +297,7 @@ def render_full(req: RenderRequest):
         aspect_ratio=req.aspect_ratio,
         transition=req.transition,
         resolution=resolution,
+        output_format=req.output_format,
     )
     return result
 

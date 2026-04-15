@@ -660,6 +660,32 @@ def add_bgm(
     return {"success": True, "output": output_path}
 
 
+def convert_to_gif(input_path: str, output_path: str) -> dict:
+    """MP4からGIFに変換する（palettegen + paletteuse で品質確保）"""
+    palette_path = output_path + "_palette.png"
+    pgen = [
+        "ffmpeg", "-y", "-i", input_path,
+        "-vf", "fps=15,scale=480:-1:flags=lanczos,palettegen",
+        palette_path,
+    ]
+    r1 = subprocess.run(pgen, capture_output=True, text=True)
+    if r1.returncode != 0:
+        return {"success": False, "error": r1.stderr}
+    puse = [
+        "ffmpeg", "-y", "-i", input_path, "-i", palette_path,
+        "-lavfi", "fps=15,scale=480:-1:flags=lanczos[x];[x][1:v]paletteuse",
+        output_path,
+    ]
+    r2 = subprocess.run(puse, capture_output=True, text=True)
+    try:
+        os.remove(palette_path)
+    except OSError:
+        pass
+    if r2.returncode != 0:
+        return {"success": False, "error": r2.stderr}
+    return {"success": True, "output": output_path}
+
+
 def render_full_video(
     base_dir: str,
     scenes: list[dict],
@@ -669,6 +695,7 @@ def render_full_video(
     transition: str,
     resolution: tuple[int, int],
     quick_mode: bool = False,
+    output_format: str = "mp4",
 ) -> dict:
     """全シーンを結合して最終動画を生成する。quick_mode=True で低解像度/低fps"""
     if quick_mode:
@@ -734,6 +761,13 @@ def render_full_video(
         # BGMなし: そのまま出力フォルダにコピー（SEはBGMと一緒の時のみ有効）
         import shutil
         shutil.copy2(concat_path, final_path)
+
+    # GIF変換が指定されていれば変換
+    if output_format == "gif":
+        gif_path = final_path.rsplit(".", 1)[0] + ".gif"
+        gif_result = convert_to_gif(final_path, gif_path)
+        if gif_result["success"]:
+            final_path = gif_path
 
     filename = os.path.basename(final_path)
     total_duration = sum(scene_durations)

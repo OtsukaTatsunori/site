@@ -13,6 +13,7 @@ function App() {
   const [bgmVolume, setBgmVolume] = useState(80)
   const [transition, setTransition] = useState('cut')
   const [aspectRatio, setAspectRatio] = useState('9:16')
+  const [outputFormat, setOutputFormat] = useState('mp4')
   const [rendering, setRendering] = useState(false)
   const [renderResult, setRenderResult] = useState(null)
   const [ttsAvailable, setTtsAvailable] = useState(false)
@@ -198,7 +199,7 @@ function App() {
       const endpoint = quick ? '/api/render/preview' : '/api/render/full'
       const res = await fetch(endpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition }),
+        body: JSON.stringify({ scenes, bgm: bgm ? { path: bgm.path, offset: bgm.offset || 0 } : null, bgm_volume: bgmVolume, aspect_ratio: aspectRatio, transition, output_format: outputFormat }),
       })
       const data = await res.json()
       setRenderResult(data)
@@ -782,6 +783,13 @@ function App() {
                     <label>Aspect Ratio</label>
                     <select value={aspectRatio} onChange={e => setAspectRatio(e.target.value)} className="select-input">
                       <option value="9:16">9:16</option><option value="1:1">1:1</option><option value="16:9">16:9</option>
+                    </select>
+                  </div>
+                  <div className="setting-row">
+                    <label>Format</label>
+                    <select value={outputFormat} onChange={e => setOutputFormat(e.target.value)} className="select-input">
+                      <option value="mp4">MP4</option>
+                      <option value="gif">GIF</option>
                     </select>
                   </div>
                 </div>
