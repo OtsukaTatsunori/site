@@ -246,6 +246,39 @@ function App() {
     updateScenes(scenes.map((s, i) => i === idx ? { ...s, [field]: val } : s))
   }
 
+  // シーン複製
+  const duplicateScene = (idx) => {
+    const source = scenes[idx]
+    const maxId = scenes.reduce((m, s) => Math.max(m, s.id || 0), 0)
+    const copy = { ...source, id: maxId + 1, tts_path: undefined }
+    const newScenes = [...scenes.slice(0, idx + 1), copy, ...scenes.slice(idx + 1)]
+    updateScenes(newScenes)
+  }
+
+  // シーン削除
+  const deleteScene = (idx) => {
+    const newScenes = scenes.filter((_, i) => i !== idx)
+    updateScenes(newScenes)
+    if (selectedSceneIdx === idx) setSelectedSceneIdx(newScenes.length > 0 ? Math.min(idx, newScenes.length - 1) : null)
+  }
+
+  // D&D 並び替え
+  const [dragIdx, setDragIdx] = useState(null)
+  const [dragOverIdx, setDragOverIdx] = useState(null)
+  const handleDragStart = (idx) => setDragIdx(idx)
+  const handleDragOver = (e, idx) => { e.preventDefault(); if (idx !== dragOverIdx) setDragOverIdx(idx) }
+  const handleDrop = (e, idx) => {
+    e.preventDefault()
+    if (dragIdx === null || dragIdx === idx) { setDragIdx(null); setDragOverIdx(null); return }
+    const newScenes = [...scenes]
+    const [moved] = newScenes.splice(dragIdx, 1)
+    newScenes.splice(idx, 0, moved)
+    updateScenes(newScenes)
+    setDragIdx(null); setDragOverIdx(null)
+    setSelectedSceneIdx(idx)
+  }
+  const handleDragEnd = () => { setDragIdx(null); setDragOverIdx(null) }
+
   // apply fields to all scenes (一括適用)
   const applyToAll = (fields) => {
     updateScenes(scenes.map(s => ({ ...s, ...fields })))
@@ -333,7 +366,12 @@ function App() {
                 <h2>Scenes ({scenes.length})</h2>
                 <div className="scene-list">
                   {scenes.map((scene, idx) => (
-                    <div key={scene.id} className={`scene-card ${selectedSceneIdx === idx ? 'active' : ''}`}
+                    <div key={scene.id} className={`scene-card ${selectedSceneIdx === idx ? 'active' : ''} ${dragIdx === idx ? 'dragging' : ''} ${dragOverIdx === idx && dragIdx !== idx ? 'drop-target' : ''}`}
+                      draggable
+                      onDragStart={() => handleDragStart(idx)}
+                      onDragOver={e => handleDragOver(e, idx)}
+                      onDrop={e => handleDrop(e, idx)}
+                      onDragEnd={handleDragEnd}
                       onClick={() => setSelectedSceneIdx(idx)}>
                       <div className="scene-header">
                         <span className="scene-number">#{idx + 1}</span>
@@ -377,6 +415,8 @@ function App() {
                         {idx < scenes.length - 1 && (
                           <button className="btn-small" onClick={e => { e.stopPropagation(); handleMerge(idx) }}>Merge</button>
                         )}
+                        <button className="btn-small" onClick={e => { e.stopPropagation(); duplicateScene(idx) }} title="複製">Dup</button>
+                        <button className="btn-tiny" onClick={e => { e.stopPropagation(); deleteScene(idx) }} title="削除">×</button>
                       </div>
                     </div>
                   ))}

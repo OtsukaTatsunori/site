@@ -144,6 +144,13 @@
 .scene-card.active {
   border-color: #e94560;
 }
+.scene-card.dragging {
+  opacity: 0.4;
+}
+.scene-card.drop-target {
+  border-color: #f5a623;
+  background: #1f2a4a;
+}
 
 .scene-header {
   display: flex;
