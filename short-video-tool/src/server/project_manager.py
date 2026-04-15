@@ -4,7 +4,39 @@ projects/ にJSONファイルとして保存。
 """
 import os
 import json
+import shutil
+import subprocess
 from datetime import datetime
+
+
+def _generate_thumbnail(base_dir: str, project_data: dict, thumb_path: str) -> bool:
+    """シーン1の背景からサムネイル画像を生成する"""
+    scenes = project_data.get("scenes", [])
+    if not scenes:
+        return False
+    bg = scenes[0].get("background")
+    if not bg:
+        return False
+    src = os.path.join(base_dir, bg.lstrip("/"))
+    if not os.path.exists(src):
+        return False
+    ext = os.path.splitext(src)[1].lower()
+    try:
+        if ext in (".jpg", ".jpeg", ".png", ".webp"):
+            # 画像: ffmpegで 320x240 にリサイズ
+            subprocess.run(
+                ["ffmpeg", "-y", "-i", src, "-vf", "scale=320:-1", thumb_path],
+                capture_output=True, timeout=10,
+            )
+        else:
+            # 動画: 1フレーム目を抽出
+            subprocess.run(
+                ["ffmpeg", "-y", "-i", src, "-vf", "scale=320:-1", "-frames:v", "1", thumb_path],
+                capture_output=True, timeout=10,
+            )
+        return os.path.exists(thumb_path)
+    except (subprocess.TimeoutExpired, OSError):
+        return False
 
 
 def list_projects(base_dir: str) -> list[dict]:
@@ -24,6 +56,8 @@ def list_projects(base_dir: str) -> list[dict]:
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            thumb_fn = filename.rsplit(".json", 1)[0] + "_thumb.jpg"
+            thumb_exists = os.path.exists(os.path.join(project_dir, thumb_fn))
             projects.append({
                 "filename": filename,
                 "name": data.get("name", filename),
@@ -33,6 +67,7 @@ def list_projects(base_dir: str) -> list[dict]:
                 "total_duration": sum(
                     s.get("duration", 0) for s in data.get("scenes", [])
                 ),
+                "thumb_url": f"/api/projects/{filename}/thumb" if thumb_exists else None,
             })
         except (json.JSONDecodeError, IOError):
             continue
@@ -67,6 +102,12 @@ def save_project(base_dir: str, project_data: dict, filename: str | None = None)
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(project_data, f, ensure_ascii=False, indent=2)
 
+    # サムネ生成（autosaveはスキップ）
+    if not filename.startswith("_autosave"):
+        thumb_filename = filename.rsplit(".json", 1)[0] + "_thumb.jpg"
+        thumb_path = os.path.join(project_dir, thumb_filename)
+        _generate_thumbnail(base_dir, project_data, thumb_path)
+
     return {"filename": filename, "name": project_data.get("name", "")}
 
 
@@ -90,10 +131,13 @@ def duplicate_project(base_dir: str, filename: str) -> dict | None:
 
 
 def delete_project(base_dir: str, filename: str) -> bool:
-    """プロジェクトを削除"""
+    """プロジェクトを削除（サムネも一緒に削除）"""
     filepath = os.path.join(base_dir, "projects", filename)
     if os.path.exists(filepath):
         os.remove(filepath)
+        thumb = os.path.join(base_dir, "projects", filename.rsplit(".json", 1)[0] + "_thumb.jpg")
+        if os.path.exists(thumb):
+            os.remove(thumb)
         return True
     return False
 

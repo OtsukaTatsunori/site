@@ -834,6 +834,7 @@ function App() {
               <div className="project-list">
                 {projects.map(p => (
                   <div key={p.filename} className="project-item">
+                    {p.thumb_url && <img src={p.thumb_url} alt="" className="project-thumb" />}
                     <div className="project-info"><strong>{p.name}</strong><span className="project-meta">{p.scene_count} scenes / {p.total_duration?.toFixed(1)}s</span></div>
                     <div className="project-actions">
                       <button className="btn-small" onClick={() => handleLoadProject(p.filename)}>Open</button>

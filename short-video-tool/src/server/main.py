@@ -468,6 +468,15 @@ def get_project(filename: str):
     return data
 
 
+@app.get("/api/projects/{filename}/thumb")
+def get_project_thumb(filename: str):
+    """プロジェクトのサムネイル画像を返す"""
+    thumb_path = os.path.join(BASE_DIR, "projects", filename.rsplit(".json", 1)[0] + "_thumb.jpg")
+    if os.path.exists(thumb_path):
+        return FileResponse(thumb_path)
+    return {"error": "サムネイルが見つかりません"}
+
+
 @app.get("/api/autosave/check")
 def check_autosave():
     """オートセーブファイルが存在し、復元可能か確認する"""

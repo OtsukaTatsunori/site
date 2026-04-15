@@ -182,6 +182,18 @@
 .emphasis-size { background: #FFD93D; color: #222; }
 .emphasis-box { background: #0f3460; color: white; border: 1px solid #FF3333; }
 
+.project-thumb {
+  width: 80px;
+  height: auto;
+  border-radius: 4px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.project-item {
+  display: flex;
+  align-items: center;
+}
+
 .scene-header {
   display: flex;
   justify-content: space-between;
