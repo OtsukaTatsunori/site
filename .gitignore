@@ -12,6 +12,10 @@ Thumbs.db
 .env
 wp-config.php
 
+# Python
+__pycache__/
+*.pyc
+
 # WordPress本体（このリポジトリでは管理しない）
 wp-admin/
 wp-includes/
