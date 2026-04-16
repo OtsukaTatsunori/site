@@ -31,7 +31,9 @@ def render(html: str, path: Path):
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": WIDTH, "height": 2000}, device_scale_factor=2)
         page.set_content(html, wait_until="networkidle")
-        page.screenshot(path=str(path), type="png", full_page=True)
+        # bodyの実際の高さに合わせてキャプチャ（余白なし）
+        body = page.locator("body")
+        body.screenshot(path=str(path), type="png")
         browser.close()
     print(f"✅ {path.name}")
 
@@ -199,7 +201,7 @@ def comparison_chart():
     .th-self {{ color: #2563eb; }}
     .th-school {{ color: #ea580c; }}
     td {{ padding: 20px 12px; border-bottom: 1px solid #f1f5f9; font-size: 20px; }}
-    .lbl {{ font-size: 16px; color: #94a3b8; font-weight: 700; width: 100px; }}
+    .lbl {{ font-size: 16px; color: #94a3b8; font-weight: 700; width: 130px; white-space: nowrap; }}
     .val {{ font-weight: 500; color: #334155; }}
     .rt {{ width: 48px; font-size: 28px; text-align: center; }}
     </style>
