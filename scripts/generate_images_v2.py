@@ -29,7 +29,7 @@ BRAND_NAME = "大人の学びなおし比較"
 def render(html: str, path: Path):
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(viewport={"width": WIDTH, "height": 800}, device_scale_factor=2)
+        page = browser.new_page(viewport={"width": WIDTH, "height": 2000}, device_scale_factor=2)
         page.set_content(html, wait_until="networkidle")
         page.screenshot(path=str(path), type="png", full_page=True)
         browser.close()
@@ -74,7 +74,7 @@ def eyecatch_beginner():
     body {{
       width: {WIDTH}px; height: 630px;
       background: #fff;
-      display: flex; position: relative; overflow: hidden;
+      display: flex; position: relative;
     }}
     .left {{
       flex: 1; padding: 56px 60px; display: flex; flex-direction: column; justify-content: center;
@@ -138,7 +138,7 @@ def eyecatch_free_software():
     {RESET}
     body {{
       width: {WIDTH}px; height: 630px;
-      background: #fff; display: flex; position: relative; overflow: hidden;
+      background: #fff; display: flex; position: relative;
     }}
     .left {{ flex: 1; padding: 56px 60px; display: flex; flex-direction: column; justify-content: center; }}
     .tags {{ display: flex; gap: 10px; margin-bottom: 20px; }}
