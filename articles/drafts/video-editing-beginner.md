@@ -84,9 +84,11 @@ tags:
 | **[Adobe Premiere Pro](https://www.adobe.com/jp/products/premiere.html)** | 約2,728円〜 | 仕事にしたい人。業界標準で案件が豊富 |
 | **[DaVinci Resolve](https://www.blackmagicdesign.com/jp/products/davinciresolve)** | 無料（有料版あり） | まずお金をかけずに試したい人 |
 
-<!-- 画像: Premiere ProのUI画面キャプチャ。公式サイト https://www.adobe.com/jp/products/premiere.html から引用し「出典：Adobe公式サイト」と明記 -->
-
-<!-- 画像: DaVinci ResolveのUI画面キャプチャ。公式サイト https://www.blackmagicdesign.com/jp/products/davinciresolve から引用し「出典：Blackmagic Design公式サイト」と明記 -->
+<!-- 画像: Premiere ProとDaVinci ResolveのUIスクリーンショットは手動で挿入してください。
+公式サイトからキャプチャし「出典：◯◯公式サイト」と明記。
+- Premiere Pro: https://www.adobe.com/jp/products/premiere.html
+- DaVinci Resolve: https://www.blackmagicdesign.com/jp/products/davinciresolve
+-->
 
 **副業や転職を本気で考えているなら、Premiere Pro 一択**です。クラウドソーシングの動画編集案件のうち、おおよそ7〜8割は Premiere Pro を指定しています。
 
@@ -109,6 +111,8 @@ tags:
 
 夢のある話ばかりではなく、現実の数字も共有します。
 
+![未経験からの収入イメージ](UPLOAD_URL:income-roadmap.png)
+
 - **未経験から3ヶ月**：月1〜3万円（1本3,000〜5,000円の案件を数本）
 - **半年〜1年**：月5〜15万円（単価が上がり、継続案件が取れる）
 - **1年以上＋実績**：月20万円以上も可能（法人案件や企業のYouTube運用代行）
@@ -118,6 +122,8 @@ tags:
 ## 独学 vs スクール どちらを選ぶべきか
 
 未経験者が一番迷うのがここです。結論から言うと、**「挫折しない自信があるなら独学、不安ならスクール」**です。
+
+![独学とスクールの比較図](UPLOAD_URL:comparison-self-vs-school.png)
 
 ### 独学とスクールの違い
 
@@ -152,9 +158,7 @@ tags:
 
 未経験からスタートして最初の案件を取るまでのステップを、具体的に示します。
 
-<!-- 画像: 4ステップロードマップのフロー図。Canvaで作成推奨。
-「STEP1 環境整備（1週目）→ STEP2 基礎習得（2〜8週目）→ STEP3 ポートフォリオ制作（9〜12週目）→ STEP4 案件応募（12週目〜）」
-横長の矢印フロー図が見やすい -->
+![未経験からの学習ロードマップ 4ステップ](UPLOAD_URL:roadmap-4steps.png)
 
 ### STEP 1：ソフトを決めて環境を整える（1週目）
 

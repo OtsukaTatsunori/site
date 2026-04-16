@@ -185,6 +185,17 @@ def cmd_push(args: argparse.Namespace) -> int:
         print("エラー: frontmatter に title がありません。", file=sys.stderr)
         return 1
 
+    # UPLOAD_URL:filename.png を実際のURLに置換
+    url_map_path = Path("articles/images/uploaded_urls.txt")
+    if url_map_path.exists():
+        url_map: dict[str, str] = {}
+        for line in url_map_path.read_text(encoding="utf-8").strip().splitlines():
+            parts = line.split("\t", 1)
+            if len(parts) == 2:
+                url_map[parts[0]] = parts[1]
+        for filename, url in url_map.items():
+            body_md = body_md.replace(f"UPLOAD_URL:{filename}", url)
+
     content_html = md_to_html(body_md)
     slug = meta.get("slug")
     excerpt = meta.get("excerpt")
@@ -233,6 +244,42 @@ def cmd_push(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_upload_images(args: argparse.Namespace) -> int:
+    """articles/images/ 内の画像をWordPressにアップロードし、URLマッピングを表示"""
+    img_dir = Path(args.dir)
+    if not img_dir.exists():
+        print(f"エラー: ディレクトリが見つかりません: {img_dir}", file=sys.stderr)
+        return 1
+
+    images = sorted(img_dir.glob("*.png")) + sorted(img_dir.glob("*.jpg"))
+    if not images:
+        print("アップロード対象の画像がありません。")
+        return 0
+
+    wp = WPClient()
+    results: list[tuple[str, str]] = []
+
+    for img_path in images:
+        alt = img_path.stem.replace("-", " ").replace("_", " ")
+        try:
+            media = wp.upload_media(str(img_path), alt_text=alt)
+            url = media.get("source_url", "")
+            media_id = media.get("id", "")
+            results.append((img_path.name, url))
+            print(f"✅ {img_path.name} → id={media_id}")
+            print(f"   URL: {url}")
+        except Exception as e:
+            print(f"❌ {img_path.name}: {e}", file=sys.stderr)
+
+    # マッピングファイルを出力（記事への埋め込みに使う）
+    map_path = img_dir / "uploaded_urls.txt"
+    with open(map_path, "w", encoding="utf-8") as f:
+        for name, url in results:
+            f.write(f"{name}\t{url}\n")
+    print(f"\n📄 URLマッピング保存: {map_path}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Markdownから WordPress 下書きを作成・更新するCLI"
@@ -260,6 +307,16 @@ def main() -> int:
     )
     p_push.add_argument("file", help="Markdownファイルのパス")
 
+    p_upload = sub.add_parser(
+        "upload-images", help="画像フォルダをWordPressメディアにアップロード"
+    )
+    p_upload.add_argument(
+        "dir",
+        nargs="?",
+        default="articles/images",
+        help="画像フォルダのパス（default: articles/images）",
+    )
+
     args = parser.parse_args()
 
     handlers = {
@@ -268,6 +325,7 @@ def main() -> int:
         "categories": cmd_categories,
         "init-categories": cmd_init_categories,
         "push": cmd_push,
+        "upload-images": cmd_upload_images,
     }
     return handlers[args.cmd](args)
 

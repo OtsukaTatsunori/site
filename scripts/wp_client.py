@@ -163,6 +163,49 @@ class WPClient:
         r.raise_for_status()
         return r.json()
 
+    # ---------- メディア ----------
+    def upload_media(
+        self,
+        file_path: str,
+        alt_text: str = "",
+        caption: str = "",
+    ) -> dict[str, Any]:
+        """画像ファイルをメディアライブラリにアップロード"""
+        path = Path(file_path)
+        if not path.exists():
+            raise FileNotFoundError(f"ファイルが見つかりません: {path}")
+
+        mime_types = {
+            ".png": "image/png",
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+            ".gif": "image/gif",
+            ".webp": "image/webp",
+        }
+        content_type = mime_types.get(path.suffix.lower(), "application/octet-stream")
+
+        headers = {
+            "Content-Disposition": f'attachment; filename="{path.name}"',
+            "Content-Type": content_type,
+        }
+        data: dict[str, Any] = {}
+        if alt_text:
+            data["alt_text"] = alt_text
+        if caption:
+            data["caption"] = caption
+
+        with open(path, "rb") as f:
+            r = requests.post(
+                f"{self.api}/media",
+                auth=self.auth,
+                headers=headers,
+                data=f.read(),
+                params=data,
+                timeout=60,
+            )
+        r.raise_for_status()
+        return r.json()
+
     def list_tags(self) -> list[dict[str, Any]]:
         r = requests.get(
             f"{self.api}/tags",
