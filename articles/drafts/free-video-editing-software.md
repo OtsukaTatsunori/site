@@ -14,8 +14,18 @@ tags:
 <!-- 編集メモ（公開前に削除）
 - 各ソフトの料金・仕様は公式サイトで最終確認すること
 - アフィリエイトリンクはASP管理画面から取得して差し替え
-- 画像（アイキャッチ、比較表、各ソフトのUI画面）は別途挿入
 - PR表記はCocoon設定で自動表示
+
+■ 画像チェックリスト（WordPress管理画面で挿入）
+□ アイキャッチ画像: 複数のソフトアイコンが並んだイメージ（Canvaで作成、1200×630px推奨）
+□ CapCut: 公式サイト https://www.capcut.com/ja-jp/ のUI画面キャプチャ（出典明記）
+□ DaVinci Resolve: 公式サイトのUI画面キャプチャ（出典明記）
+□ iMovie: 公式サイト https://www.apple.com/jp/imovie/ の製品画像（出典明記）
+□ Clipchamp: 公式サイト https://clipchamp.com/ja/ のUI画面キャプチャ（出典明記）
+□ Canva: 公式サイト https://www.canva.com/ja_jp/ の動画編集画面キャプチャ（出典明記）
+□ Shotcut: 公式サイト https://shotcut.org/ のUI画面キャプチャ（出典明記）
+□ Filmora: 公式サイト https://filmora.wondershare.jp/ のUI画面キャプチャ（出典明記）
+□ 用途別マトリクス: Canvaでインフォグラフィック作成推奨
 -->
 
 「動画編集を始めたいけど、いきなり月額2,728円のPremiere Proを契約するのは怖い」——そう感じる人は多いはずです。
@@ -101,7 +111,9 @@ tags:
 
 ## 各ソフトの詳細レビュー
 
-### 1. CapCut（キャップカット）
+### 1. [CapCut（キャップカット）](https://www.capcut.com/ja-jp/)
+
+<!-- 画像: CapCutのUI画面キャプチャ。公式サイトから引用し「出典：CapCut公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -109,6 +121,7 @@ tags:
 | 対応 | iOS / Android / Windows / Mac / ブラウザ |
 | 透かし | なし |
 | 開発元 | ByteDance（TikTok運営元） |
+| 公式サイト | [capcut.com/ja-jp](https://www.capcut.com/ja-jp/) |
 
 **特徴**
 
@@ -128,7 +141,9 @@ AIによる自動字幕生成も精度が高く、テロップ入力の手間を
 - TikTok以外のプラットフォームで使う場合、一部素材に制限あり
 - 高度なマルチトラック編集やカラーグレーディングには向かない
 
-### 2. DaVinci Resolve（ダヴィンチ・リゾルブ）
+### 2. [DaVinci Resolve（ダヴィンチ・リゾルブ）](https://www.blackmagicdesign.com/jp/products/davinciresolve)
+
+<!-- 画像: DaVinci ResolveのUI画面キャプチャ。公式サイトから引用し「出典：Blackmagic Design公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -136,6 +151,7 @@ AIによる自動字幕生成も精度が高く、テロップ入力の手間を
 | 対応 | Windows / Mac / Linux |
 | 透かし | なし |
 | 開発元 | Blackmagic Design |
+| 公式サイト | [blackmagicdesign.com](https://www.blackmagicdesign.com/jp/products/davinciresolve) |
 
 **特徴**
 
@@ -155,7 +171,9 @@ DaVinci Resolveは、ハリウッド映画のカラーグレーディングに�
 - UIが多機能ゆえに複雑で、最初の1〜2週間は覚えるのに時間がかかる
 - スマホでは使えない
 
-### 3. iMovie（アイムービー）
+### 3. [iMovie（アイムービー）](https://www.apple.com/jp/imovie/)
+
+<!-- 画像: iMovieの製品画像。公式サイトから引用し「出典：Apple公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -163,6 +181,7 @@ DaVinci Resolveは、ハリウッド映画のカラーグレーディングに�
 | 対応 | Mac / iPhone / iPad |
 | 透かし | なし |
 | 開発元 | Apple |
+| 公式サイト | [apple.com/jp/imovie](https://www.apple.com/jp/imovie/) |
 
 **特徴**
 
@@ -183,7 +202,9 @@ iPhoneで撮影した動画をそのままiPhoneで編集し、すぐにYouTube�
 - マルチトラック編集は2トラックまで。複雑な構成には向かない
 - 仕事で使うには機能不足（次のステップはFinal Cut Proへ）
 
-### 4. Clipchamp（クリップチャンプ）
+### 4. [Clipchamp（クリップチャンプ）](https://clipchamp.com/ja/)
+
+<!-- 画像: ClipchampのUI画面キャプチャ。公式サイトから引用し「出典：Microsoft公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -191,6 +212,7 @@ iPhoneで撮影した動画をそのままiPhoneで編集し、すぐにYouTube�
 | 対応 | Windows / ブラウザ |
 | 透かし | なし |
 | 開発元 | Microsoft |
+| 公式サイト | [clipchamp.com/ja](https://clipchamp.com/ja/) |
 
 **特徴**
 
@@ -211,7 +233,9 @@ UIはシンプルで、基本操作（カット・テロップ・BGM・トラン
 - Mac版アプリはない（ブラウザ版で代用可能）
 - オフライン環境では一部機能が制限される
 
-### 5. Canva（キャンバ）
+### 5. [Canva（キャンバ）](https://www.canva.com/ja_jp/)
+
+<!-- 画像: Canvaの動画編集画面キャプチャ。公式サイトから引用し「出典：Canva公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -219,6 +243,7 @@ UIはシンプルで、基本操作（カット・テロップ・BGM・トラン
 | 対応 | ブラウザ / iOS / Android |
 | 透かし | なし（一部素材はPro限定） |
 | 開発元 | Canva |
+| 公式サイト | [canva.com/ja_jp](https://www.canva.com/ja_jp/) |
 
 **特徴**
 
@@ -237,7 +262,9 @@ Canvaはデザインツールとして有名ですが、**動画編集機能も�
 - 無料版では一部テンプレート・素材にPro限定マークがつく
 - 「動画編集ソフト」というよりは「動画も作れるデザインツール」
 
-### 6. Shotcut（ショットカット）
+### 6. [Shotcut（ショットカット）](https://shotcut.org/)
+
+<!-- 画像: ShotcutのUI画面キャプチャ。公式サイトから引用し「出典：Shotcut公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -245,6 +272,7 @@ Canvaはデザインツールとして有名ですが、**動画編集機能も�
 | 対応 | Windows / Mac / Linux |
 | 透かし | なし |
 | 開発元 | オープンソースコミュニティ |
+| 公式サイト | [shotcut.org](https://shotcut.org/) |
 
 **特徴**
 
@@ -263,7 +291,9 @@ Shotcutは**完全無料・広告なし・透かしなし・機能制限なし**
 - テンプレートやプリセットが少なく、自分で設定する必要がある
 - エフェクトの種類は有料ソフトに比べると限定的
 
-### 7. Filmora（フィモーラ）無料版
+### 7. [Filmora（フィモーラ）無料版](https://filmora.wondershare.jp/)
+
+<!-- 画像: FilmoraのUI画面キャプチャ。公式サイトから引用し「出典：Wondershare公式サイト」と明記 -->
 
 | 項目 | 内容 |
 |---|---|
@@ -271,6 +301,7 @@ Shotcutは**完全無料・広告なし・透かしなし・機能制限なし**
 | 対応 | Windows / Mac / iOS / Android |
 | 透かし | **あり（書き出し動画にロゴが入る）** |
 | 開発元 | Wondershare |
+| 公式サイト | [filmora.wondershare.jp](https://filmora.wondershare.jp/) |
 
 **特徴**
 
@@ -318,10 +349,10 @@ UIの分かりやすさは7本の中でもトップクラスで、ドラッグ�
 
 | ソフト | 料金形態 | 特徴 | 移行元として相性がよい無料ソフト |
 |---|---|---|---|
-| **Adobe Premiere Pro** | 月額2,728円〜 | 業界標準。案件数No.1 | CapCut、Filmora |
-| **Final Cut Pro** | 買い切り48,800円 | Mac専用。高速書き出し | iMovie |
-| **DaVinci Resolve Studio** | 買い切り47,980円 | 無料版の上位。AIノイズ除去等 | DaVinci Resolve |
-| **Filmora有料版** | 年額7,980円〜 | 初心者〜中級者向け。コスパ良 | Filmora無料版 |
+| **[Adobe Premiere Pro](https://www.adobe.com/jp/products/premiere.html)** | 月額2,728円〜 | 業界標準。案件数No.1 | CapCut、Filmora |
+| **[Final Cut Pro](https://www.apple.com/jp/final-cut-pro/)** | 買い切り48,800円 | Mac専用。高速書き出し | iMovie |
+| **[DaVinci Resolve Studio](https://www.blackmagicdesign.com/jp/products/davinciresolve)** | 買い切り47,980円 | 無料版の上位。AIノイズ除去等 | DaVinci Resolve |
+| **[Filmora有料版](https://filmora.wondershare.jp/)** | 年額7,980円〜 | 初心者〜中級者向け。コスパ良 | Filmora無料版 |
 
 **副業・転職で案件を取りたいなら、最終的にはPremiere Proが最有力**です。クラウドソーシングの案件の7〜8割がPremiere Pro指定のため、仕事を取る上で最も選択肢が広がります。
 
