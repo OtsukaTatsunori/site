@@ -188,23 +188,37 @@ class WPClient:
             "Content-Disposition": f'attachment; filename="{path.name}"',
             "Content-Type": content_type,
         }
-        data: dict[str, Any] = {}
-        if alt_text:
-            data["alt_text"] = alt_text
-        if caption:
-            data["caption"] = caption
 
+        # Step 1: ファイルをアップロード（パラメータなしで送信し、WAFブロックを回避）
         with open(path, "rb") as f:
             r = requests.post(
                 f"{self.api}/media",
                 auth=self.auth,
                 headers=headers,
                 data=f.read(),
-                params=data,
                 timeout=60,
             )
         r.raise_for_status()
-        return r.json()
+        media = r.json()
+
+        # Step 2: alt_text / caption を別リクエストで更新
+        update_fields: dict[str, Any] = {}
+        if alt_text:
+            update_fields["alt_text"] = alt_text
+        if caption:
+            update_fields["caption"] = caption
+        if update_fields:
+            r2 = requests.post(
+                f"{self.api}/media/{media['id']}",
+                auth=self.auth,
+                json=update_fields,
+                timeout=15,
+            )
+            # alt_text更新の失敗は無視（アップロード自体は成功しているため）
+            if r2.ok:
+                media = r2.json()
+
+        return media
 
     def list_tags(self) -> list[dict[str, Any]]:
         r = requests.get(

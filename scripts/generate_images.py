@@ -8,6 +8,7 @@
 """
 from __future__ import annotations
 
+import platform
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
@@ -15,9 +16,46 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "articles" / "images"
 OUT.mkdir(parents=True, exist_ok=True)
 
-# フォント設定
-FONT_PATH = "/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf"
-FONT_BOLD_PATH = FONT_PATH  # 太字がなければ同じフォントを使う
+# フォント設定（OS自動判定）
+def _find_font() -> str:
+    """OSに応じて日本語フォントのパスを返す"""
+    system = platform.system()
+
+    if system == "Windows":
+        # Windows標準の日本語フォント（優先順）
+        candidates = [
+            r"C:\Windows\Fonts\meiryo.ttc",
+            r"C:\Windows\Fonts\msgothic.ttc",
+            r"C:\Windows\Fonts\YuGothR.ttc",
+            r"C:\Windows\Fonts\yugothic.ttf",
+        ]
+    elif system == "Darwin":
+        # macOS
+        candidates = [
+            "/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc",
+            "/System/Library/Fonts/Hiragino Sans GB.ttc",
+            "/Library/Fonts/Arial Unicode.ttf",
+        ]
+    else:
+        # Linux
+        candidates = [
+            "/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf",
+            "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",
+            "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+        ]
+
+    for path in candidates:
+        if Path(path).exists():
+            return path
+
+    # 見つからなければデフォルト（エラーになる可能性あり）
+    print(f"⚠️  日本語フォントが見つかりません。以下のいずれかをインストールしてください:")
+    for c in candidates:
+        print(f"   {c}")
+    return candidates[0]
+
+
+FONT_PATH = _find_font()
 
 
 def get_font(size: int) -> ImageFont.FreeTypeFont:
