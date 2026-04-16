@@ -246,6 +246,8 @@ def cmd_push(args: argparse.Namespace) -> int:
 
 def cmd_upload_images(args: argparse.Namespace) -> int:
     """articles/images/ 内の画像をWordPressにアップロードし、URLマッピングを表示"""
+    import time
+
     img_dir = Path(args.dir)
     if not img_dir.exists():
         print(f"エラー: ディレクトリが見つかりません: {img_dir}", file=sys.stderr)
@@ -256,27 +258,43 @@ def cmd_upload_images(args: argparse.Namespace) -> int:
         print("アップロード対象の画像がありません。")
         return 0
 
-    wp = WPClient()
-    results: list[tuple[str, str]] = []
+    # 既存のマッピングを読み込む（成功済みはスキップ）
+    map_path = img_dir / "uploaded_urls.txt"
+    existing: dict[str, str] = {}
+    if map_path.exists():
+        for line in map_path.read_text(encoding="utf-8").strip().splitlines():
+            parts = line.split("\t", 1)
+            if len(parts) == 2:
+                existing[parts[0]] = parts[1]
 
-    for img_path in images:
+    wp = WPClient()
+    results: dict[str, str] = dict(existing)
+
+    for i, img_path in enumerate(images):
+        if img_path.name in existing:
+            print(f"⏭️  {img_path.name}（アップロード済み、スキップ）")
+            continue
+
+        if i > 0:
+            time.sleep(2)  # WAF対策: リクエスト間に2秒待つ
+
         alt = img_path.stem.replace("-", " ").replace("_", " ")
         try:
             media = wp.upload_media(str(img_path), alt_text=alt)
             url = media.get("source_url", "")
             media_id = media.get("id", "")
-            results.append((img_path.name, url))
+            results[img_path.name] = url
             print(f"✅ {img_path.name} → id={media_id}")
             print(f"   URL: {url}")
         except Exception as e:
             print(f"❌ {img_path.name}: {e}", file=sys.stderr)
 
-    # マッピングファイルを出力（記事への埋め込みに使う）
-    map_path = img_dir / "uploaded_urls.txt"
+    # マッピングファイルを保存
     with open(map_path, "w", encoding="utf-8") as f:
-        for name, url in results:
+        for name, url in sorted(results.items()):
             f.write(f"{name}\t{url}\n")
     print(f"\n📄 URLマッピング保存: {map_path}")
+    print(f"成功: {len(results)}/{len(images)}")
     return 0
 
 

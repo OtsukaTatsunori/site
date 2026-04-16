@@ -170,7 +170,7 @@ class WPClient:
         alt_text: str = "",
         caption: str = "",
     ) -> dict[str, Any]:
-        """画像ファイルをメディアライブラリにアップロード"""
+        """画像ファイルをメディアライブラリにアップロード（multipart/form-data方式）"""
         path = Path(file_path)
         if not path.exists():
             raise FileNotFoundError(f"ファイルが見つかりません: {path}")
@@ -184,24 +184,18 @@ class WPClient:
         }
         content_type = mime_types.get(path.suffix.lower(), "application/octet-stream")
 
-        headers = {
-            "Content-Disposition": f'attachment; filename="{path.name}"',
-            "Content-Type": content_type,
-        }
-
-        # Step 1: ファイルをアップロード（パラメータなしで送信し、WAFブロックを回避）
         with open(path, "rb") as f:
+            files = {"file": (path.name, f, content_type)}
             r = requests.post(
                 f"{self.api}/media",
                 auth=self.auth,
-                headers=headers,
-                data=f.read(),
+                files=files,
                 timeout=60,
             )
         r.raise_for_status()
         media = r.json()
 
-        # Step 2: alt_text / caption を別リクエストで更新
+        # alt_text / caption を別リクエストで更新
         update_fields: dict[str, Any] = {}
         if alt_text:
             update_fields["alt_text"] = alt_text
@@ -214,7 +208,6 @@ class WPClient:
                 json=update_fields,
                 timeout=15,
             )
-            # alt_text更新の失敗は無視（アップロード自体は成功しているため）
             if r2.ok:
                 media = r2.json()
 
