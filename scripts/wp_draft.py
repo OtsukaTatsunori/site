@@ -278,7 +278,16 @@ def cmd_upload_images(args: argparse.Namespace) -> int:
         if i > 0:
             time.sleep(2)  # WAF対策: リクエスト間に2秒待つ
 
-        alt = img_path.stem.replace("-", " ").replace("_", " ")
+        # SEO用alt_text: ファイル名→日本語マッピング
+        alt_map = {
+            "eyecatch-video-editing-beginner": "動画編集は未経験でも始められる？失敗しない始め方とおすすめスクール",
+            "eyecatch-free-video-editing-software": "無料の動画編集ソフトおすすめ7選 用途別に徹底比較",
+            "comparison-self-vs-school": "動画編集の独学とスクールの費用・期間・挫折率を比較した図",
+            "roadmap-4steps": "動画編集未経験から案件獲得までの4ステップロードマップ",
+            "usage-matrix": "無料動画編集ソフトの用途別おすすめ早見表",
+            "income-roadmap": "動画編集未経験からの収入推移イメージ",
+        }
+        alt = alt_map.get(img_path.stem, img_path.stem.replace("-", " "))
         try:
             media = wp.upload_media(str(img_path), alt_text=alt)
             url = media.get("source_url", "")
