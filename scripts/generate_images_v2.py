@@ -25,9 +25,9 @@ def render_html_to_png(html: str, path: Path, width: int = 1200, height: int = 6
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": width, "height": height}, device_scale_factor=2)
         page.set_content(html, wait_until="networkidle")
-        page.screenshot(path=str(path), type="png")
+        page.screenshot(path=str(path), type="png", full_page=True)
         browser.close()
-    print(f"✅ {path.name} ({width}x{height})")
+    print(f"✅ {path.name} ({width}x auto)")
 
 
 # ============================================================
