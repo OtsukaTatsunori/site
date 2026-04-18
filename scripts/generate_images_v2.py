@@ -43,44 +43,64 @@ def ft():
 # === 1. アイキャッチ: 動画編集 未経験 ===
 def eyecatch_beginner():
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    body{{height:420px;background:#fff;display:flex}}
-    .l{{flex:1;padding:40px 36px;display:flex;flex-direction:column;justify-content:center}}
-    .r{{width:200px;background:{BRAND};display:flex;align-items:center;justify-content:center}}
-    .play{{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}}
-    .play::after{{content:'';border-left:24px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:4px}}
-    .tag{{display:inline-block;background:{BRAND};color:#fff;padding:4px 14px;border-radius:5px;font-size:14px;font-weight:700;margin-bottom:12px}}
-    h1{{font-size:32px;font-weight:900;color:#1e293b;line-height:1.4}}
+    body{{height:420px;background:#FAF8F3;position:relative;overflow:hidden}}
+    .wrap{{padding:48px 44px;position:relative;height:100%;display:flex;flex-direction:column;justify-content:center}}
+    .tag{{display:inline-block;background:{BRAND};color:#fff;padding:6px 16px;border-radius:6px;font-size:14px;font-weight:700;margin-bottom:16px;letter-spacing:0.05em;width:fit-content;font-family:'Zen Maru Gothic',sans-serif}}
+    h1{{font-family:'Noto Serif JP',serif;font-size:38px;font-weight:900;color:#2D3748;line-height:1.4;letter-spacing:0.02em}}
+    h1 .hl{{background:linear-gradient(transparent 60%,#FFE8A3 60%);padding:0 4px}}
     h1 em{{font-style:normal;color:{BRAND}}}
-    .sub{{font-size:16px;color:#64748b;margin-top:10px}}
-    .ft{{position:absolute;bottom:10px;left:36px;font-size:12px;color:#aaa}}
+    .sub{{font-family:'Zen Maru Gothic',sans-serif;font-size:17px;color:#6B5B3E;margin-top:14px;line-height:1.6}}
+    .chips{{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}}
+    .chip{{background:#fff;border:1px solid #E8DFD0;padding:6px 14px;border-radius:20px;font-size:13px;color:#8B7E6A;font-family:'Zen Maru Gothic',sans-serif}}
+    .deco{{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:200px;height:200px;background:{BRAND};border-radius:50%;opacity:0.08}}
+    .play{{position:absolute;right:70px;top:50%;transform:translateY(-50%);width:90px;height:90px;border-radius:50%;background:{BRAND};display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(197,107,73,0.3)}}
+    .play::after{{content:'';border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}}
+    .brand{{position:absolute;bottom:16px;left:44px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif}}
+    .tape{{position:absolute;top:24px;right:240px;width:80px;height:22px;background:rgba(255,232,163,0.6);transform:rotate(6deg)}}
     </style></head><body>
-    <div class="l">
+    <div class="deco"></div>
+    <div class="tape"></div>
+    <div class="play"></div>
+    <div class="wrap">
       <span class="tag">2026年版</span>
-      <h1>動画編集は<br><em>未経験でも始められる？</em></h1>
-      <p class="sub">失敗しない始め方とおすすめスクール</p>
+      <h1>動画編集は<br><span class="hl"><em>未経験でも始められる？</em></span></h1>
+      <p class="sub">失敗しない始め方と、おすすめスクール</p>
+      <div class="chips">
+        <span class="chip">独学 vs スクール</span>
+        <span class="chip">4ステップロードマップ</span>
+        <span class="chip">失敗パターン5選</span>
+      </div>
+      <div class="brand">{SITE}</div>
     </div>
-    <div class="r"><div class="play"></div></div>
     </body></html>"""
     render(html, OUT / "eyecatch-video-editing-beginner.png")
 
 
 # === 2. アイキャッチ: 無料ソフト比較 ===
 def eyecatch_free():
-    items = "".join(f'<span style="display:inline-block;padding:6px 14px;border-radius:6px;background:#f1f5f9;font-size:14px;font-weight:700;color:#334155">{n}</span>' for n in ["CapCut","DaVinci Resolve","iMovie","Clipchamp","Canva","Shotcut","Filmora"])
+    softs = [("CapCut","#E8795C"),("DaVinci Resolve","#4A7FAD"),("iMovie","#8B6FBF"),("Clipchamp","#5A8EC5"),("Canva","#5EA5B8"),("Shotcut","#7A9C5E"),("Filmora","#C9943A")]
+    items = "".join(f'<span class="chip" style="border-left:4px solid {c}">{n}</span>' for n, c in softs)
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    body{{height:420px;padding:40px 36px;display:flex;flex-direction:column;justify-content:center}}
-    .tags{{display:flex;gap:8px;margin-bottom:12px}}
-    .tag{{padding:4px 14px;border-radius:5px;font-size:14px;font-weight:700;color:#fff}}
-    h1{{font-size:32px;font-weight:900;color:#1e293b;line-height:1.4}}
+    body{{height:420px;background:#FAF8F3;position:relative;overflow:hidden;padding:48px 44px;display:flex;flex-direction:column;justify-content:center}}
+    .tags{{display:flex;gap:8px;margin-bottom:14px}}
+    .tag{{padding:6px 16px;border-radius:6px;font-size:14px;font-weight:700;color:#fff;font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.05em}}
+    h1{{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:900;color:#2D3748;line-height:1.4}}
     h1 em{{font-style:normal;color:{BRAND}}}
-    .sub{{font-size:16px;color:#64748b;margin-top:8px}}
-    .chips{{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}}
-    .ft{{position:absolute;bottom:10px;left:36px;font-size:12px;color:#aaa}}
+    h1 .hl{{background:linear-gradient(transparent 60%,#FFE8A3 60%);padding:0 4px}}
+    .sub{{font-family:'Zen Maru Gothic',sans-serif;font-size:17px;color:#6B5B3E;margin-top:14px}}
+    .chips{{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;max-width:560px}}
+    .chip{{background:#fff;padding:8px 14px;border-radius:6px;font-size:14px;font-weight:700;color:#2D3748;font-family:'Zen Maru Gothic',sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.04)}}
+    .brand{{position:absolute;bottom:16px;left:44px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif}}
+    .tape{{position:absolute;top:28px;right:60px;width:110px;height:24px;background:rgba(255,232,163,0.7);transform:rotate(-4deg)}}
+    .tape-label{{position:absolute;top:30px;right:72px;font-size:14px;font-weight:700;color:#8B7E3E;transform:rotate(-4deg);font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.1em}}
     </style></head><body>
-    <div class="tags"><span class="tag" style="background:{BRAND}">2026年版</span><span class="tag" style="background:#ef4444">無料</span></div>
-    <h1>無料の動画編集ソフト<br><em>おすすめ7選</em></h1>
+    <div class="tape"></div>
+    <div class="tape-label">7本を比較！</div>
+    <div class="tags"><span class="tag" style="background:{BRAND}">2026年版</span><span class="tag" style="background:#5B8C3E">完全無料</span></div>
+    <h1>無料の動画編集ソフト<br><span class="hl"><em>おすすめ7選</em></span></h1>
     <p class="sub">用途別に徹底比較</p>
     <div class="chips">{items}</div>
+    <div class="brand">{SITE}</div>
     </body></html>"""
     render(html, OUT / "eyecatch-free-video-editing-software.png")
 
@@ -149,33 +169,41 @@ def comparison():
 # === 4. ロードマップ（縦フロー） ===
 def roadmap():
     steps = [
-        ("STEP 1","1週目","環境整備","ソフト契約・PC準備",BRAND),
-        ("STEP 2","2〜8週目","基礎習得","カット・テロップ・BGM","#0891b2"),
-        ("STEP 3","9〜12週目","作品制作","ポートフォリオ3本","#16a34a"),
-        ("STEP 4","12週目〜","案件応募","CW・ランサーズで初受注","#ea580c"),
+        ("01","1週目","🛠","環境整備","ソフト契約・PC準備","#C56B49"),
+        ("02","2〜8週目","📚","基礎習得","カット・テロップ・BGM","#4A7FAD"),
+        ("03","9〜12週目","🎬","作品制作","ポートフォリオ3本","#5B8C3E"),
+        ("04","12週目〜","💼","案件応募","CW・ランサーズで初受注","#C9943A"),
     ]
     cards = ""
-    for i,(num,period,title,desc,color) in enumerate(steps):
+    for i,(num,period,icon,title,desc,color) in enumerate(steps):
         cards += f"""<div class="step">
-          <div class="num" style="background:{color}">{num}</div>
+          <div class="num-wrap">
+            <div class="num" style="color:{color};border-color:{color}">{num}</div>
+          </div>
           <div class="info">
-            <div class="title">{title}<span class="period">{period}</span></div>
+            <div class="meta"><span class="icon">{icon}</span><span class="period">{period}</span></div>
+            <div class="title">{title}</div>
             <div class="desc">{desc}</div>
           </div>
         </div>"""
         if i < 3:
-            cards += '<div class="arrow">↓</div>'
+            cards += '<div class="connector"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>'
 
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    .step{{display:flex;align-items:center;gap:16px;padding:16px 36px}}
-    .num{{padding:8px 16px;border-radius:8px;color:#fff;font-size:15px;font-weight:900;white-space:nowrap}}
-    .title{{font-size:24px;font-weight:900;color:#1e293b}}
-    .period{{font-size:14px;color:#94a3b8;margin-left:12px;font-weight:400}}
-    .desc{{font-size:16px;color:#64748b;margin-top:2px}}
-    .arrow{{text-align:center;font-size:20px;color:#d1d5db;padding:4px 0;margin-left:60px}}
+    .step{{display:flex;align-items:center;gap:20px;padding:20px 36px}}
+    .num-wrap{{flex-shrink:0}}
+    .num{{width:64px;height:64px;border-radius:50%;border:3px solid;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:24px;font-weight:900;background:#fff}}
+    .info{{flex:1}}
+    .meta{{display:flex;align-items:center;gap:10px;margin-bottom:4px}}
+    .icon{{font-size:18px}}
+    .period{{font-size:13px;color:#8B7E6A;font-family:'Zen Maru Gothic',sans-serif;background:#FFF8E7;padding:2px 10px;border-radius:10px}}
+    .title{{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:900;color:#2D3748}}
+    .desc{{font-size:15px;color:#6B5B3E;margin-top:4px;font-family:'Zen Maru Gothic',sans-serif}}
+    .connector{{display:flex;flex-direction:column;gap:4px;margin-left:66px;padding:6px 0}}
+    .connector .dot{{width:4px;height:4px;border-radius:50%;background:#E8DFD0}}
     </style></head><body>
-    {hd("未経験からの学習ロードマップ","4ステップで最初の案件獲得へ")}
-    <div style="padding:20px 0">{cards}</div>
+    {hd("未経験からの学習ロードマップ","〜 4ステップで最初の案件獲得へ 〜")}
+    <div style="padding:24px 0">{cards}</div>
     {ft()}
     </body></html>"""
     render(html, OUT / "roadmap-4steps.png")
@@ -184,28 +212,30 @@ def roadmap():
 # === 5. 用途別おすすめ ===
 def usage_matrix():
     data = [
-        ("ショート動画","CapCut","#00b4d8"),
-        ("YouTube本格運用","DaVinci Resolve","#ff6b35"),
-        ("Mac・iPhoneで手軽に","iMovie","#a855f7"),
-        ("Windowsで今すぐ","Clipchamp","#3b82f6"),
-        ("SNSバナー動画","Canva","#06b6d4"),
-        ("広告なし・制限なし","Shotcut","#84cc16"),
-        ("操作感を試したい","Filmora","#f59e0b"),
+        ("📱","ショート動画","CapCut","#E8795C"),
+        ("🎥","YouTube本格運用","DaVinci Resolve","#4A7FAD"),
+        ("🍎","Mac・iPhoneで手軽に","iMovie","#8B6FBF"),
+        ("🪟","Windowsで今すぐ","Clipchamp","#5A8EC5"),
+        ("🎨","SNSバナー動画","Canva","#5EA5B8"),
+        ("🔧","広告なし・制限なし","Shotcut","#7A9C5E"),
+        ("🎓","操作感を試したい","Filmora","#C9943A"),
     ]
     rows = ""
-    for usage, soft, color in data:
+    for icon, usage, soft, color in data:
         rows += f"""<div class="row">
+          <div class="icon">{icon}</div>
           <div class="usage">{usage}</div>
-          <div class="soft"><span class="dot" style="background:{color}"></span>{soft}</div>
+          <div class="soft" style="color:{color}">{soft}</div>
         </div>"""
 
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    .row{{display:flex;align-items:center;padding:18px 36px;border-bottom:1px solid #f1f5f9}}
-    .usage{{flex:1;font-size:18px;color:#64748b}}
-    .soft{{font-size:20px;font-weight:900;color:#1e293b;display:flex;align-items:center;gap:10px}}
-    .dot{{width:10px;height:10px;border-radius:50%;flex-shrink:0}}
+    .row{{display:flex;align-items:center;padding:18px 36px;border-bottom:2px dashed #E8DFD0;gap:14px}}
+    .row:last-child{{border-bottom:none}}
+    .icon{{font-size:24px;width:32px;flex-shrink:0}}
+    .usage{{flex:1;font-size:17px;color:#6B5B3E;font-family:'Zen Maru Gothic',sans-serif}}
+    .soft{{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:900}}
     </style></head><body>
-    {hd("用途別おすすめソフト早見表","やりたいことから選ぶ")}
+    {hd("用途別おすすめソフト早見表","〜 やりたいことから選ぶ 〜")}
     {rows}
     {ft()}
     </body></html>"""
@@ -215,33 +245,43 @@ def usage_matrix():
 # === 6. 収入イメージ ===
 def income():
     stages = [
-        ("0〜3ヶ月","学習期間","0円","8%","#93c5fd"),
-        ("3〜6ヶ月","初案件期","月1〜3万円","25%","#86efac"),
-        ("6ヶ月〜1年","成長期","月5〜15万円","55%","#fdba74"),
-        ("1年以上","安定期","月20万円〜","90%","#fca5a5"),
+        ("🌱","0〜3ヶ月","学習期間","0円","10%","#A8C5A0","#C1D8B9"),
+        ("🌿","3〜6ヶ月","初案件期","月1〜3万円","28%","#7DAA8E","#9DC2AE"),
+        ("🌳","6ヶ月〜1年","成長期","月5〜15万円","58%","#D9A25F","#E8BA82"),
+        ("🏆","1年以上","安定期","月20万円〜","92%","#C56B49","#D98866"),
     ]
     rows = ""
-    for period,label,amount,width,color in stages:
+    for icon,period,label,amount,width,color,light in stages:
         rows += f"""<div class="row">
-          <div class="left"><div class="period">{period}</div><div class="label">{label}</div></div>
+          <div class="left">
+            <div class="icon">{icon}</div>
+            <div class="period">{period}</div>
+            <div class="label">{label}</div>
+          </div>
           <div class="right">
-            <div class="amount">{amount}</div>
-            <div class="bar-bg"><div class="bar" style="width:{width};background:{color}"></div></div>
+            <div class="amount" style="color:{color}">{amount}</div>
+            <div class="bar-bg"><div class="bar" style="width:{width};background:linear-gradient(90deg,{light},{color})"></div></div>
           </div>
         </div>"""
 
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    .row{{display:flex;align-items:center;padding:20px 36px;border-bottom:1px solid #f1f5f9;gap:16px}}
-    .left{{width:120px}}
-    .period{{font-size:16px;font-weight:700;color:#1e293b}}
-    .label{{font-size:13px;color:#94a3b8}}
+    .row{{display:flex;align-items:center;padding:22px 36px;border-bottom:2px dashed #E8DFD0;gap:20px}}
+    .row:last-child{{border-bottom:none}}
+    .left{{width:130px;text-align:center}}
+    .icon{{font-size:28px;margin-bottom:4px}}
+    .period{{font-size:14px;font-weight:700;color:#2D3748;font-family:'Zen Maru Gothic',sans-serif}}
+    .label{{font-size:12px;color:#8B7E6A;font-family:'Zen Maru Gothic',sans-serif}}
     .right{{flex:1}}
-    .amount{{font-size:24px;font-weight:900;color:#1e293b;margin-bottom:6px}}
-    .bar-bg{{height:14px;background:#f1f5f9;border-radius:7px;overflow:hidden}}
-    .bar{{height:100%;border-radius:7px}}
+    .amount{{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:900;margin-bottom:8px}}
+    .bar-bg{{height:12px;background:#F0E9DB;border-radius:6px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,0.06)}}
+    .bar{{height:100%;border-radius:6px}}
+    .note{{margin:0 36px 0;padding:14px 18px;background:#FFF8E7;border-left:4px solid #C9943A;border-radius:0 8px 8px 0;font-size:14px;color:#6B5B3E;line-height:1.6;font-family:'Zen Maru Gothic',sans-serif}}
     </style></head><body>
-    {hd("未経験からの収入イメージ","副業〜本業化までの目安")}
+    {hd("未経験からの収入イメージ","〜 副業〜本業化までの目安 〜")}
     {rows}
+    <div class="note">
+      📝 <strong style="color:#C56B49">目安の数字です。</strong>週にかけられる時間とスキル習得の速さで個人差があります。
+    </div>
     {ft()}
     </body></html>"""
     render(html, OUT / "income-roadmap.png")
