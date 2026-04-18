@@ -43,63 +43,106 @@ def ft():
 # === 1. アイキャッチ: 動画編集 未経験 ===
 def eyecatch_beginner():
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    body{{height:420px;background:#FAF8F3;position:relative;overflow:hidden}}
-    .wrap{{padding:48px 44px;position:relative;height:100%;display:flex;flex-direction:column;justify-content:center}}
-    .tag{{display:inline-block;background:{BRAND};color:#fff;padding:6px 16px;border-radius:6px;font-size:14px;font-weight:700;margin-bottom:16px;letter-spacing:0.05em;width:fit-content;font-family:'Zen Maru Gothic',sans-serif}}
-    h1{{font-family:'Noto Serif JP',serif;font-size:38px;font-weight:900;color:#2D3748;line-height:1.4;letter-spacing:0.02em}}
-    h1 .hl{{background:linear-gradient(transparent 60%,#FFE8A3 60%);padding:0 4px}}
-    h1 em{{font-style:normal;color:{BRAND}}}
-    .sub{{font-family:'Zen Maru Gothic',sans-serif;font-size:17px;color:#6B5B3E;margin-top:14px;line-height:1.6}}
-    .chips{{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}}
-    .chip{{background:#fff;border:1px solid #E8DFD0;padding:6px 14px;border-radius:20px;font-size:13px;color:#8B7E6A;font-family:'Zen Maru Gothic',sans-serif}}
-    .deco{{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:200px;height:200px;background:{BRAND};border-radius:50%;opacity:0.08}}
-    .play{{position:absolute;right:70px;top:50%;transform:translateY(-50%);width:90px;height:90px;border-radius:50%;background:{BRAND};display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(197,107,73,0.3)}}
-    .play::after{{content:'';border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}}
-    .brand{{position:absolute;bottom:16px;left:44px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif}}
-    .tape{{position:absolute;top:24px;right:240px;width:80px;height:22px;background:rgba(255,232,163,0.6);transform:rotate(6deg)}}
+    body{{height:500px;background:#FAF8F3;position:relative;overflow:hidden}}
+    .paper-dot{{position:absolute;width:5px;height:5px;border-radius:50%;background:#E8DFD0}}
+    .tape{{position:absolute;background:rgba(255,232,163,0.55);border:1px dashed rgba(201,148,58,0.25)}}
+    .tape-1{{top:22px;left:52px;width:100px;height:24px;transform:rotate(-3deg)}}
+    .wrap{{padding:54px 48px;position:relative;display:flex;gap:32px;align-items:center;height:100%}}
+    .main{{flex:1;position:relative;z-index:2}}
+    .label{{display:inline-block;background:{BRAND};color:#fff;padding:6px 18px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:0.12em;margin-bottom:16px;font-family:'Zen Maru Gothic',sans-serif}}
+    h1{{font-family:'Noto Serif JP',serif;font-size:42px;font-weight:900;color:#2D3748;line-height:1.35;letter-spacing:0.01em}}
+    h1 .hl{{background:linear-gradient(transparent 62%,#FFE8A3 62%);padding:0 3px}}
+    h1 .big{{color:{BRAND};font-size:48px}}
+    .hook{{font-family:'Zen Maru Gothic',sans-serif;font-size:18px;color:#6B5B3E;margin-top:18px;line-height:1.6;font-weight:500}}
+    .hook strong{{color:{BRAND}}}
+    .benefits{{display:flex;flex-direction:column;gap:6px;margin-top:22px}}
+    .benefit{{display:flex;align-items:center;gap:10px;font-size:14px;color:#2D3748;font-family:'Zen Maru Gothic',sans-serif;font-weight:700}}
+    .check{{width:22px;height:22px;background:#5B8C3E;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:900}}
+    .side{{width:220px;position:relative;z-index:2}}
+    .badge-circle{{width:180px;height:180px;border-radius:50%;background:#fff;border:3px solid {BRAND};display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(197,107,73,0.18);transform:rotate(-4deg);margin:0 auto}}
+    .badge-circle .s1{{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;color:#6B5B3E;margin-bottom:-4px}}
+    .badge-circle .s2{{font-family:'Noto Serif JP',serif;font-size:56px;font-weight:900;color:{BRAND};line-height:1}}
+    .badge-circle .s3{{font-family:'Zen Maru Gothic',sans-serif;font-size:14px;color:#6B5B3E;margin-top:-2px;font-weight:700}}
+    .badge-sub{{margin-top:16px;text-align:center;font-family:'Zen Maru Gothic',sans-serif;font-size:13px;color:#8B7E6A;line-height:1.5}}
+    .brand{{position:absolute;bottom:16px;left:48px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.1em}}
     </style></head><body>
-    <div class="deco"></div>
-    <div class="tape"></div>
-    <div class="play"></div>
+    <div class="paper-dot" style="top:80px;left:30px"></div>
+    <div class="paper-dot" style="bottom:60px;right:40px"></div>
+    <div class="paper-dot" style="top:200px;right:280px"></div>
+    <div class="tape tape-1"></div>
     <div class="wrap">
-      <span class="tag">2026年版</span>
-      <h1>動画編集は<br><span class="hl"><em>未経験でも始められる？</em></span></h1>
-      <p class="sub">失敗しない始め方と、おすすめスクール</p>
-      <div class="chips">
-        <span class="chip">独学 vs スクール</span>
-        <span class="chip">4ステップロードマップ</span>
-        <span class="chip">失敗パターン5選</span>
+      <div class="main">
+        <span class="label">ビギナーガイド｜2026年版</span>
+        <h1>動画編集は<br><span class="hl">未経験でも</span><br><span class="big">始められる</span>のか？</h1>
+        <p class="hook">失敗しない始め方と、<strong>自分に合うスクール</strong>の選び方を、現場感のある視点で整理しました。</p>
+        <div class="benefits">
+          <div class="benefit"><div class="check">✓</div>独学 vs スクールの判断基準</div>
+          <div class="benefit"><div class="check">✓</div>最初の案件まで4ステップ</div>
+          <div class="benefit"><div class="check">✓</div>失敗パターン5選と回避法</div>
+        </div>
       </div>
-      <div class="brand">{SITE}</div>
+      <div class="side">
+        <div class="badge-circle">
+          <div class="s1">最短</div>
+          <div class="s2">3</div>
+          <div class="s3">ヶ月で初案件</div>
+        </div>
+        <div class="badge-sub">本気でやれば<br>月20万円も射程内</div>
+      </div>
     </div>
+    <div class="brand">{SITE}</div>
     </body></html>"""
     render(html, OUT / "eyecatch-video-editing-beginner.png")
 
 
 # === 2. アイキャッチ: 無料ソフト比較 ===
 def eyecatch_free():
-    softs = [("CapCut","#E8795C"),("DaVinci Resolve","#4A7FAD"),("iMovie","#8B6FBF"),("Clipchamp","#5A8EC5"),("Canva","#5EA5B8"),("Shotcut","#7A9C5E"),("Filmora","#C9943A")]
-    items = "".join(f'<span class="chip" style="border-left:4px solid {c}">{n}</span>' for n, c in softs)
+    softs = [
+        ("CapCut", "スマホ最強", "#E8795C"),
+        ("DaVinci Resolve", "プロ級", "#4A7FAD"),
+        ("iMovie", "Mac標準", "#8B6FBF"),
+        ("Clipchamp", "Win標準", "#5A8EC5"),
+        ("Canva", "SNS向け", "#5EA5B8"),
+        ("Shotcut", "広告なし", "#7A9C5E"),
+        ("Filmora", "入門向け", "#C9943A"),
+    ]
+    chip_html = "".join(
+        f'<div class="chip" style="border-left:4px solid {c}"><div class="chip-name">{n}</div><div class="chip-tag">{t}</div></div>'
+        for n, t, c in softs
+    )
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    body{{height:420px;background:#FAF8F3;position:relative;overflow:hidden;padding:48px 44px;display:flex;flex-direction:column;justify-content:center}}
-    .tags{{display:flex;gap:8px;margin-bottom:14px}}
-    .tag{{padding:6px 16px;border-radius:6px;font-size:14px;font-weight:700;color:#fff;font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.05em}}
-    h1{{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:900;color:#2D3748;line-height:1.4}}
-    h1 em{{font-style:normal;color:{BRAND}}}
-    h1 .hl{{background:linear-gradient(transparent 60%,#FFE8A3 60%);padding:0 4px}}
-    .sub{{font-family:'Zen Maru Gothic',sans-serif;font-size:17px;color:#6B5B3E;margin-top:14px}}
-    .chips{{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;max-width:560px}}
-    .chip{{background:#fff;padding:8px 14px;border-radius:6px;font-size:14px;font-weight:700;color:#2D3748;font-family:'Zen Maru Gothic',sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.04)}}
-    .brand{{position:absolute;bottom:16px;left:44px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif}}
-    .tape{{position:absolute;top:28px;right:60px;width:110px;height:24px;background:rgba(255,232,163,0.7);transform:rotate(-4deg)}}
-    .tape-label{{position:absolute;top:30px;right:72px;font-size:14px;font-weight:700;color:#8B7E3E;transform:rotate(-4deg);font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.1em}}
+    body{{height:500px;background:#FAF8F3;position:relative;overflow:hidden;padding:48px 44px;display:flex;gap:28px}}
+    .paper-dot{{position:absolute;width:5px;height:5px;border-radius:50%;background:#E8DFD0}}
+    .tape{{position:absolute;background:rgba(255,232,163,0.55);top:24px;right:60px;width:120px;height:24px;transform:rotate(-3deg);border:1px dashed rgba(201,148,58,0.25)}}
+    .main{{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}}
+    .labels{{display:flex;gap:8px;margin-bottom:16px}}
+    .label{{padding:6px 16px;border-radius:6px;font-size:13px;font-weight:700;color:#fff;letter-spacing:0.1em;font-family:'Zen Maru Gothic',sans-serif}}
+    h1{{font-family:'Noto Serif JP',serif;font-size:38px;font-weight:900;color:#2D3748;line-height:1.35}}
+    h1 .hl{{background:linear-gradient(transparent 62%,#FFE8A3 62%);padding:0 3px}}
+    h1 .num{{font-size:58px;color:{BRAND};font-family:'Noto Serif JP',serif}}
+    .hook{{font-family:'Zen Maru Gothic',sans-serif;font-size:16px;color:#6B5B3E;margin-top:16px;line-height:1.6;font-weight:500;max-width:380px}}
+    .hook strong{{color:{BRAND}}}
+    .stamp{{margin-top:20px;display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:#fff;border:2px solid {BRAND};border-radius:8px;color:{BRAND};font-family:'Noto Serif JP',serif;font-weight:900;font-size:16px;width:fit-content;transform:rotate(-1deg)}}
+    .side{{width:280px;display:flex;flex-direction:column;justify-content:center;gap:6px;position:relative;z-index:2}}
+    .side-title{{font-family:'Zen Maru Gothic',sans-serif;font-size:12px;color:#8B7E6A;margin-bottom:6px;letter-spacing:0.15em;text-align:center;font-weight:700}}
+    .chip{{background:#fff;padding:8px 14px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}}
+    .chip-name{{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:900;color:#2D3748}}
+    .chip-tag{{font-family:'Zen Maru Gothic',sans-serif;font-size:11px;color:#8B7E6A}}
+    .brand{{position:absolute;bottom:16px;left:44px;font-size:12px;color:#A89F91;font-family:'Zen Maru Gothic',sans-serif;letter-spacing:0.1em}}
     </style></head><body>
+    <div class="paper-dot" style="top:100px;left:30px"></div>
+    <div class="paper-dot" style="bottom:80px;left:50px"></div>
     <div class="tape"></div>
-    <div class="tape-label">7本を比較！</div>
-    <div class="tags"><span class="tag" style="background:{BRAND}">2026年版</span><span class="tag" style="background:#5B8C3E">完全無料</span></div>
-    <h1>無料の動画編集ソフト<br><span class="hl"><em>おすすめ7選</em></span></h1>
-    <p class="sub">用途別に徹底比較</p>
-    <div class="chips">{items}</div>
+    <div class="main">
+      <div class="labels"><span class="label" style="background:{BRAND}">2026年版</span><span class="label" style="background:#5B8C3E">完全無料</span></div>
+      <h1>無料の動画編集ソフト<br><span class="hl">おすすめ</span><span class="num">7</span><span class="hl">選</span></h1>
+      <p class="hook"><strong>「結局どれがいい？」</strong>を終わらせる。スマホ・PC・YouTube・SNS、用途別に最適解を提示します。</p>
+      <div class="stamp">◎ 用途別に最適解が見つかる</div>
+    </div>
+    <div class="side">
+      <div class="side-title">━━ 7本すべて比較 ━━</div>
+      {chip_html}
+    </div>
     <div class="brand">{SITE}</div>
     </body></html>"""
     render(html, OUT / "eyecatch-free-video-editing-software.png")
