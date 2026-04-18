@@ -31,6 +31,9 @@ class WPClient:
                 "       .env.example をコピーして .env を作成してください。"
             )
 
+        if not self.url.startswith("https://"):
+            sys.exit("エラー: WP_URL は https:// で始まる必要があります（セキュリティ上の理由）。")
+
         self.api = f"{self.url}/wp-json/wp/v2"
         self.auth = (self.user, self.app_password)
 

@@ -176,6 +176,11 @@ def cmd_push(args: argparse.Namespace) -> int:
         print(f"エラー: ファイルが見つかりません: {path}", file=sys.stderr)
         return 1
 
+    allowed_dir = Path("articles/drafts").resolve()
+    if not path.resolve().is_relative_to(allowed_dir):
+        print("エラー: articles/drafts/ 内のファイルのみ指定できます。", file=sys.stderr)
+        return 1
+
     post = frontmatter.load(path)
     meta = post.metadata
     body_md = post.content
@@ -231,8 +236,12 @@ def cmd_push(args: argparse.Namespace) -> int:
             categories=category_ids,
         )
         action = "作成"
-        # frontmatter に wp_id を書き戻す
-        meta["wp_id"] = result["id"]
+        # frontmatter に wp_id を書き戻す（検証付き）
+        post_id = result.get("id")
+        if not isinstance(post_id, int) or post_id <= 0:
+            print("エラー: WordPress APIから不正なIDが返されました。", file=sys.stderr)
+            return 1
+        meta["wp_id"] = post_id
         post.metadata = meta
         path.write_text(frontmatter.dumps(post), encoding="utf-8")
 
