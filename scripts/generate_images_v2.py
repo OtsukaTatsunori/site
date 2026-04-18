@@ -22,19 +22,22 @@ def render(html: str, path: Path):
     print(f"✅ {path.name}")
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;background:#fff;width:800px}
+body{font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;background:#FAF8F3;width:800px;color:#2D3748}
 """
-BRAND = "#2563eb"
+BRAND = "#C56B49"
 SITE = "大人の学びなおし比較"
 
 def hd(title, sub=""):
-    s = f'<p style="font-size:16px;opacity:.7;margin-top:4px">{sub}</p>' if sub else ""
-    return f'<div style="background:{BRAND};color:#fff;padding:28px 36px"><div style="font-size:28px;font-weight:900">{title}</div>{s}</div>'
+    s = f'<p class="hd-sub">{sub}</p>' if sub else ""
+    return f"""<div style="background:{BRAND};color:#fff;padding:28px 36px;position:relative">
+      <div style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:900">{title}</div>{s}
+      <div style="position:absolute;bottom:-8px;left:36px;width:60px;height:4px;background:#FFE8A3;border-radius:2px"></div>
+    </div>"""
 
 def ft():
-    return f'<div style="padding:16px 36px;border-top:1px solid #eee;font-size:13px;color:#aaa;text-align:right">{SITE}</div>'
+    return f'<div style="padding:16px 36px;border-top:2px dashed #E8DFD0;font-size:13px;color:#A89F91;text-align:right;font-family:\'Zen Maru Gothic\',sans-serif">{SITE}</div>'
 
 
 # === 1. アイキャッチ: 動画編集 未経験 ===
@@ -85,35 +88,59 @@ def eyecatch_free():
 # === 3. 独学 vs スクール（1カラム・縦並び） ===
 def comparison():
     rows = [
-        ("費用", "月額〜数千円", "◎", "15万〜40万円", "△"),
-        ("期間", "3〜6ヶ月", "○", "2〜6ヶ月", "◎"),
-        ("挫折率", "高い（7〜8割）", "×", "低い（2〜3割）", "◎"),
-        ("質問対応", "自力で調べる", "△", "講師が対応", "◎"),
-        ("案件サポート", "なし", "×", "あり", "◎"),
-        ("学習効率", "取捨選択に時間", "△", "最短ルート", "◎"),
+        ("💰", "費用", "月額〜数千円", "◎", "15万〜40万円", "△", True),
+        ("⏱️", "期間", "3〜6ヶ月", "○", "2〜6ヶ月", "◎", False),
+        ("🔥", "挫折率", "高い（7〜8割）", "×", "低い（2〜3割）", "◎", True),
+        ("💬", "質問対応", "自力で調べる", "△", "講師が対応", "◎", False),
+        ("🤝", "案件サポート", "なし", "×", "あり", "◎", True),
+        ("📈", "学習効率", "取捨選択に時間", "△", "最短ルート", "◎", False),
     ]
-    rc = {"◎":"#16a34a","○":"#2563eb","△":"#f59e0b","×":"#ef4444"}
+    rc = {"◎":"#5B8C3E","○":"#4A7FAD","△":"#C9943A","×":"#C75450"}
     trs = ""
-    for label, v1, r1, v2, r2 in rows:
-        trs += f"""<div class="row">
+    for icon, label, v1, r1, v2, r2, highlight in rows:
+        hl = "background:rgba(255,232,163,0.4);" if highlight else ""
+        trs += f"""<div class="row" style="{hl}">
+          <div class="icon">{icon}</div>
           <div class="label">{label}</div>
-          <div class="cell"><span class="rating" style="color:{rc[r1]}">{r1}</span><span class="val">{v1}</span></div>
-          <div class="cell"><span class="rating" style="color:{rc[r2]}">{r2}</span><span class="val">{v2}</span></div>
+          <div class="cell">
+            <span class="rating" style="color:{rc[r1]}">{r1}</span>
+            <span class="val">{v1}</span>
+          </div>
+          <div class="cell">
+            <span class="rating" style="color:{rc[r2]}">{r2}</span>
+            <span class="val">{v2}</span>
+          </div>
         </div>"""
 
     html = f"""<!DOCTYPE html><html><head><style>{CSS}
-    .hdr{{display:flex;padding:0 36px}}
-    .hdr-blank{{width:100px}}
-    .hdr-col{{flex:1;text-align:center;padding:16px 0;font-size:20px;font-weight:900}}
-    .row{{display:flex;align-items:center;padding:16px 36px;border-bottom:1px solid #f1f5f9}}
-    .label{{width:100px;font-size:15px;color:#94a3b8;font-weight:700}}
+    .hdr{{display:flex;padding:0 36px;align-items:center}}
+    .hdr-blank{{width:140px}}
+    .hdr-col{{flex:1;text-align:center;padding:20px 0;font-size:22px;font-weight:900;font-family:'Noto Serif JP',serif}}
+    .row{{display:flex;align-items:center;padding:18px 36px;border-bottom:2px dashed #E8DFD0}}
+    .row:last-child{{border-bottom:none}}
+    .icon{{width:32px;font-size:22px;flex-shrink:0}}
+    .label{{width:108px;font-size:15px;color:#8B7E6A;font-weight:700;font-family:'Zen Maru Gothic',sans-serif}}
     .cell{{flex:1;display:flex;align-items:center;gap:10px}}
-    .rating{{font-size:28px;font-weight:900;width:36px;text-align:center}}
-    .val{{font-size:18px;font-weight:700;color:#334155}}
+    .rating{{font-size:26px;font-weight:900;width:32px;text-align:center}}
+    .val{{font-size:18px;font-weight:700;color:#2D3748}}
+    .note{{
+      margin:0 36px 0;padding:16px 20px;
+      background:#FFF8E7;border-left:4px solid #C9943A;border-radius:0 8px 8px 0;
+      font-size:15px;color:#6B5B3E;line-height:1.6;
+      font-family:'Zen Maru Gothic',sans-serif;
+    }}
+    .note strong{{color:#C56B49}}
     </style></head><body>
-    {hd("独学 vs スクール 比較","どちらが自分に合っている？")}
-    <div class="hdr"><div class="hdr-blank"></div><div class="hdr-col" style="color:#2563eb">独学</div><div class="hdr-col" style="color:#ea580c">スクール</div></div>
+    {hd("独学 vs スクール 比較","〜 正直なところ、どちらが合う？ 〜")}
+    <div class="hdr">
+      <div class="hdr-blank"></div>
+      <div class="hdr-col" style="color:#4A7FAD">独学</div>
+      <div class="hdr-col" style="color:#C56B49">スクール</div>
+    </div>
     {trs}
+    <div class="note">
+      📝 <strong>迷ったときの判断基準：</strong>「3ヶ月以内に案件を取りたい」ならスクール、「まず向き不向きを確認したい」なら独学からがおすすめです。
+    </div>
     {ft()}
     </body></html>"""
     render(html, OUT / "comparison-self-vs-school.png")
