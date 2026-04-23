@@ -356,6 +356,8 @@ UIの分かりやすさは7本の中でもトップクラスで、ドラッグ�
 | **[DaVinci Resolve Studio](https://www.blackmagicdesign.com/jp/products/davinciresolve)** | 買い切り47,980円 | 無料版の上位。AIノイズ除去等 | DaVinci Resolve |
 | **[Filmora有料版](https://filmora.wondershare.jp/)** | 年額7,980円〜 | 初心者〜中級者向け。コスパ良 | Filmora無料版 |
 
+> 💬 **現場の本音**：無料ソフトで十分な人も実際にいます。趣味のYouTubeならDaVinci Resolve、SNS用ならCapCutで完結します。ただし「仕事にしたい」なら話は別。クライアントの大半がPremiere Pro指定なので、どこかのタイミングで移行する覚悟は持っておいてください。
+
 **副業・転職で案件を取りたいなら、最終的にはPremiere Proが最有力**です。クラウドソーシングの案件の7〜8割がPremiere Pro指定のため、仕事を取る上で最も選択肢が広がります。
 
 > 詳しくは「[動画編集は未経験でも始められる？](/video-editing-beginner/)」の「独学 vs スクール」セクションも参考にしてください。
