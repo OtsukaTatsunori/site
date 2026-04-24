@@ -1,5 +1,5 @@
 ---
-title: 【2026年】Filmoraの評判は？料金・機能・注意点を正直にレビュー
+title: 【2026年】Filmoraの評判は良い？悪い？買う前に知るべき5つの注意点
 slug: filmora-review
 excerpt: Filmoraの評判を実際の機能・料金・注意点から正直にレビュー。無料版と有料版の違い、Premiere ProやCapCutとの比較、向いている人・向いていない人まで解説します。
 categories:

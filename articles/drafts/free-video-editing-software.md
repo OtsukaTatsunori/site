@@ -1,5 +1,5 @@
 ---
-title: 【2026年】無料の動画編集ソフトおすすめ7選。用途別に徹底比較
+title: 【2026年】無料で使える動画編集ソフト7選｜プロも認めた「本当に使える」のはどれ？
 slug: free-video-editing-software
 excerpt: 動画編集を無料で始めたい人向けに、CapCut・DaVinci Resolve・iMovie・Clipchamp・Canva・Shotcut・Filmoraの7本を用途別に比較。スマホ用・PC用・YouTube用・SNS用、目的に合った1本が見つかります。
 categories:

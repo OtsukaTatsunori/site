@@ -1,5 +1,5 @@
 ---
-title: 【2026年】Premiere Proが重い・遅い時の対処法。すぐ試せる10の解決策
+title: 【2026年】Premiere Proが重い！フリーズする！5分で試せる対処法10選
 slug: premiere-pro-slow-fix
 excerpt: Premiere Proが重い・遅い・フリーズする時の対処法を10個紹介。プロキシ設定、キャッシュ削除、GPU設定、メモリ最適化など、初心者でもすぐ試せる解決策をわかりやすく解説します。
 categories:

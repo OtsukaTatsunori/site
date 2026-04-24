@@ -1,5 +1,5 @@
 ---
-title: 【2026年】After Effectsとは？Premiere Proとの違いと初心者が学ぶべきタイミング
+title: 【2026年】After Effectsは必要？Premiere Proとの違いと学ぶべきタイミングの見極め方
 slug: after-effects-intro
 excerpt: After Effectsとは何かを初心者向けに解説。Premiere Proとの違い、できること・できないこと、学ぶべきタイミング、学習方法まで。動画編集のステップアップを考えている方向けのガイドです。
 categories:

@@ -1,5 +1,5 @@
 ---
-title: 【2026年】動画の書き出し設定ガイド。YouTube・SNS別の最適設定を解説
+title: 【2026年】動画の書き出し設定はコレで迷わない｜YouTube・TikTok・納品用の正解
 slug: video-export-settings
 excerpt: 動画の書き出し設定をYouTube・TikTok・Instagram別に解説。解像度、フレームレート、コーデック、ビットレートの意味と最適値を、Premiere Pro・DaVinci Resolve・CapCutの操作手順付きで紹介します。
 categories:

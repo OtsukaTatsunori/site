@@ -1,5 +1,5 @@
 ---
-title: 【2026年】ショート動画の編集のコツ。縦型で伸ばす7つのテクニック
+title: 【2026年】ショート動画の編集で再生数が10倍変わる？縦型で伸ばす7つのテクニック
 slug: short-video-editing-tips
 excerpt: TikTok・Instagram Reels・YouTube Shortsのショート動画編集のコツを7つ紹介。最初の1秒の作り方、テンポの出し方、テロップの入れ方、BGMの選び方など、再生数を伸ばす実践テクニックを解説します。
 categories:

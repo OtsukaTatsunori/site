@@ -1,5 +1,5 @@
 ---
-title: 【2026年】動画編集のクライアントをSNSで見つける方法。直接営業のコツ
+title: 【2026年】クラウドソーシング以外で動画編集の仕事を見つける5つの方法｜SNS営業のコツ
 slug: video-editing-find-clients-sns
 excerpt: クラウドソーシング以外で動画編集のクライアントを見つける方法を解説。Twitter、Instagram、YouTubeコメントからの直接営業、DM提案の書き方、SNS発信のコツまで紹介します。
 categories:
