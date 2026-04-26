@@ -91,6 +91,8 @@ top-down view, soft shadows,
 professional, high quality, white background
 ```
 
+サムネイル画像の作り方は[AIでYouTubeサムネイルを自動作成する方法](/ai-thumbnail-creation/)も参考にしてください。
+
 ### YouTube サムネイル用の背景
 
 ```
@@ -160,4 +162,8 @@ professional, modern, high quality
 
 ツールの選び方 → [AI画像生成ツール比較6選](/ai-image-generation-tools/)
 
+動画のプロンプトも学ぶ → [AI動画生成プロンプトの書き方](/ai-video-prompt-guide/)
+
 副業での活用 → [AI画像生成で副業する方法](/ai-image-side-job/)
+
+AIスキル全体 → [AIスキルの始め方 完全ロードマップ](/ai-skill-roadmap/)

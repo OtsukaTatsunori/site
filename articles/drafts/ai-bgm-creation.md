@@ -61,7 +61,7 @@ perfect for YouTube background music
 | **テンポを動画に合わせる** | 解説系 → 80〜100 BPM / テンポ良い系 → 120〜140 BPM |
 | **ループしやすい曲を選ぶ** | 同じ曲を繰り返し使える |
 | **複数バリエーション作る** | 同じプロンプトで何度か生成し、ベストを選ぶ |
-| **音量は-20dBに** | BGMはナレーションの邪魔にならないよう小さめに |
+| **音量は-20dBに** | BGMはナレーションの邪魔にならないよう小さめに（→ [AI音声ナレーションの作り方](/ai-voice-narration/)） |
 
 > 💬 **現場の本音**：BGMを「自分で作る」最大のメリットは、**著作権を気にしなくていいこと**です。フリーBGMは規約変更や突然の削除がありますが、AI生成BGMなら安心して使い続けられます。
 
@@ -90,6 +90,10 @@ perfect for YouTube background music
 
 各ツールに無料枠はありますが、**商用利用（YouTube等）は有料プランが必要**です。月$10程度で無制限に生成できるので、動画をコンスタントに作るならすぐに元が取れます。
 
+### Q. AI BGMを副業にできる？
+
+可能です。オリジナルBGMを制作してストック販売したり、動画クリエイター向けにBGM制作を受注する方法があります。詳しくは[AI副業おすすめ10選](/ai-side-job-guide/)を参照してください。
+
 ### Q. 音楽の知識がなくても使える？
 
 使えます。「relaxing piano BGM for YouTube」のように日本語や英語で雰囲気を伝えるだけでOKです。
@@ -103,5 +107,9 @@ perfect for YouTube background music
 | インスト系BGM | **Stable Audio** | $12/月 |
 
 フリーBGMの選び方 → [BGM・効果音の選び方](/video-editing-bgm-guide/)
+
+動画編集ツール → [AI動画編集ツール比較](/ai-video-editing-tools/)
+
+動画制作の全体像 → [動画編集の始め方 完全ロードマップ](/video-editing-complete-roadmap/)
 
 AIスキル全体 → [AIスキルの始め方 完全ロードマップ](/ai-skill-roadmap/)

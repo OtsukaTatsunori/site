@@ -42,6 +42,8 @@ YouTubeの再生数の8割はサムネイルで決まります。でも**デザ�
 ・最もク��ック率が高そうなものに★を付ける
 ```
 
+AI画像生成の基本を知りたい方は[AI画像生成ツール比較](/ai-image-generation-tools/)も参考にしてください。背景画像のプロンプトの書き方は[AI画像生成プロンプト完全ガイド](/ai-image-prompt-guide/)で詳しく解説しています。
+
 ### ステップ2：Canva AIでデザイン
 
 1. Canvaで「YouTubeサムネイル」テンプレートを選択
@@ -84,5 +86,9 @@ Canvaの無料プラン＋ChatGPTの無料版で基本的なサムネイルは�
 | 背景画像を生成 | DALL-E or Canva AI |
 
 手動での作り方 → [Canvaでサムネイルを作る方法](/canva-thumbnail-tutorial/)
+
+台本から動画を作る → [YouTube台本テンプレート5選](/youtube-script-templates/)
+
+AIスキルで副業する → [AI副業おすすめ10選](/ai-side-job-guide/)
 
 AIスキル全体 → [AIスキルの始め方 完全ロードマップ](/ai-skill-roadmap/)

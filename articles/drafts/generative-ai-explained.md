@@ -113,6 +113,7 @@ ChatGPTに入力した情報がAIの学習に使われる可能性がありま�
 | AIを仕事に活かす方法 | [生成AIで仕事を効率化](/ai-work-efficiency/) |
 | AIで副業を始めたい | [AI副業おすすめ10選](/ai-side-job-guide/) |
 | AIの資格を取りたい | [AI資格おすすめ8選](/ai-certification-guide/) |
+| AIスクールで学びたい | [AIスクールおすすめ7選](/ai-school-comparison/) |
 
 ## まとめ
 
@@ -124,5 +125,7 @@ ChatGPTに入力した情報がAIの学習に使われる可能性がありま�
 | お金はかかる？ | ChatGPT無料版で基本的なことは全部できる |
 
 **まずはChatGPTに登録して、1つ質問してみてください。** それが生成AI学習の第一歩です。
+
+AIの学習ロードマップ → [AI勉強法・独学ロードマップ](/ai-study-roadmap/)
 
 AIスキル全体のロードマップ → [AIスキルの始め方 完全ロードマップ](/ai-skill-roadmap/)

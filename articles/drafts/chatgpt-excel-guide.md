@@ -181,6 +181,10 @@ Excelで以下のエラーが出ています。原因と修正方法を教えて
 
 **「Excelで◯◯したい」を日本語で伝えるだけ。** 関数を暗記する必要はもうありません。
 
+営業での活用 → [ChatGPT×営業 活用術](/chatgpt-sales-guide/)
+
+仕事全般の効率化 → [生成AIで仕事を効率化する方法](/ai-work-efficiency/)
+
 ChatGPTの基本 → [ChatGPT使い方ガイド](/chatgpt-beginner-guide/)
 
 プロンプト集 → [仕事で使えるプロンプト30選](/chatgpt-prompt-templates/)
