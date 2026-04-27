@@ -36,6 +36,8 @@ Markdownの形式:
 from __future__ import annotations
 
 import argparse
+import json
+import re
 import sys
 from pathlib import Path
 
@@ -58,6 +60,64 @@ def md_to_html(text: str) -> str:
             "nl2br",
         ],
     )
+
+
+def extract_faq_jsonld(markdown_text: str) -> str:
+    """Markdownから「### Q. 〜」パターンのFAQを抽出し、JSON-LD構造化データを生成。
+    FAQが見つからなければ空文字列を返す。"""
+    faq_items: list[dict] = []
+    lines = markdown_text.split("\n")
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        # ### Q. で始まる行を質問として検出
+        q_match = re.match(r"^###\s+Q\.\s*(.+)$", line)
+        if q_match:
+            question = q_match.group(1).strip()
+            # 次の行以降から回答を収集（次の###か##まで）
+            answer_lines: list[str] = []
+            i += 1
+            while i < len(lines):
+                next_line = lines[i].strip()
+                if next_line.startswith("### ") or next_line.startswith("## "):
+                    break
+                # 空行・引用ブロック・テーブルなどもテキストとして収集
+                if next_line:
+                    # Markdownの装飾を除去して平文に
+                    clean = re.sub(r"\*\*(.+?)\*\*", r"\1", next_line)
+                    clean = re.sub(r"\[(.+?)\]\(.+?\)", r"\1", clean)
+                    clean = re.sub(r"^>\s*", "", clean)
+                    clean = re.sub(r"^[|>]+\s*", "", clean)
+                    if clean and not clean.startswith("---"):
+                        answer_lines.append(clean)
+                i += 1
+            if answer_lines:
+                answer = " ".join(answer_lines)
+                faq_items.append({
+                    "@type": "Question",
+                    "name": question,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": answer,
+                    },
+                })
+            continue
+        i += 1
+
+    if not faq_items:
+        return ""
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faq_items,
+    }
+    script_tag = (
+        '\n<script type="application/ld+json">\n'
+        + json.dumps(schema, ensure_ascii=False, indent=2)
+        + "\n</script>\n"
+    )
+    return script_tag
 
 
 def cmd_ping(_args: argparse.Namespace) -> int:
@@ -202,6 +262,14 @@ def cmd_push(args: argparse.Namespace) -> int:
             body_md = body_md.replace(f"UPLOAD_URL:{filename}", url)
 
     content_html = md_to_html(body_md)
+
+    # FAQ構造化データ（JSON-LD）を自動挿入
+    faq_jsonld = extract_faq_jsonld(body_md)
+    if faq_jsonld:
+        content_html += faq_jsonld
+        faq_count = faq_jsonld.count('"@type": "Question"')
+        print(f"📋 FAQ構造化データ: {faq_count}件のQ&Aを検出・挿入")
+
     slug = meta.get("slug")
     excerpt = meta.get("excerpt")
 
