@@ -190,4 +190,10 @@ IMAGES = [
     {"file": "ai-video-prompt-structure.png", "title": "AI動画プロンプトの6要素", "sub": "動き+カメラワークが画像との違い", "rows": [("1","被写体","何が映っているか","a woman walking"),("2","動き","どう動くか","slowly turning"),("3","カメラ","カメラの動き","dolly in, pan"),("4","速度","スピード","slow motion"),("5","雰囲気","色調・ムード","cinematic"),("6","品質","解像度","4K, 24fps")]},
     {"file": "ai-subsidy-comparison.png", "title": "AI学習に使える補助金3つ", "sub": "最大80%が戻ってくる（2024年10月改正）", "rows": [("⭐","専門実践","最大80% 上限64万/年","事前手続き必要"),("⭐","リスキリング支援","最大70%","転職検討者向け"),("○","一般教育訓練","20% 上限10万","手続き簡単")]},
     {"file": "generative-ai-types.png", "title": "生成AIの4つの種類", "sub": "テキスト・画像・動画・音楽", "rows": [("💬","テキスト生成","文章作成・要約・翻訳","ChatGPT"),("🖼","画像生成","テキストから画像","Midjourney"),("🎬","動画生成","テキストから動画","Runway"),("🎵","音楽生成","テキストからBGM","Suno AI")]},
+    # === AIカテゴリ 追加記事用 ===
+    {"file": "ai-chatbot-comparison.png", "title": "3大AIチャット比較", "sub": "ChatGPT vs Claude vs Gemini", "rows": [("🤖","ChatGPT","万能型 画像生成○","Go $20/月"),("🤖","Claude","文章力No.1 コード最強","Pro $20/月"),("🤖","Gemini","Google連携 100万トークン","約2,900円/月")]},
+    {"file": "ai-writing-tools-comparison.png", "title": "AIライティングツール7選", "sub": "用途別のおすすめ", "rows": [("✍️","ChatGPT","万能 プロンプト次第","無料〜$20/月"),("✍️","Claude","文章の質トップ","無料〜$20/月"),("✍️","トランスコープ","SEO特化 競合分析","月11,000円〜"),("✍️","SAKUBUN","テンプレ100以上","月3,000円〜")]},
+    {"file": "free-ai-chatbot-comparison.png", "title": "無料AIチャット8選", "sub": "課金なしでここまで使える", "rows": [("🆓","ChatGPT","GPT-5制限あり","万能"),("🆓","Claude","Sonnet 4.6","文章力◎"),("🆓","Gemini","画像生成OK","Google連携"),("🆓","Perplexity","出典付き","調べ物◎"),("🆓","Copilot","Edge内蔵","手軽")]},
+    {"file": "ai-presentation-3steps.png", "title": "AIプレゼン作成の3ステップ", "sub": "3時間→30分に短縮", "rows": [("1","構成","ChatGPTで骨子作成","5分"),("2","デザイン","Canva AI / Copilot","15分"),("3","台本","ChatGPTで発表ノート","10分")]},
+    {"file": "ai-automation-5steps.png", "title": "AI業務自動化の5ステップ", "sub": "プログラミング不要で始める", "rows": [("1","棚卸し","繰り返し業務をリストアップ",""),("2","優先順位","頻度×単純さで選ぶ",""),("3","ツール選び","Zapier / Make等",""),("4","小さく試す","1つだけ自動化",""),("5","横展開","うまくいったら広げる","")]},
 ]
