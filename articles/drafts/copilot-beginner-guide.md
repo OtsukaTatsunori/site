@@ -13,6 +13,12 @@ tags:
 
 Microsoft Copilotは**Word・Excel・PowerPointにAIが組み込まれた**ツールです。普段使っているOfficeの中で、そのままAIが使えるのが最大の強みです。
 
+**この記事でわかること：**
+- Microsoft CopilotのWord・Excel・PowerPoint活用法
+- 無料版と有料版の違い
+- ChatGPTとの使い分け
+
+
 ## Copilotとは
 
 | 項目 | 内容 |
@@ -97,6 +103,15 @@ ChatGPTでのExcel活用 → [ChatGPT × Excel活用術](/chatgpt-excel-guide/)
 | 調べ物 | **Gemini or ChatGPT** | Web検索と組み合わせやすい |
 
 **結論**：両方使うのがベストです。Office作業はCopilot、それ以外はChatGPTという使い分けが効率的。
+
+## こんな人におすすめ / おすすめしない人
+
+| 向いている人 | 向いていない人 |
+|---|---|
+| Word・Excelを毎日使うビジネスパーソン | Mac専用アプリで完結したい人 |
+| Office内でAIを直接使いたい人 | Office製品を使わない人 |
+| コピペなしでAI活用したい人 | 汎用的なAIチャットだけが欲しい人 |
+
 
 ## よくある質問
 
