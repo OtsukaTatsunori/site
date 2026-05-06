@@ -14,6 +14,143 @@ Version: 1.0.0
 
 /* --- 共通 --- */
 
+/* ===== トップページ ===== */
+
+.top-hero {
+  text-align: center;
+  padding: 2.5em 1.5em;
+  background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 2em;
+}
+
+.top-hero-title {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: #fff;
+  border: none;
+}
+
+.top-hero-sub {
+  font-size: 1em;
+  opacity: 0.9;
+  margin-bottom: 1.5em;
+  line-height: 1.7;
+}
+
+.top-hero-cta {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.top-btn {
+  display: inline-block;
+  padding: 0.8em 2em;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95em;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.top-btn:hover {
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.top-btn-ai {
+  background: #fff;
+  color: #1a365d;
+}
+
+.top-btn-video {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+/* 特徴3カラム */
+.top-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+
+.top-feature-item {
+  text-align: center;
+  padding: 1.5em 1em;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.top-feature-num {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.2em;
+}
+
+.top-feature-label {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 0.4em;
+}
+
+.top-feature-desc {
+  font-size: 0.8em;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* 目的別4カラム */
+.top-purpose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+
+.top-purpose-card {
+  padding: 1.2em;
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.top-purpose-card h3 {
+  font-size: 1em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #2563eb;
+  color: #1e293b;
+}
+
+.top-purpose-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-purpose-card li {
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+  position: relative;
+  font-size: 0.9em;
+}
+
+.top-purpose-card li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+}
 
 /* --- 1023px以下（タブレット） --- */
 @media screen and (max-width: 1023px) {
@@ -22,10 +159,27 @@ Version: 1.0.0
 
 /* --- 834px以下（スマートフォン横） --- */
 @media screen and (max-width: 834px) {
-
+  .top-features {
+    grid-template-columns: 1fr;
+  }
+  .top-purpose-grid {
+    grid-template-columns: 1fr;
+  }
+  .top-hero-title {
+    font-size: 1.3em;
+  }
 }
 
 /* --- 480px以下（スマートフォン縦） --- */
 @media screen and (max-width: 480px) {
-
+  .top-hero {
+    padding: 1.5em 1em;
+  }
+  .top-hero-title {
+    font-size: 1.2em;
+  }
+  .top-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

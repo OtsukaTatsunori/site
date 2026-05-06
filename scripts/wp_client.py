@@ -225,3 +225,50 @@ class WPClient:
         )
         r.raise_for_status()
         return r.json()
+
+    # ---------- 固定ページ ----------
+    def create_page(
+        self,
+        title: str,
+        content: str,
+        status: str = "draft",
+        slug: str | None = None,
+        excerpt: str | None = None,
+    ) -> dict[str, Any]:
+        payload: dict[str, Any] = {
+            "title": title,
+            "content": content,
+            "status": status,
+        }
+        if slug:
+            payload["slug"] = slug
+        if excerpt:
+            payload["excerpt"] = excerpt
+
+        r = requests.post(
+            f"{self.api}/pages", auth=self.auth, json=payload, timeout=30
+        )
+        r.raise_for_status()
+        return r.json()
+
+    def update_page(self, page_id: int, **fields: Any) -> dict[str, Any]:
+        r = requests.post(
+            f"{self.api}/pages/{page_id}",
+            auth=self.auth,
+            json=fields,
+            timeout=30,
+        )
+        r.raise_for_status()
+        return r.json()
+
+    def list_pages(
+        self, status: str = "draft,publish", per_page: int = 20
+    ) -> list[dict[str, Any]]:
+        r = requests.get(
+            f"{self.api}/pages",
+            auth=self.auth,
+            params={"status": status, "per_page": per_page, "context": "edit"},
+            timeout=15,
+        )
+        r.raise_for_status()
+        return r.json()

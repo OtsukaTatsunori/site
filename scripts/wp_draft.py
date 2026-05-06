@@ -236,9 +236,9 @@ def cmd_push(args: argparse.Namespace) -> int:
         print(f"エラー: ファイルが見つかりません: {path}", file=sys.stderr)
         return 1
 
-    allowed_dir = Path("articles/drafts").resolve()
-    if not path.resolve().is_relative_to(allowed_dir):
-        print("エラー: articles/drafts/ 内のファイルのみ指定できます。", file=sys.stderr)
+    allowed_dirs = [Path("articles/drafts").resolve(), Path("articles/pages").resolve()]
+    if not any(path.resolve().is_relative_to(d) for d in allowed_dirs):
+        print("エラー: articles/drafts/ または articles/pages/ 内のファイルのみ指定できます。", file=sys.stderr)
         return 1
 
     post = frontmatter.load(path)
@@ -272,48 +272,77 @@ def cmd_push(args: argparse.Namespace) -> int:
 
     slug = meta.get("slug")
     excerpt = meta.get("excerpt")
+    content_type = meta.get("type", "post")  # "post" or "page"
 
     wp = WPClient()
 
-    # カテゴリ解決
+    # カテゴリ解決（固定ページでは不要）
     category_ids: list[int] = []
-    if meta.get("categories"):
+    if content_type == "post" and meta.get("categories"):
         category_ids = wp.resolve_category_ids(list(meta["categories"]))
 
     wp_id = meta.get("wp_id")
 
-    if wp_id:
-        # 既存の下書きを更新
-        result = wp.update_post(
-            int(wp_id),
-            title=title,
-            content=content_html,
-            slug=slug,
-            excerpt=excerpt or "",
-            categories=category_ids,
-        )
-        action = "更新"
+    if content_type == "page":
+        # 固定ページの作成/更新
+        if wp_id:
+            result = wp.update_page(
+                int(wp_id),
+                title=title,
+                content=content_html,
+                slug=slug,
+                excerpt=excerpt or "",
+            )
+            action = "更新"
+        else:
+            result = wp.create_page(
+                title=title,
+                content=content_html,
+                status="draft",
+                slug=slug,
+                excerpt=excerpt,
+            )
+            action = "作成"
+            post_id = result.get("id")
+            if not isinstance(post_id, int) or post_id <= 0:
+                print("エラー: WordPress APIから不正なIDが返されました。", file=sys.stderr)
+                return 1
+            meta["wp_id"] = post_id
+            post.metadata = meta
+            path.write_text(frontmatter.dumps(post), encoding="utf-8")
+        label = "固定ページ"
     else:
-        # 新規作成
-        result = wp.create_post(
-            title=title,
-            content=content_html,
-            status="draft",
-            slug=slug,
-            excerpt=excerpt,
-            categories=category_ids,
-        )
-        action = "作成"
-        # frontmatter に wp_id を書き戻す（検証付き）
-        post_id = result.get("id")
-        if not isinstance(post_id, int) or post_id <= 0:
-            print("エラー: WordPress APIから不正なIDが返されました。", file=sys.stderr)
-            return 1
-        meta["wp_id"] = post_id
-        post.metadata = meta
-        path.write_text(frontmatter.dumps(post), encoding="utf-8")
+        # 投稿の作成/更新
+        if wp_id:
+            result = wp.update_post(
+                int(wp_id),
+                title=title,
+                content=content_html,
+                slug=slug,
+                excerpt=excerpt or "",
+                categories=category_ids,
+            )
+            action = "更新"
+        else:
+            result = wp.create_post(
+                title=title,
+                content=content_html,
+                status="draft",
+                slug=slug,
+                excerpt=excerpt,
+                categories=category_ids,
+            )
+            action = "作成"
+            post_id = result.get("id")
+            if not isinstance(post_id, int) or post_id <= 0:
+                print("エラー: WordPress APIから不正なIDが返されました。", file=sys.stderr)
+                return 1
+            meta["wp_id"] = post_id
+            post.metadata = meta
+            path.write_text(frontmatter.dumps(post), encoding="utf-8")
+        label = "下書き"
 
-    print(f"✅ 下書き{action}完了: id={result['id']}  title={title}")
+    print(f"✅ {label}{action}完了: id={result['id']}  title={title}")
     print(
         f"   編集URL: {wp.url}/wp-admin/post.php?post={result['id']}&action=edit"
     )
