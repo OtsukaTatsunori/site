@@ -134,10 +134,37 @@ def cmd_list(args: argparse.Namespace) -> int:
     if not posts:
         print("投稿はありません。")
         return 0
+    print(f"合計 {len(posts)} 件")
     for p in posts:
         title = p["title"]["rendered"] or "(無題)"
-        print(f"[{p['status']}] id={p['id']}  {title}")
-        print(f"   edit: {wp.url}/wp-admin/post.php?post={p['id']}&action=edit")
+        slug = p.get("slug", "")
+        print(f"[{p['status']:>7}] id={p['id']:>3}  slug={slug}  title={title}")
+    return 0
+
+
+def cmd_diff(args: argparse.Namespace) -> int:
+    """ローカルのMD一覧とWordPressの投稿を照合し、未pushの記事を表示"""
+    wp = WPClient()
+    posts = wp.list_posts(status="draft,publish")
+    wp_slugs = {p.get("slug", "") for p in posts}
+
+    drafts_dir = Path("articles/drafts")
+    local_files: list[tuple[str, str]] = []  # (slug, filename)
+    for f in sorted(drafts_dir.glob("*.md")):
+        if f.name.startswith("_"):
+            continue
+        post = frontmatter.load(f)
+        slug = post.metadata.get("slug", f.stem)
+        local_files.append((slug, f.name))
+
+    missing = [(slug, name) for slug, name in local_files if slug not in wp_slugs]
+    print(f"ローカル記事: {len(local_files)} 件")
+    print(f"WordPress登録済み: {len(wp_slugs)} 件")
+    print(f"未push: {len(missing)} 件\n")
+    if missing:
+        print("=== 未pushの記事 ===")
+        for slug, name in missing:
+            print(f"  articles/drafts/{name}")
     return 0
 
 
@@ -428,6 +455,8 @@ def main() -> int:
         help="対象のステータス（カンマ区切り）。default: draft,publish",
     )
 
+    sub.add_parser("diff", help="ローカルMDとWordPress投稿を照合し未pushを表示")
+
     sub.add_parser("categories", help="カテゴリ一覧を表示")
 
     sub.add_parser(
@@ -455,6 +484,7 @@ def main() -> int:
     handlers = {
         "ping": cmd_ping,
         "list": cmd_list,
+        "diff": cmd_diff,
         "categories": cmd_categories,
         "init-categories": cmd_init_categories,
         "push": cmd_push,

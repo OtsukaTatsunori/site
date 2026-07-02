@@ -89,16 +89,32 @@ class WPClient:
         return r.json()
 
     def list_posts(
-        self, status: str = "draft,publish", per_page: int = 20
+        self, status: str = "draft,publish", per_page: int = 100
     ) -> list[dict[str, Any]]:
-        r = requests.get(
-            f"{self.api}/posts",
-            auth=self.auth,
-            params={"status": status, "per_page": per_page, "context": "edit"},
-            timeout=15,
-        )
-        r.raise_for_status()
-        return r.json()
+        """全件取得（ページング対応）"""
+        all_posts: list[dict[str, Any]] = []
+        page = 1
+        while True:
+            r = requests.get(
+                f"{self.api}/posts",
+                auth=self.auth,
+                params={
+                    "status": status,
+                    "per_page": per_page,
+                    "page": page,
+                    "context": "edit",
+                },
+                timeout=15,
+            )
+            r.raise_for_status()
+            batch = r.json()
+            if not batch:
+                break
+            all_posts.extend(batch)
+            if len(batch) < per_page:
+                break
+            page += 1
+        return all_posts
 
     def get_post(self, post_id: int) -> dict[str, Any]:
         r = requests.get(
