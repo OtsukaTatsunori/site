@@ -154,6 +154,14 @@ Version: 1.0.0
 
 /* ===== LP（刈り取りページ）共通スタイル ===== */
 
+/* 黄色ハイライト */
+.lp-highlight-yellow {
+  background: linear-gradient(180deg, transparent 60%, #fef08a 60%);
+  color: #fff;
+  font-weight: 900;
+  padding: 0 0.2em;
+}
+
 .lp-hero {
   text-align: center;
   padding: 2.5em 1.5em;
@@ -161,6 +169,406 @@ Version: 1.0.0
   color: #fff;
   border-radius: 8px;
   margin-bottom: 2em;
+}
+
+/* プライマリCTAボタン（黄色・目立つ） */
+.lp-btn-primary {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 1.1em 2.5em;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1e293b !important;
+  font-weight: 900;
+  font-size: 1.05em;
+  text-decoration: none !important;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), 0 0 0 4px rgba(255,255,255,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: lp-pulse 2s ease-in-out infinite;
+}
+
+.lp-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(251, 191, 36, 0.5), 0 0 0 4px rgba(255,255,255,0.3);
+}
+
+@keyframes lp-pulse {
+  0%, 100% { box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), 0 0 0 4px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 4px 20px rgba(251, 191, 36, 0.7), 0 0 0 8px rgba(255,255,255,0.15); }
+}
+
+/* アラートボックス（黄色） */
+.lp-alert {
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin: 2em 0;
+}
+
+.lp-alert p {
+  margin: 0.5em 0;
+}
+
+/* アラートボックス（赤） */
+.lp-alert-red {
+  background: #fee2e2;
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  padding: 1.2em;
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.lp-alert-red p {
+  margin: 0;
+  font-size: 0.95em;
+}
+
+/* 悩み3カードグリッド */
+.lp-pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+  margin: 1.5em 0;
+}
+
+.lp-pain-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5em;
+  border: 2px solid #e2e8f0;
+  text-align: center;
+  transition: transform 0.15s;
+}
+
+.lp-pain-card:hover {
+  transform: translateY(-3px);
+  border-color: #94a3b8;
+}
+
+.lp-pain-icon {
+  font-size: 2.5em;
+  margin-bottom: 0.3em;
+}
+
+.lp-pain-card h3 {
+  font-size: 1.05em;
+  margin: 0.3em 0 0.5em;
+  color: #1e293b;
+  border: none;
+}
+
+.lp-pain-card p {
+  font-size: 0.85em;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+/* 結論の大きなボックス */
+.lp-verdict-big {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border-radius: 12px;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  border: 3px solid #f59e0b;
+}
+
+.lp-verdict-row {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.8em 0;
+  border-bottom: 1px dashed #d97706;
+  flex-wrap: wrap;
+}
+
+.lp-verdict-row:last-child {
+  border-bottom: none;
+}
+
+.lp-verdict-label {
+  flex: 0 0 auto;
+  font-weight: 700;
+  color: #92400e;
+  font-size: 0.95em;
+}
+
+.lp-verdict-choice {
+  flex: 1;
+  font-size: 1em;
+  color: #1e293b;
+}
+
+.lp-verdict-choice strong {
+  font-size: 1.15em;
+  color: #dc2626;
+}
+
+/* スコア表 */
+.lp-score-table {
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.lp-score-table table {
+  width: 100%;
+  min-width: 500px;
+}
+
+/* 3つの理由カード */
+.lp-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 1.2em 0;
+}
+
+.lp-reason-card {
+  background: #fff;
+  border: 2px solid #fecaca;
+  border-radius: 10px;
+  padding: 1.2em;
+  position: relative;
+}
+
+.lp-reason-num {
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background: #dc2626;
+  color: #fff;
+  padding: 0.15em 0.7em;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+}
+
+.lp-reason-card h4 {
+  font-size: 1em;
+  margin: 0.5em 0 0.4em;
+  color: #1e293b;
+  border: none;
+}
+
+.lp-reason-card p {
+  font-size: 0.85em;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ランキングタイトル追加要素 */
+.lp-rank-catch {
+  background: #fff;
+  border-left: 3px solid #f59e0b;
+  padding: 0.5em 1em;
+  margin-top: 0.8em;
+  font-size: 0.85em;
+  color: #78350f;
+}
+
+/* 比較テーブル装飾 */
+.lp-comparison {
+  overflow-x: auto;
+}
+
+.lp-comparison table th {
+  background: #1e293b;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 補助金申請フロー */
+.lp-flow {
+  margin: 1.5em 0;
+}
+
+.lp-flow-step {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 0.8em;
+  border-left: 4px solid #2563eb;
+}
+
+.lp-flow-num {
+  flex: 0 0 80px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 900;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  text-align: center;
+  height: fit-content;
+  font-size: 0.85em;
+}
+
+.lp-flow-body h4 {
+  font-size: 1em;
+  margin: 0 0 0.3em;
+  color: #1e293b;
+  border: none;
+}
+
+.lp-flow-body p {
+  font-size: 0.85em;
+  margin: 0.3em 0;
+  color: #475569;
+}
+
+.lp-flow-time {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75em !important;
+  font-weight: 700;
+}
+
+/* 診断3択カード */
+.lp-quiz-choices {
+  display: grid;
+  gap: 1em;
+  margin: 1.2em 0;
+}
+
+.lp-quiz-choice {
+  display: flex;
+  gap: 1em;
+  padding: 1.2em;
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.lp-quiz-choice:hover {
+  border-color: #dc2626;
+  box-shadow: 0 4px 12px rgba(220,38,38,0.1);
+}
+
+.lp-quiz-label {
+  flex: 0 0 40px;
+  height: 40px;
+  background: #dc2626;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1em;
+}
+
+.lp-quiz-choice h4 {
+  font-size: 1em;
+  margin: 0 0 0.3em;
+  color: #1e293b;
+  border: none;
+}
+
+.lp-quiz-choice p {
+  font-size: 0.85em;
+  color: #64748b;
+  margin: 0.2em 0;
+}
+
+.lp-quiz-answer {
+  color: #dc2626 !important;
+  font-size: 0.9em !important;
+  margin-top: 0.5em !important;
+}
+
+/* モデルケースカード */
+.lp-model-cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 1.5em 0;
+}
+
+.lp-model-card {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 10px;
+  padding: 1.2em;
+}
+
+.lp-model-card h4 {
+  font-size: 1em;
+  margin: 0 0 0.7em;
+  color: #14532d;
+  border: none;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #86efac;
+}
+
+.lp-model-card ol {
+  padding-left: 1.3em;
+  margin: 0.5em 0;
+}
+
+.lp-model-card li {
+  font-size: 0.85em;
+  margin: 0.3em 0;
+  color: #166534;
+}
+
+.lp-model-result {
+  background: #fff;
+  padding: 0.5em 0.8em;
+  border-radius: 4px;
+  margin: 0.8em 0 0 !important;
+  font-size: 0.85em !important;
+  color: #14532d !important;
+}
+
+/* 最終CTA - おすすめカードを目立たせる */
+.lp-final-card-featured {
+  border: 3px solid #dc2626 !important;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(220,38,38,0.2);
+  position: relative;
+}
+
+.lp-final-card-featured::before {
+  content: "★ おすすめ";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc2626;
+  color: #fff;
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+.lp-final-badge {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 0.3em;
+}
+
+.lp-final-message {
+  background: #fef2f2;
+  border-left: 5px solid #dc2626;
+  padding: 1.2em 1.5em;
+  border-radius: 4px;
+  margin: 2em 0;
+}
+
+.lp-final-message p {
+  margin: 0.5em 0;
+  line-height: 1.7;
 }
 
 .lp-hero-badge {
@@ -370,6 +778,19 @@ Version: 1.0.0
   }
   .lp-hero-title {
     font-size: 1.4em;
+  }
+  .lp-pain-grid,
+  .lp-reasons,
+  .lp-model-cases {
+    grid-template-columns: 1fr;
+  }
+  .lp-final-card-featured {
+    transform: none;
+  }
+  .lp-verdict-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3em;
   }
 }
 
