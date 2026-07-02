@@ -438,13 +438,39 @@ Version: 1.0.0
   color: var(--lp-cta-dark);
 }
 
-/* スマホでは横スクロール可能に */
+/* スマホでは横スクロール可能に（ただし目次は除外） */
 @media screen and (max-width: 600px) {
-  .lp-page table {
+  .lp-page table:not(.toc) {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
   }
+}
+
+/* Cocoonの目次（.toc）はテーブル装飾を打ち消す（紺背景を無効化） */
+.lp-page .toc,
+.lp-page .toc * {
+  background: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+.lp-page .toc {
+  background-color: #f7fafd !important;
+  border: 1px solid var(--lp-line) !important;
+}
+.lp-page .toc table {
+  display: table !important;
+  white-space: normal !important;
+  margin: 0 !important;
+}
+.lp-page .toc th,
+.lp-page .toc td {
+  border: none !important;
+  padding: 0.2em 0 !important;
+  text-align: left !important;
+}
+.lp-page .toc a {
+  color: var(--lp-blue) !important;
 }
 
 /* ---------- ランキングカード ---------- */
