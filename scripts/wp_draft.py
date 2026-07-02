@@ -244,6 +244,11 @@ def cmd_categories(_args: argparse.Namespace) -> int:
 # サイト構造設計書（docs/site-structure.md）で定義したカテゴリ一覧
 DEFAULT_CATEGORIES = [
     {
+        "name": "AI",
+        "slug": "ai",
+        "description": "ChatGPT・生成AI・AIツールの使い方、AI副業、AI転職、AI資格まで、AIスキルの学び直しに関する情報",
+    },
+    {
         "name": "英語・語学",
         "slug": "english",
         "description": "大人・社会人の英語学び直しや語学学習サービスを比較",
