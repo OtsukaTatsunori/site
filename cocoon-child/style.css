@@ -447,30 +447,9 @@ Version: 1.0.0
   }
 }
 
-/* Cocoonの目次（.toc）はテーブル装飾を打ち消す（紺背景を無効化） */
-.lp-page .toc,
-.lp-page .toc * {
-  background: none !important;
-  background-color: transparent !important;
-  color: inherit !important;
-}
+/* LPページでは目次を非表示（LPに目次は不要・流れを分断するため） */
 .lp-page .toc {
-  background-color: #f7fafd !important;
-  border: 1px solid var(--lp-line) !important;
-}
-.lp-page .toc table {
-  display: table !important;
-  white-space: normal !important;
-  margin: 0 !important;
-}
-.lp-page .toc th,
-.lp-page .toc td {
-  border: none !important;
-  padding: 0.2em 0 !important;
-  text-align: left !important;
-}
-.lp-page .toc a {
-  color: var(--lp-blue) !important;
+  display: none !important;
 }
 
 /* ---------- ランキングカード ---------- */

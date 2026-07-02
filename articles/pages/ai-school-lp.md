@@ -9,7 +9,7 @@ wp_id: 290
 
 <div class="lp-hero">
 <p class="lp-hero-badge">2026年最新・補助金対応版</p>
-<h2 class="lp-hero-title">AIスクール選び、<br><span class="lp-highlight-yellow">「知らない」だけで63万円</span><br>損しているかもしれません。</h2>
+<p class="lp-hero-title">AIスクール選び、<br><span class="lp-highlight-yellow">「知らない」だけで63万円</span><br>損しているかもしれません。</p>
 <p class="lp-hero-sub">補助金を使えば、79万円のスクールが実質15.8万円に。<br>30〜50代の社会人向けに、目的別のベスト1校を絞り込みました。</p>
 <div class="lp-hero-facts">
 <div class="lp-fact"><span class="lp-fact-num">80%</span><span class="lp-fact-label">補助金OFF</span></div>
