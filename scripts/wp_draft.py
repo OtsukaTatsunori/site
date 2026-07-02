@@ -142,6 +142,24 @@ def cmd_list(args: argparse.Namespace) -> int:
     return 0
 
 
+def _find_missing_files() -> list[Path]:
+    """未push記事のPathリストを返す（WordPressと照合）"""
+    wp = WPClient()
+    posts = wp.list_posts(status="draft,publish")
+    wp_slugs = {p.get("slug", "") for p in posts}
+
+    drafts_dir = Path("articles/drafts")
+    missing_files: list[Path] = []
+    for f in sorted(drafts_dir.glob("*.md")):
+        if f.name.startswith("_"):
+            continue
+        post = frontmatter.load(f)
+        slug = post.metadata.get("slug", f.stem)
+        if slug not in wp_slugs:
+            missing_files.append(f)
+    return missing_files
+
+
 def cmd_diff(args: argparse.Namespace) -> int:
     """ローカルのMD一覧とWordPressの投稿を照合し、未pushの記事を表示"""
     wp = WPClient()
@@ -149,23 +167,70 @@ def cmd_diff(args: argparse.Namespace) -> int:
     wp_slugs = {p.get("slug", "") for p in posts}
 
     drafts_dir = Path("articles/drafts")
-    local_files: list[tuple[str, str]] = []  # (slug, filename)
+    local_files: list[tuple[str, str]] = []
+    missing_files: list[Path] = []
     for f in sorted(drafts_dir.glob("*.md")):
         if f.name.startswith("_"):
             continue
         post = frontmatter.load(f)
         slug = post.metadata.get("slug", f.stem)
         local_files.append((slug, f.name))
+        if slug not in wp_slugs:
+            missing_files.append(f)
 
-    missing = [(slug, name) for slug, name in local_files if slug not in wp_slugs]
     print(f"ローカル記事: {len(local_files)} 件")
     print(f"WordPress登録済み: {len(wp_slugs)} 件")
-    print(f"未push: {len(missing)} 件\n")
-    if missing:
+    print(f"未push: {len(missing_files)} 件\n")
+    if missing_files:
         print("=== 未pushの記事 ===")
-        for slug, name in missing:
-            print(f"  articles/drafts/{name}")
+        for f in missing_files:
+            print(f"  {f}")
     return 0
+
+
+def cmd_push_missing(args: argparse.Namespace) -> int:
+    """未pushの記事をまとめてpush（WordPressと照合して差分だけ）"""
+    import time
+
+    missing = _find_missing_files()
+    if not missing:
+        print("✅ 未pushの記事はありません。")
+        return 0
+
+    print(f"📋 未push {len(missing)} 件をpushします。")
+    if not args.yes:
+        ans = input("続けますか？ [y/N]: ").strip().lower()
+        if ans != "y":
+            print("中止しました。")
+            return 0
+
+    success = 0
+    failed: list[str] = []
+    for i, f in enumerate(missing, 1):
+        print(f"\n--- [{i}/{len(missing)}] {f.name} ---")
+        try:
+            # 既存のcmd_pushを再利用するため、argsを疑似作成
+            fake_args = argparse.Namespace(file=str(f))
+            rc = cmd_push(fake_args)
+            if rc == 0:
+                success += 1
+            else:
+                failed.append(f.name)
+        except Exception as e:
+            print(f"❌ エラー: {e}", file=sys.stderr)
+            failed.append(f.name)
+        # WAF対策: 連続リクエスト間に少し待つ
+        if i < len(missing):
+            time.sleep(1.5)
+
+    print(f"\n===== 完了 =====")
+    print(f"成功: {success} 件")
+    print(f"失敗: {len(failed)} 件")
+    if failed:
+        print("失敗したファイル:")
+        for name in failed:
+            print(f"  {name}")
+    return 0 if not failed else 1
 
 
 def cmd_categories(_args: argparse.Namespace) -> int:
@@ -469,6 +534,11 @@ def main() -> int:
     )
     p_push.add_argument("file", help="Markdownファイルのパス")
 
+    p_pm = sub.add_parser(
+        "push-missing", help="WordPress未登録の記事をまとめてpush"
+    )
+    p_pm.add_argument("-y", "--yes", action="store_true", help="確認なしで実行")
+
     p_upload = sub.add_parser(
         "upload-images", help="画像フォルダをWordPressメディアにアップロード"
     )
@@ -488,6 +558,7 @@ def main() -> int:
         "categories": cmd_categories,
         "init-categories": cmd_init_categories,
         "push": cmd_push,
+        "push-missing": cmd_push_missing,
         "upload-images": cmd_upload_images,
     }
     return handlers[args.cmd](args)
