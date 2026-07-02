@@ -152,362 +152,528 @@ Version: 1.0.0
   color: #2563eb;
 }
 
-/* ===== LP（刈り取りページ）共通スタイル ===== */
+/* =====================================================
+   LP（ランディングページ）デザインシステム
+   カラーパレット：主役=ネイビー / 行動=コーラル / 中立=グレー
+   ===================================================== */
 
-/* 黄色ハイライト */
-.lp-highlight-yellow {
-  background: linear-gradient(180deg, transparent 60%, #fef08a 60%);
-  color: #fff;
-  font-weight: 900;
-  padding: 0 0.2em;
+:root {
+  --lp-navy: #0f2c4d;
+  --lp-blue: #1b4f8a;
+  --lp-cta: #ff5b39;
+  --lp-cta-dark: #e6431f;
+  --lp-ink: #1f2c3a;
+  --lp-muted: #5f6b7a;
+  --lp-line: #e1e8f0;
+  --lp-bg: #f4f7fb;
+  --lp-gold: #b8860b;
+  --lp-green: #0f9d58;
 }
 
+/* LP本文の基本タイポグラフィ（読みやすさ優先） */
+.lp-page {
+  color: var(--lp-ink);
+  line-height: 1.85;
+}
+
+/* 見出しの余白リズムを整える */
+.lp-page h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  color: var(--lp-navy);
+  margin: 2.5em 0 0.9em;
+  padding-left: 0.6em;
+  border-left: 5px solid var(--lp-cta);
+  line-height: 1.5;
+}
+
+.lp-page h3 {
+  font-size: 1.1em;
+  color: var(--lp-navy);
+}
+
+.lp-page hr {
+  border: none;
+  border-top: 1px solid var(--lp-line);
+  margin: 2.5em 0;
+}
+
+.lp-page img {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(15, 44, 77, 0.08);
+}
+
+/* ---------- ヒーロー ---------- */
 .lp-hero {
   text-align: center;
-  padding: 2.5em 1.5em;
-  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  padding: 3em 1.5em 2.5em;
+  background: linear-gradient(160deg, #0f2c4d 0%, #1b4f8a 100%);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 14px;
+  margin-bottom: 2.5em;
+}
+
+.lp-hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.35em 1.1em;
+  border-radius: 50px;
+  margin-bottom: 1.1em;
+}
+
+.lp-hero-title {
+  font-size: 1.85em;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.7em;
+  border: none;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.lp-highlight-yellow {
+  color: #ffd84d;
+  font-weight: 800;
+}
+
+.lp-hero-sub {
+  font-size: 1.02em;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.8;
+  margin-bottom: 1.8em;
+}
+
+.lp-hero-facts {
+  display: flex;
+  gap: 0.8em;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 2em;
 }
 
-/* プライマリCTAボタン（黄色・目立つ） */
-.lp-btn-primary {
+.lp-fact {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.9em 1.3em;
+  min-width: 96px;
+}
+
+.lp-fact-num {
+  display: block;
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #ffd84d;
+  line-height: 1.2;
+}
+
+.lp-fact-label {
+  display: block;
+  font-size: 0.75em;
+  color: rgba(255,255,255,0.85);
+  margin-top: 0.2em;
+}
+
+.lp-hero-ctas {
+  margin-top: 0.5em;
+}
+
+/* ---------- CTAボタン（全ページ共通・コーラル1色） ---------- */
+.lp-btn-primary,
+.lp-cta-btn {
   display: inline-block;
-  margin-top: 1.5em;
-  padding: 1.1em 2.5em;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: #1e293b !important;
-  font-weight: 900;
-  font-size: 1.05em;
+  padding: 1.05em 2.4em;
+  background: var(--lp-cta);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1.02em;
   text-decoration: none !important;
   border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), 0 0 0 4px rgba(255,255,255,0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
-  animation: lp-pulse 2s ease-in-out infinite;
+  box-shadow: 0 6px 16px rgba(255, 91, 57, 0.32);
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
 }
 
-.lp-btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 18px rgba(251, 191, 36, 0.5), 0 0 0 4px rgba(255,255,255,0.3);
+.lp-btn-primary:hover,
+.lp-cta-btn:hover {
+  background: var(--lp-cta-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 91, 57, 0.4);
+  text-decoration: none !important;
 }
 
-@keyframes lp-pulse {
-  0%, 100% { box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), 0 0 0 4px rgba(255,255,255,0.2); }
-  50% { box-shadow: 0 4px 20px rgba(251, 191, 36, 0.7), 0 0 0 8px rgba(255,255,255,0.15); }
+.lp-cta {
+  text-align: center;
+  margin: 1.8em 0;
 }
 
-/* アラートボックス（黄色） */
+/* ---------- アラート／ボックス ---------- */
 .lp-alert {
-  background: #fef3c7;
-  border: 2px solid #f59e0b;
+  background: var(--lp-bg);
+  border: 1px solid var(--lp-line);
+  border-left: 5px solid var(--lp-blue);
   border-radius: 8px;
-  padding: 1.5em;
-  margin: 2em 0;
+  padding: 1.5em 1.7em;
+  margin: 1.5em 0;
 }
 
 .lp-alert p {
-  margin: 0.5em 0;
+  margin: 0.6em 0;
 }
 
-/* アラートボックス（赤） */
 .lp-alert-red {
-  background: #fee2e2;
-  border: 2px solid #dc2626;
+  background: #fff5f2;
+  border: 1px solid #ffd3c7;
+  border-left: 5px solid var(--lp-cta);
   border-radius: 8px;
-  padding: 1.2em;
+  padding: 1.3em 1.5em;
   margin: 1.5em 0;
-  text-align: center;
 }
 
 .lp-alert-red p {
   margin: 0;
-  font-size: 0.95em;
 }
 
-/* 悩み3カードグリッド */
+/* ---------- 悩み3カード ---------- */
 .lp-pain-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.2em;
+  gap: 1.1em;
   margin: 1.5em 0;
 }
 
 .lp-pain-card {
-  background: #f8fafc;
+  background: #fff;
+  border: 1px solid var(--lp-line);
   border-radius: 12px;
-  padding: 1.5em;
-  border: 2px solid #e2e8f0;
+  padding: 1.6em 1.3em;
   text-align: center;
-  transition: transform 0.15s;
-}
-
-.lp-pain-card:hover {
-  transform: translateY(-3px);
-  border-color: #94a3b8;
+  box-shadow: 0 2px 8px rgba(15, 44, 77, 0.05);
 }
 
 .lp-pain-icon {
-  font-size: 2.5em;
-  margin-bottom: 0.3em;
+  font-size: 2.2em;
+  margin-bottom: 0.4em;
+  filter: grayscale(0.15);
 }
 
 .lp-pain-card h3 {
   font-size: 1.05em;
-  margin: 0.3em 0 0.5em;
-  color: #1e293b;
+  margin: 0.3em 0 0.6em;
+  color: var(--lp-navy);
   border: none;
 }
 
 .lp-pain-card p {
-  font-size: 0.85em;
-  color: #475569;
-  line-height: 1.6;
+  font-size: 0.9em;
+  color: var(--lp-muted);
+  line-height: 1.7;
   margin: 0;
   text-align: left;
 }
 
-/* 結論の大きなボックス */
+/* ---------- 結論ボックス ---------- */
 .lp-verdict-big {
-  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
-  border-radius: 12px;
-  padding: 1.5em;
+  background: var(--lp-navy);
+  border-radius: 14px;
+  padding: 1.8em 2em;
   margin: 1.5em 0;
-  border: 3px solid #f59e0b;
 }
 
 .lp-verdict-row {
   display: flex;
   align-items: center;
-  gap: 1em;
-  padding: 0.8em 0;
-  border-bottom: 1px dashed #d97706;
+  gap: 1.2em;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
   flex-wrap: wrap;
 }
 
-.lp-verdict-row:last-child {
-  border-bottom: none;
-}
+.lp-verdict-row:first-child { padding-top: 0; }
+.lp-verdict-row:last-child { border-bottom: none; padding-bottom: 0; }
 
 .lp-verdict-label {
   flex: 0 0 auto;
-  font-weight: 700;
-  color: #92400e;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
   font-size: 0.95em;
 }
 
 .lp-verdict-choice {
   flex: 1;
-  font-size: 1em;
-  color: #1e293b;
+  font-size: 1.05em;
+  color: #fff;
 }
 
 .lp-verdict-choice strong {
-  font-size: 1.15em;
-  color: #dc2626;
+  font-size: 1.2em;
+  color: #ffd84d;
 }
 
-/* スコア表 */
-.lp-score-table {
-  overflow-x: auto;
-  margin: 1em 0;
-}
-
-.lp-score-table table {
+/* ---------- スコア表 / 比較表 ---------- */
+.lp-page table {
   width: 100%;
-  min-width: 500px;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.92em;
 }
 
-/* 3つの理由カード */
+.lp-page table th {
+  background: var(--lp-navy);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75em 0.6em;
+  text-align: center;
+}
+
+.lp-page table td {
+  padding: 0.7em 0.6em;
+  border-bottom: 1px solid var(--lp-line);
+}
+
+.lp-page table strong {
+  color: var(--lp-cta-dark);
+}
+
+/* スマホでは横スクロール可能に */
+@media screen and (max-width: 600px) {
+  .lp-page table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ---------- ランキングカード ---------- */
+.lp-rank {
+  position: relative;
+  padding: 1.7em 1.6em 1.3em;
+  background: #fff;
+  border: 1px solid var(--lp-line);
+  border-radius: 14px;
+  margin: 1.5em 0 1.2em;
+  box-shadow: 0 3px 14px rgba(15, 44, 77, 0.06);
+}
+
+/* 1位だけ金のアクセントライン＋わずかな強調 */
+.lp-rank-1 {
+  border-top: 4px solid var(--lp-gold);
+}
+
+.lp-rank-badge {
+  display: inline-block;
+  padding: 0.3em 0.9em;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--lp-blue);
+  margin-bottom: 0.6em;
+}
+
+.lp-rank-1 .lp-rank-badge { background: var(--lp-gold); }
+.lp-rank-2 .lp-rank-badge { background: #7a8595; }
+.lp-rank-3 .lp-rank-badge { background: #a9743f; }
+
+.lp-rank-title {
+  font-size: 1.45em;
+  font-weight: 800;
+  color: var(--lp-navy);
+  margin: 0.2em 0 0.4em;
+  border: none;
+}
+
+.lp-rank-tagline {
+  font-size: 0.98em;
+  color: var(--lp-ink);
+  margin: 0 0 0.7em;
+  font-weight: 600;
+}
+
+.lp-rank-catch {
+  background: var(--lp-bg);
+  border-radius: 8px;
+  padding: 0.6em 1em;
+  margin: 0;
+  font-size: 0.85em;
+  color: var(--lp-muted);
+}
+
+/* ---------- 3つの理由カード ---------- */
 .lp-reasons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
-  margin: 1.2em 0;
+  gap: 1.1em;
+  margin: 1.4em 0;
 }
 
 .lp-reason-card {
   background: #fff;
-  border: 2px solid #fecaca;
-  border-radius: 10px;
-  padding: 1.2em;
+  border: 1px solid var(--lp-line);
+  border-radius: 12px;
+  padding: 1.4em 1.2em 1.2em;
   position: relative;
 }
 
 .lp-reason-num {
-  position: absolute;
-  top: -12px;
-  left: 15px;
-  background: #dc2626;
-  color: #fff;
-  padding: 0.15em 0.7em;
-  border-radius: 4px;
-  font-weight: 900;
-  font-size: 0.85em;
-  letter-spacing: 0.1em;
+  display: inline-block;
+  font-size: 1.6em;
+  font-weight: 800;
+  color: var(--lp-cta);
+  line-height: 1;
+  margin-bottom: 0.3em;
 }
 
 .lp-reason-card h4 {
   font-size: 1em;
-  margin: 0.5em 0 0.4em;
-  color: #1e293b;
+  margin: 0.2em 0 0.5em;
+  color: var(--lp-navy);
   border: none;
 }
 
 .lp-reason-card p {
-  font-size: 0.85em;
-  color: #475569;
-  line-height: 1.6;
+  font-size: 0.88em;
+  color: var(--lp-muted);
+  line-height: 1.7;
   margin: 0;
 }
 
-/* ランキングタイトル追加要素 */
-.lp-rank-catch {
-  background: #fff;
-  border-left: 3px solid #f59e0b;
-  padding: 0.5em 1em;
-  margin-top: 0.8em;
-  font-size: 0.85em;
-  color: #78350f;
-}
-
-/* 比較テーブル装飾 */
-.lp-comparison {
-  overflow-x: auto;
-}
-
-.lp-comparison table th {
-  background: #1e293b;
-  color: #fff;
-  font-weight: 700;
-}
-
-/* 補助金申請フロー */
+/* ---------- 補助金フロー ---------- */
 .lp-flow {
   margin: 1.5em 0;
 }
 
 .lp-flow-step {
   display: flex;
-  gap: 1em;
-  padding: 1em;
-  background: #f8fafc;
-  border-radius: 8px;
-  margin-bottom: 0.8em;
-  border-left: 4px solid #2563eb;
+  gap: 1.2em;
+  padding: 1.2em 1.3em;
+  background: #fff;
+  border: 1px solid var(--lp-line);
+  border-radius: 10px;
+  margin-bottom: 0.7em;
+  align-items: flex-start;
 }
 
 .lp-flow-num {
-  flex: 0 0 80px;
-  background: #2563eb;
+  flex: 0 0 auto;
+  min-width: 74px;
+  background: var(--lp-navy);
   color: #fff;
-  font-weight: 900;
-  padding: 0.4em 0.6em;
-  border-radius: 4px;
+  font-weight: 700;
+  padding: 0.45em 0.6em;
+  border-radius: 6px;
   text-align: center;
-  height: fit-content;
-  font-size: 0.85em;
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
 }
 
 .lp-flow-body h4 {
-  font-size: 1em;
-  margin: 0 0 0.3em;
-  color: #1e293b;
+  font-size: 1.02em;
+  margin: 0 0 0.35em;
+  color: var(--lp-navy);
   border: none;
 }
 
 .lp-flow-body p {
-  font-size: 0.85em;
-  margin: 0.3em 0;
-  color: #475569;
+  font-size: 0.88em;
+  margin: 0.25em 0;
+  color: var(--lp-muted);
 }
 
 .lp-flow-time {
   display: inline-block;
-  background: #dbeafe;
-  color: #1e40af;
-  padding: 0.15em 0.6em;
-  border-radius: 4px;
+  background: var(--lp-bg);
+  color: var(--lp-blue);
+  padding: 0.2em 0.7em;
+  border-radius: 50px;
   font-size: 0.75em !important;
-  font-weight: 700;
+  font-weight: 600;
 }
 
-/* 診断3択カード */
+/* ---------- 診断3択カード ---------- */
 .lp-quiz-choices {
   display: grid;
   gap: 1em;
-  margin: 1.2em 0;
+  margin: 1.3em 0;
 }
 
 .lp-quiz-choice {
   display: flex;
-  gap: 1em;
-  padding: 1.2em;
+  gap: 1.1em;
+  padding: 1.3em 1.4em;
   background: #fff;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
+  border: 1px solid var(--lp-line);
+  border-radius: 12px;
+  align-items: flex-start;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .lp-quiz-choice:hover {
-  border-color: #dc2626;
-  box-shadow: 0 4px 12px rgba(220,38,38,0.1);
+  border-color: var(--lp-cta);
+  box-shadow: 0 4px 14px rgba(255,91,57,0.12);
 }
 
 .lp-quiz-label {
-  flex: 0 0 40px;
-  height: 40px;
-  background: #dc2626;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  background: var(--lp-navy);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  font-size: 1.1em;
+  font-weight: 800;
+  font-size: 1.05em;
 }
 
 .lp-quiz-choice h4 {
-  font-size: 1em;
-  margin: 0 0 0.3em;
-  color: #1e293b;
+  font-size: 1.02em;
+  margin: 0.1em 0 0.3em;
+  color: var(--lp-navy);
   border: none;
 }
 
 .lp-quiz-choice p {
-  font-size: 0.85em;
-  color: #64748b;
+  font-size: 0.88em;
+  color: var(--lp-muted);
   margin: 0.2em 0;
 }
 
 .lp-quiz-answer {
-  color: #dc2626 !important;
-  font-size: 0.9em !important;
+  color: var(--lp-cta) !important;
+  font-weight: 700;
+  font-size: 0.92em !important;
   margin-top: 0.5em !important;
 }
 
-/* モデルケースカード */
+/* ---------- モデルケース ---------- */
 .lp-model-cases {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
+  gap: 1.1em;
   margin: 1.5em 0;
 }
 
 .lp-model-card {
-  background: #f0fdf4;
-  border: 2px solid #86efac;
-  border-radius: 10px;
-  padding: 1.2em;
+  background: #fff;
+  border: 1px solid var(--lp-line);
+  border-top: 4px solid var(--lp-blue);
+  border-radius: 12px;
+  padding: 1.4em 1.3em;
 }
 
 .lp-model-card h4 {
-  font-size: 1em;
-  margin: 0 0 0.7em;
-  color: #14532d;
+  font-size: 1.02em;
+  margin: 0 0 0.8em;
+  color: var(--lp-navy);
   border: none;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #86efac;
+  border-bottom: 1px solid var(--lp-line);
 }
 
 .lp-model-card ol {
@@ -516,245 +682,114 @@ Version: 1.0.0
 }
 
 .lp-model-card li {
-  font-size: 0.85em;
-  margin: 0.3em 0;
-  color: #166534;
+  font-size: 0.88em;
+  margin: 0.35em 0;
+  color: var(--lp-ink);
+  line-height: 1.6;
 }
 
 .lp-model-result {
-  background: #fff;
-  padding: 0.5em 0.8em;
-  border-radius: 4px;
-  margin: 0.8em 0 0 !important;
-  font-size: 0.85em !important;
-  color: #14532d !important;
-}
-
-/* 最終CTA - おすすめカードを目立たせる */
-.lp-final-card-featured {
-  border: 3px solid #dc2626 !important;
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(220,38,38,0.2);
-  position: relative;
-}
-
-.lp-final-card-featured::before {
-  content: "★ おすすめ";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #dc2626;
-  color: #fff;
-  padding: 0.2em 0.8em;
-  border-radius: 4px;
-  font-size: 0.75em;
-  font-weight: 700;
-}
-
-.lp-final-badge {
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 0.3em;
-}
-
-.lp-final-message {
-  background: #fef2f2;
-  border-left: 5px solid #dc2626;
-  padding: 1.2em 1.5em;
-  border-radius: 4px;
-  margin: 2em 0;
-}
-
-.lp-final-message p {
-  margin: 0.5em 0;
-  line-height: 1.7;
-}
-
-.lp-hero-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.5);
-  color: #fff;
-  font-size: 0.8em;
-  font-weight: 700;
-  padding: 0.3em 1em;
-  border-radius: 20px;
-  margin-bottom: 0.8em;
-}
-
-.lp-hero-title {
-  font-size: 1.7em;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.6em;
-  border: none;
-  line-height: 1.4;
-}
-
-.lp-hero-sub {
-  font-size: 1em;
-  opacity: 0.95;
-  line-height: 1.7;
-  margin-bottom: 1.5em;
-}
-
-.lp-hero-facts {
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.lp-fact {
-  background: rgba(255,255,255,0.15);
+  background: #eefaf3;
+  color: #0b7a44 !important;
+  padding: 0.6em 0.9em;
   border-radius: 8px;
-  padding: 0.8em 1.2em;
-  min-width: 90px;
+  margin: 0.9em 0 0 !important;
+  font-size: 0.86em !important;
+  font-weight: 600;
 }
 
-.lp-fact-num {
-  display: block;
-  font-size: 1.5em;
-  font-weight: 700;
-  color: #fff;
-}
-
-.lp-fact-label {
-  display: block;
-  font-size: 0.75em;
-  opacity: 0.9;
-}
-
-/* 結論ボックス */
-.lp-verdict {
-  background: #fef3c7;
-  border-left: 5px solid #f59e0b;
-  padding: 1.2em 1.5em;
-  border-radius: 4px;
-  margin: 1.5em 0;
-}
-
-.lp-verdict p {
-  margin: 0.4em 0;
-  font-size: 1em;
-}
-
-/* ランキングセクション */
-.lp-rank {
-  position: relative;
-  padding: 1.5em 1.5em 1em;
-  background: #f8fafc;
-  border-radius: 8px;
-  border: 2px solid #e2e8f0;
-  margin: 1.5em 0 1em;
-}
-
-.lp-rank-1 { border-color: #f59e0b; background: linear-gradient(180deg, #fef9c3 0%, #fff 100%); }
-.lp-rank-2 { border-color: #94a3b8; background: linear-gradient(180deg, #f1f5f9 0%, #fff 100%); }
-.lp-rank-3 { border-color: #b45309; background: linear-gradient(180deg, #fde68a 0%, #fff 100%); }
-
-.lp-rank-badge {
-  display: inline-block;
-  padding: 0.3em 1em;
-  border-radius: 4px;
-  font-size: 0.8em;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.5em;
-}
-
-.lp-rank-1 .lp-rank-badge { background: #f59e0b; }
-.lp-rank-2 .lp-rank-badge { background: #64748b; }
-.lp-rank-3 .lp-rank-badge { background: #b45309; }
-
-.lp-rank-title {
-  font-size: 1.4em;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0.2em 0 0.4em;
-  border: none;
-}
-
-.lp-rank-tagline {
-  font-size: 0.95em;
-  color: #475569;
-  margin: 0;
-  font-weight: 500;
-}
-
-/* CTAボタン */
-.lp-cta {
-  text-align: center;
-  margin: 1.5em 0;
-}
-
-.lp-cta-btn {
-  display: inline-block;
-  padding: 1em 2em;
-  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-  color: #fff !important;
-  font-weight: 700;
-  font-size: 1em;
-  text-decoration: none !important;
-  border-radius: 6px;
-  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.lp-cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(220, 38, 38, 0.35);
-}
-
-/* 最終CTA（3カード） */
+/* ---------- 最終CTA ---------- */
 .lp-final {
-  background: #fef2f2;
-  border-radius: 8px;
-  padding: 1.5em;
+  background: var(--lp-bg);
+  border-radius: 14px;
+  padding: 2em 1.6em;
   margin: 2em 0;
 }
 
 .lp-final-title {
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.25em;
   font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 1em;
+  color: var(--lp-navy);
+  margin-bottom: 1.3em;
 }
 
 .lp-final-flow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
+  gap: 1.1em;
 }
 
 .lp-final-card {
   background: #fff;
-  padding: 1.2em;
-  border-radius: 8px;
+  padding: 1.5em 1.3em;
+  border-radius: 12px;
   text-align: center;
-  border: 1px solid #fecaca;
+  border: 1px solid var(--lp-line);
+}
+
+.lp-final-card-featured {
+  border: 2px solid var(--lp-cta);
+  position: relative;
+  box-shadow: 0 8px 22px rgba(255,91,57,0.15);
+}
+
+.lp-final-card-featured::before {
+  content: "おすすめ";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lp-cta);
+  color: #fff;
+  padding: 0.2em 1em;
+  border-radius: 50px;
+  font-size: 0.72em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lp-final-badge {
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
 }
 
 .lp-final-card h4 {
-  font-size: 0.95em;
-  margin: 0 0 0.5em;
-  color: #1e293b;
+  font-size: 1em;
+  margin: 0.2em 0 0.5em;
+  color: var(--lp-navy);
   border: none;
 }
 
 .lp-final-card p {
-  font-size: 0.8em;
-  color: #64748b;
-  margin: 0 0 1em;
-  line-height: 1.5;
+  font-size: 0.85em;
+  color: var(--lp-muted);
+  margin: 0 0 1.1em;
+  line-height: 1.6;
 }
 
 .lp-final-card .lp-cta-btn {
   font-size: 0.85em;
-  padding: 0.7em 1em;
+  padding: 0.75em 1.1em;
   width: 100%;
+}
+
+.lp-final-message {
+  background: var(--lp-navy);
+  border-radius: 12px;
+  padding: 1.6em 1.8em;
+  margin: 2em 0;
+  color: #fff;
+}
+
+.lp-final-message p {
+  margin: 0.6em 0;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.92);
+}
+
+.lp-final-message strong {
+  color: #ffd84d;
 }
 
 /* --- 1023px以下（タブレット） --- */
@@ -773,19 +808,14 @@ Version: 1.0.0
   .top-hero-title {
     font-size: 1.3em;
   }
-  .lp-final-flow {
-    grid-template-columns: 1fr;
-  }
   .lp-hero-title {
     font-size: 1.4em;
   }
   .lp-pain-grid,
   .lp-reasons,
-  .lp-model-cases {
+  .lp-model-cases,
+  .lp-final-flow {
     grid-template-columns: 1fr;
-  }
-  .lp-final-card-featured {
-    transform: none;
   }
   .lp-verdict-row {
     flex-direction: column;
@@ -807,12 +837,19 @@ Version: 1.0.0
     text-align: center;
   }
   .lp-hero {
-    padding: 1.5em 1em;
+    padding: 2em 1.1em;
   }
   .lp-hero-title {
-    font-size: 1.2em;
+    font-size: 1.3em;
+  }
+  .lp-page h2 {
+    font-size: 1.18em;
   }
   .lp-fact-num {
-    font-size: 1.2em;
+    font-size: 1.3em;
+  }
+  .lp-btn-primary,
+  .lp-cta-btn {
+    padding: 0.95em 1.5em;
   }
 }

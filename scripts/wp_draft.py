@@ -360,6 +360,12 @@ def cmd_push(args: argparse.Namespace) -> int:
 
     content_html = md_to_html(body_md)
 
+    # frontmatter に body_class があれば全体をラップ（CSSスコープ用）
+    # Markdown変換後にラップするため、内部のMarkdownは正しく変換される
+    body_class = meta.get("body_class")
+    if body_class:
+        content_html = f'<div class="{body_class}">\n{content_html}\n</div>'
+
     # FAQ構造化データ（JSON-LD）を自動挿入
     faq_jsonld = extract_faq_jsonld(body_md)
     if faq_jsonld:
