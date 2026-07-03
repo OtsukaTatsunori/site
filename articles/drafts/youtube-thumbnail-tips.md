@@ -20,6 +20,14 @@ YouTube動画の再生回数は、**サムネイルで8割が決まる**と言�
 
 この記事では、**クリック率（CTR）を上げるサムネイル作成の7つの法則**と、Canvaを使った具体的な作成手順を紹介します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">たくさんのサムネイルを見比べていて、クリックしたくなるものには共通点があると感じます。私も編集にばかり時間をかけてサムネイルを後回しにしていた時期がありましたが、ここに少し力を入れるだけで反応が変わりました。個人的には、文字数を絞って一目で内容が伝わるかを、スマホの小さい画面で確認するのが効くと感じています。</p>
+</div>
+</div>
+
 ## サムネイルの基本仕様
 
 まず、YouTubeサムネイルの技術的な仕様を押さえてください。

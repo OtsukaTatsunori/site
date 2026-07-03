@@ -16,6 +16,14 @@ wp_id: 114
 
 結論：**「カット編集しかできない人」は飽和しているが、「付加価値を出せる人」はまだ全然足りていない**。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もSNSで「動画編集は飽和した」という声をよく目にしますが、実際に市場を調べていると、飽和しているのは一部の層だけだと感じます。カット編集だけの領域は確かに厳しい一方、構成や企画まで踏み込める人は今も求められている印象です。個人的には、「もう遅い」と諦める前に、自分がどのステージで戦うかを一度考えてみる価値があると思っています。</p>
+</div>
+</div>
+
 ## 「飽和」の正体
 
 ### 飽和している部分

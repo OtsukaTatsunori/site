@@ -15,6 +15,14 @@ wp_id: 113
 
 クラウドソーシングに登録して応募するだけでなく、「この人に頼みたい」と思わせる**見せ方の武器**を揃えることが、案件獲得率を上げる近道です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もいろいろなツールを試してみて感じるのは、営業の武器は必ずしもお金をかけなくても揃うということです。NotionやCanvaなど無料のもので十分に「頼みたい」と思わせる見せ方が作れます。個人的には、ツールを増やすことより、ポートフォリオと連絡先という最低限の入口を先に整える方が、案件につながりやすいと感じています。</p>
+</div>
+</div>
+
 ## 必要な営業ツール6つ
 
 ### 1. ポートフォリオ（最重要）

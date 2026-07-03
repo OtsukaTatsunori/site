@@ -16,6 +16,14 @@ wp_id: 123
 
 結論：**「やめとけ」と言われる理由は本当。でもそれは一部の話**です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">「やめとけ」という声を調べていて感じるのは、その多くが最初の低単価やつらさという入口の部分に集中していることでした。確かにその指摘は的外れではありません。ただ個人的には、地味な作業が苦にならないかどうかで向き不向きがかなり分かれると思います。煽りにも脅しにも寄りすぎず、自分の性格と照らして冷静に判断してほしい話題です。</p>
+</div>
+</div>
+
 ## 「やめとけ」と言われる5つの理由
 
 ### 理由1：最初は時給が低い

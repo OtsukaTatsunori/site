@@ -18,6 +18,14 @@ wp_id: 68
 
 この記事では、**素材の取り込みから書き出し・アップロードまで**を1本の流れで解説します。なお、台本・構成に悩む方は[ChatGPTで動画台本を作る方法](/chatgpt-video-script/)も参考にしてください。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">最初の1本の編集は誰でも戸惑いますが、実際にやってみると5つの工程を順にこなすだけだと実感できます。私も1本目はかなり不格好でしたが、数本作るうちに流れが手に馴染んできました。個人的には、最初から完成度を求めず、まず一通り最後まで作り切る経験を重ねるのが上達の近道だと感じています。</p>
+</div>
+</div>
+
 ## YouTube動画編集の全体像（5つの工程）
 
 まず全体を把握してください。YouTube動画の編集は以下の5工程です。

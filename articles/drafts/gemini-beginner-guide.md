@@ -21,6 +21,13 @@ Googleアカウントがあれば今すぐ無料で使えます。
 - Gmail・スプレッドシートとの連携方法
 - ChatGPTとの使い分け
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私がGeminiを使ってみて一番ラクだと感じたのは、普段のGoogleアカウントでそのまま始められる手軽さでした。新しくアカウントを作る手間がないだけで、最初の一歩のハードルがぐっと下がります。GmailやスプレッドシートとつながるのもGoogleをよく使う人には便利です。個人的には、文章の作り込みはChatGPTやClaude、Google連携が絡む作業はGemini、と使い分けています。</p>
+</div>
+</div>
 
 ## Geminiの基本情報
 

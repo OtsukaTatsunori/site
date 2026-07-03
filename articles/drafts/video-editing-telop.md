@@ -19,6 +19,14 @@ wp_id: 126
 
 この記事では、**テロップのデザインルールと、主要ソフトでの具体的な入れ方**を解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">いろいろな動画を見比べていて、素人っぽさが一番出るのはテロップだと個人的に感じています。特にスマホで見たときの文字サイズは、編集画面の感覚だと小さすぎることがほとんどです。私も書き出したあと必ずスマホで見返すようにしてから、読みやすさが大きく変わりました。まずはフォントとサイズから整えてみてください。</p>
+</div>
+</div>
+
 ## テロップの種類
 
 まず、動画で使われるテロップは主に4種類あります。

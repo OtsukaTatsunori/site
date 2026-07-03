@@ -18,6 +18,14 @@ wp_id: 124
 
 この記事では、**「案件を受けられるレベル」に最短で到達するための学習順序**を示します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も学び始めた頃は、教材を探して比べているだけで時間が過ぎていく状態に陥りがちでした。振り返ると、情報収集より一本でも自分の手で動画を完成させたほうが圧倒的に伸びます。個人的には、教材は欲張らず一つに絞って、まねしながら手を動かす学び方が、挫折せず案件レベルへ近づく近道だと感じています。</p>
+</div>
+</div>
+
 ## 動画編集の学習に必要な時間
 
 | 目標レベル | 必要な学習時間 | 期間の目安 |

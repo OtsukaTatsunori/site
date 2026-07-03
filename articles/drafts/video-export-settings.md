@@ -19,6 +19,14 @@ wp_id: 128
 
 この記事では、**用途別の最適な書き出し設定**と、各ソフトの操作手順を解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">書き出し設定は用語が多くて身構えてしまいますが、実際にいろいろ試してみると押さえるべきポイントはそれほど多くありません。私も昔は画質やファイルサイズで悩みましたが、用途ごとの基本形さえ覚えれば迷わなくなりました。個人的には、まずH.264・フルHD・撮影時と同じfpsを基準にして、そこから微調整していくのがおすすめです。</p>
+</div>
+</div>
+
 ## 書き出し設定で理解すべき4つの用語
 
 ### 1. 解像度（画面サイズ）

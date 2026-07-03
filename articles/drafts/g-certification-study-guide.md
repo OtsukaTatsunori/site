@@ -21,6 +21,13 @@ G検定（JDLA Deep Learning for GENERAL）は、AI資格の中で**最もコス
 - 出題範囲と頻出テーマの一覧
 - 試験当日の注意点と合格後にやること
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、AIを学ぶ入口としてG検定の出題範囲はよくまとまっていると感じています。自宅でオンライン受験できて範囲も体系的なので、独学でもコツコツ進めれば十分手が届く資格です。個人的には、公式テキストを一度通し読みしたら早めに問題演習へ移り、間違えた分野を潰していくやり方が一番効率が良いと感じました。用語の暗記より「なぜそうなるか」を押さえるのがおすすめです。</p>
+</div>
+</div>
 
 ## G検定の基本情報
 

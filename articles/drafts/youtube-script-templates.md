@@ -21,6 +21,14 @@ YouTube動画の台本には**ジャンル別の「型」**があります。型
 - 解説・レビュー・ランキング・Vlog・ショートの型
 - 台本を書くときの5つのルール
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">台本づくりに悩む方は多いですが、実際にジャンル別の型を使ってみると驚くほど書きやすくなります。私もChatGPTで下書きを作るようになってから、構成で手が止まる時間が大きく減りました。個人的には、まず型に沿って埋めてから自分の言葉に直していくのがおすすめです。ゼロから書くより質も安定すると感じています。</p>
+</div>
+</div>
+
 
 ## テンプレート1：解説・ハウツー動画（10分）
 

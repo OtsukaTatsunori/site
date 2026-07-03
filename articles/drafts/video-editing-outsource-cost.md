@@ -18,6 +18,14 @@ wp_id: 106
 
 この記事では、**種類別の外注相場と、失敗しない依頼のコツ**を解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私は発注する側・編集する側の両方を見てきましたが、外注のトラブルは金額よりも「どこまでやってもらえるかの認識がズレていること」から起きやすいと感じます。個人的には、極端に安い見積もりに飛びつくより、修正回数や納品形式まで最初にすり合わせておくほうが、結果的に安く早く仕上がることが多いと思っています。相場感を持って臨むのが安心です。</p>
+</div>
+</div>
+
 ## 動画編集の外注相場一覧
 
 ### 種類別の料金目安
