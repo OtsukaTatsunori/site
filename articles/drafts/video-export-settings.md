@@ -1,14 +1,16 @@
 ---
-title: 【2026年】動画の書き出し設定はコレで迷わない｜YouTube・TikTok・納品用の正解
-slug: video-export-settings
-excerpt: 動画の書き出し設定をYouTube・TikTok・Instagram別に解説。解像度、フレームレート、コーデック、ビットレートの意味と最適値を、Premiere Pro・DaVinci Resolve・CapCutの操作手順付きで紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: 動画の書き出し設定をYouTube・TikTok・Instagram別に解説。解像度、フレームレート、コーデック、ビットレートの意味と最適値を、Premiere
+  Pro・DaVinci Resolve・CapCutの操作手順付きで紹介します。
+slug: video-export-settings
 tags:
-  - 書き出し
-  - エンコード
-  - 動画編集
-  - YouTube
+- 書き出し
+- エンコード
+- 動画編集
+- YouTube
+title: 【2026年】動画の書き出し設定はコレで迷わない｜YouTube・TikTok・納品用の正解
+wp_id: 128
 ---
 
 動画を編集し終わったあと、最後に待っているのが**書き出し（エクスポート）**です。

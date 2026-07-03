@@ -1,15 +1,16 @@
 ---
-title: 【2026年】AIで本を要約する方法｜読書時間を1/3にするツールと活用テクニック
-slug: ai-book-summary
-excerpt: AIで本の内容を効率的に要約する方法を解説。写真→OCR→ChatGPT、Kindle→NotebookLM、flierなどのツールと活用テクニックを紹介。ビジネス書の読書時間を1/3に短縮できます。
 categories:
-  - ai
+- ai
+excerpt: AIで本の内容を効率的に要約する方法を解説。写真→OCR→ChatGPT、Kindle→NotebookLM、flierなどのツールと活用テクニックを紹介。ビジネス書の読書時間を1/3に短縮できます。
+slug: ai-book-summary
 tags:
-  - AI
-  - 読書
-  - 要約
-  - ChatGPT
-  - NotebookLM
+- AI
+- 読書
+- 要約
+- ChatGPT
+- NotebookLM
+title: 【2026年】AIで本を要約する方法｜読書時間を1/3にするツールと活用テクニック
+wp_id: 135
 ---
 
 「読みたい本はたくさんあるのに、読む時間がない」——社会人の多くが抱えるこの悩み、**AIを活用すれば読書の効率を劇的に上げられます**。

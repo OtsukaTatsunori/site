@@ -1,14 +1,15 @@
 ---
-title: 【2026年】ChatGPTでYouTube動画の台本を作る方法｜プロンプト付きで即実践
-slug: chatgpt-video-script
-excerpt: ChatGPTを使ってYouTube動画の企画・構成・台本を効率的に作る方法を解説。コピペで使えるプロンプト付き。台本作成の時間を2時間→15分に短縮できます。
 categories:
-  - ai
+- ai
+excerpt: ChatGPTを使ってYouTube動画の企画・構成・台本を効率的に作る方法を解説。コピペで使えるプロンプト付き。台本作成の時間を2時間→15分に短縮できます。
+slug: chatgpt-video-script
 tags:
-  - ChatGPT
-  - 動画台本
-  - YouTube
-  - 企画
+- ChatGPT
+- 動画台本
+- YouTube
+- 企画
+title: 【2026年】ChatGPTでYouTube動画の台本を作る方法｜プロンプト付きで即実践
+wp_id: 169
 ---
 
 YouTube動画の台本作成に**2時間かかっていた作業が、ChatGPTで15分**に短縮できます。

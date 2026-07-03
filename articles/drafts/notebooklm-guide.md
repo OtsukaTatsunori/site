@@ -1,14 +1,15 @@
 ---
-title: 【2026年】NotebookLMの使い方｜PDFやYouTubeを丸ごとAIに読ませて要約・質問する方法
-slug: notebooklm-guide
-excerpt: Google NotebookLMの使い方を初心者向けに解説。PDF・YouTube・Webページをアップロードし、AIに要約・質問できます。無料で使える最強リサーチツールです。
 categories:
-  - ai
+- ai
+excerpt: Google NotebookLMの使い方を初心者向けに解説。PDF・YouTube・Webページをアップロードし、AIに要約・質問できます。無料で使える最強リサーチツールです。
+slug: notebooklm-guide
 tags:
-  - NotebookLM
-  - Google
-  - AI要約
-  - 無料ツール
+- NotebookLM
+- Google
+- AI要約
+- 無料ツール
+title: 【2026年】NotebookLMの使い方｜PDFやYouTubeを丸ごとAIに読ませて要約・質問する方法
+wp_id: 176
 ---
 
 「100ページのPDF、読む時間がない……」「1時間のYouTube動画、要点だけ知りたい……」

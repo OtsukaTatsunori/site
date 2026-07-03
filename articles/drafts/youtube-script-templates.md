@@ -1,14 +1,15 @@
 ---
-title: 【2026年】YouTube台本テンプレート5選｜ジャンル別の構成パターンとChatGPT活用法
-slug: youtube-script-templates
-excerpt: YouTube動画の台本テンプレートをジャンル別に5つ紹介。解説動画、レビュー、ランキング、Vlog、ショート動画の構成パターンとChatGPTでの下書き作成法を解説します。
 categories:
-  - ai
+- ai
+excerpt: YouTube動画の台本テンプレートをジャンル別に5つ紹介。解説動画、レビュー、ランキング、Vlog、ショート動画の構成パターンとChatGPTでの下書き作成法を解説します。
+slug: youtube-script-templates
 tags:
-  - YouTube
-  - 台本
-  - テンプレート
-  - 構成
+- YouTube
+- 台本
+- テンプレート
+- 構成
+title: 【2026年】YouTube台本テンプレート5選｜ジャンル別の構成パターンとChatGPT活用法
+wp_id: 178
 ---
 
 YouTube動画の台本には**ジャンル別の「型」**があります。型に当てはめれば、初心者でも視聴維持率の高い動画が作れます。

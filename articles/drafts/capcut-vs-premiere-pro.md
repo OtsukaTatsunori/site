@@ -1,14 +1,15 @@
 ---
-title: 【2026年】CapCut vs Premiere Pro｜結局どっちを選ぶべき？7軸で徹底比較
-slug: capcut-vs-premiere-pro
-excerpt: CapCutとPremiere Proを初心者目線で徹底比較。料金、機能、使いやすさ、将来性、仕事への活用まで、7つの軸で違いを整理。あなたに合うのはどちらかがわかります。
 categories:
-  - video-production
+- video-production
+excerpt: CapCutとPremiere Proを初心者目線で徹底比較。料金、機能、使いやすさ、将来性、仕事への活用まで、7つの軸で違いを整理。あなたに合うのはどちらかがわかります。
+slug: capcut-vs-premiere-pro
 tags:
-  - CapCut
-  - Premiere Pro
-  - 比較
-  - 動画編集ソフト
+- CapCut
+- Premiere Pro
+- 比較
+- 動画編集ソフト
+title: 【2026年】CapCut vs Premiere Pro｜結局どっちを選ぶべき？7軸で徹底比較
+wp_id: 70
 ---
 
 「動画編集を始めたいけど、CapCutとPremiere Proどっちがいい？」

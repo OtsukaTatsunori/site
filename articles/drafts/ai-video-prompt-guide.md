@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI動画生成プロンプトの書き方｜Runway・Kling・Pikaで使えるテンプレート集
-slug: ai-video-prompt-guide
-excerpt: AI動画生成ツールで思い通りの動画を作るためのプロンプトの書き方を解説。Runway、Kling、Pikaで使えるテンプレートと、カメラワーク・動き・雰囲気の指定方法を紹介します。
 categories:
-  - ai
+- ai
+excerpt: AI動画生成ツールで思い通りの動画を作るためのプロンプトの書き方を解説。Runway、Kling、Pikaで使えるテンプレートと、カメラワーク・動き・雰囲気の指定方法を紹介します。
+slug: ai-video-prompt-guide
 tags:
-  - AI動画生成
-  - プロンプト
-  - Runway
-  - テンプレート
+- AI動画生成
+- プロンプト
+- Runway
+- テンプレート
+title: 【2026年】AI動画生成プロンプトの書き方｜Runway・Kling・Pikaで使えるテンプレート集
+wp_id: 159
 ---
 
 AI動画生成は**プロンプトの書き方**で結果が大きく変わります。画像生成と違い、**動き・カメラワーク・時間の流れ**を指示する必要があるのが特徴です。

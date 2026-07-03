@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AIでプレゼン資料を自動作成｜構成・デザイン・台本をAIに任せる方法
-slug: ai-presentation-guide
-excerpt: AIでプレゼン資料を効率的に作成する方法を解説。ChatGPTで構成、Canva AIでデザイン、AIで台本を作るワークフローとプロンプト付き実践ガイドです。
 categories:
-  - ai
+- ai
+excerpt: AIでプレゼン資料を効率的に作成する方法を解説。ChatGPTで構成、Canva AIでデザイン、AIで台本を作るワークフローとプロンプト付き実践ガイドです。
+slug: ai-presentation-guide
 tags:
-  - AIプレゼン
-  - 資料作成
-  - Canva
-  - 仕事効率化
+- AIプレゼン
+- 資料作成
+- Canva
+- 仕事効率化
+title: 【2026年】AIでプレゼン資料を自動作成｜構成・デザイン・台本をAIに任せる方法
+wp_id: 145
 ---
 
 プレゼン資料の作成に**3時間かかっていた作業が、AIを使えば30分**で終わります。

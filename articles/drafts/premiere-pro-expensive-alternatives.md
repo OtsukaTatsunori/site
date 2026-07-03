@@ -1,14 +1,15 @@
 ---
-title: 【2026年】Premiere Proの月額が高い…代わりになる無料・格安ソフトと節約術
-slug: premiere-pro-expensive-alternatives
-excerpt: Premiere Proの月額料金が高いと感じる方向けに、代替ソフトの選択肢と費用を抑える方法を解説。無料のDaVinci Resolve、買い切りのFilmora、学割・セールの活用法まで紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: Premiere Proの月額料金が高いと感じる方向けに、代替ソフトの選択肢と費用を抑える方法を解説。無料のDaVinci Resolve、買い切りのFilmora、学割・セールの活用法まで紹介します。
+slug: premiere-pro-expensive-alternatives
 tags:
-  - Premiere Pro
-  - 料金
-  - 代替ソフト
-  - コスト
+- Premiere Pro
+- 料金
+- 代替ソフト
+- コスト
+title: 【2026年】Premiere Proの月額が高い…代わりになる無料・格安ソフトと節約術
+wp_id: 80
 ---
 
 Premiere Proの月額2,728円。年間にすると約33,000円。「高い」と感じる方は多いです。

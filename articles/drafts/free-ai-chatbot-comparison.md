@@ -1,14 +1,15 @@
 ---
-title: 【2026年】無料で使えるAIチャット比較8選｜ChatGPT・Claude・Geminiの無料版でできること
-slug: free-ai-chatbot-comparison
-excerpt: 無料で使えるAIチャットツール8選を比較。ChatGPT、Claude、Gemini、Copilot、Perplexityの無料版でできること・制限・おすすめの使い分けを解説します。
 categories:
-  - ai
+- ai
+excerpt: 無料で使えるAIチャットツール8選を比較。ChatGPT、Claude、Gemini、Copilot、Perplexityの無料版でできること・制限・おすすめの使い分けを解説します。
+slug: free-ai-chatbot-comparison
 tags:
-  - AIチャット
-  - 無料
-  - 比較
-  - 初心者
+- AIチャット
+- 無料
+- 比較
+- 初心者
+title: 【2026年】無料で使えるAIチャット比較8選｜ChatGPT・Claude・Geminiの無料版でできること
+wp_id: 172
 ---
 
 AIチャットは**無料で十分使えます**。有料プランに課金する前に、まず無料版の違いを知ってください。

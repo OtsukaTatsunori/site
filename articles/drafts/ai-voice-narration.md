@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI音声合成でナレーションを作る方法｜無料ツール5選と動画への活用法
-slug: ai-voice-narration
-excerpt: AI音声合成ツール5選を比較し、動画ナレーションの作り方を解説。VOICEVOX、ElevenLabs、音読さん等の料金・音質・商用利用を比較。顔出しなしのYouTubeチャンネルにも活用できます。
 categories:
-  - ai
+- ai
+excerpt: AI音声合成ツール5選を比較し、動画ナレーションの作り方を解説。VOICEVOX、ElevenLabs、音読さん等の料金・音質・商用利用を比較。顔出しなしのYouTubeチャンネルにも活用できます。
+slug: ai-voice-narration
 tags:
-  - AI音声合成
-  - ナレーション
-  - VOICEVOX
-  - 動画制作
+- AI音声合成
+- ナレーション
+- VOICEVOX
+- 動画制作
+title: 【2026年】AI音声合成でナレーションを作る方法｜無料ツール5選と動画への活用法
+wp_id: 160
 ---
 
 「顔出ししたくないけど動画を作りたい」——その悩みは**AI音声合成**で解決できます。

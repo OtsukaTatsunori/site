@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI翻訳ツールおすすめ5選｜DeepL・ChatGPT・Google翻訳の精度と使い分け
-slug: ai-translation-tools
-excerpt: AI翻訳ツール5選を精度・料金・得意分野で比較。DeepL・ChatGPT・Google翻訳・みらい翻訳・Papagoの使い分けをビジネス用途別に解説します。
 categories:
-  - ai
+- ai
+excerpt: AI翻訳ツール5選を精度・料金・得意分野で比較。DeepL・ChatGPT・Google翻訳・みらい翻訳・Papagoの使い分けをビジネス用途別に解説します。
+slug: ai-translation-tools
 tags:
-  - AI翻訳
-  - DeepL
-  - 業務効率化
-  - 英語
+- AI翻訳
+- DeepL
+- 業務効率化
+- 英語
+title: 【2026年】AI翻訳ツールおすすめ5選｜DeepL・ChatGPT・Google翻訳の精度と使い分け
+wp_id: 157
 ---
 
 「この英語メール、急ぎで返信しないといけないのに、自信がない……」

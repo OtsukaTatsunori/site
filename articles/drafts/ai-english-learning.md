@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AIで英語を勉強する方法｜ChatGPTを英会話パートナーにする7つの活用法
-slug: ai-english-learning
-excerpt: AIを活用した英語学習法を7つ紹介。ChatGPTを英会話パートナーにする方法、AI翻訳の使い方、TOEIC対策まで。無料で今日から始められる実践ガイドです。
 categories:
-  - ai
+- ai
+excerpt: AIを活用した英語学習法を7つ紹介。ChatGPTを英会話パートナーにする方法、AI翻訳の使い方、TOEIC対策まで。無料で今日から始められる実践ガイドです。
+slug: ai-english-learning
 tags:
-  - AI英語学習
-  - ChatGPT
-  - 英語
-  - 勉強法
+- AI英語学習
+- ChatGPT
+- 英語
+- 勉強法
+title: 【2026年】AIで英語を勉強する方法｜ChatGPTを英会話パートナーにする7つの活用法
+wp_id: 140
 ---
 
 英会話スクールは高い。でも**ChatGPTなら無料で24時間、英語の練習相手**になってくれます。

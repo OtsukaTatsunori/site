@@ -1,14 +1,15 @@
 ---
-title: 【2026年】ChatGPT vs Claude vs Gemini｜3大AIチャットを徹底比較！用途別の選び方
-slug: ai-chatbot-comparison
-excerpt: ChatGPT・Claude・Geminiの3大AIチャットを料金・機能・得意分野で徹底比較。用途別のおすすめと、プロが実践する使い分け術を解説します。
 categories:
-  - ai
+- ai
+excerpt: ChatGPT・Claude・Geminiの3大AIチャットを料金・機能・得意分野で徹底比較。用途別のおすすめと、プロが実践する使い分け術を解説します。
+slug: ai-chatbot-comparison
 tags:
-  - ChatGPT
-  - Claude
-  - Gemini
-  - 比較
+- ChatGPT
+- Claude
+- Gemini
+- 比較
+title: 【2026年】ChatGPT vs Claude vs Gemini｜3大AIチャットを徹底比較！用途別の選び方
+wp_id: 138
 ---
 
 「ChatGPT、Claude、Gemini——結局どれを使えばいいの？」

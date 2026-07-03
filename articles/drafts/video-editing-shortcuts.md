@@ -1,14 +1,15 @@
 ---
-title: 【2026年】動画編集が2倍速くなるショートカットキー｜まず覚える10個はこれ
-slug: video-editing-shortcuts
-excerpt: 動画編集で必ず使うショートカットキーをPremiere Pro・DaVinci Resolve・CapCut別に一覧で紹介。初心者が最初に覚えるべき10個から、作業効率を2倍にする応用テクニックまで解説します。
 categories:
-  - video-production
+- video-production
+excerpt: 動画編集で必ず使うショートカットキーをPremiere Pro・DaVinci Resolve・CapCut別に一覧で紹介。初心者が最初に覚えるべき10個から、作業効率を2倍にする応用テクニックまで解説します。
+slug: video-editing-shortcuts
 tags:
-  - ショートカット
-  - Premiere Pro
-  - DaVinci Resolve
-  - 動画編集
+- ショートカット
+- Premiere Pro
+- DaVinci Resolve
+- 動画編集
+title: 【2026年】動画編集が2倍速くなるショートカットキー｜まず覚える10個はこれ
+wp_id: 116
 ---
 
 動画編集の作業速度は、**ショートカットキーを使うかどうかで2〜3倍変わります**。

@@ -1,14 +1,15 @@
 ---
-title: 【2026年】iPadだけで動画編集は完結する？PCなしの限界を正直に解説
-slug: video-editing-ipad
-excerpt: iPadだけで動画編集を完結できるかを正直に解説。使えるソフト、得意な編集・苦手な編集、おすすめのiPadモデル、PCとの使い分けまで。iPadで動画編集を始めたい人向けのガイドです。
 categories:
-  - video-production
+- video-production
+excerpt: iPadだけで動画編集を完結できるかを正直に解説。使えるソフト、得意な編集・苦手な編集、おすすめのiPadモデル、PCとの使い分けまで。iPadで動画編集を始めたい人向けのガイドです。
+slug: video-editing-ipad
 tags:
-  - 動画編集
-  - iPad
-  - 初心者
-  - LumaFusion
+- 動画編集
+- iPad
+- 初心者
+- LumaFusion
+title: 【2026年】iPadだけで動画編集は完結する？PCなしの限界を正直に解説
+wp_id: 99
 ---
 
 「iPadだけで動画編集できるなら、パソコンは買わなくていい？」

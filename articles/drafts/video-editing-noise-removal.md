@@ -1,13 +1,14 @@
 ---
-title: 【2026年】動画の「ザー」「ブーン」を消す方法｜無料でできるノイズ除去と音声改善
-slug: video-editing-noise-removal
-excerpt: 動画のノイズ除去と音声改善の方法を解説。エアコン音、ホワイトノイズ、反響音の消し方から、Premiere Pro・DaVinci Resolve・無料ツールでの具体的な操作手順まで紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: 動画のノイズ除去と音声改善の方法を解説。エアコン音、ホワイトノイズ、反響音の消し方から、Premiere Pro・DaVinci Resolve・無料ツールでの具体的な操作手順まで紹介します。
+slug: video-editing-noise-removal
 tags:
-  - ノイズ除去
-  - 音声編集
-  - 動画編集
+- ノイズ除去
+- 音声編集
+- 動画編集
+title: 【2026年】動画の「ザー」「ブーン」を消す方法｜無料でできるノイズ除去と音声改善
+wp_id: 105
 ---
 
 「映像はキレイなのに、音がザーッと鳴っている」——これだけで動画の印象は**台無し**になります。

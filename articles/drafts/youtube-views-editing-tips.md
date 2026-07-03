@@ -1,14 +1,15 @@
 ---
-title: 【2026年】YouTube再生回数が伸びない？編集で視聴維持率を上げる7つのテクニック
-slug: youtube-views-editing-tips
-excerpt: YouTube動画の再生回数を伸ばすための編集テクニックを7つ紹介。視聴維持率を上げるカットの入れ方、冒頭の作り方、テロップの工夫、BGMの使い方まで。「良い動画なのに伸びない」を解消する実践ガイドです。
 categories:
-  - video-production
+- video-production
+excerpt: YouTube動画の再生回数を伸ばすための編集テクニックを7つ紹介。視聴維持率を上げるカットの入れ方、冒頭の作り方、テロップの工夫、BGMの使い方まで。「良い動画なのに伸びない」を解消する実践ガイドです。
+slug: youtube-views-editing-tips
 tags:
-  - YouTube
-  - 再生回数
-  - 視聴維持率
-  - 編集テクニック
+- YouTube
+- 再生回数
+- 視聴維持率
+- 編集テクニック
+title: 【2026年】YouTube再生回数が伸びない？編集で視聴維持率を上げる7つのテクニック
+wp_id: 132
 ---
 
 「動画の内容は悪くないのに、再生回数が伸びない」

@@ -1,14 +1,15 @@
 ---
-title: 【2026年】DeepSeekの使い方｜無料で高性能な中国発AIチャットの始め方と注意点
-slug: deepseek-guide
-excerpt: DeepSeekの使い方を初心者向けに解説。無料でGPT-4レベルの性能を持つ中国発AIの始め方、得意分野、ChatGPTとの違い、データプライバシーの注意点をまとめます。
 categories:
-  - ai
+- ai
+excerpt: DeepSeekの使い方を初心者向けに解説。無料でGPT-4レベルの性能を持つ中国発AIの始め方、得意分野、ChatGPTとの違い、データプライバシーの注意点をまとめます。
+slug: deepseek-guide
 tags:
-  - DeepSeek
-  - 無料AI
-  - AIチャット
-  - 中国AI
+- DeepSeek
+- 無料AI
+- AIチャット
+- 中国AI
+title: 【2026年】DeepSeekの使い方｜無料で高性能な中国発AIチャットの始め方と注意点
+wp_id: 171
 ---
 
 「無料でGPT-4レベルのAIが使える？」

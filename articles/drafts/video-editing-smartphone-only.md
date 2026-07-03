@@ -1,14 +1,15 @@
 ---
-title: 【2026年】スマホだけで動画編集はできる？PCなしで始めるおすすめアプリ3選
-slug: video-editing-smartphone-only
-excerpt: スマホだけで動画編集を始める方法を解説。おすすめアプリ3選、基本的な編集手順、スマホ編集の限界と注意点まで。PCなしでもYouTubeやSNSに投稿できる動画が作れます。
 categories:
-  - video-production
+- video-production
+excerpt: スマホだけで動画編集を始める方法を解説。おすすめアプリ3選、基本的な編集手順、スマホ編集の限界と注意点まで。PCなしでもYouTubeやSNSに投稿できる動画が作れます。
+slug: video-editing-smartphone-only
 tags:
-  - 動画編集
-  - スマホ
-  - アプリ
-  - 初心者
+- 動画編集
+- スマホ
+- アプリ
+- 初心者
+title: 【2026年】スマホだけで動画編集はできる？PCなしで始めるおすすめアプリ3選
+wp_id: 120
 ---
 
 「パソコンがなくても動画編集はできますか？」——**できます**。

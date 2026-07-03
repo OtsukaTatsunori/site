@@ -1,14 +1,16 @@
 ---
-title: 【2026年】動画のテロップが読みにくい？プロが守る7つのデザインルール
-slug: video-editing-telop
-excerpt: 動画編集のテロップの入れ方を初心者向けに解説。フォント選び、サイズ、色、配置、デザインの基本ルールから、Premiere Pro・DaVinci Resolve・CapCutでの具体的な操作手順まで紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: 動画編集のテロップの入れ方を初心者向けに解説。フォント選び、サイズ、色、配置、デザインの基本ルールから、Premiere Pro・DaVinci
+  Resolve・CapCutでの具体的な操作手順まで紹介します。
+slug: video-editing-telop
 tags:
-  - テロップ
-  - 動画編集
-  - 字幕
-  - 初心者
+- テロップ
+- 動画編集
+- 字幕
+- 初心者
+title: 【2026年】動画のテロップが読みにくい？プロが守る7つのデザインルール
+wp_id: 126
 ---
 
 テロップ（字幕・テキスト）は、動画の**わかりやすさを左右する最も重要な要素**です。

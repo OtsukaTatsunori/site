@@ -1,14 +1,15 @@
 ---
-title: 【2026年】動画編集の学習サイト・教材まとめ｜無料でも月5万円稼げるレベルになれる？
-slug: video-editing-learning-resources
-excerpt: 動画編集のおすすめ学習サイト・教材を無料と有料に分けて紹介。YouTube、Udemy、スクール、書籍の特徴と使い分けを解説。目的別に最適な学び方が見つかります。
 categories:
-  - video-production
+- video-production
+excerpt: 動画編集のおすすめ学習サイト・教材を無料と有料に分けて紹介。YouTube、Udemy、スクール、書籍の特徴と使い分けを解説。目的別に最適な学び方が見つかります。
+slug: video-editing-learning-resources
 tags:
-  - 動画編集
-  - 学習
-  - 教材
-  - おすすめ
+- 動画編集
+- 学習
+- 教材
+- おすすめ
+title: 【2026年】動画編集の学習サイト・教材まとめ｜無料でも月5万円稼げるレベルになれる？
+wp_id: 101
 ---
 
 「動画編集を学びたいけど、教材が多すぎて選べない」

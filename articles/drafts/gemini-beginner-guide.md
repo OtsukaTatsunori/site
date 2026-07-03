@@ -1,14 +1,15 @@
 ---
-title: 【2026年】Google Geminiの使い方｜無料でできること・ChatGPTとの違い・始め方
-slug: gemini-beginner-guide
-excerpt: Google Geminiの使い方を初心者向けに解説。無料でできること、ChatGPTとの違い、Gmail・スプレッドシート連携の方法まで。Googleユーザーなら今日から活用できます。
 categories:
-  - ai
+- ai
+excerpt: Google Geminiの使い方を初心者向けに解説。無料でできること、ChatGPTとの違い、Gmail・スプレッドシート連携の方法まで。Googleユーザーなら今日から活用できます。
+slug: gemini-beginner-guide
 tags:
-  - Gemini
-  - Google
-  - 使い方
-  - 初心者
+- Gemini
+- Google
+- 使い方
+- 初心者
+title: 【2026年】Google Geminiの使い方｜無料でできること・ChatGPTとの違い・始め方
+wp_id: 174
 ---
 
 Google GeminiはGoogleが開発したAIチャットです。最大の強みは**Googleサービス（Gmail、スプレッドシート、ドライブ等）との直接連携**。

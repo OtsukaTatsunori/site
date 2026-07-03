@@ -1,14 +1,15 @@
 ---
-title: 【2026年】ChatGPT × Excel活用術｜関数・マクロ・データ分析をAIに任せる方法
-slug: chatgpt-excel-guide
-excerpt: ChatGPTでExcelの関数、VBAマクロ、ピボットテーブル、データ分析を効率化する方法を解説。コピペで使えるプロンプト付き。Excel作業の時間を半分にする実践ガイドです。
 categories:
-  - ai
+- ai
+excerpt: ChatGPTでExcelの関数、VBAマクロ、ピボットテーブル、データ分析を効率化する方法を解説。コピペで使えるプロンプト付き。Excel作業の時間を半分にする実践ガイドです。
+slug: chatgpt-excel-guide
 tags:
-  - ChatGPT
-  - Excel
-  - 関数
-  - VBA
+- ChatGPT
+- Excel
+- 関数
+- VBA
+title: 【2026年】ChatGPT × Excel活用術｜関数・マクロ・データ分析をAIに任せる方法
+wp_id: 165
 ---
 
 Excelの関数がわからないとき、ChatGPTに「やりたいこと」を日本語で伝えるだけで最適な関数やマクロを提案してくれます。

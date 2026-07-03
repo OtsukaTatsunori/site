@@ -1,14 +1,16 @@
 ---
-title: 【2026年】AI画像生成ツール比較6選｜無料で使えるおすすめと選び方ガイド
-slug: ai-image-generation-tools
-excerpt: AI画像生成ツール6選を料金・画質・操作性・商用利用の観点で比較。Midjourney、DALL-E、Stable Diffusion、Adobe Firefly、Canva AI、Leonardo AIの特徴と選び方を解説します。
 categories:
-  - ai
+- ai
+excerpt: AI画像生成ツール6選を料金・画質・操作性・商用利用の観点で比較。Midjourney、DALL-E、Stable Diffusion、Adobe
+  Firefly、Canva AI、Leonardo AIの特徴と選び方を解説します。
+slug: ai-image-generation-tools
 tags:
-  - AI画像生成
-  - 比較
-  - Midjourney
-  - 無料
+- AI画像生成
+- 比較
+- Midjourney
+- 無料
+title: 【2026年】AI画像生成ツール比較6選｜無料で使えるおすすめと選び方ガイド
+wp_id: 141
 ---
 
 テキストを入力するだけで画像が生成されるAI画像生���ツール。2026年現在、**無料で使えるツールも多く、デザイン未経験でもプロ級の画像が作れます**。「そもそも生成AIって何？」という方は、先に[生成AIの基礎知識](/generative-ai-explained/)を読むとスムーズです。

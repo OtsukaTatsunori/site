@@ -1,14 +1,15 @@
 ---
-title: 【2026年】動画編集ソフトどれがいい？目的別おすすめ一覧と「迷ったらコレ」の結論
-slug: video-editing-software-guide
-excerpt: 動画編集ソフトの選び方を目的別に解説。無料vs有料、スマホvsPC、副業vs趣味など、あなたの状況に合った最適なソフトが見つかる総合ガイドです。
 categories:
-  - video-production
+- video-production
+excerpt: 動画編集ソフトの選び方を目的別に解説。無料vs有料、スマホvsPC、副業vs趣味など、あなたの状況に合った最適なソフトが見つかる総合ガイドです。
+slug: video-editing-software-guide
 tags:
-  - 動画編集ソフト
-  - 選び方
-  - 比較
-  - おすすめ
+- 動画編集ソフト
+- 選び方
+- 比較
+- おすすめ
+title: 【2026年】動画編集ソフトどれがいい？目的別おすすめ一覧と「迷ったらコレ」の結論
+wp_id: 121
 ---
 
 「動画編集ソフト、結局どれを選べばいいの？」

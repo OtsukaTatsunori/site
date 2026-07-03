@@ -1,14 +1,15 @@
 ---
-title: 【2026年】Canvaでサムネイルを5分で作る方法｜テンプレ選んで文字を変えるだけ
-slug: canva-thumbnail-tutorial
-excerpt: Canvaを使ったYouTubeサムネイルの作り方を初心者向けにステップごとに解説。テンプレートの選び方、文字の入れ方、背景の切り抜き、ダウンロード方法まで。無料で5分で完成する実践チュートリアルです。
 categories:
-  - video-production
+- video-production
+excerpt: Canvaを使ったYouTubeサムネイルの作り方を初心者向けにステップごとに解説。テンプレートの選び方、文字の入れ方、背景の切り抜き、ダウンロード方法まで。無料で5分で完成する実践チュートリアルです。
+slug: canva-thumbnail-tutorial
 tags:
-  - Canva
-  - サムネイル
-  - YouTube
-  - 作り方
+- Canva
+- サムネイル
+- YouTube
+- 作り方
+title: 【2026年】Canvaでサムネイルを5分で作る方法｜テンプレ選んで文字を変えるだけ
+wp_id: 75
 ---
 
 YouTubeのサムネイルは**Canva（無料）を使えば5分で作れます**。

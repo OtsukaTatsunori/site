@@ -1,15 +1,16 @@
 ---
-title: 【2026年】ChatGPT APIの使い方｜初心者向けに料金・始め方・活用例をやさしく解説
-slug: chatgpt-api-beginner
-excerpt: ChatGPT APIの使い方を初心者向けに解説。ウェブ版との違い、料金体系、APIキーの取得方法、Pythonでの使い方、ビジネス活用例まで。プログラミング未経験でもわかります。
 categories:
-  - ai
+- ai
+excerpt: ChatGPT APIの使い方を初心者向けに解説。ウェブ版との違い、料金体系、APIキーの取得方法、Pythonでの使い方、ビジネス活用例まで。プログラミング未経験でもわかります。
+slug: chatgpt-api-beginner
 tags:
-  - ChatGPT
-  - API
-  - Python
-  - 初心者
-  - 自動化
+- ChatGPT
+- API
+- Python
+- 初心者
+- 自動化
+title: 【2026年】ChatGPT APIの使い方｜初心者向けに料金・始め方・活用例をやさしく解説
+wp_id: 163
 ---
 
 「ChatGPT API」という言葉を聞いたことはあるけど、**「普通のChatGPTと何が違うの？」「料金はいくらかかるの？」「自分にも使える？」**と疑問に思っていませんか。
