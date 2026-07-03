@@ -233,6 +233,53 @@ def cmd_push_missing(args: argparse.Namespace) -> int:
     return 0 if not failed else 1
 
 
+def cmd_push_all(args: argparse.Namespace) -> int:
+    """articles/drafts/ の全記事を順次push（wp_id有り=更新／無し=新規作成）"""
+    import time
+
+    drafts_dir = Path("articles/drafts")
+    files = [f for f in sorted(drafts_dir.glob("*.md")) if not f.name.startswith("_")]
+    if not files:
+        print("対象記事がありません。")
+        return 0
+
+    print(f"📋 全 {len(files)} 記事をpush（更新含む）します。")
+    print("   ※ 既存記事（wp_id有り）は更新、新規（wp_id無し）は下書き作成されます。")
+    if not args.yes:
+        ans = input("続けますか？ [y/N]: ").strip().lower()
+        if ans != "y":
+            print("中止しました。")
+            return 0
+
+    success = 0
+    failed: list[str] = []
+    for i, f in enumerate(files, 1):
+        print(f"\n--- [{i}/{len(files)}] {f.name} ---")
+        try:
+            fake_args = argparse.Namespace(file=str(f))
+            rc = cmd_push(fake_args)
+            if rc == 0:
+                success += 1
+            else:
+                failed.append(f.name)
+        except Exception as e:
+            print(f"❌ エラー: {e}", file=sys.stderr)
+            failed.append(f.name)
+        # WAF対策: 連続リクエスト間に少し待つ
+        if i < len(files):
+            time.sleep(1.5)
+
+    print("\n===== 完了 =====")
+    print(f"成功: {success} 件 / 失敗: {len(failed)} 件")
+    if failed:
+        print("失敗したファイル:")
+        for name in failed:
+            print(f"  {name}")
+        print("\n※ 403エラーが多い場合はWAFをOFFにして再実行してください。")
+        print("   push-all は何度実行しても安全です（wp_idで更新されます）。")
+    return 0 if not failed else 1
+
+
 def cmd_categories(_args: argparse.Namespace) -> int:
     wp = WPClient()
     cats = wp.list_categories()
@@ -550,6 +597,11 @@ def main() -> int:
     )
     p_pm.add_argument("-y", "--yes", action="store_true", help="確認なしで実行")
 
+    p_pa = sub.add_parser(
+        "push-all", help="全記事を順次push（更新含む・wp_idで自動判定）"
+    )
+    p_pa.add_argument("-y", "--yes", action="store_true", help="確認なしで実行")
+
     p_upload = sub.add_parser(
         "upload-images", help="画像フォルダをWordPressメディアにアップロード"
     )
@@ -570,6 +622,7 @@ def main() -> int:
         "init-categories": cmd_init_categories,
         "push": cmd_push,
         "push-missing": cmd_push_missing,
+        "push-all": cmd_push_all,
         "upload-images": cmd_upload_images,
     }
     return handlers[args.cmd](args)
