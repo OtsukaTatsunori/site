@@ -20,6 +20,13 @@ ChatGPTは**週間アクティブユーザー4億人以上**を誇る世界最�
 - 仕事で使える7つの活用法とプロンプト例
 - 無料版と有料版の違い・やってはいけないこと
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「AIなんて難しそう」と身構えていました。でも実際に使い始めて一番効いたのは、大それた活用ではなく、メールの下書きや長文の要約といった地味な作業です。完璧な使い方を目指すより、まず1つ「これは任せられる」を見つけるのが、挫折しないコツだと感じています。この記事も、そういう小さな一歩から書いています。</p>
+</div>
+</div>
 
 ## ChatGPTとは？30秒でわかる概要
 

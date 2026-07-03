@@ -153,6 +153,85 @@ Version: 1.0.0
 }
 
 /* =====================================================
+   運営者コメント欄（体験ベースの一人称ボックス）
+   全記事共通。LP以外の通常記事でも使用する
+   ===================================================== */
+
+.voice-box {
+  display: flex;
+  gap: 1em;
+  background: #f6f9fc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 1.2em 1.4em;
+  margin: 1.8em 0;
+  align-items: flex-start;
+}
+
+.voice-avatar {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82em;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.voice-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.voice-head {
+  margin-bottom: 0.4em;
+}
+
+.voice-name {
+  display: inline-block;
+  font-weight: 700;
+  color: #1a365d;
+  font-size: 0.95em;
+  margin-right: 0.6em;
+}
+
+.voice-role {
+  display: inline-block;
+  font-size: 0.75em;
+  color: #64748b;
+}
+
+.voice-comment {
+  margin: 0 !important;
+  font-size: 0.93em;
+  line-height: 1.85;
+  color: #334155;
+}
+
+.voice-comment + .voice-comment {
+  margin-top: 0.6em !important;
+}
+
+@media screen and (max-width: 480px) {
+  .voice-box {
+    padding: 1em 1.1em;
+    gap: 0.8em;
+  }
+  .voice-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 0.72em;
+  }
+}
+
+/* =====================================================
    LP（ランディングページ）デザインシステム
    カラーパレット：主役=ネイビー / 行動=コーラル / 中立=グレー
    ===================================================== */
