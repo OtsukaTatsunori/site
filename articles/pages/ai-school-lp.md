@@ -17,11 +17,20 @@ wp_id: 290
 <div class="lp-fact"><span class="lp-fact-num">3分</span><span class="lp-fact-label">で診断</span></div>
 </div>
 <div class="lp-hero-ctas">
-<a href="#diagnosis" class="lp-btn-primary">3分診断で自分に合う1校を見る</a>
+<a href="#ranking" class="lp-btn-primary">今すぐランキングを見る</a>
+<p class="lp-microcopy">▼ 読むのにかかる時間は約3分です</p>
 </div>
 </div>
 
-![AIスクール料金：補助金を使うと実質いくらになるか](UPLOAD_URL:lp-hero-price-drop.png)
+## 忙しい人向け：結論の早見表
+
+| 順位 | スクール | 評価 | こんな人に | 実質料金 |
+|---|---|---|---|---|
+| 🥇 1位 | [SHIFT AI](#rank1) | ★4.7 | 副業・業務効率化 | 月2.2万円〜 |
+| 🥈 2位 | [キカガク](#rank2) | ★4.5 | AI転職・DX推進 | 15.8万円（80%OFF後） |
+| 🥉 3位 | [G検定対策](#rank3) | ★4.2 | 資格・入門 | 3〜5万円 |
+
+<p class="lp-note">※ 評価は当サイト編集部の独自基準（料金・学習量・サポート・補助金・習得しやすさの5軸）によるものです。</p>
 
 ## AIスクール選び、こんな状態で止まっていませんか
 
@@ -45,26 +54,31 @@ wp_id: 290
 
 このページは、その3つを**3分で解消する**ために作りました。
 
-## 結論：目的別に「1校」だけ選べば失敗しません
+## プロが見る「失敗しない選び方」3つの基準
 
-<div class="lp-verdict-big">
-<div class="lp-verdict-row">
-<div class="lp-verdict-label">業務効率化・副業なら</div>
-<div class="lp-verdict-choice"><strong>SHIFT AI</strong>（月額21,780円〜）</div>
-</div>
-<div class="lp-verdict-row">
-<div class="lp-verdict-label">AI転職・DX推進なら</div>
-<div class="lp-verdict-choice"><strong>キカガク</strong>（補助金で実質15.8万円）</div>
-</div>
-<div class="lp-verdict-row">
-<div class="lp-verdict-label">資格・入門なら</div>
-<div class="lp-verdict-choice"><strong>G検定対策講座</strong>（3〜5万円）</div>
-</div>
-</div>
+スクール選びで失敗する人は、知名度や広告で選んでいます。見るべきはこの3点だけです。
 
-なぜこの3校なのか。まず、**通えないスクールを外した**理由から説明します。
+<div class="lp-reasons">
+<div class="lp-reason-card">
+<div class="lp-reason-num">基準1</div>
+<h4>目的と一致しているか</h4>
+<p>「AIを使う側」になりたいのか「作る側」になりたいのか。副業・転職・資格で選ぶべき学校は全く違います。</p>
+</div>
+<div class="lp-reason-card">
+<div class="lp-reason-num">基準2</div>
+<h4>実質負担額で比べているか</h4>
+<p>定価ではなく「補助金適用後にいくら払うか」で比較。79万円と15.8万円では判断が変わります。</p>
+</div>
+<div class="lp-reason-card">
+<div class="lp-reason-num">基準3</div>
+<h4>今、申し込めるか</h4>
+<p>有名スクールでも受付停止・サービス終了が相次いでいます。2026年に現実的に通える学校かの確認が必須。</p>
+</div>
+</div>
 
 ## なぜ7校 → 3校に絞ったのか
+
+基準3「今、申し込めるか」で、有名どころが次々と脱落しました。
 
 | スクール | 判定 | 理由 |
 |---|---|---|
@@ -78,6 +92,131 @@ wp_id: 290
 
 **2026年現在、社会人がリアルに通えるAIスクールは、この3校しか残っていません。**
 
+<div id="ranking"></div>
+
+## 総合ランキング
+
+<div id="rank1"></div>
+
+<div class="lp-rank lp-rank-1">
+<div class="lp-rank-head">
+<div>
+<div class="lp-rank-badge">1位</div>
+<h3 class="lp-rank-title">SHIFT AI</h3>
+<p class="lp-rank-tagline">月額21,780円で始める、社会人のためのAI活用スクール</p>
+</div>
+<div class="lp-eval">
+<span class="lp-eval-num">4.7</span>
+<span class="lp-eval-stars">★★★★★</span>
+<span class="lp-eval-label">編集部評価</span>
+</div>
+</div>
+<table class="lp-spec">
+<tr><th>料金</th><td>月額21,780円〜（年間プランで割引あり）</td></tr>
+<tr><th>学べる内容</th><td>ChatGPT・画像生成・動画生成など生成AI活用全般</td></tr>
+<tr><th>教材</th><td>50コース・動画1,000本以上が見放題</td></tr>
+<tr><th>形式</th><td>オンライン完結（スキマ時間OK）</td></tr>
+<tr><th>補助金</th><td>対象外（もともと低価格の月額制）</td></tr>
+<tr><th>転職支援</th><td>なし</td></tr>
+<tr><th>実績</th><td>会員20,000人以上（公式発表）</td></tr>
+</table>
+<div class="lp-check-block">
+<p class="lp-check-title">こんな人におすすめ</p>
+<ul class="lp-check-list">
+<li>ChatGPTなど生成AIを仕事に活かしたい（業務効率化・副業）</li>
+<li>数十万円の初期投資はしたくない</li>
+<li>画像・動画生成まで幅広く学びたい</li>
+<li>通勤・昼休みなどスキマ時間で学びたい</li>
+</ul>
+</div>
+<div class="lp-cta-row">
+<a href="/shift-ai-review/" class="lp-cta-btn">評判・口コミの詳細を見る</a>
+<a href="/ai-side-job-guide/" class="lp-cta-btn-sub">AI副業の始め方を見る</a>
+</div>
+<p class="lp-microcopy">※ どちらも当サイト内の解説記事です。無料で読めます</p>
+</div>
+
+<div id="rank2"></div>
+
+<div class="lp-rank lp-rank-2">
+<div class="lp-rank-head">
+<div>
+<div class="lp-rank-badge">2位</div>
+<h3 class="lp-rank-title">キカガク 長期コース</h3>
+<p class="lp-rank-tagline">補助金80%適用で実質15.8万円。AIエンジニア転職への最短ルート</p>
+</div>
+<div class="lp-eval">
+<span class="lp-eval-num">4.5</span>
+<span class="lp-eval-stars">★★★★★</span>
+<span class="lp-eval-label">編集部評価</span>
+</div>
+</div>
+<table class="lp-spec">
+<tr><th>料金</th><td>792,000円 → <strong>実質158,400円</strong>（補助金80%適用時）</td></tr>
+<tr><th>学べる内容</th><td>Python・機械学習・データサイエンス・DX推進</td></tr>
+<tr><th>教材</th><td>動画教材は卒業後も無期限で見放題</td></tr>
+<tr><th>形式</th><td>オンライン完結（6ヶ月・週10〜15時間目安）</td></tr>
+<tr><th>補助金</th><td><strong>専門実践教育訓練給付金 最大80%対応</strong></td></tr>
+<tr><th>転職支援</th><td>あり（専属メンター付き）</td></tr>
+</table>
+<div class="lp-check-block">
+<p class="lp-check-title">こんな人におすすめ</p>
+<ul class="lp-check-list">
+<li>AIエンジニア・データサイエンティストに本気で転職したい</li>
+<li>社内でDX推進担当を任された・任されたい</li>
+<li>補助金を最大限活用して費用を抑えたい</li>
+<li>卒業後も教材で学び直したい</li>
+</ul>
+</div>
+<div class="lp-alert-red">
+<p><strong>注意：</strong>補助金は受講「前」のハローワーク手続きが必須です。申込後の申請はできません（<a href="#subsidy-flow">手順はこちら</a>）。</p>
+</div>
+<div class="lp-cta-row">
+<a href="/ai-reskilling-subsidy/" class="lp-cta-btn">補助金80%OFFの申請手順を見る</a>
+<a href="/ai-career-change/" class="lp-cta-btn-sub">AI転職ガイドを見る</a>
+</div>
+<p class="lp-microcopy">※ どちらも当サイト内の解説記事です。無料で読めます</p>
+</div>
+
+<div id="rank3"></div>
+
+<div class="lp-rank lp-rank-3">
+<div class="lp-rank-head">
+<div>
+<div class="lp-rank-badge">3位</div>
+<h3 class="lp-rank-title">G検定対策講座</h3>
+<p class="lp-rank-tagline">3〜5万円で「AI人材」の公的な証明が取れる</p>
+</div>
+<div class="lp-eval">
+<span class="lp-eval-num">4.2</span>
+<span class="lp-eval-stars">★★★★☆</span>
+<span class="lp-eval-label">編集部評価</span>
+</div>
+</div>
+<table class="lp-spec">
+<tr><th>料金</th><td>3〜5万円（各社対策講座＋受験料）</td></tr>
+<tr><th>学べる内容</th><td>AI・ディープラーニングの基礎知識全般</td></tr>
+<tr><th>期間</th><td>2〜3ヶ月（1日1時間ペースの目安）</td></tr>
+<tr><th>形式</th><td>オンライン（試験もオンライン受験）</td></tr>
+<tr><th>資格</th><td>G検定（日本ディープラーニング協会）・履歴書に書ける</td></tr>
+<tr><th>合格率</th><td>60〜70%（働きながらでも現実的）</td></tr>
+</table>
+<div class="lp-check-block">
+<p class="lp-check-title">こんな人におすすめ</p>
+<ul class="lp-check-list">
+<li>まず予算を抑えてAIに入門したい</li>
+<li>社内でAI推進役として認められたい</li>
+<li>転職ではなく現職でのステップアップを狙う</li>
+<li>AIの全体像を体系的に理解したい</li>
+</ul>
+</div>
+<div class="lp-cta-row">
+<a href="/g-certification-study-guide/" class="lp-cta-btn">G検定の勉強法・合格のコツを見る</a>
+<a href="/ai-certification-guide/" class="lp-cta-btn-sub">AI資格8選の比較を見る</a>
+</div>
+<p class="lp-microcopy">※ どちらも当サイト内の解説記事です。無料で読めます</p>
+</div>
+
 ## 3校を5つの軸で採点
 
 | 評価軸 | SHIFT AI | キカガク | G検定対策 |
@@ -87,109 +226,6 @@ wp_id: 290
 | 転職サポート | ★☆☆☆☆ | ★★★★★ | ☆☆☆☆☆ |
 | 補助金対応 | ☆☆☆☆☆ | ★★★★★ | ★☆☆☆☆ |
 | 習得しやすさ | ★★★★★ | ★★★☆☆ | ★★★★☆ |
-
-自分が重視する軸で選べば、迷いません。以下、各校を詳しく見ていきます。
-
-## 第1位：SHIFT AI｜迷ったらこれ
-
-<div class="lp-rank lp-rank-1">
-<div class="lp-rank-badge">RANK 1</div>
-<h3 class="lp-rank-title">SHIFT AI</h3>
-<p class="lp-rank-tagline">月額21,780円で始める、社会人のためのAI活用スクール</p>
-<p class="lp-rank-catch">累計20,000人以上が利用｜50コース・動画1,000本以上｜やめたい月にやめられる</p>
-</div>
-
-<div class="lp-reasons">
-<div class="lp-reason-card">
-<div class="lp-reason-num">01</div>
-<h4>初期投資ゼロの月額制</h4>
-<p>数十万円が当たり前のスクール業界で、月額21,780円から。合わなければいつでもやめられます。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">02</div>
-<h4>生成AIの全部が学べる</h4>
-<p>ChatGPT・画像・動画・音声生成まで、50コース1,000本以上が追加費用なしで学び放題。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">03</div>
-<h4>コミュニティで挫折しない</h4>
-<p>2万人以上のコミュニティで質問し放題。独学の挫折リスクを大きく下げられます。</p>
-</div>
-</div>
-
-**向いている人**：業務効率化・副業が目的／大きな初期投資は避けたい／幅広く学びたい。<br>
-**向かない人**：AIエンジニアに本気で転職したい人（→ キカガクへ）。
-
-<div class="lp-cta">
-<a href="/shift-ai-review/" class="lp-cta-btn">SHIFT AIの評判・口コミを見る</a>
-</div>
-
-## 第2位：キカガク｜補助金80%で本気の転職
-
-<div class="lp-rank lp-rank-2">
-<div class="lp-rank-badge">RANK 2</div>
-<h3 class="lp-rank-title">キカガク 長期コース</h3>
-<p class="lp-rank-tagline">補助金80%適用で実質15.8万円。AIエンジニア転職への最短ルート</p>
-<p class="lp-rank-catch">動画教材は卒業後も無期限｜転職支援あり｜DX推進スキルまで一気通貫</p>
-</div>
-
-<div class="lp-reasons">
-<div class="lp-reason-card">
-<div class="lp-reason-num">01</div>
-<h4>実質158,400円</h4>
-<p>定価79.2万円が、専門実践教育訓練給付金80%で実質15.8万円。63.4万円が国から戻ります。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">02</div>
-<h4>転職支援が付属</h4>
-<p>専属メンター＋転職支援で、「学ぶだけ」で終わらせず転職まで伴走します。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">03</div>
-<h4>卒業後も見放題</h4>
-<p>動画教材の閲覧期間は無期限。技術の進化に合わせて、卒業後も学び直せます。</p>
-</div>
-</div>
-
-**向いている人**：AI転職・DX推進が目的／補助金を活用したい／週10〜15時間確保できる。<br>
-**向かない人**：気軽に試したいだけ（→ SHIFT AI）／学習時間が取れない（→ G検定）。
-
-<div class="lp-cta">
-<a href="/ai-reskilling-subsidy/" class="lp-cta-btn">補助金80%OFFの申請手順を見る</a>
-</div>
-
-## 第3位：G検定対策講座｜3〜5万円で最短入門
-
-<div class="lp-rank lp-rank-3">
-<div class="lp-rank-badge">RANK 3</div>
-<h3 class="lp-rank-title">G検定対策講座</h3>
-<p class="lp-rank-tagline">3〜5万円で「AI人材」の公的な証明が取れる</p>
-<p class="lp-rank-catch">2〜3ヶ月で合格レベル｜履歴書に書ける｜社内評価アップ</p>
-</div>
-
-<div class="lp-reasons">
-<div class="lp-reason-card">
-<div class="lp-reason-num">01</div>
-<h4>予算3〜5万円</h4>
-<p>数十万円払う前の最初の一歩に最適。合格すれば履歴書に書ける公的資格が手に入ります。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">02</div>
-<h4>2〜3ヶ月で合格</h4>
-<p>1日1時間×3ヶ月で合格する人が多数。働きながら無理なく取得できます。</p>
-</div>
-<div class="lp-reason-card">
-<div class="lp-reason-num">03</div>
-<h4>全体像がわかる</h4>
-<p>AIの基礎・用語・活用領域が一気に整理でき、その後の学習効率も上がります。</p>
-</div>
-</div>
-
-**向いている人**：予算を抑えて入門したい／社内評価を上げたい／現職でステップアップ。
-
-<div class="lp-cta">
-<a href="/g-certification-study-guide/" class="lp-cta-btn">G検定の勉強法・合格のコツを見る</a>
-</div>
 
 ## 3校の違いを一覧で
 
@@ -201,6 +237,8 @@ wp_id: 290
 | 補助金対応 | — | **80%OFF** | — |
 | 難易度 | 易 | 中〜難 | 中 |
 | 主な目的 | 業務効率化・副業 | 転職・DX推進 | 資格・入門 |
+
+<div id="subsidy-flow"></div>
 
 ## 補助金は「申込前」の手続きが絶対条件
 
@@ -269,7 +307,7 @@ wp_id: 290
 <div>
 <h4>今の仕事の効率化・副業で稼ぐ</h4>
 <p>業務時短、副業収入、SNS発信など</p>
-<p class="lp-quiz-answer">→ SHIFT AI があなたに最適</p>
+<p class="lp-quiz-answer">→ SHIFT AI があなたに最適（<a href="#rank1">1位の詳細へ戻る</a>）</p>
 </div>
 </div>
 <div class="lp-quiz-choice">
@@ -277,7 +315,7 @@ wp_id: 290
 <div>
 <h4>AI業界へ転職・社内DX推進</h4>
 <p>AIエンジニア転職、データ職、DX担当など</p>
-<p class="lp-quiz-answer">→ キカガク があなたに最適</p>
+<p class="lp-quiz-answer">→ キカガク があなたに最適（<a href="#rank2">2位の詳細へ戻る</a>）</p>
 </div>
 </div>
 <div class="lp-quiz-choice">
@@ -285,7 +323,7 @@ wp_id: 290
 <div>
 <h4>まずは公的資格・体系的な知識</h4>
 <p>履歴書に書ける、社内評価アップなど</p>
-<p class="lp-quiz-answer">→ G検定対策 があなたに最適</p>
+<p class="lp-quiz-answer">→ G検定対策 があなたに最適（<a href="#rank3">3位の詳細へ戻る</a>）</p>
 </div>
 </div>
 </div>
@@ -325,7 +363,7 @@ wp_id: 290
 </div>
 </div>
 
-<p style="font-size:0.82em;color:#5f6b7a;">※ 上記は一般的なモデルケースであり、成果・収入を保証するものではありません。</p>
+<p class="lp-note">※ 上記は一般的なモデルケースであり、成果・収入を保証するものではありません。</p>
 
 ## よくある質問
 
@@ -380,6 +418,10 @@ wp_id: 290
 <p>7校を比較して3ヶ月悩んでいる間に、動き出した人はもう副業で月5万円を稼いでいます。上の3つから「もし選ぶなら」を今決めて、一歩踏み出してください。</p>
 </div>
 
+<div class="lp-policy">
+<p><strong>当ページの編集方針</strong>：掲載情報は2026年4月時点の各社公式サイト・公的機関の公開情報に基づいています。評価は当サイト編集部の独自基準によるもので、特定スクールからの依頼による順位操作は行っていません。料金・制度は変更される場合があるため、申込前に必ず公式サイトでご確認ください。</p>
+</div>
+
 ## もっと詳しく調べたい方へ
 
 - [AIスクールおすすめ7選 網羅版比較](/ai-school-comparison/) — 7校の詳細を並べて比較したい方へ
@@ -388,3 +430,7 @@ wp_id: 290
 - [AI業界に転職する方法](/ai-career-change/) — キャリアチェンジのガイド
 - [AI資格おすすめ8選](/ai-certification-guide/) — G検定以外の選択肢
 - [AI学習に使える補助金まとめ](/ai-reskilling-subsidy/) — 補助金制度の全体像
+
+<div class="lp-sticky-cta">
+<a href="#diagnosis" class="lp-btn-primary">3分診断で自分に合う1校を見る</a>
+</div>
