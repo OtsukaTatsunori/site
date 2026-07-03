@@ -22,6 +22,14 @@ wp_id: 141
 - 用途別のおすすめツール
 - 著作権の注意点と商用利用の条件
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も主要なツールをひととおり触ってみたのですが、実際に使うと「画質が高い＝自分に最適」とは限らないと感じました。日本語プロンプトの通りやすさや操作の手軽さは、日々使うほど効いてきます。個人的には、まず無料枠のあるツールをいくつか試して、自分のプロンプトの書き方に素直に反応してくれるものを選ぶのが失敗しにくいと思います。</p>
+</div>
+</div>
+
 
 ## AI画像生成ツール6選 一覧比較
 

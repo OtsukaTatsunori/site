@@ -18,6 +18,14 @@ YouTubeの広告やSNSでよく見かけるため気になっている方も多�
 
 この記事では、Filmoraの**良い点も悪い点も包み隠さずレビュー**します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もFilmoraを触ってみて、確かに初心者がとっつきやすいUIだと感じました。テンプレートやエフェクトが多く、最初の1本を仕上げる達成感を得やすいのは強みです。ただ無料版は書き出しにロゴの透かしが入るので、公開用に使うなら結局は有料版が前提になります。個人的には「まず試して、続けそうなら課金」という順番が失敗しにくいと感じています。</p>
+</div>
+</div>
+
 ## Filmoraの基本情報
 
 | 項目 | 内容 |

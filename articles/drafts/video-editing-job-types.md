@@ -16,6 +16,14 @@ wp_id: 100
 
 動画編集の仕事は**3つの働き方**と**5つのジャンル**に分かれます。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私はいろいろな案件ジャンルを見比べてきましたが、同じ「動画編集」でもYouTube編集と企業PR、運用代行では求められるスキルも働き方もまるで別物だと感じます。個人的には、いきなり高単価を狙うより、まず案件数の多いジャンルで場数を踏むほうが結果的に近道になりやすいと思っています。自分に合う型を知るところから始めるのがおすすめです。</p>
+</div>
+</div>
+
 ## 3つの働き方
 
 | 働き方 | 特徴 | 向いている人 | 詳細記事 |

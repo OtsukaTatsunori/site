@@ -22,6 +22,14 @@ AI副業で稼げない人には**共通の失敗パターン**があります�
 - 稼いでいる人の共通点
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も実際にAIを使って副業をしていて痛感するのは、「AIが作ったものをそのまま出す」と一番評価されないということです。うまくいっている人ほど、AIの出力を下書き扱いにして最後は自分の手で仕上げている印象があります。個人的には、AIは楽をする道具というより「作業を前に進める道具」と捉えたほうが、結果的に長く続けられると感じています。</p>
+</div>
+</div>
+
 ## 失敗パターン1：AIの出力をそのまま納品する
 
 ![AI副業の失敗パターン5つと対策](UPLOAD_URL:ai-side-job-failures.png)

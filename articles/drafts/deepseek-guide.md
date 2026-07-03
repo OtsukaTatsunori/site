@@ -18,6 +18,14 @@ wp_id: 171
 
 ただし、中国企業が運営するサービスのため、**データプライバシーの注意点**もあります。この記事では、DeepSeekの使い方から、ChatGPTとの違い、安全に使うためのポイントまで解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も話題になった当初にDeepSeekを試してみましたが、数学やプログラミング系の質問への回答の速さと的確さには確かに驚かされました。一方で、日本語の自然さはやはりChatGPTやClaudeに一歩譲る印象です。無料なのは魅力ですが、入力した内容がどこに保存されるかは気になる点なので、私は仕事の機密情報は入れない使い方に留めています。</p>
+</div>
+</div>
+
 ## DeepSeekとは？
 
 DeepSeekは、中国のAI企業「深度求索（DeepSeek）」が開発した大規模言語モデル（LLM）です。

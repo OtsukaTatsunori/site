@@ -16,6 +16,14 @@ YouTubeのサムネイルは**Canva（無料）を使えば5分で作れます**
 
 デザインの知識がなくても大丈夫。テンプレートを選んで文字を変えるだけで、プロっぽいサムネイルが完成します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も自分のサムネイルはCanvaで作っていますが、ゼロから作ろうとすると沼にハマります。個人的にはテンプレートを1つ選んで文字と色だけ差し替えるやり方に落ち着きました。慣れると本当に5分ほどで形になります。凝りすぎず「小さいスマホ画面で文字が読めるか」だけを意識して作ると、失敗が少ないと感じています。</p>
+</div>
+</div>
+
 ## Canvaでサムネイルを作る 6ステップ
 
 ### ステップ1：Canvaにログイン

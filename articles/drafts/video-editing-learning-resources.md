@@ -16,6 +16,14 @@ wp_id: 101
 
 この記事では**無料と有料の学習リソースを整理**し、目的別のおすすめを紹介します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、学び始めはとにかくYouTubeの無料解説を見漁っていました。今振り返ると、教材の良し悪しより「手を動かしながら見る」かどうかで身につき方が全然違ったと感じます。個人的には、まず無料で一通り触ってみて、体系立てて学びたい・質問したいと感じた段階で有料に進むのが、お金も時間も無駄にしにくい順番だと思っています。</p>
+</div>
+</div>
+
 ## 無料の学習リソース
 
 | リソース | 特徴 | おすすめ度 |

@@ -21,6 +21,14 @@ wp_id: 161
 - 導入の3ステップと月20時間の時短シミュレーション
 - 機密情報の扱いなど注意点4つ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、生成AIを日々の作業に取り入れてみて感じるのは、いきなり10個全部やろうとすると続かないということです。個人的にはメールの下書きと議事録の要約という「毎日発生する小さな作業」から始めるのが効きました。時短の効果は積み重なると意外と大きいので、まずは1つ習慣にしてみるところから試してみてください。</p>
+</div>
+</div>
+
 
 ## 生成AI活用アイデア10選
 

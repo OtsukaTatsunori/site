@@ -18,6 +18,14 @@ wp_id: 116
 
 この記事では、**Premiere Pro・DaVinci Resolve・CapCut**の3ソフトについて、最初に覚えるべきショートカットを整理します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初はマウスだけで編集していて、いざショートカットに切り替えたときは正直まどろっこしく感じました。でも一気に全部覚えようとせず、まずSpaceとCとVだけ意識して使い続けたら、数日で手が勝手に動くようになりました。焦らず数個ずつ体に染み込ませていくのが、遠回りに見えて一番早いと感じています。</p>
+</div>
+</div>
+
 ## まず覚えるべき10個（Premiere Pro）
 
 Premiere Proユーザーは、まず以下の10個だけ覚えてください。**これだけで作業速度が体感で2倍**になります。

@@ -19,6 +19,14 @@ AI動画生成は**プロンプトの書き方**で結果が大きく変わり�
 - カメラワークのキーワード一覧
 - 用途別テンプレート集（YouTube・SNS・ビジネス）
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私が動画プロンプトを書いていて痛感したのは、画像生成の感覚のままだと「動き」がまるで伝わらないということでした。カメラワークとスピードを言葉で指定するだけで結果が別物になります。個人的には最初から欲張らず、被写体＋動き＋カメラの3要素だけで一度出してみて、そこから少しずつ足していくと失敗が減ると感じています。</p>
+</div>
+</div>
+
 
 ## 動画プロンプトの基本構文
 

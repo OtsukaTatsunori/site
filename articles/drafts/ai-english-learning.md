@@ -21,6 +21,14 @@ wp_id: 140
 - 英文メール添削・TOEIC対策のプロンプト例
 - 英語学習でのAI活用の注意点
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私がChatGPTを英会話の相手にしてみて一番よかったと感じたのは、間違えても恥ずかしくないので気軽に何度もやり直せる点です。深夜でも相手をしてくれるのも続けやすい理由でした。ただ、発音のニュアンスまでは掴みにくいので、AIは練習量を稼ぐ場と割り切って、細かい部分は別の教材で補うのが個人的にはバランスがいいと感じています。</p>
+</div>
+</div>
+
 
 ## AIで英語を学ぶメリット
 

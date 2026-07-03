@@ -21,6 +21,14 @@ wp_id: 160
 - 動画ナレーションの作り方5ステップ
 - 自然に聞かせるテクニック
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">顔出しをためらっていた時期に、私もAI音声にはずいぶん助けられました。無料のVOICEVOXでも十分実用的ですが、実際に使ってみると読点の位置や漢字の読み間違いで一気に不自然になるので、少し手直しする前提で考えるのがおすすめです。個人的には、まず1本ナレーションを通しで作ってみると自分の用途に合う声かどうかがすぐ掴めると感じています。</p>
+</div>
+</div>
+
 
 ## AI音声合成ツール5選 比較
 

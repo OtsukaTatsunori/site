@@ -18,6 +18,14 @@ wp_id: 102
 
 この記事では**7つの比較軸**で違いを整理し、あなたの状況に合った選び方を提示します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私はMacとWindowsを両方使ってきましたが、正直どちらでも動画編集はできる、というのが本音です。差が出るのは性能そのものより「使うソフトとの相性」や「予算配分」だと感じています。個人的には、Final Cut Proや持ち運びを重視するならMac、同じ予算でスペックを盛りたいならWindows、と目的から逆算して選ぶのが後悔が少ないと思います。</p>
+</div>
+</div>
+
 ## 7つの軸で比較
 
 | 比較軸 | Mac | Windows | 判定 |

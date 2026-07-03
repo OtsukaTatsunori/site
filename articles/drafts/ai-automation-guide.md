@@ -21,6 +21,14 @@ wp_id: 133
 - ノーコードで始めるおすすめツール5選
 - 導入の5ステップ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、いくつかの自動化ツールを試してきて痛感したのは、「凝ったワークフローを一気に作ろうとすると結局続かない」ということです。個人的には、まずメールの下書き生成など小さな作業ひとつだけ自動化して、効果を実感してから広げるのが挫折しにくいと感じています。最初から完璧を目指さないのがコツだと思います。</p>
+</div>
+</div>
+
 
 ## AIで自動化できる業務
 

@@ -20,6 +20,14 @@ SNS運用代行は**AIとの相性が最も良い副業**の1つです。投稿�
 - 最初の案件を獲得するロードマップ
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も自分の発信でSNSを運用していますが、投稿文や画像をAIに任せられるようになってから、続けるハードルが本当に下がりました。個人的に感じるのは、AIは「毎回ゼロから考える負担」を減らしてくれる一方、最後のトーン調整は人がやったほうが伝わるということです。運用代行としてやるなら、この「AIで下ごしらえ→人で仕上げ」の型を持っておくと安定すると思います。</p>
+</div>
+</div>
+
 ## SNS運用代行とは
 
 企業や個人事業主の代わりに、Instagram・X（Twitter）・TikTokなどのSNSを運用する仕事です。

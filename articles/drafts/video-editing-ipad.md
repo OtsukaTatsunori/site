@@ -20,6 +20,14 @@ wp_id: 99
 
 この記事では、**iPadで何ができて何ができないのか**を正直に整理します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も実際にiPadで編集を試してみて、カット中心の軽い動画ならソファでサッと作れる手軽さに驚きました。ただ、日本語テロップを細かく詰めたり複数トラックを重ねると、途端に窮屈さを感じます。個人的には「気軽に作る用途はiPad、案件用はPC」と割り切って併用するのが、いちばんストレスが少ないやり方だと感じています。</p>
+</div>
+</div>
+
 ## iPadで動画編集：できること・できないこと
 
 | 編集内容 | iPad対応 | 備考 |

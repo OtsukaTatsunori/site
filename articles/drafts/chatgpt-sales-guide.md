@@ -21,6 +21,13 @@ wp_id: 168
 - 商談準備・メール・提案書のプロンプト10選
 - AI活用の注意点（裏取り必須）
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も日々の連絡やリサーチでChatGPTを使っていますが、営業まわりで一番効くと感じたのは「メールのたたき台づくり」でした。ゼロから書くと10分かかる文面が、下書きを直すだけになるので体感がまるで違います。ただ企業情報は平気で間違えるので、数字や固有名詞は必ず自分で裏取りするのが安心だと感じています。</p>
+</div>
+</div>
 
 ## 営業フェーズ別の活用マップ
 

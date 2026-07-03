@@ -18,6 +18,14 @@ wp_id: 118
 
 結論から言うと、**月5万円なら半年で到達可能。月10万円は1年あれば現実的。ただし「誰でも簡単に」ではない**です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">収入の話を調べていて個人的に一番大事だと感じたのは、単価よりも「時給換算でいくらか」という視点でした。1本いくらという数字は魅力的に見えても、作業時間で割ると最初は驚くほど低いのが現実です。ここを最初に知っておくと過度に期待しすぎず、逆に効率を上げようという前向きな動機につながると思います。</p>
+</div>
+</div>
+
 ## 動画編集の副業収入の実態
 
 ### 経験期間別の月収目安

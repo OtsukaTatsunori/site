@@ -16,6 +16,14 @@ wp_id: 120
 
 2026年現在、スマホアプリの性能は飛躍的に上がっています。**SNS用のショート動画なら、スマホだけで十分プロレベルの編集が可能**です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も実際にスマホアプリをいくつか触ってみましたが、ここ数年での進化には正直驚きました。特にショート動画なら、指先だけでテロップや自動字幕まで完結できてしまいます。個人的には、まずスマホで手軽に一本作ってみて「編集って楽しい」と感じられるかを確かめてから、PCを検討する順番でも十分だと思います。</p>
+</div>
+</div>
+
 ## スマホ動画編集アプリ おすすめ3選
 
 | アプリ | 料金 | 透かし | 特徴 |

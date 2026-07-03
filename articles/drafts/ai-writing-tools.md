@@ -21,6 +21,14 @@ AIライティングツールを使えば、**記事作成の時間を半分以�
 - 用途別のおすすめツール
 - 「AIが書いて人間が磨く」ワークフロー
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も色々なライティングツールを触ってきましたが、AIに丸投げした記事はどうしても薄っぺらくなると痛感しました。個人的には、構成や下書きをAIに任せて、自分の体験や具体例を人間が足すという分担が今のところいちばんしっくりきています。ツールの豪華さより、その後の手直しをどれだけ丁寧にやるかで仕上がりが変わると感じています。</p>
+</div>
+</div>
+
 
 ## AIライティングツール7選 比較
 

@@ -18,6 +18,14 @@ wp_id: 107
 
 この記事では、**10万円以下で失敗しないPC選び**のポイントを解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「安ければいい」と中古の激安ノートを探していたのですが、いろいろ調べてみて、価格より先にメモリとSSDだけは確認すべきだと痛感しました。8GB・HDDのモデルは値段に釣られがちですが、書き出しの遅さでストレスが溜まります。個人的には、10万円という予算の中でどこにお金をかけるかを決めてから探すのが失敗しないコツだと感じています。</p>
+</div>
+</div>
+
 ## 10万円以下で「最低限必要な」スペック
 
 | パーツ | 必須ライン | 理想 |

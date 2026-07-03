@@ -19,6 +19,14 @@ AI画像生成は**プロンプト（指示文）の書き方**で出力品質�
 - Midjourney・DALL-E・SDのツール別コツ
 - 画風指定キーワード一覧と品質向上テクニック
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「かっこいい画像」みたいな曖昧な言葉ばかり入れて、思った絵が全然出ずに悩みました。実際に手を動かしてみて分かったのは、被写体・スタイル・構図・照明と要素を分けて具体的に書くだけで、出力が驚くほど安定するということです。個人的には、いきなり長文を狙わず、1要素ずつ足して結果の変化を見ていくのが上達の近道だと感じています。</p>
+</div>
+</div>
+
 
 ## プロンプトの基本構文
 

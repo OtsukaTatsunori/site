@@ -21,6 +21,14 @@ AI画像生成ツールを使えば、**デザインスキルがなくても画�
 - 販売先ごとの報酬・手数料比較
 - 著作権・確定申告の注意点
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">AI画像の副業を調べていて個人的に感じるのは、「生成するだけ」では埋もれてしまうということです。稼いでいる人ほど、テーマを絞ったり用途を想定したりと一工夫を加えています。収入は取り組み方や市場次第で大きく変わるので、金額を保証するような話は鵜呑みにせず、まずは小さく出品して反応を見るところから始めるのが現実的だと感じています。</p>
+</div>
+</div>
+
 
 ## AI画像生成で稼ぐ3つの方法
 

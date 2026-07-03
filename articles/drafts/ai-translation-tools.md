@@ -18,6 +18,14 @@ AI翻訳ツールは2026年現在、ビジネス文書でも十分使えるレ�
 
 この記事では、主要AI翻訳ツール5つを**精度・料金・得意分野**で比較し、ビジネスシーン別の使い分けを解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も英語のメールや資料を扱うときに複数の翻訳ツールを使い比べていますが、「1つあれば十分」とはなかなか思えませんでした。自然さで頼れるものと、ニュアンスを細かく指定できるものは別物なんです。個人的には、この記事にもある「まず定番ツールで訳して、ChatGPTでトーンを整える」流れが一番実務で使いやすいと感じています。文書の種類で使い分けるのがコツです。</p>
+</div>
+</div>
+
 ## AI翻訳ツール 比較一覧
 
 ![AI翻訳ツール5選の精度・料金比較](UPLOAD_URL:ai-translation-tools.png)

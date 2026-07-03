@@ -19,6 +19,14 @@ wp_id: 135
 
 この記事では、AIで本を要約する具体的な方法と、読書の質を落とさずに時短するテクニックを紹介します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も積読を減らしたくてAI要約をいろいろ試してきましたが、全部を丸投げすると「読んだ気になるだけで頭に残らない」というのが正直な実感です。個人的にしっくりきているのは、読む前にざっと概要を掴むためにAIを使い、本編は自分で読むという分担です。AIは読書の代わりではなく、道案内として使うと相性がいいと感じています。</p>
+</div>
+</div>
+
 ## AIを使った読書効率化の全体像
 
 ![AI読書効率化の方法マップ](UPLOAD_URL:ai-book-summary-map.png)

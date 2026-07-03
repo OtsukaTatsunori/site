@@ -18,6 +18,14 @@ AI要約ツールを使えば、長文・PDF・動画・Webページを**数秒�
 
 この記事では、主要なAI要約ツール5つを**対応形式・精度・料金**で比較し、用途別の使い分けを解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も長い資料や動画を要約させるのに複数のツールを使い比べていますが、正直「どれか1つで完結」とはなりませんでした。手元のPDFをまとめたいときと、Webを調べながら要約したいときで、しっくりくるツールが違うんです。個人的には、この記事の比較表のように「対応形式」で選ぶのが一番失敗が少ないと感じています。まず無料の範囲で試してみるのがおすすめです。</p>
+</div>
+</div>
+
 ## AI要約ツール 比較一覧
 
 ![AI要約ツール5選の機能比較表](UPLOAD_URL:ai-summary-tools.png)

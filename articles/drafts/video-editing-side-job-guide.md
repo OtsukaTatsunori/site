@@ -13,6 +13,14 @@ wp_id: 117
 
 動画編集の副業に関する情報を**すべてこの1記事にまとめました**。各テーマの詳細は個別記事で深掘りしています。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身も副業まわりの情報を調べていて感じるのは、始め方・案件・お金の話がバラバラに散らばっていて全体像がつかみにくいことでした。この記事は迷子にならないための地図のような位置づけです。個人的には、上から順に完璧にやろうとするより、今の自分に近いステップだけ拾って読むのがおすすめです。</p>
+</div>
+</div>
+
 ## 副業の全体像
 
 | ステップ | 内容 | 詳細記事 |

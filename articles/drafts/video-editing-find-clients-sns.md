@@ -16,6 +16,14 @@ wp_id: 92
 
 **直接営業**に切り替えれば手数料はゼロ。同じ仕事量で**手取りが25%増える**計算です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、いろいろな集客方法を試して比べてみて感じたのは、SNSからの直接営業は「作品を見せられる人」ほど反応が早いということです。個人的には、応募が殺到するクラウドソーシングより、YouTubeの概要欄やDMのほうが相手にちゃんと見てもらえる印象でした。もちろん誰でも即成果、とはいきませんが、発信を続けるほど声がかかりやすくなるのは実感しています。</p>
+</div>
+</div>
+
 ## 直接営業で使える5つのチャネル
 
 ### 1. Twitter（X）

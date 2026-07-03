@@ -16,6 +16,14 @@ Premiere Proの月額2,728円。年間にすると約33,000円。「高い」と
 
 結論から言うと、**仕事で使うなら元は取れますが、趣味なら無料の代替ソフトで十分**です。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も月額料金には正直悩んだ時期があり、いくつかのソフトを実際に触り比べてみました。個人的な感想としては、趣味段階でいきなりPremiere Proに課金する必要はなく、まず無料のDaVinci Resolveで十分だと感じています。逆に案件を意識し始めると業界標準の強さを実感するので、目的に合わせて選ぶのが後悔しないコツだと思います。</p>
+</div>
+</div>
+
 ## Premiere Proの料金と代替ソフトの比較
 
 | ソフト | 料金 | 仕事での需要 | 機能の充実度 |

@@ -21,6 +21,14 @@ wp_id: 158
 - テキストから動画を作る手順とプロンプトの書き方
 - 動画編集ソフトとの組み合わせ方
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">Sora終了のニュースには私も驚きましたが、実際に代替ツールを触り比べてみると、むしろ選択肢が増えて面白い時期だと感じています。個人的には同じプロンプトを複数ツールに入れて出力を見比べるのがおすすめです。ツールごとに得意な絵柄や動きの癖がはっきり違うので、比較しながら自分の用途に合う1本を見つけてみてください。</p>
+</div>
+</div>
+
 
 ## AI動画生成ツールとは
 

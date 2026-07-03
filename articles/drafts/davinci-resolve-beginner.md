@@ -18,6 +18,14 @@ DaVinci Resolve（ダヴィンチ・リゾルブ）は、**完全無料で使え
 
 この記事では、**ダウンロードから1本目の動画を完成させるまで**を、画面の操作手順に沿ってステップごとに解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もDaVinci Resolveを触ってみて、無料でここまでできるのかと素直に驚きました。ただ機能が多すぎて、最初は画面のどこを触ればいいか本当に迷います。個人的には全部を覚えようとせず、まずはカット・テロップ・書き出しの3つだけに絞って1本完成させると、一気に苦手意識が消えると感じています。</p>
+</div>
+</div>
+
 ## DaVinci Resolve とは
 
 | 項目 | 内容 |

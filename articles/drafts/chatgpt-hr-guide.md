@@ -17,6 +17,14 @@ wp_id: 166
 
 ChatGPTを使えば、こうした**定型的な作業を大幅に時短**できます。この記事では、人事業務の各フェーズで使える具体的なプロンプトと注意点を紹介します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">人事の文章づくりは、ゼロから書き出すまでがいちばん重いと感じます。私も調べていて、求人票や評価コメントの下書きをAIに任せると心理的なハードルが一気に下がると気づきました。ただ、個人的には最終的な言い回しや評価の判断は必ず人が確認するべきだと思います。AIはあくまで叩き台づくりの相棒、という距離感で使うのが安心だと感じています。</p>
+</div>
+</div>
+
 ## 人事業務×ChatGPT 活用マップ
 
 ![ChatGPT×人事 業務別活用マップ](UPLOAD_URL:chatgpt-hr-map.png)

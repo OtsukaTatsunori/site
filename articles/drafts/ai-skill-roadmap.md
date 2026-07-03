@@ -22,6 +22,14 @@ AIに関する情報をすべて1つにまとめました。「**何から始め
 - 動画編集×AIのクロスカテゴリ情報
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、AIの学習で遠回りしたのは「全体像を知らないまま、目の前の情報に飛びついていた」時期でした。個人的には、この4フェーズのように「今どの段階にいるか」を意識できるだけで、次に何をやればいいか迷わなくなると感じています。全部を一気にやろうとせず、この記事を目次代わりに一段ずつ進めるのがおすすめです。</p>
+</div>
+</div>
+
 ## 全体像：4つのフェーズ
 
 | フェーズ | 内容 | 期間目安 |

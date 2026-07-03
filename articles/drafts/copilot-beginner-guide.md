@@ -19,6 +19,13 @@ Microsoft Copilotは**Word・Excel・PowerPointにAIが組み込まれた**ツ�
 - 無料版と有料版の違い
 - ChatGPTとの使い分け
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私は普段ChatGPTを使うことが多いのですが、Copilotを試して便利だと感じたのは「Excelのデータをコピペで貼り直さなくていい」点でした。表をまたぐ集計や文書の要約は、Officeの中で完結する分だけ手間が減ります。逆に自由な発想や雑談的な相談はChatGPTの方が得意なので、私は用途で使い分けるのが結局ラクだと感じています。</p>
+</div>
+</div>
 
 ## Copilotとは
 

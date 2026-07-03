@@ -19,6 +19,13 @@ YouTubeのフリーBGMは**他の人と被りやすい**のが悩み。AIなら*
 - Suno AIでBGMを作る手順とプロンプト例
 - 商用利用の注意点
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も動画のBGM探しに毎回時間を取られていたので、Suno AIを触ったときは「自分のイメージに合う曲がすぐ出てくる」ことに驚きました。ただ実際に使ってみて感じたのは、商用利用のルールがツールや料金プランで細かく違う点です。動画に載せる前に、その曲の利用条件を必ず確認しておくと後で困らない、というのが個人的な実感です。</p>
+</div>
+</div>
 
 ## AI音楽生成ツール3選
 

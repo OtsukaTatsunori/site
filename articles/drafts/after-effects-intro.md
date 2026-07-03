@@ -18,6 +18,14 @@ wp_id: 73
 
 結論から言うと、**After Effectsは「動画編集」ではなく「映像制作」のソフト**です。Premiere Proとは役割が違います。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初はPremiere ProとAfter Effectsの違いがわからず、両方を同時に触ろうとして挫折しかけました。実際に使ってみて感じたのは、まずはPremiere Proでカット編集に慣れて、「ここに動きが欲しい」と自分で思えるようになってからAEを触ると理解がぐっと早いということです。焦って両刀を狙わず、必要になった段階で学ぶのが個人的にはおすすめです。</p>
+</div>
+</div>
+
 ## After Effectsとは
 
 | 項目 | 内容 |

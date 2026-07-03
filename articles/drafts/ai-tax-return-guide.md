@@ -19,6 +19,14 @@ wp_id: 154
 
 この記事では、確定申告の各ステップでAIを活用する具体的な方法と、**AIに任せてよい部分・ダメな部分**の線引きを解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も副業の確定申告で毎年つまずくのは、まさに「この出費は経費になる？勘定科目は？」で手が止まる瞬間でした。ChatGPTに聞くようになってから、その迷いの時間がかなり減った実感があります。ただし最終的な判断は自己責任なので、私は迷う部分をAIで整理しつつ、あやしいところは税務署や専門家に確認するようにしています。丸投げではなく下調べに使うのがちょうどいいと感じています。</p>
+</div>
+</div>
+
 ## 確定申告×AI 活用マップ
 
 ![確定申告×AI活用マップ](UPLOAD_URL:ai-tax-return-map.png)

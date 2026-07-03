@@ -22,6 +22,14 @@ AIを学びたいけど「**どのスクールを選べばいいかわからな�
 - 目的別のおすすめスクール
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">たくさんのスクールの情報を並べて比較していて感じたのは、「料金の高さ＝自分に合う」ではないということです。私の場合、AIを仕事で使いたいだけなら高額な開発コースは正直オーバースペックでした。個人的には、まず自分が「使う側」か「作る側」かをはっきりさせてから料金表を見ると、選択肢がぐっと絞れると思います。</p>
+</div>
+</div>
+
 ## AIスクールを選ぶ5つの基準
 
 | 基準 | チェックポイント |

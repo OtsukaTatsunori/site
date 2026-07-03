@@ -21,6 +21,14 @@ wp_id: 70
 
 ただし、これだけでは判断できない方も多いはず。この記事では**7つの比較軸**で両者の違いを整理します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私は両方を実際に触ってきましたが、どちらが上というより「今の自分の目的に合うか」で選ぶのが正解だと感じています。個人的にはCapCutで編集の楽しさを掴んでから、仕事も視野に入ってきた段階でPremiere Proに移るのが無理のない流れでした。最初から高機能な方を選んで挫折するより、続けられる方を選ぶのが結局いちばんの近道だと思います。</p>
+</div>
+</div>
+
 ## 7つの軸で比較
 
 | 比較軸 | CapCut | Premiere Pro | 判定 |

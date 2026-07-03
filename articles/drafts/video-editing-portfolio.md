@@ -25,6 +25,14 @@ wp_id: 71
 
 を解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もいろいろな編集者のポートフォリオを見てきましたが、本数の多さより「最後まで作り切っている3本」がある人の方が印象に残ると感じました。凝った未完成品よりも、シンプルでもテンポやテロップが整った作品の方が安心感があります。個人的には、まず1本を完走させてみると、次に何を足せば伝わるかが自然と見えてくると思います。</p>
+</div>
+</div>
+
 ## なぜ「3本」なのか
 
 ポートフォリオは**多ければいいわけではありません**。発注者は忙しいので、10本も20本も見てくれません。

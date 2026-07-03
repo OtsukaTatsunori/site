@@ -25,6 +25,14 @@ wp_id: 69
 
 を、実践的にまとめます。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、案件獲得のいろいろなやり方を調べて比べてきましたが、多くの人がつまずくのは「スキル不足」ではなく「提案の仕方」だと感じています。同じ実力でも、提案文ひとつで通過率がまるで変わるのを何度も見てきました。個人的には、最初の1件は誰でも重く感じるものなので、完璧を狙わず数を出しながら型を掴んでいくのがおすすめです。焦らず進めてください。</p>
+</div>
+</div>
+
 ## 案件を探せる5つの場所
 
 ### 1. クラウドソーシング（最も始めやすい）

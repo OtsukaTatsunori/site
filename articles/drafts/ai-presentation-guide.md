@@ -22,6 +22,14 @@ wp_id: 145
 - 想定Q&Aの作り方と英語版作成のコツ
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も社内向けの資料をAIで作るようになって、一番変わったのは「いきなりPowerPointを開かなくなった」ことでした。個人的には、ChatGPTで構成を固めてからCanvaに移るだけで、迷う時間がぐっと減った実感があります。デザインより先に「誰に何を伝えるか」を言語化しておくと、後の作業がとても楽になると感じています。</p>
+</div>
+</div>
+
 ## AIプレゼン作成の3ステップ
 
 ![AIプレゼン作成の3ステップ](UPLOAD_URL:ai-presentation-3steps.png)

@@ -19,6 +19,14 @@ YouTubeの再生数の8割はサムネイルで決まります。でも**デザ�
 - Canva AI・サムネAI・DALL-Eの使い分け
 - クリック率を上げるデザインのコツ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もデザインは得意ではないのですが、Canva AIとAI画像生成を組み合わせるようになって、サムネ作りの心理的なハードルが一気に下がりました。個人的に感じるのは、AIで作れるのはあくまで「素材と土台」で、クリックされるかどうかはコピーと文字の見せ方次第だということです。まずキャッチコピーをAIで量産して、そこから選ぶ流れにすると、迷わず作れると思います。</p>
+</div>
+</div>
+
 
 ## AIサムネイル作���ツール3選
 

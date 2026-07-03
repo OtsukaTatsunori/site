@@ -19,6 +19,14 @@ wp_id: 163
 
 この記事では、プログラミング初心者の方にもわかるように、APIの仕組みから実際の使い方まで丁寧に解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「APIなんて自分には縁がない」と思っていましたが、少額のクレジットで試せると知って気が楽になりました。個人的には、いきなり難しいプログラムを書くより、まずウェブ版との違いと料金の仕組みを理解しておくのが安心につながると感じています。従量課金は使った分だけなので、まずは小さく動かして感覚を掴んでみてください。</p>
+</div>
+</div>
+
 ## ChatGPT APIとは？ウェブ版との違い
 
 ![ChatGPT APIとウェブ版の違い](UPLOAD_URL:chatgpt-api-comparison.png)

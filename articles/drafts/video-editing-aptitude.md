@@ -18,6 +18,14 @@ wp_id: 85
 
 この記事では、**向いている人と向いていない人の特徴を正直に**お伝えします。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も実際に編集をやってみて、華やかそうに見える作業の大半が地道な微調整だと痛感しました。個人的には、この地道さを楽しめるかどうかが向き不向きの一番の分かれ目だと感じています。適性は「才能」というより相性の話なので、この記事のチェックリストを、自分に合うかを冷静に見極める材料として使ってもらえたら嬉しいです。</p>
+</div>
+</div>
+
 ## 動画編集に向いている人の7つの特徴
 
 ### 1. 地道な作業が苦にならない

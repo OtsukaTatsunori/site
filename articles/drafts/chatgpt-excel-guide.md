@@ -21,6 +21,14 @@ Excelの関数がわからないとき、ChatGPTに「やりたいこと」を�
 - VBAマクロ・ピボットテーブルのプロンプト集
 - エラー解決のコツ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もExcelの関数はいつもうろ覚えで、以前はそのたびに検索していました。ChatGPTに「やりたいこと」を日本語で伝えるだけで関数が出てくるのは、正直かなり助かっています。個人的なコツは、列や条件をできるだけ具体的に書くことです。曖昧に聞くと的外れな答えが返ってくるので、実際のデータの形を添えて聞くと精度がぐっと上がると感じています。</p>
+</div>
+</div>
+
 
 ## ChatGPT × Excelでできること
 

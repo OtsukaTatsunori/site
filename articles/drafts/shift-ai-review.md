@@ -21,6 +21,13 @@ SHIFT AIは会員数20,000人超、無料セミナー累計参加者10万人超�
 - 良い口コミと悪い口コミ・デメリット
 - 他スクール（テックアカデミー・Aidemy）との比較
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私は普段からAIツールを触っている立場として、SHIFT AIのようなコミュニティ型サービスの口コミを調べていて、評価が人によって大きく分かれる点が印象的でした。個人的には、合う合わないは目的次第だと感じています。無料セミナーもあるので、良い口コミも気になる点も両方フラットに見たうえで判断してもらえるよう、正直にまとめました。</p>
+</div>
+</div>
 
 ## SHIFT AI の基本情報
 

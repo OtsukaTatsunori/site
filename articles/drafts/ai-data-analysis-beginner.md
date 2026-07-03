@@ -19,6 +19,14 @@ wp_id: 139
 - 売上分析・アンケート分析のプロンプト集
 - Excel活用との使い分け
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も関数やピボットが苦手なタイプなので、CSVを渡すだけで傾向やグラフが返ってくるのは正直かなり助かっています。ただ実際に使ってみて感じたのは、AIの出した分析結果を鵜呑みにせず、元データと数字が合っているか自分で一度確かめる習慣が大事だということです。便利さと確認をセットにすると安心して使えると個人的に思います。</p>
+</div>
+</div>
+
 
 ## AIデータ分析でできること
 

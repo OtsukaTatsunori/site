@@ -22,6 +22,14 @@ AIスクールの受講料は**補助金で最大80%戻ってきます**（2024�
 - フリーランスは使えるか等のよくある質問
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">この手の補助金は制度改正が多く、私自身も調べていて「去年の情報のまま書いてある記事」に何度かひっかかりました。個人的に一番つまずきやすいと感じたのは、受講前に手続きが必要なタイプの給付金です。申し込んでから気づくと対象外になることもあるので、まずは自分が条件に当てはまるかを早めに確認しておくのがおすすめです。</p>
+</div>
+</div>
+
 ## 使える補助金・給付金 一覧
 
 ![AI学習に使える補助金3つの比較](UPLOAD_URL:ai-subsidy-comparison.png)

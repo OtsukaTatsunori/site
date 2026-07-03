@@ -21,6 +21,13 @@ YouTube動画の台本作成に**2時間かかっていた作業が、ChatGPTで
 - ネタ出し・構成・台本のプロンプト7個
 - 台本の品質を上げるコツ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も動画の台本づくりにChatGPTを使ってみて、一番助かったのは「構成の骨組み」を一瞬で出してくれる点でした。真っ白な状態から考えるのが一番しんどいので、そこを任せられるだけで着手のハードルがぐっと下がります。ただAIの文章は整っている分どこか他人事っぽくなるので、最後は自分の言葉と体験に書き換えるのが大事だと感じています。</p>
+</div>
+</div>
 
 ## ChatGPTで台本を作る3ステップ
 

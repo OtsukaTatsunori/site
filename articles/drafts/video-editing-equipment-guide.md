@@ -14,6 +14,14 @@ wp_id: 90
 
 動画編集の機材選びで**最も大事なのは「優先順位」**です。全部揃えてから始める必要はありません。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私は最初、あれこれ機材を揃えたくなって出費を先に膨らませてしまいました。でも実際に使い込んでみると、序盤に本当に触っていたのはPCとソフトとヘッドホンくらいでした。個人的には、モニターや外付けSSDは「不便を感じてから」買うほうが失敗が少ないと感じています。優先順位を決めて、必要になった順に足していくのがおすすめです。</p>
+</div>
+</div>
+
 ## 機材の優先順位
 
 | 優先度 | 機材 | 費用目安 | 詳細記事 |

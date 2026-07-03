@@ -21,6 +21,14 @@ wp_id: 137
 - 目的別のおすすめ資格マップ
 - G検定からE資格へのステップアップルート
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">AI資格を調べていて個人的に感じるのは、資格そのものより「勉強の道しるべ」として役立つ場面が多いということです。独学だと何から手をつけるか迷いがちですが、出題範囲があると学習の順番が見えてきます。私はまず入口としてG検定あたりで全体像を掴み、必要になったら上位資格へ進む形が無理がないと感じています。取ること自体が目的にならないよう気をつけたいところです。</p>
+</div>
+</div>
+
 
 ## AI資格を取るメリット
 

@@ -18,6 +18,14 @@ AI議事録ツールを使えば、**会議の録音→文字起こし→要約�
 
 この記事では、主要なAI議事録ツール5つを**料金・精度・日本語対応・連携機能**で徹底比較します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もいくつかの議事録ツールを会議で試してみたのですが、いちばん差が出ると感じたのは日本語の文字起こし精度でした。英語向けに評判のよいツールでも、日本語の会議に使うと固有名詞の取りこぼしが増える印象です。個人的には、まず自分がよく使う会議ツールとの連携と日本語精度を優先して選ぶと、後から乗り換える手間が減ると感じています。</p>
+</div>
+</div>
+
 ## AI議事録ツール 比較一覧
 
 ![AI議事録ツール5選の比較表](UPLOAD_URL:ai-meeting-notes.png)

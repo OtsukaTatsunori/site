@@ -21,6 +21,13 @@ wp_id: 175
 - 生成AIの4つの種類と代表的なツール
 - 今日から始める3ステップ
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「生成AI」と聞くだけで身構えていましたが、実際にChatGPTや画像生成を触ってみると、思っていたより日常の作業がラクになると実感しました。個人的には、仕組みを完璧に理解しようとするより、まず一つ試してみるのが理解の近道だと感じています。この記事もそんな「まず触ってみる」の入口として読んでいただけたら嬉しいです。</p>
+</div>
+</div>
 
 ## 生成AIとは？一言で説明
 

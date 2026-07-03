@@ -18,6 +18,14 @@ wp_id: 176
 
 この記事では、NotebookLMの始め方から実践的な使い方、Geminiとの違いまで詳しく解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私自身、長いPDFや資料を読み込むのにNotebookLMを使うようになって、調べ物の負担がかなり減りました。個人的に気に入っているのは、アップロードした資料の中だけで答えてくれる安心感です。ChatGPTだと話が広がりすぎることもありますが、NotebookLMは「手元の資料を整理する」用途にとても合っていると感じています。</p>
+</div>
+</div>
+
 ## NotebookLMとは？
 
 NotebookLMは、Googleが開発した**ソース特化型AIリサーチツール**です。

@@ -22,6 +22,14 @@ wp_id: 152
 - 挫折しないための5つのコツ
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も最初は「AIを勉強するなら理論から」と思い込んで、参考書を開いては挫折していました。個人的に効いたのは、この記事の通り「まず使ってみる」に振り切ったことです。実際に触ると、自分に必要な知識はどこかが見えてきます。レベルを飛ばして背伸びするより、今の自分の目的に合った段階から始めるのが、遠回りにならないコツだと感じています。</p>
+</div>
+</div>
+
 ## AIの勉強を始める前に：目的を決める
 
 ![AI学習3つのレベルと目的](UPLOAD_URL:ai-study-3levels.png)

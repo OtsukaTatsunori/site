@@ -23,6 +23,14 @@ ChatGPTは**プロンプト（指示文）の書き方**で回答の質が10倍�
 - メール・Excel・企画書・翻訳など6カテゴリ別
 - うまくいかないときの修正指示の出し方
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私もプロンプトはずいぶん試行錯誤してきましたが、テンプレートを手元に持っておくだけで毎回ゼロから考える負担が消えました。個人的におすすめなのは、まずコピペで使ってみて、自分の仕事に合わせて少しずつ言葉を足していくやり方です。一発で完璧を狙わず、返ってきた答えに修正指示を重ねる方が、結果的に速くて質も上がると感じています。</p>
+</div>
+</div>
+
 
 ## プロンプトの基本ルール
 

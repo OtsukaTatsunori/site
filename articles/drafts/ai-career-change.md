@@ -21,6 +21,14 @@ AI人材の需要は2026年も右肩上がりです。「AI × ◯◯」のス�
 - 3つの転職ルートと具体的なステップ
 - 年代別のキャリアアドバイス
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">AI業界の求人を調べていて感じるのは、「未経験＝いきなりAIエンジニア」ではないということです。私が見てきた範囲でも、今の仕事にAI活用を掛け合わせて社内でポジションを作る人が着実に増えています。個人的には、ゼロから専門職を狙うより、自分の業務経験を土台にAIを足していくルートのほうが現実的だと感じています。年収も背景次第で幅があるので、相場は目安として捉えるのがよいと思います。</p>
+</div>
+</div>
+
 
 ## AI業界の職種と年収
 

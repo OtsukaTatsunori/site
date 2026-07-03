@@ -21,6 +21,14 @@ wp_id: 138
 - 用途別のおすすめと使い分け方
 - プロが実践する3刀流の使い方
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私はこの3つを日常的に使い分けているのですが、実際に触ってみると得意分野がはっきり違うのを感じます。文章の推敲はClaude、最新情報の調べ物はGemini、雑多なタスクはChatGPT、といった具合です。どれか1つに絞る必要はなく、無料枠で全部試してから自分の用途に合うものを主力にするのが、個人的にはいちばん納得感があると思います。</p>
+</div>
+</div>
+
 
 ## 3大AI 一覧比較
 

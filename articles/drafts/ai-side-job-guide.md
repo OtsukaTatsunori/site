@@ -22,6 +22,14 @@ wp_id: 149
 - AI副業の注意点と著作権リスク
 
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も動画編集にAIを組み合わせるところから副業を始めましたが、最初の一歩は「派手な稼ぎ方」より「今あるスキルにAIを足す」ことでした。個人的には、いきなり収入額を狙うより、まず1件こなして納品の流れを体験するのが近道だと感じています。この記事の10選も、自分の得意分野と重なるものから試すと続けやすいと思います。</p>
+</div>
+</div>
+
 ## AI副業の全体像
 
 ![AI副業10選の収入目安・難易度マップ](UPLOAD_URL:ai-side-job-map.png)

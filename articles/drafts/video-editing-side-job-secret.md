@@ -18,6 +18,14 @@ wp_id: 119
 
 この記事では、バレる原因を1つずつ潰す具体的な対策を解説します。
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">副業バレの話を調べていて意外だったのは、原因の多くがSNSの投稿や住民税といった、事前に手を打てるポイントに集中していることでした。個人的には、100%バレないと言い切る情報こそ用心したほうがいいと感じています。まずは自分の会社の就業規則を確認したうえで、住民税の申告欄を丁寧に扱うところから始めるのが現実的です。</p>
+</div>
+</div>
+
 ## 副業がバレる3つの原因
 
 ### 原因1：住民税の金額が変わる（最も多い）

@@ -19,6 +19,13 @@ AIチャットは**無料で十分使えます**。有料プランに課金す�
 - 各ツールの無料版の制限と違い
 - 有料版が必要になる場面の判断基準
 
+<div class="voice-box">
+<div class="voice-avatar">運営</div>
+<div class="voice-body">
+<div class="voice-head"><span class="voice-name">運営者より</span><span class="voice-role">AI・動画編集を実際に使いながら発信中</span></div>
+<p class="voice-comment">私も複数のAIチャットを無料版で使い比べていますが、正直なところ日常使いなら無料版で十分だと感じる場面がほとんどです。文章の推敲はClaude、調べ物は出典が付くPerplexity、といった具合に得意分野で使い分けると無料のまま快適に回せます。有料版を検討するのは、使用回数の上限に頻繁にぶつかるようになってからで遅くないと個人的には思っています。</p>
+</div>
+</div>
 
 ## 無料AIチャット8選 比較
 
