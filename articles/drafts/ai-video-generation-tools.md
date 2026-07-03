@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI動画生成ツール比較5選｜Sora終了後のおすすめとテキストから動画を作る方法
-slug: ai-video-generation-tools
-excerpt: Sora終了後に使えるAI動画生成ツール5選を徹底比較。Runway Gen-4、Kling 3.0、Google Veo 3、Pika 2.0の料金・画質・特徴と、テキストから動画を作る手順を解説します。
 categories:
-  - ai
+- ai
+excerpt: Sora終了後に使えるAI動画生成ツール5選を徹底比較。Runway Gen-4、Kling 3.0、Google Veo 3、Pika 2.0の料金・画質・特徴と、テキストから動画を作る手順を解説します。
+slug: ai-video-generation-tools
 tags:
-  - AI動画生成
-  - 比較
-  - Runway
-  - Kling
+- AI動画生成
+- 比較
+- Runway
+- Kling
+title: 【2026年】AI動画生成ツール比較5選｜Sora終了後のおすすめとテキストから動画を作る方法
+wp_id: 158
 ---
 
 2026年3月、OpenAIの動画生成AI「Sora」がサービスを終了しました。しかし**代替ツールはむしろ充実しています**。

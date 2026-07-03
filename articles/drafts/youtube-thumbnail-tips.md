@@ -1,14 +1,15 @@
 ---
-title: 【2026年】YouTubeサムネイルの作り方｜クリック率が2倍になる7つの法則
-slug: youtube-thumbnail-tips
-excerpt: YouTubeサムネイルの作り方とクリック率を上げるコツを7つ紹介。文字の入れ方、色の使い方、構図の法則、無料ツールでの作成手順まで。初心者でもプロっぽいサムネイルが作れるようになります。
 categories:
-  - video-production
+- video-production
+excerpt: YouTubeサムネイルの作り方とクリック率を上げるコツを7つ紹介。文字の入れ方、色の使い方、構図の法則、無料ツールでの作成手順まで。初心者でもプロっぽいサムネイルが作れるようになります。
+slug: youtube-thumbnail-tips
 tags:
-  - サムネイル
-  - YouTube
-  - クリック率
-  - Canva
+- サムネイル
+- YouTube
+- クリック率
+- Canva
+title: 【2026年】YouTubeサムネイルの作り方｜クリック率が2倍になる7つの法則
+wp_id: 131
 ---
 
 YouTube動画の再生回数は、**サムネイルで8割が決まる**と言われています。

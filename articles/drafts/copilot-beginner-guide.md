@@ -1,14 +1,15 @@
 ---
-title: 【2026年】Microsoft Copilotの使い方｜Word・Excel・PowerPointをAIで効率化する方法
-slug: copilot-beginner-guide
-excerpt: Microsoft Copilotの使い方を初心者向けに解説。Word、Excel、PowerPoint、Teamsでの活用法と、無料版・有料版の違い、ChatGPTとの使い分けをまとめました。
 categories:
-  - ai
+- ai
+excerpt: Microsoft Copilotの使い方を初心者向けに解説。Word、Excel、PowerPoint、Teamsでの活用法と、無料版・有料版の違い、ChatGPTとの使い分けをまとめました。
+slug: copilot-beginner-guide
 tags:
-  - Copilot
-  - Microsoft
-  - 使い方
-  - 仕事効率化
+- Copilot
+- Microsoft
+- 使い方
+- 仕事効率化
+title: 【2026年】Microsoft Copilotの使い方｜Word・Excel・PowerPointをAIで効率化する方法
+wp_id: 170
 ---
 
 Microsoft Copilotは**Word・Excel・PowerPointにAIが組み込まれた**ツールです。普段使っているOfficeの中で、そのままAIが使えるのが最大の強みです。

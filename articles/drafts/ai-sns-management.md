@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI × SNS運用代行｜副業で月5万円稼ぐための始め方と効率化ツール
-slug: ai-sns-management
-excerpt: AIを活用したSNS運用代行の副業の始め方を解説。ChatGPTでの投稿文作成、画像生成、分析の効率化方法と、案件の取り方・料金相場をまとめました。
 categories:
-  - ai
+- ai
+excerpt: AIを活用したSNS運用代行の副業の始め方を解説。ChatGPTでの投稿文作成、画像生成、分析の効率化方法と、案件の取り方・料金相場をまとめました。
+slug: ai-sns-management
 tags:
-  - AI副業
-  - SNS運用
-  - 副業
-  - ChatGPT
+- AI副業
+- SNS運用
+- 副業
+- ChatGPT
+title: 【2026年】AI × SNS運用代行｜副業で月5万円稼ぐための始め方と効率化ツール
+wp_id: 151
 ---
 
 SNS運用代行は**AIとの相性が最も良い副業**の1つです。投稿文の作成、画像の生成、ハッシュタグの選定——すべてAIで効率化できます。

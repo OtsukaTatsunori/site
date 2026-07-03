@@ -1,14 +1,15 @@
 ---
-title: 【2026年】仕事で使えるChatGPTプロンプト30選｜コピペで即使えるテンプレート集
-slug: chatgpt-prompt-templates
-excerpt: 仕事で即使えるChatGPTプロンプトを30個厳選。メール作成、資料作成、翻訳、Excel、企画、議事録まで。コピペして使えるテンプレート形式でカテゴリ別に紹介します。
 categories:
-  - ai
+- ai
+excerpt: 仕事で即使えるChatGPTプロンプトを30個厳選。メール作成、資料作成、翻訳、Excel、企画、議事録まで。コピペして使えるテンプレート形式でカテゴリ別に紹介します。
+slug: chatgpt-prompt-templates
 tags:
-  - ChatGPT
-  - プロンプト
-  - 仕事効率化
-  - テンプレート
+- ChatGPT
+- プロンプト
+- 仕事効率化
+- テンプレート
+title: 【2026年】仕事で使えるChatGPTプロンプト30選｜コピペで即使えるテンプレート集
+wp_id: 167
 ---
 
 ChatGPTは**プロンプト（指示文）の書き方**で回答の質が10倍変わります。

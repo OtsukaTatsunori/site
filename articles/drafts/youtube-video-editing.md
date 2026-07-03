@@ -1,14 +1,15 @@
 ---
-title: 【2026年】YouTube動画の編集のやり方｜初心者が最初の1本を完成させる5工程
-slug: youtube-video-editing
-excerpt: YouTube動画の編集方法を初心者向けに解説。素材の取り込みからカット、テロップ、BGM、書き出しまで、1本の動画を完成させる全工程をステップごとに紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: YouTube動画の編集方法を初心者向けに解説。素材の取り込みからカット、テロップ、BGM、書き出しまで、1本の動画を完成させる全工程をステップごとに紹介します。
+slug: youtube-video-editing
 tags:
-  - YouTube
-  - 動画編集
-  - やり方
-  - 初心者
+- YouTube
+- 動画編集
+- やり方
+- 初心者
+title: 【2026年】YouTube動画の編集のやり方｜初心者が最初の1本を完成させる5工程
+wp_id: 68
 ---
 
 「YouTubeに動画を上げたいけど、編集のやり方がわからない」——この記事はそんな方のために書きました。

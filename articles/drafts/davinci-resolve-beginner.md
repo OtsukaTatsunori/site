@@ -1,14 +1,15 @@
 ---
-title: 【2026年】DaVinci Resolve 使い方入門｜無料でプロ仕様の動画が作れる7ステップ
-slug: davinci-resolve-beginner
-excerpt: DaVinci Resolveの使い方を初心者向けに解説。ダウンロードから初期設定、カット編集、テロップ、BGM挿入、書き出しまで、1本の動画を完成させる手順をステップごとに紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: DaVinci Resolveの使い方を初心者向けに解説。ダウンロードから初期設定、カット編集、テロップ、BGM挿入、書き出しまで、1本の動画を完成させる手順をステップごとに紹介します。
+slug: davinci-resolve-beginner
 tags:
-  - DaVinci Resolve
-  - 動画編集
-  - 無料
-  - 使い方
+- DaVinci Resolve
+- 動画編集
+- 無料
+- 使い方
+title: 【2026年】DaVinci Resolve 使い方入門｜無料でプロ仕様の動画が作れる7ステップ
+wp_id: 78
 ---
 
 DaVinci Resolve（ダヴィンチ・リゾルブ）は、**完全無料で使えるプロ仕様の動画編集ソフト**です。

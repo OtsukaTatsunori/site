@@ -1,14 +1,16 @@
 ---
-title: 【2026年】カラーグレーディング入門｜3ステップで映像が「プロっぽく」変わる方法
-slug: color-grading-beginner
-excerpt: カラーグレーディングの基本を初心者向けに解説。色補正との違い、最低限やるべき3ステップ、LUTの使い方、DaVinci ResolveとPremiere Proでの操作方法まで。映像の印象が劇的に変わるテクニックを紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: カラーグレーディングの基本を初心者向けに解説。色補正との違い、最低限やるべき3ステップ、LUTの使い方、DaVinci ResolveとPremiere
+  Proでの操作方法まで。映像の印象が劇的に変わるテクニックを紹介します。
+slug: color-grading-beginner
 tags:
-  - カラーグレーディング
-  - 動画編集
-  - DaVinci Resolve
-  - 初心者
+- カラーグレーディング
+- 動画編集
+- DaVinci Resolve
+- 初心者
+title: 【2026年】カラーグレーディング入門｜3ステップで映像が「プロっぽく」変わる方法
+wp_id: 76
 ---
 
 「同じカメラで撮ったのに、プロの映像と自分の映像は何が違うんだろう？」

@@ -1,14 +1,15 @@
 ---
-title: 【2026年】動画編集はMacとWindowsどっちが正解？現役編集者が本音で比較
-slug: video-editing-mac-vs-windows
-excerpt: 動画編集にMacとWindowsどちらが向いているかを7つの軸で比較。ソフトの対応状況、コスパ、用途別のおすすめ、乗り換え時の注意点まで解説します。
 categories:
-  - video-production
+- video-production
+excerpt: 動画編集にMacとWindowsどちらが向いているかを7つの軸で比較。ソフトの対応状況、コスパ、用途別のおすすめ、乗り換え時の注意点まで解説します。
+slug: video-editing-mac-vs-windows
 tags:
-  - 動画編集
-  - Mac
-  - Windows
-  - パソコン
+- 動画編集
+- Mac
+- Windows
+- パソコン
+title: 【2026年】動画編集はMacとWindowsどっちが正解？現役編集者が本音で比較
+wp_id: 102
 ---
 
 「動画編集を始めるなら Mac と Windows どっちがいい？」

@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI要約ツールおすすめ5選｜長文・PDF・動画を一瞬で要約する方法
-slug: ai-summary-tools
-excerpt: AI要約ツール5選を機能・料金・対応形式で比較。ChatGPT・Claude・NotebookLM・Perplexity・ELYZA DIGESTの使い分けを解説します。
 categories:
-  - ai
+- ai
+excerpt: AI要約ツール5選を機能・料金・対応形式で比較。ChatGPT・Claude・NotebookLM・Perplexity・ELYZA DIGESTの使い分けを解説します。
+slug: ai-summary-tools
 tags:
-  - AI要約
-  - 業務効率化
-  - 無料ツール
-  - PDF
+- AI要約
+- 業務効率化
+- 無料ツール
+- PDF
+title: 【2026年】AI要約ツールおすすめ5選｜長文・PDF・動画を一瞬で要約する方法
+wp_id: 153
 ---
 
 「30ページの報告書を5分で把握したい」「1時間のYouTube動画の要点だけ知りたい」

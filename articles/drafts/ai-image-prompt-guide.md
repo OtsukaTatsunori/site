@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI画像生成プロンプト完全ガイド｜Midjourney・DALL-Eで思い通りの画像を作るコツ
-slug: ai-image-prompt-guide
-excerpt: AI画像生成のプロンプト（呪文）の書き方を完全解説。Midjourney、DALL-E、Stable Diffusionで使える基本構文、画風指定、品質向上のテクニックとテンプレート付き。
 categories:
-  - ai
+- ai
+excerpt: AI画像生成のプロンプト（呪文）の書き方を完全解説。Midjourney、DALL-E、Stable Diffusionで使える基本構文、画風指定、品質向上のテクニックとテンプレート付き。
+slug: ai-image-prompt-guide
 tags:
-  - AI画像生成
-  - プロンプト
-  - Midjourney
-  - DALL-E
+- AI画像生成
+- プロンプト
+- Midjourney
+- DALL-E
+title: 【2026年】AI画像生成プロンプト完全ガイド｜Midjourney・DALL-Eで思い通りの画像を作るコツ
+wp_id: 142
 ---
 
 AI画像生成は**プロンプト（指示文）の書き方**で出力品質が10倍変わります。この記事では、思い通りの画像を作るためのプロンプトの書き方とテンプレートを紹介します。

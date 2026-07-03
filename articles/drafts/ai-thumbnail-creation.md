@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AIでYouTubeサムネイルを自動作成｜無料ツールと作り方のコツ
-slug: ai-thumbnail-creation
-excerpt: AIでYouTubeサムネイルを自動作成する方法を解説。Canva AI、サムネAI、ChatGPT＋DALL-Eの使い分けと、クリック率を上げるデザインのコツを紹介します。
 categories:
-  - ai
+- ai
+excerpt: AIでYouTubeサムネイルを自動作成する方法を解説。Canva AI、サムネAI、ChatGPT＋DALL-Eの使い分けと、クリック率を上げるデザインのコツを紹介します。
+slug: ai-thumbnail-creation
 tags:
-  - AIサムネイル
-  - YouTube
-  - Canva
-  - デザイン
+- AIサムネイル
+- YouTube
+- Canva
+- デザイン
+title: 【2026年】AIでYouTubeサムネイルを自動作成｜無料ツールと作り方のコツ
+wp_id: 155
 ---
 
 YouTubeの再生数の8割はサムネイルで決まります。でも**デザインスキルがない人**でも、AIを使えば**プロ級のサムネイルが5分で作れます**。

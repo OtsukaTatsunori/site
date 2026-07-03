@@ -1,14 +1,15 @@
 ---
-title: 【2026年】Premiere Pro使い始めにやるべき設定10選｜デフォルトのままは損してます
-slug: premiere-pro-initial-setup
-excerpt: Premiere Proを初めて使う人が最初に変えるべき設定を10個紹介。自動保存、プレビュー解像度、ワークスペース、GPU設定、ショートカットカスタマイズまで。デフォルトのまま使っていると損する設定を解説します。
 categories:
-  - video-production
+- video-production
+excerpt: Premiere Proを初めて使う人が最初に変えるべき設定を10個紹介。自動保存、プレビュー解像度、ワークスペース、GPU設定、ショートカットカスタマイズまで。デフォルトのまま使っていると損する設定を解説します。
+slug: premiere-pro-initial-setup
 tags:
-  - Premiere Pro
-  - 設定
-  - 初心者
-  - おすすめ
+- Premiere Pro
+- 設定
+- 初心者
+- おすすめ
+title: 【2026年】Premiere Pro使い始めにやるべき設定10選｜デフォルトのままは損してます
+wp_id: 81
 ---
 
 Premiere Proは**デフォルト設定のまま使うと非効率**です。

@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AI議事録ツールおすすめ5選｜会議の文字起こし・要約を自動化する方法
-slug: ai-meeting-notes
-excerpt: AI議事録ツール5選を料金・精度・日本語対応で比較。Notta、CLOVA Note、tl;dv、Otter.ai、Teams Copilotの特徴と選び方を解説します。
 categories:
-  - ai
+- ai
+excerpt: AI議事録ツール5選を料金・精度・日本語対応で比較。Notta、CLOVA Note、tl;dv、Otter.ai、Teams Copilotの特徴と選び方を解説します。
+slug: ai-meeting-notes
 tags:
-  - AI議事録
-  - 文字起こし
-  - 業務効率化
-  - 会議
+- AI議事録
+- 文字起こし
+- 業務効率化
+- 会議
+title: 【2026年】AI議事録ツールおすすめ5選｜会議の文字起こし・要約を自動化する方法
+wp_id: 144
 ---
 
 「会議中にメモを取るのに必死で、肝心の議論に集中できない……」

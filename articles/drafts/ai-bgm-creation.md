@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AIでオリジナルBGMを作る方法｜Suno AI・Udioの使い方と商用利用の注意点
-slug: ai-bgm-creation
-excerpt: AIでオリジナルBGMを作る方法を解説。Suno AI、Udio、Stable Audioの3ツールを比較し、動画用BGMの作り方・商用利用の注意点をまとめました。
 categories:
-  - ai
+- ai
+excerpt: AIでオリジナルBGMを作る方法を解説。Suno AI、Udio、Stable Audioの3ツールを比較し、動画用BGMの作り方・商用利用の注意点をまとめました。
+slug: ai-bgm-creation
 tags:
-  - AI BGM
-  - 音楽生成
-  - Suno AI
-  - 動画制作
+- AI BGM
+- 音楽生成
+- Suno AI
+- 動画制作
+title: 【2026年】AIでオリジナルBGMを作る方法｜Suno AI・Udioの使い方と商用利用の注意点
+wp_id: 134
 ---
 
 YouTubeのフリーBGMは**他の人と被りやすい**のが悩み。AIなら**完全オリジナルのBGMを無料で作れます**。

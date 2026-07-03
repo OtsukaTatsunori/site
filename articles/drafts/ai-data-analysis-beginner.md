@@ -1,14 +1,15 @@
 ---
-title: 【2026年】AIでデータ分析を始める方法｜プログラミング不要で売上データを分析するコツ
-slug: ai-data-analysis-beginner
-excerpt: AIを使ったデータ分析の始め方を初心者向けに解説。ChatGPTにCSVをアップロードするだけで売上分析・グラフ作成ができる方法と、プロンプトの書き方を紹介します。
 categories:
-  - ai
+- ai
+excerpt: AIを使ったデータ分析の始め方を初心者向けに解説。ChatGPTにCSVをアップロードするだけで売上分析・グラフ作成ができる方法と、プロンプトの書き方を紹介します。
+slug: ai-data-analysis-beginner
 tags:
-  - AIデータ分析
-  - 初心者
-  - ChatGPT
-  - Excel
+- AIデータ分析
+- 初心者
+- ChatGPT
+- Excel
+title: 【2026年】AIでデータ分析を始める方法｜プログラミング不要で売上データを分析するコツ
+wp_id: 139
 ---
 
 「データ分析って難しそう」——**ChatGPTにCSVファイルを渡すだけで、グラフ作成も傾向分析もやってくれます**。プログラミングは不要です。

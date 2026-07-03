@@ -1,14 +1,15 @@
 ---
-title: 【2026年】クラウドソーシング以外で動画編集の仕事を見つける5つの方法｜SNS営業のコツ
-slug: video-editing-find-clients-sns
-excerpt: クラウドソーシング以外で動画編集のクライアントを見つける方法を解説。Twitter、Instagram、YouTubeコメントからの直接営業、DM提案の書き方、SNS発信のコツまで紹介します。
 categories:
-  - video-production
+- video-production
+excerpt: クラウドソーシング以外で動画編集のクライアントを見つける方法を解説。Twitter、Instagram、YouTubeコメントからの直接営業、DM提案の書き方、SNS発信のコツまで紹介します。
+slug: video-editing-find-clients-sns
 tags:
-  - 動画編集
-  - クライアント
-  - SNS
-  - 営業
+- 動画編集
+- クライアント
+- SNS
+- 営業
+title: 【2026年】クラウドソーシング以外で動画編集の仕事を見つける5つの方法｜SNS営業のコツ
+wp_id: 92
 ---
 
 クラウドソーシング（CW・ランサーズ）は手数料が**20%**かかります。月10万円稼いでも、手取りは8万円。
