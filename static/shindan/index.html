@@ -167,7 +167,7 @@ body{
 .sx-cta svg{width:16px;height:16px;transition:transform .3s var(--ease)}
 .sx-cta:hover svg{transform:translateX(4px)}
 .sx-cta.pending{background:#c3cedb;box-shadow:none;pointer-events:none}
-.sx-save-row{margin-top:4px;text-align:center}
+.sx-save-row{margin:0 0 18px;text-align:center}
 .sx-save{display:inline-flex;align-items:center;gap:.5em;background:#fff;border:1.5px solid var(--navy);color:var(--navy);font-family:inherit;font-size:.92rem;font-weight:800;padding:12px 24px;border-radius:50px;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,color .2s;box-shadow:0 2px 8px rgba(15,44,77,.08)}
 .sx-save svg{width:17px;height:17px}
 .sx-save:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,44,77,.16)}
@@ -307,11 +307,11 @@ body{
       <div class="sx-result" id="sxResult">
         <p class="sx-rtitle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.9l-5.5 3.4L8 13.7 3 9.3l6.6-1.1L12 2z" fill="#ff5b39"/></svg>診断結果：あなたにおすすめの2校</p>
         <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5b39"/><stop offset="1" stop-color="#ffd84d"/></linearGradient></defs></svg>
-        <div id="sxCards"></div>
         <div class="sx-save-row">
           <button type="button" class="sx-save" id="sxSave"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span id="sxSaveTxt">この結果を保存する</span></button>
-          <p class="sx-save-hint" id="sxSaveHint">保存後、ブラウザのブックマーク（PCは Ctrl+D／スマホは共有ボタン）に登録すると、いつでもこの結果を見返せます。</p>
+          <p class="sx-save-hint" id="sxSaveHint">タップすると保存メニューが開きます（PCはURLをコピー→ Ctrl+D でブックマーク）。</p>
         </div>
+        <div id="sxCards"></div>
         <button type="button" class="sx-restart" id="sxRestart">もう一度診断する</button>
       </div>
     </section>
@@ -758,17 +758,27 @@ body{
     showResult(true);
   }
 
-  // 保存ボタン
+  // 保存ボタン：スマホは共有シート、PCはURLコピー
   $("sxSave").addEventListener("click", function () {
     var btn = $("sxSave");
-    function ok() {
+    var url = location.href;
+    function copied() {
       btn.classList.add("copied");
       $("sxSaveTxt").textContent = "URLをコピーしました！";
-      $("sxSaveHint").textContent = "このURLをブックマーク（PCは Ctrl+D／スマホは共有ボタン）に登録すれば、いつでもこの結果に戻れます。";
+      $("sxSaveHint").textContent = "Ctrl+D（Macは ⌘+D）でブックマークに登録すれば、いつでもこの結果に戻れます。";
     }
-    var url = location.href;
+    // スマホ等：OSの共有メニューを開く（そこから「ブックマーク」「リーディングリスト」等で保存可）
+    if (navigator.share) {
+      navigator.share({
+        title: "スクール診断の結果",
+        text: "私に合うスクールの診断結果です。",
+        url: url
+      }).catch(function () {});
+      return;
+    }
+    // PC：クリップボードにコピー
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url).then(ok, function () {
+      navigator.clipboard.writeText(url).then(copied, function () {
         window.prompt("このURLをコピーしてブックマークしてください：", url);
       });
     } else {
