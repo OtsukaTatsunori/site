@@ -90,6 +90,10 @@ body{
 @keyframes qIn{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
 @keyframes qOut{from{opacity:1}to{opacity:0;transform:translateX(-22px)}}
 .sx-qnum{display:inline-block;font-size:.7rem;font-weight:900;letter-spacing:.16em;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:.3em 1.05em;border-radius:50px;margin-bottom:.75em;box-shadow:0 4px 14px rgba(255,91,57,.32)}
+.sx-back{display:inline-flex;align-items:center;gap:.2em;background:none;border:none;font-family:inherit;font-size:.76rem;font-weight:700;color:var(--muted);cursor:pointer;padding:4px 8px 4px 0;margin-bottom:.4em;border-radius:8px;transition:color .2s,transform .2s}
+.sx-back svg{width:15px;height:15px}
+.sx-back:hover{color:var(--navy);transform:translateX(-3px)}
+.sx-back[hidden]{display:none}
 .sx-q{font-size:clamp(.98rem,2.3vw,1.28rem);font-weight:900;color:var(--navy);line-height:1.55;margin-bottom:1em}
 .sx-choices{display:flex;flex-direction:column;gap:11px}
 .sx-choice{
@@ -284,6 +288,7 @@ body{
   <div class="sx-stage">
     <section class="sx-panel">
       <div class="sx-qwrap" id="sxQwrap">
+        <button type="button" class="sx-back" id="sxBack" hidden><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>1つ前にもどる</button>
         <span class="sx-qnum" id="sxQnum">Q1</span>
         <p class="sx-q" id="sxQ"></p>
         <div class="sx-choices" id="sxChoices"></div>
@@ -400,7 +405,7 @@ body{
         { v: "emp1y", label: "会社員・公務員（勤続1年以上）", react: "ありがとうございます。補助金の対象になる可能性が高い状況です。大きなアドバンテージですよ。" },
         { v: "empShort", label: "会社員（1年未満）・パート", react: "雇用保険の加入期間によっては対象になる場合があります。低コストの選択肢もご用意しますね。" },
         { v: "free", label: "フリーランス・自営業", react: "給付金の対象からは外れますが、その分、月額制などの身軽な選択肢がフィットしやすいですよ。" },
-        { v: "leaving", label: "離職中・転職活動中", react: "実は離職中の方が使える支援制度もあるんです。学び直しには良いタイミングかもしれません。" }
+        { v: "leaving", label: "離職中・転職活動中・学生", react: "学び直しにはとても良いタイミングですね。離職中の方が使える支援制度もあります。あなたに合う選択肢をご提案しますね。" }
       ] },
     { key: "field",
       q: "どちらの分野に、より興味がありますか？",
@@ -507,8 +512,24 @@ body{
     $("sxLabel").textContent = "QUESTION " + (state.step + 1) + " / 4";
     var dots = $("sxDots").children;
     for (var i2 = 0; i2 < dots.length; i2++) {
-      dots[i2].className = i2 <= state.step ? "on" : "";
+      dots[i2].className = i2 < state.step ? "on" : (i2 === state.step ? "on" : "");
     }
+    $("sxBar").style.width = ((state.step / 4) * 100) + "%";
+    $("sxBack").hidden = (state.step === 0);
+  }
+
+  // ===== 1つ前にもどる =====
+  function goBack() {
+    if (busy || state.step === 0) { return; }
+    delete state.ans[QUESTIONS[state.step].key];
+    state.step--;
+    delete state.ans[QUESTIONS[state.step].key];
+    var w = $("sxQwrap");
+    w.classList.add("out");
+    setTimeout(function () {
+      renderQ();
+      typewrite("では、こちらの質問をもう一度どうぞ。");
+    }, 260);
   }
 
   // ===== クリック時のリップル =====
@@ -661,6 +682,7 @@ body{
   }
 
   $("sxRestart").addEventListener("click", function () { location.reload(); });
+  $("sxBack").addEventListener("click", goBack);
 
   renderQ();
   setTimeout(function () {
