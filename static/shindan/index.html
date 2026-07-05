@@ -210,6 +210,10 @@ body{
 @keyframes fall{to{transform:translateY(120vh) rotate(640deg);opacity:0}}
 /* ===== フッター ===== */
 .sx-foot{margin-top:clamp(18px,3vw,32px);border-top:1px solid var(--line);padding-top:14px;font-size:.66rem;color:#8899ab;line-height:1.85;text-align:center}
+.sx-flinks{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.sx-flinks a{color:#5f7085;text-decoration:none;font-weight:700;transition:color .2s}
+.sx-flinks a:hover{color:var(--navy);text-decoration:underline}
+.sx-copy{display:block;margin-top:8px;font-size:.62rem;color:#a3b0c0}
 /* ===== モバイル：1画面完結 ===== */
 @media (max-width:760px){
   .sx-scene{padding:8px;align-items:stretch}
@@ -337,6 +341,12 @@ body{
   </div>
   <footer class="sx-foot">
     本診断は「大人の学びなおし比較」編集部の基準に基づくもので、特定スクールの受講を保証・強制するものではありません。本ページはプロモーション（広告）を含みます。補助金・給付金の受給可否は各制度の要件およびハローワーク等の審査により決まります。料金・制度は変更される場合があるため、申込前に必ず公式サイトをご確認ください。
+    <nav class="sx-flinks">
+      <a href="https://ai-school-guide.com/about/">運営者情報</a>
+      <a href="https://ai-school-guide.com/privacy-policy/">プライバシーポリシー</a>
+      <a href="https://ai-school-guide.com/contact/">お問い合わせ</a>
+    </nav>
+    <span class="sx-copy">&copy; 大人の学びなおし比較</span>
   </footer>
 </main>
 </div>
