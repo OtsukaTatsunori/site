@@ -86,8 +86,8 @@ body{
 .sx-stage{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(18px,3.4vw,44px);align-items:start;margin-top:clamp(14px,2.4vw,28px)}
 /* ===== 質問 ===== */
 .sx-panel{min-width:0}
-.sx-qwrap.in{animation:qIn .5s var(--ease) both}
-.sx-qwrap.out{animation:qOut .28s ease both}
+.sx-qwrap.in{animation:qIn .42s var(--ease) both}
+.sx-qwrap.out{animation:qOut .22s ease both}
 @keyframes qIn{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
 @keyframes qOut{from{opacity:1}to{opacity:0;transform:translateX(-22px)}}
 .sx-qnum{display:inline-block;font-size:.7rem;font-weight:900;letter-spacing:.16em;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:.3em 1.05em;border-radius:50px;margin-bottom:.75em;box-shadow:0 4px 14px rgba(255,91,57,.32)}
@@ -103,7 +103,7 @@ body{
   font-family:inherit;font-size:.94rem;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;
   box-shadow:0 1px 2px rgba(15,44,77,.05),0 6px 18px rgba(15,44,77,.06);
   transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .25s,opacity .35s;
-  overflow:hidden;opacity:0;animation:chIn .5s var(--ease) forwards;
+  overflow:hidden;opacity:0;animation:chIn .4s var(--ease) forwards;
 }
 @keyframes chIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .sx-choice::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:5px;height:64%;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:0 5px 5px 0;transition:transform .35s var(--spring)}
@@ -113,9 +113,10 @@ body{
 .sx-choice:active{transform:translateY(0) scale(.975)}
 .sx-rip{position:absolute;border-radius:50%;background:rgba(255,91,57,.22);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(3.2);opacity:0}}
+@keyframes pickPop{0%{transform:scale(1)}45%{transform:scale(1.025)}100%{transform:scale(.99)}}
 .sx-check{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .4s var(--spring);margin-left:auto;box-shadow:0 3px 8px rgba(255,91,57,.35)}
 .sx-check svg{width:12px;height:12px}
-.sx-choice.picked{border-color:var(--accent);background:#fff8f6}
+.sx-choice.picked{border-color:var(--accent);background:#fff8f6;animation:pickPop .35s var(--spring) both}
 .sx-choice.picked .sx-check{transform:scale(1)}
 .sx-choice.faded{opacity:.28!important;pointer-events:none;transform:scale(.985)}
 /* ===== 診断中 ===== */
@@ -201,7 +202,7 @@ body{
 .sx-bubble{
   position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:15px 17px;text-align:left;
   box-shadow:0 1px 2px rgba(15,44,77,.05),0 10px 28px rgba(15,44,77,.09);margin-bottom:20px;
-  transition:opacity .2s ease,transform .2s ease;min-height:88px;display:flex;align-items:center;
+  transition:opacity .15s ease,transform .15s ease;min-height:88px;display:flex;align-items:center;
 }
 .sx-bubble.swap{opacity:0;transform:translateY(4px)}
 .sx-bubble::after{content:"";position:absolute;bottom:-9px;left:50%;transform:translateX(-50%) rotate(45deg);width:16px;height:16px;background:#fff;border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
@@ -606,7 +607,7 @@ body{
         return;
       }
       el.innerHTML = escHtml(text.slice(0, i)) + "<span class=\"sx-cursor\"></span>";
-    }, 26);
+    }, 18);
   }
 
   function think() {
@@ -639,7 +640,7 @@ body{
       var b = document.createElement("button");
       b.type = "button";
       b.className = "sx-choice";
-      b.style.animationDelay = (0.08 + i * 0.07) + "s";
+      b.style.animationDelay = (0.04 + i * 0.05) + "s";
       b.innerHTML = "<span>" + c.label + "</span><span class=\"sx-check\"><svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 8.5L6.5 12L13 4.5\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>";
       b.addEventListener("click", function (ev) { pick(b, qd, c, ev); });
       wrap.appendChild(b);
@@ -668,7 +669,7 @@ body{
     setTimeout(function () {
       renderQ();
       typewrite("では、こちらの質問をもう一度どうぞ。");
-    }, 260);
+    }, 220);
   }
 
   // ===== クリック時のリップル =====
@@ -690,6 +691,7 @@ body{
     if (busy) { return; }
     busy = true;
     state.ans[qd.key] = c.v;
+    try { if (navigator.vibrate) { navigator.vibrate(12); } } catch (e) {}
     ripple(btn, ev);
     var sib = $("sxChoices").children;
     for (var i = 0; i < sib.length; i++) {
@@ -699,18 +701,18 @@ body{
     jump();
     think();
     $("sxBar").style.width = (((state.step + 1) / 4) * 100) + "%";
-    setTimeout(function () { typewrite(c.react); }, 700);
+    setTimeout(function () { typewrite(c.react); }, 450);
     setTimeout(function () {
       busy = false;
       if (state.step < QUESTIONS.length - 1) {
         state.step++;
         var w = $("sxQwrap");
         w.classList.add("out");
-        setTimeout(renderQ, 270);
+        setTimeout(renderQ, 220);
       } else {
         diagnose();
       }
-    }, 1900);
+    }, 1050);
   }
 
   function eligible() {
@@ -735,8 +737,8 @@ body{
       pct += Math.floor(3 + Math.random() * 9);
       if (pct >= 100) { pct = 100; clearInterval(t); }
       el.textContent = pct + "%";
-    }, 90);
-    setTimeout(showResult, 1900);
+    }, 70);
+    setTimeout(showResult, 1400);
   }
 
   // ===== 紙吹雪 =====
@@ -843,8 +845,8 @@ body{
         setTimeout(function () {
           fg.style.strokeDashoffset = 157 * (1 - pct / 100);
           countUp(num, pct, 1100);
-        }, 250);
-      }, 220 + idx * 300);
+        }, 200);
+      }, 160 + idx * 220);
     });
     // 分野ごとの「業界展望」「選ぶときの注意点」
     var fi = FIELDINFO[state.ans.field] || FIELDINFO.ai;
@@ -907,6 +909,17 @@ body{
 
   $("sxRestart").addEventListener("click", function () { location.href = location.pathname; });
   $("sxBack").addEventListener("click", goBack);
+
+  // PC向け：数字キー1〜6で選択、Backspaceで1つ戻る
+  document.addEventListener("keydown", function (e) {
+    if (busy) { return; }
+    if ($("sxQwrap").style.display === "none") { return; }
+    if (e.key === "Backspace") { e.preventDefault(); goBack(); return; }
+    var n = parseInt(e.key, 10);
+    if (!n) { return; }
+    var btns = $("sxChoices").children;
+    if (n >= 1 && n <= btns.length) { btns[n - 1].click(); }
+  });
 
   // 初期化：URLに保存結果があれば復元、なければ診断開始
   var saved = null;
