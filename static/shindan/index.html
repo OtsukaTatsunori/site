@@ -244,11 +244,12 @@ body{
   .sx-bubble{margin-bottom:0;min-height:74px;padding:10px 13px}
   .sx-bubble p{font-size:.78rem;line-height:1.62}
   .sx-bubble::after{left:-9px;bottom:20px;transform:rotate(135deg)}
-  .sx-qnum{font-size:.6rem;margin-bottom:.5em}
-  .sx-q{font-size:.92rem;margin-bottom:.7em}
-  .sx-choices{gap:8px}
-  .sx-choice{min-height:48px;padding:10px 14px 10px 17px;font-size:.84rem;border-radius:13px;gap:8px}
-  .sx-check{width:20px;height:20px}
+  .sx-qnum{font-size:.6rem;margin-bottom:.4em}
+  .sx-back{font-size:.7rem;margin-bottom:.3em}
+  .sx-q{font-size:.9rem;margin-bottom:.6em}
+  .sx-choices{gap:7px}
+  .sx-choice{min-height:44px;padding:9px 13px 9px 16px;font-size:.82rem;border-radius:12px;gap:8px}
+  .sx-check{width:19px;height:19px}
   .sx-foot{margin-top:auto;padding-top:9px;font-size:.56rem;line-height:1.7}
   .sx-rcard{padding:15px 15px 14px}
   .sx-reason{font-size:.79rem;padding:10px 12px}
@@ -367,7 +368,14 @@ body{
     webcamp: "",
     techcamp: "",
     samurai: "",
-    daytra: ""
+    daytra: "",
+    rarejob: "",
+    studysapuri: "",
+    shelikes: "",
+    daytraweb: "",
+    wannabe: "",
+    studying: "",
+    ucan: ""
   };
   var FALLBACK = {
     kikagaku: "https://ai-school-guide.com/ai-reskilling-subsidy/",
@@ -388,7 +396,21 @@ body{
     samurai: { name: "侍エンジニア", tag: "マンツーマン／オーダーメイド", mono: "侍", subsidy: true,
       reason: "現役エンジニアのマンツーマン指導で、目的に合わせたオーダーメイドカリキュラムを組めるのが最大の強み。挫折率の低さに定評があります。" },
     daytra: { name: "デイトラ", tag: "買い切り／低価格", mono: "デ", subsidy: false,
-      reason: "10万円前後の買い切り型で、副業向けスキルをコスパ良く学べる人気スクール。教材は買い切り後もアップデートされ、自分のペースで進められます。" }
+      reason: "10万円前後の買い切り型で、副業向けスキルをコスパ良く学べる人気スクール。教材は買い切り後もアップデートされ、自分のペースで進められます。" },
+    rarejob: { name: "レアジョブ英会話", tag: "オンライン英会話／継続型", mono: "英", subsidy: false,
+      reason: "オンライン英会話の定番。1レッスン数百円台から続けやすく、日常英会話からビジネス英語まで幅広く対応。まずは無料体験から始められます。" },
+    studysapuri: { name: "スタディサプリENGLISH", tag: "英語アプリ／TOEIC対策", mono: "ス", subsidy: false,
+      reason: "スキマ時間で続けられる英語学習アプリ。特にTOEIC対策コースは実績が豊富で、通勤中でもスマホ1台で学習を進められます。" },
+    shelikes: { name: "SHElikes（シーライクス）", tag: "女性向け／40職種定額", mono: "S", subsidy: false,
+      reason: "Webデザイン・ライティング・SNS運用など40以上の職種スキルを定額で学べる女性向けキャリアスクール。副業やフリーランスの入口として人気です。" },
+    daytraweb: { name: "デイトラ Webデザインコース", tag: "Webデザイン／買い切り", mono: "デ", subsidy: false,
+      reason: "実務レベルのWebデザインをコスパよく学べる買い切り型講座。カリキュラムが実案件を想定した内容で、副業デビューを目指す人に向いています。" },
+    wannabe: { name: "WANNABE Academy", tag: "Webマーケ・SNS運用／実務型", mono: "M", subsidy: false,
+      reason: "WebマーケティングやSNS運用を、実際の課題を通して実務ベースで学べるスクール。SNS運用や広告運用を仕事にしたい人向けです。" },
+    studying: { name: "スタディング", tag: "資格／スマホ完結", mono: "資", subsidy: false,
+      reason: "スマホ完結で学べる低価格のオンライン資格講座。簿記・FP・宅建など幅広い資格に対応し、忙しい社会人でもスキマ時間で合格を目指せます。" },
+    ucan: { name: "ユーキャン", tag: "通信講座／資格・教養", mono: "ユ", subsidy: false,
+      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、初めての学び直しでも自分に合った講座が見つかりやすいのが強みです。" }
   };
 
   var QUESTIONS = [
@@ -405,14 +427,18 @@ body{
         { v: "emp1y", label: "会社員・公務員（勤続1年以上）", react: "ありがとうございます。補助金の対象になる可能性が高い状況です。大きなアドバンテージですよ。" },
         { v: "empShort", label: "会社員（1年未満）・パート", react: "雇用保険の加入期間によっては対象になる場合があります。低コストの選択肢もご用意しますね。" },
         { v: "free", label: "フリーランス・自営業", react: "給付金の対象からは外れますが、その分、月額制などの身軽な選択肢がフィットしやすいですよ。" },
-        { v: "leaving", label: "離職中・転職活動中・学生", react: "学び直しにはとても良いタイミングですね。離職中の方が使える支援制度もあります。あなたに合う選択肢をご提案しますね。" }
+        { v: "leaving", label: "離職中・転職活動中", react: "実は離職中の方が使える支援制度もあるんです。学び直しには良いタイミングかもしれません。" },
+        { v: "student", label: "学生", react: "学生のうちからのスキル習得は大きな武器になります。就活や将来に直結する選択肢をご提案しますね。" }
       ] },
     { key: "field",
-      q: "どちらの分野に、より興味がありますか？",
+      q: "どの分野に、より興味がありますか？",
       choices: [
         { v: "ai", label: "AI活用（ChatGPT・画像生成など）", react: "いい選択です。AI活用スキルは職種を問わず、今最も需要が伸びている分野です。" },
         { v: "prog", label: "プログラミング・システム開発", react: "王道ですね。開発スキルは求人数が多く、キャリアの選択肢が一気に広がります。" },
-        { v: "unsure", label: "迷っている・どちらも気になる", react: "正直で素晴らしいです。目的から逆算すると自然に決まります。次の質問で絞り込みますね。" }
+        { v: "english", label: "英語（英会話・TOEIC）", react: "普遍的な強みですね。英語は一度身につくと長く効く、コスパの高いスキルです。" },
+        { v: "webdesign", label: "Webデザイン・グラフィックデザイン", react: "いいですね。デザインは副業案件が多く、成果物がそのまま実績になります。" },
+        { v: "sns", label: "SNSコンサル・インフルエンサー", react: "これから伸びる分野です。SNS運用は企業の需要も高く、副業にもしやすいですよ。" },
+        { v: "other", label: "その他（資格・教養など）", react: "承知しました。資格や教養は、着実に自信とキャリアの土台をつくってくれます。" }
       ] },
     { key: "goal",
       q: "スキルを身につけて、実現したいことは？",
@@ -425,8 +451,14 @@ body{
   ];
 
   function recommend(a) {
-    if (a.field === "ai") { return a.goal === "career" ? ["kikagaku", "samurai"] : ["shiftai", "dmmai"]; }
-    if (a.field === "prog") { return a.goal === "career" ? ["webcamp", "techcamp"] : ["samurai", "daytra"]; }
+    switch (a.field) {
+      case "ai": return a.goal === "career" ? ["kikagaku", "samurai"] : ["shiftai", "dmmai"];
+      case "prog": return a.goal === "career" ? ["webcamp", "techcamp"] : ["samurai", "daytra"];
+      case "english": return ["rarejob", "studysapuri"];
+      case "webdesign": return ["shelikes", "daytraweb"];
+      case "sns": return ["wannabe", "shelikes"];
+      case "other": return ["studying", "ucan"];
+    }
     if (a.goal === "career") { return ["kikagaku", "webcamp"]; }
     if (a.goal === "current") { return ["shiftai", "samurai"]; }
     return ["shiftai", "daytra"];
