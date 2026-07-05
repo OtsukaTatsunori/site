@@ -159,7 +159,23 @@ body{
 .sx-match small{font-size:.5rem;color:var(--muted);font-weight:700;margin-top:2px}
 .sx-badge{display:inline-flex;align-items:center;gap:.4em;background:#e9faf1;color:#0b7a44;font-size:.73rem;font-weight:700;padding:.35em 1em;border-radius:50px;margin:2px 0 10px}
 .sx-badge svg{width:13px;height:13px}
-.sx-reason{font-size:.85rem;line-height:1.72;color:var(--ink);background:#f6f9fc;border-radius:12px;padding:12px 15px;margin-bottom:14px}
+.sx-reason{font-size:.85rem;line-height:1.72;color:var(--ink);background:#f6f9fc;border-radius:12px;padding:12px 15px;margin-bottom:12px}
+/* プラン・こんな人に（スペック表） */
+.sx-spec{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.sx-spec-row{display:flex;align-items:stretch}
+.sx-spec-row + .sx-spec-row{border-top:1px solid var(--line)}
+.sx-spec-l{flex:0 0 92px;display:flex;align-items:center;justify-content:center;background:#f0f5fa;color:var(--navy);font-size:.74rem;font-weight:800;padding:9px 6px;text-align:center}
+.sx-spec-v{flex:1;font-size:.82rem;line-height:1.65;color:var(--ink);padding:9px 13px}
+/* 業界展望・注意点 */
+.sx-info{border-radius:14px;padding:16px 18px;margin-top:14px;opacity:0;animation:rIn .65s var(--ease) .5s forwards}
+.sx-info-up{background:#eef7ff;border:1px solid #cfe4f7}
+.sx-info-warn{background:#fff8ec;border:1px solid #f3e2bd}
+.sx-info-head{display:flex;align-items:center;gap:.55em;font-size:.95rem;font-weight:900;color:var(--navy);margin-bottom:.5em}
+.sx-info-ic{flex:none;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff}
+.sx-info-ic svg{width:16px;height:16px}
+.sx-info-ic-up{background:linear-gradient(135deg,#1b4f8a,#2b7fb8)}
+.sx-info-ic-warn{background:linear-gradient(135deg,#e8a020,#d97706)}
+.sx-info p{font-size:.85rem;line-height:1.8;color:var(--ink);margin:0}
 .sx-cta{
   position:relative;display:flex;align-items:center;justify-content:center;gap:.5em;width:100%;padding:15px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:900;font-size:.98rem;
@@ -264,6 +280,11 @@ body{
   .sx-foot{margin-top:auto;padding-top:9px;font-size:.56rem;line-height:1.7}
   .sx-rcard{padding:15px 15px 14px}
   .sx-reason{font-size:.79rem;padding:10px 12px}
+  .sx-spec-l{flex-basis:76px;font-size:.68rem}
+  .sx-spec-v{font-size:.77rem;padding:8px 11px}
+  .sx-info{padding:13px 14px}
+  .sx-info-head{font-size:.88rem}
+  .sx-info p{font-size:.79rem}
   .sx-cta{padding:13px;font-size:.9rem}
 }
 @media (prefers-reduced-motion:reduce){
@@ -317,6 +338,7 @@ body{
           <p class="sx-save-hint" id="sxSaveHint">タップすると保存メニューが開きます（PCはURLをコピー→ Ctrl+D でブックマーク）。</p>
         </div>
         <div id="sxCards"></div>
+        <div id="sxInsight"></div>
         <button type="button" class="sx-restart" id="sxRestart">もう一度診断する</button>
       </div>
     </section>
@@ -401,37 +423,91 @@ body{
 
   var SCHOOLS = {
     kikagaku: { name: "キカガク 長期コース", tag: "AI・データサイエンス／6ヶ月", mono: "キ", subsidy: true,
-      reason: "転職支援つきでAI・データサイエンスを体系的に学べます。専門実践教育訓練給付金の対象講座のため、条件を満たせば受講料の最大80%が支給される可能性があります。" },
+      reason: "転職支援つきでAI・データサイエンスを体系的に学べる長期コース。専門実践教育訓練給付金の対象講座です。",
+      plan: "792,000円 → 補助金適用で実質約158,400円／受講期間6ヶ月（動画は無期限視聴）",
+      forWho: "AI・データ分析を本格的に学び、転職やDX推進を目指す人" },
     shiftai: { name: "SHIFT AI", tag: "生成AI活用／月額制", mono: "S", subsidy: false,
-      reason: "月額制で初期投資を抑えて始められる生成AI特化スクール。ChatGPTから画像・動画生成まで動画1,000本以上が学び放題で、副業・業務効率化との相性が抜群です。" },
-    dmmai: { name: "DMM 生成AI CAMP", tag: "生成AI活用／短期集中", mono: "D", subsidy: true,
-      reason: "生成AIをビジネス実務に落とし込む短期集中型。プロンプト設計から業務活用まで実践重視で、リスキリング補助金の対象コースが用意されています。" },
+      reason: "ChatGPTから画像・動画生成まで、生成AI活用を動画1,000本以上で学べる月額制スクール。副業・業務効率化と好相性です。",
+      plan: "月額21,780円〜／継続（いつでも解約可・年間プランで割引）",
+      forWho: "生成AIを仕事や副業に活かしたい人・まず低コストで始めたい人" },
+    dmmai: { name: "DMM 生成AI CAMP", tag: "生成AI活用／短期集中", mono: "D", subsidy: false,
+      reason: "生成AIを実務に落とし込む短期集中プログラム。プロンプト設計から業務活用まで実践重視で学べます。",
+      plan: "コースにより変動／数週間〜の短期集中（公式で最新の料金・給付金対応を要確認）",
+      forWho: "生成AIを実務レベルで使いこなしたいビジネスパーソン" },
     webcamp: { name: "DMM WEBCAMP", tag: "プログラミング／転職特化", mono: "W", subsidy: true,
-      reason: "転職成功実績が豊富な転職特化型スクール。専属キャリアアドバイザーの支援と教育訓練給付金対象コースで、未経験からのエンジニア転職を現実にします。" },
+      reason: "転職成功実績が豊富な転職特化型スクール。専属キャリアアドバイザーの支援と教育訓練給付金対象コースが強みです。",
+      plan: "約69万円〜（給付金対象コースは実質負担が大きく下がる）／3〜4ヶ月",
+      forWho: "未経験からエンジニア転職を本気で目指す人" },
     techcamp: { name: "テックキャンプ", tag: "プログラミング／短期集中", mono: "T", subsidy: true,
-      reason: "未経験からの短期集中学習に定評のある大手スクール。教育訓練給付金の対象で、キャリア面談から転職まで一気通貫のサポートが受けられます。" },
+      reason: "未経験からの短期集中学習に定評のある大手スクール。キャリア面談から転職まで一気通貫でサポートします。",
+      plan: "受講料はコースにより変動（教育訓練給付金の対象）／短期集中",
+      forWho: "短期集中で一気にスキルを身につけたい人" },
     samurai: { name: "侍エンジニア", tag: "マンツーマン／オーダーメイド", mono: "侍", subsidy: true,
-      reason: "現役エンジニアのマンツーマン指導で、目的に合わせたオーダーメイドカリキュラムを組めるのが最大の強み。挫折率の低さに定評があります。" },
+      reason: "現役エンジニアのマンツーマン指導で、目的に合わせたオーダーメイドカリキュラムを組めるのが最大の強みです。",
+      plan: "コースにより変動（給付金対象コースあり）／マンツーマン・期間選択制",
+      forWho: "自分専用カリキュラムで挫折せず学びたい人" },
     daytra: { name: "デイトラ", tag: "買い切り／低価格", mono: "デ", subsidy: false,
-      reason: "10万円前後の買い切り型で、副業向けスキルをコスパ良く学べる人気スクール。教材は買い切り後もアップデートされ、自分のペースで進められます。" },
+      reason: "買い切り型で副業向けスキルをコスパよく学べる人気スクール。教材は買い切り後もアップデートされます。",
+      plan: "約9〜13万円（買い切り）／自分のペースで学習",
+      forWho: "コスパよく副業スキルを身につけたい人" },
     rarejob: { name: "レアジョブ英会話", tag: "オンライン英会話／継続型", mono: "英", subsidy: false,
-      reason: "オンライン英会話の定番。1レッスン数百円台から続けやすく、日常英会話からビジネス英語まで幅広く対応。まずは無料体験から始められます。" },
+      reason: "オンライン英会話の定番。日常英会話からビジネス英語まで幅広く対応し、まずは無料体験から始められます。",
+      plan: "月額数千円台〜／継続（毎日プラン・回数プランなど選択制）",
+      forWho: "続けやすい価格でオンライン英会話を始めたい人" },
     studysapuri: { name: "スタディサプリENGLISH", tag: "英語アプリ／TOEIC対策", mono: "ス", subsidy: false,
-      reason: "スキマ時間で続けられる英語学習アプリ。特にTOEIC対策コースは実績が豊富で、通勤中でもスマホ1台で学習を進められます。" },
+      reason: "スキマ時間で続けられる英語学習アプリ。特にTOEIC対策コースは実績が豊富です。",
+      plan: "月額約2,000〜3,000円台／継続（コースにより変動）",
+      forWho: "スキマ時間でTOEIC・英語力を上げたい人" },
     shelikes: { name: "SHElikes（シーライクス）", tag: "女性向け／40職種定額", mono: "S", subsidy: false,
-      reason: "Webデザイン・ライティング・SNS運用など40以上の職種スキルを定額で学べる女性向けキャリアスクール。副業やフリーランスの入口として人気です。" },
+      reason: "Webデザイン・ライティング・SNS運用など40以上の職種スキルを定額で学べる女性向けキャリアスクールです。",
+      plan: "入会金＋月額制／継続（受け放題プランなど）",
+      forWho: "Web・デザイン・SNSなど幅広く学びたい女性" },
     daytraweb: { name: "デイトラ Webデザインコース", tag: "Webデザイン／買い切り", mono: "デ", subsidy: false,
-      reason: "実務レベルのWebデザインをコスパよく学べる買い切り型講座。カリキュラムが実案件を想定した内容で、副業デビューを目指す人に向いています。" },
+      reason: "実務レベルのWebデザインをコスパよく学べる買い切り型講座。実案件を想定したカリキュラムが特徴です。",
+      plan: "約10万円前後（買い切り）／自分のペースで学習",
+      forWho: "Webデザインで副業を始めたい人" },
     wannabe: { name: "WANNABE Academy", tag: "Webマーケ・SNS運用／実務型", mono: "M", subsidy: false,
-      reason: "WebマーケティングやSNS運用を、実際の課題を通して実務ベースで学べるスクール。SNS運用や広告運用を仕事にしたい人向けです。" },
+      reason: "WebマーケティングやSNS運用を、実際の課題を通して実務ベースで学べるスクールです。",
+      plan: "受講料はコースにより変動／数ヶ月（実務研修つき）",
+      forWho: "Webマーケ・SNS運用を実務で学びたい人" },
     studying: { name: "スタディング", tag: "資格／スマホ完結", mono: "資", subsidy: false,
-      reason: "スマホ完結で学べる低価格のオンライン資格講座。簿記・FP・宅建など幅広い資格に対応し、忙しい社会人でもスキマ時間で合格を目指せます。" },
+      reason: "スマホ完結で学べる低価格のオンライン資格講座。簿記・FP・宅建など幅広い資格に対応しています。",
+      plan: "資格により数千〜数万円／自分のペースで学習",
+      forWho: "スマホで手軽に資格取得を目指したい人" },
     ucan: { name: "ユーキャン", tag: "通信講座／資格・教養", mono: "ユ", subsidy: false,
-      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、初めての学び直しでも自分に合った講座が見つかりやすいのが強みです。" },
+      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、自分に合った講座が見つかりやすいのが強みです。",
+      plan: "講座により変動（分割払い可）／数ヶ月〜",
+      forWho: "幅広い資格・教養から選んで学びたい人" },
     workport: { name: "ワークポート", tag: "転職エージェント／未経験IT歓迎", mono: "W", subsidy: false, kind: "job",
-      reason: "IT・Web業界の転職に強く、未経験からの転職支援実績が豊富な転職エージェント。スクールで学びながら、並行して求人を紹介してもらう使い方もおすすめです。" },
+      reason: "IT・Web業界の転職に強く、未経験からの転職支援実績が豊富な転職エージェント。スクールと並行して求人紹介を受ける使い方もおすすめです。",
+      plan: "登録・利用はすべて無料",
+      forWho: "未経験からIT・Web業界へ転職したい人" },
     mynavi: { name: "マイナビエージェント", tag: "転職エージェント／20〜40代", mono: "M", subsidy: false, kind: "job",
-      reason: "20〜40代の転職に強い大手エージェント。未経験可の求人も多く、書類添削や面接対策など手厚いサポートが受けられます。学び直しと並行して登録しておくと安心です。" }
+      reason: "20〜40代の転職に強い大手エージェント。未経験可の求人も多く、書類添削や面接対策など手厚いサポートが受けられます。",
+      plan: "登録・利用はすべて無料",
+      forWho: "20〜40代で未経験も含め転職を考えている人" }
+  };
+
+  // ===== 分野ごとの「業界展望」と「選ぶときの注意点」 =====
+  var FIELDINFO = {
+    ai: { label: "AI活用",
+      outlook: "生成AIは2026年、あらゆる職種で「使える人」が求められる時代に入りました。理系の知識がなくても、日本語で指示できれば仕事に活かせます。早く触れた人ほど、社内での存在感や副業の選択肢が広がっています。",
+      caution: "「AIを作る側（エンジニア）」と「AIを使う側（活用）」でスクールが全く違います。まず自分がどちらを目指すかを決め、無料体験・相談で教材が目的に合うか、高額コースなら補助金対象かを必ず確認しましょう。" },
+    prog: { label: "プログラミング",
+      outlook: "IT人材の不足は続いており、未経験からエンジニアを目指す道は今も開かれています。一度身につければ在宅・フリーランスなど働き方の自由度が高く、努力が収入に反映されやすい分野です。",
+      caution: "「転職保証」の条件（年齢・エリア等）や、給付金の対象かは事前確認が必須です。学習時間を確保できるか、挫折しないサポート体制があるかも、料金以上に重要な判断軸になります。" },
+    english: { label: "英語",
+      outlook: "英語は一度身につくと一生使える普遍的なスキルです。オンライン英会話やアプリの進化で、昔より圧倒的に安く・続けやすくなりました。昇進・転職・海外案件など、リターンの大きい自己投資です。",
+      caution: "「教材の質」より「続けられる仕組み」で選ぶのが失敗しないコツです。まず無料体験でレッスンの相性を確かめ、月額と学習時間が生活に無理なく収まるかを見極めましょう。" },
+    webdesign: { label: "Webデザイン",
+      outlook: "Webデザインは成果物がそのまま実績になり、副業・在宅と相性抜群の分野です。ツールの進化で参入しやすくなった一方、企業のWeb需要は根強く、スキル次第で単価も伸ばせます。",
+      caution: "「作れる」だけでなく「案件が取れる」まで支援があるかが重要です。ポートフォリオ制作や営業サポートの有無、卒業後に教材を見返せるかを確認しましょう。" },
+    sns: { label: "SNS・Webマーケ",
+      outlook: "SNS運用・マーケティングは企業の需要が急拡大している成長分野です。数字で成果を示せるため評価されやすく、副業からでも実績を積みやすいのが魅力です。",
+      caution: "「発信ノウハウ」だけでなく「運用・分析・広告」まで実務で学べるかが鍵です。再現性のあるカリキュラムか、実際の運用を経験できるかを体験や説明会で確認しましょう。" },
+    other: { label: "資格・教養",
+      outlook: "資格や教養の学び直しは、キャリアの土台と自信をつくる堅実な自己投資です。オンライン講座の普及で、忙しい社会人でもスキマ時間で無理なく続けられるようになりました。",
+      caution: "「合格」だけを目的にせず、取得後にどう活かすかまで考えて選ぶと後悔しません。教材の分かりやすさ・サポート・費用のバランスを、無料資料請求で見比べましょう。" }
   };
 
   var QUESTIONS = [
@@ -744,6 +820,10 @@ body{
         ? ""
         : "<span class=\"sx-match\"><svg viewBox=\"0 0 60 60\"><circle class=\"bgc\" cx=\"30\" cy=\"30\" r=\"25\"/><circle class=\"fgc\" cx=\"30\" cy=\"30\" r=\"25\"/></svg><b>0<small>マッチ度%</small></b></span>";
       if (!isJob) { schoolIdx++; }
+      var specs = "<div class=\"sx-spec\">" +
+        "<div class=\"sx-spec-row\"><span class=\"sx-spec-l\">プラン</span><span class=\"sx-spec-v\">" + (s.plan || "公式サイトでご確認ください") + "</span></div>" +
+        "<div class=\"sx-spec-row\"><span class=\"sx-spec-l\">こんな人に</span><span class=\"sx-spec-v\">" + (s.forWho || "") + "</span></div>" +
+        "</div>";
       card.innerHTML =
         "<div class=\"sx-rhead\">" +
         "<span class=\"sx-mono\">" + s.mono + "</span>" +
@@ -753,7 +833,7 @@ body{
         "<div class=\"sx-rtag\">" + s.tag + "</div>" +
         "</div>" + gauge +
         "</div>" + badge +
-        "<p class=\"sx-reason\">" + s.reason + extra + "</p>" + cta;
+        "<p class=\"sx-reason\">" + s.reason + extra + "</p>" + specs + cta;
       wrap.appendChild(card);
       setTimeout(function () {
         card.classList.add("in");
@@ -766,6 +846,15 @@ body{
         }, 250);
       }, 220 + idx * 300);
     });
+    // 分野ごとの「業界展望」「選ぶときの注意点」
+    var fi = FIELDINFO[state.ans.field] || FIELDINFO.ai;
+    $("sxInsight").innerHTML =
+      "<div class=\"sx-info sx-info-up\">" +
+      "<div class=\"sx-info-head\"><span class=\"sx-info-ic sx-info-ic-up\"><svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M4 16l5-5 4 4 7-8\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M16 7h5v5\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>" + fi.label + "の業界展望</div>" +
+      "<p>" + fi.outlook + "</p></div>" +
+      "<div class=\"sx-info sx-info-warn\">" +
+      "<div class=\"sx-info-head\"><span class=\"sx-info-ic sx-info-ic-warn\"><svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M12 3l9 16H3L12 3z\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><path d=\"M12 10v4\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/><circle cx=\"12\" cy=\"17\" r=\"1\" fill=\"currentColor\"/></svg></span>" + fi.label + "のスクール・講座を選ぶときの注意点</div>" +
+      "<p>" + fi.caution + "</p></div>";
     $("sxResult").style.display = "block";
     $("sxLabel").textContent = "COMPLETE";
     if (restored) {
