@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Crect%20width%3D%2724%27%20height%3D%2724%27%20rx%3D%276%27%20fill%3D%27%230f2c4d%27%2F%3E%3Cpath%20d%3D%27M12%202l2.4%206.2L21%209.3l-5%204.4%201.5%206.6L12%2016.9l-5.5%203.4L8%2013.7%203%209.3l6.6-1.1L12%202z%27%20fill%3D%27%23ffd84d%27%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%230f2c4d%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%275.5%27%20r%3D%272%27%20fill%3D%27%23ff5b39%27%2F%3E%3Crect%20x%3D%2715%27%20y%3D%277%27%20width%3D%272%27%20height%3D%273%27%20rx%3D%271%27%20fill%3D%27%239fb2c8%27%2F%3E%3Crect%20x%3D%277.5%27%20y%3D%2710%27%20width%3D%2717%27%20height%3D%2713.5%27%20rx%3D%275.5%27%20fill%3D%27%23e7eef7%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2712.3%27%20width%3D%2712%27%20height%3D%278.4%27%20rx%3D%273%27%20fill%3D%27%2312294a%27%2F%3E%3Ccircle%20cx%3D%2713.4%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2718.6%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2727%27%20r%3D%272.4%27%20fill%3D%27%23ff5b39%27%2F%3E%3C%2Fsvg%3E">
 <title>スクール診断コンシェルジュ｜無料60秒であなたに合う学びが見つかる</title>
 <meta name="description" content="4つの質問に答えるだけで、あなたに合うAIスクール・プログラミングスクールをAIコンシェルジュが無料診断。補助金で最大80%OFFになるかもその場でわかります。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +142,10 @@ body{
 .sx-rhead{display:flex;align-items:center;gap:13px;margin-bottom:10px}
 .sx-mono{flex:none;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--navy),#1b4f8a);box-shadow:0 5px 14px rgba(15,44,77,.3)}
 .sx-rcard.first .sx-mono{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 5px 14px rgba(255,91,57,.35)}
+.sx-rcard.job{border:1.5px dashed #b8c9dc;background:#fbfdff;box-shadow:0 1px 2px rgba(15,44,77,.04),0 8px 22px rgba(15,44,77,.06)}
+.sx-rcard.job .sx-mono{background:linear-gradient(135deg,#1b4f8a,#37d8f0);box-shadow:0 5px 14px rgba(27,79,138,.28)}
+.sx-rcard.job .sx-rank{color:#1b7a99}
+.sx-rcard.job .sx-cta{background:linear-gradient(135deg,#1b4f8a,#2b7fb8);box-shadow:0 8px 22px rgba(27,79,138,.3)}
 .sx-rinfo{min-width:0;flex:1}
 .sx-rank{font-size:.66rem;font-weight:900;letter-spacing:.12em;color:var(--accent)}
 .sx-rname{font-size:1.1rem;font-weight:900;color:var(--navy);line-height:1.3}
@@ -306,7 +310,7 @@ body{
         <p>あなたに合うスクールを選定しています…</p>
       </div>
       <div class="sx-result" id="sxResult">
-        <p class="sx-rtitle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.9l-5.5 3.4L8 13.7 3 9.3l6.6-1.1L12 2z" fill="#ff5b39"/></svg>診断結果：あなたにおすすめの2校</p>
+        <p class="sx-rtitle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.9l-5.5 3.4L8 13.7 3 9.3l6.6-1.1L12 2z" fill="#ff5b39"/></svg>診断結果：あなたへのおすすめ</p>
         <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5b39"/><stop offset="1" stop-color="#ffd84d"/></linearGradient></defs></svg>
         <div class="sx-save-row">
           <button type="button" class="sx-save" id="sxSave"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span id="sxSaveTxt">この結果を保存する</span></button>
@@ -386,7 +390,9 @@ body{
     daytraweb: "",
     wannabe: "",
     studying: "",
-    ucan: ""
+    ucan: "",
+    workport: "",
+    mynavi: ""
   };
   var FALLBACK = {
     kikagaku: "https://ai-school-guide.com/ai-reskilling-subsidy/",
@@ -421,7 +427,11 @@ body{
     studying: { name: "スタディング", tag: "資格／スマホ完結", mono: "資", subsidy: false,
       reason: "スマホ完結で学べる低価格のオンライン資格講座。簿記・FP・宅建など幅広い資格に対応し、忙しい社会人でもスキマ時間で合格を目指せます。" },
     ucan: { name: "ユーキャン", tag: "通信講座／資格・教養", mono: "ユ", subsidy: false,
-      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、初めての学び直しでも自分に合った講座が見つかりやすいのが強みです。" }
+      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、初めての学び直しでも自分に合った講座が見つかりやすいのが強みです。" },
+    workport: { name: "ワークポート", tag: "転職エージェント／未経験IT歓迎", mono: "W", subsidy: false, kind: "job",
+      reason: "IT・Web業界の転職に強く、未経験からの転職支援実績が豊富な転職エージェント。スクールで学びながら、並行して求人を紹介してもらう使い方もおすすめです。" },
+    mynavi: { name: "マイナビエージェント", tag: "転職エージェント／20〜40代", mono: "M", subsidy: false, kind: "job",
+      reason: "20〜40代の転職に強い大手エージェント。未経験可の求人も多く、書類添削や面接対策など手厚いサポートが受けられます。学び直しと並行して登録しておくと安心です。" }
   };
 
   var QUESTIONS = [
@@ -461,18 +471,28 @@ body{
       ] }
   ];
 
+  // ===== 表示するスクールの決定 =====
+  // ▼ 配列の「順番」がそのまま表示順です。件数は2件以上でもOK（好きな数だけ並べられます）。
+  //   案件が増えたら、この配列にスクールIDを追加・並べ替えしてください。
   function recommend(a) {
+    var list;
     switch (a.field) {
-      case "ai": return a.goal === "career" ? ["kikagaku", "samurai"] : ["shiftai", "dmmai"];
-      case "prog": return a.goal === "career" ? ["webcamp", "techcamp"] : ["samurai", "daytra"];
-      case "english": return ["rarejob", "studysapuri"];
-      case "webdesign": return ["shelikes", "daytraweb"];
-      case "sns": return ["wannabe", "shelikes"];
-      case "other": return ["studying", "ucan"];
+      case "ai": list = a.goal === "career" ? ["kikagaku", "samurai"] : ["shiftai", "dmmai"]; break;
+      case "prog": list = a.goal === "career" ? ["webcamp", "techcamp"] : ["samurai", "daytra"]; break;
+      case "english": list = ["rarejob", "studysapuri"]; break;
+      case "webdesign": list = ["shelikes", "daytraweb"]; break;
+      case "sns": list = ["wannabe", "shelikes"]; break;
+      case "other": list = ["studying", "ucan"]; break;
+      default:
+        list = a.goal === "career" ? ["kikagaku", "webcamp"]
+             : a.goal === "current" ? ["shiftai", "samurai"]
+             : ["shiftai", "daytra"];
     }
-    if (a.goal === "career") { return ["kikagaku", "webcamp"]; }
-    if (a.goal === "current") { return ["shiftai", "samurai"]; }
-    return ["shiftai", "daytra"];
+    // ▼ 転職志望（転職・キャリアチェンジ）の人には、未経験OKの転職サイトを末尾に追加
+    if (a.goal === "career") {
+      list = list.concat([(a.field === "ai" || a.field === "prog") ? "workport" : "mynavi"]);
+    }
+    return list;
   }
 
   var state = { step: 0, ans: {} };
@@ -698,42 +718,51 @@ body{
     // 結果をURLに反映（ブックマークで復元可能に）
     try { history.replaceState(null, "", location.pathname + "?r=" + encodeAns(state.ans)); } catch (e) {}
     var ids = recommend(state.ans);
-    var pcts = [94, 88];
     var wrap = $("sxCards");
     wrap.innerHTML = "";
+    var schoolIdx = 0;
     ids.forEach(function (id, idx) {
       var s = SCHOOLS[id];
+      if (!s) { return; }
+      var isJob = s.kind === "job";
       var card = document.createElement("div");
-      card.className = "sx-rcard" + (idx === 0 ? " first" : "");
-      var badge = (eligible() && s.subsidy)
+      card.className = "sx-rcard" + (idx === 0 ? " first" : "") + (isJob ? " job" : "");
+      var badge = (!isJob && eligible() && s.subsidy)
         ? "<span class=\"sx-badge\"><svg viewBox=\"0 0 16 16\" fill=\"none\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#0f9d58\"/><path d=\"M4.5 8.5L7 11L11.5 5.5\" stroke=\"#fff\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>補助金対象の可能性あり（最大80%支給）</span>"
         : "";
-      var extra = (eligible() && s.subsidy)
+      var extra = (!isJob && eligible() && s.subsidy)
         ? " あなたの回答から、給付金の対象になる可能性が高い状況です。無料カウンセリングで受給条件を必ず確認してください。"
         : "";
       var url = schoolUrl(id);
+      var ctaLabel = isJob ? "無料で求人を見る" : "詳しく見る（無料）";
       var cta = url
-        ? "<a class=\"sx-cta\" href=\"" + url + "\" rel=\"nofollow sponsored\">詳しく見る（無料）<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>"
+        ? "<a class=\"sx-cta\" href=\"" + url + "\" rel=\"nofollow sponsored\">" + ctaLabel + "<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>"
         : "<span class=\"sx-cta pending\">近日リンク公開</span>";
+      var rankLabel = isJob ? "あわせて｜未経験OKの転職サポート" : ("RECOMMEND " + (schoolIdx + 1));
+      var pct = Math.max(74, 95 - schoolIdx * 6);
+      var gauge = isJob
+        ? ""
+        : "<span class=\"sx-match\"><svg viewBox=\"0 0 60 60\"><circle class=\"bgc\" cx=\"30\" cy=\"30\" r=\"25\"/><circle class=\"fgc\" cx=\"30\" cy=\"30\" r=\"25\"/></svg><b>0<small>マッチ度%</small></b></span>";
+      if (!isJob) { schoolIdx++; }
       card.innerHTML =
         "<div class=\"sx-rhead\">" +
         "<span class=\"sx-mono\">" + s.mono + "</span>" +
         "<div class=\"sx-rinfo\">" +
-        "<div class=\"sx-rank\">RECOMMEND " + (idx + 1) + "</div>" +
+        "<div class=\"sx-rank\">" + rankLabel + "</div>" +
         "<div class=\"sx-rname\">" + s.name + "</div>" +
         "<div class=\"sx-rtag\">" + s.tag + "</div>" +
-        "</div>" +
-        "<span class=\"sx-match\"><svg viewBox=\"0 0 60 60\"><circle class=\"bgc\" cx=\"30\" cy=\"30\" r=\"25\"/><circle class=\"fgc\" cx=\"30\" cy=\"30\" r=\"25\"/></svg><b>0<small>マッチ度%</small></b></span>" +
+        "</div>" + gauge +
         "</div>" + badge +
         "<p class=\"sx-reason\">" + s.reason + extra + "</p>" + cta;
       wrap.appendChild(card);
       setTimeout(function () {
         card.classList.add("in");
+        if (isJob) { return; }
         var fg = card.querySelector(".fgc");
         var num = card.querySelector(".sx-match b");
         setTimeout(function () {
-          fg.style.strokeDashoffset = 157 * (1 - pcts[idx] / 100);
-          countUp(num, pcts[idx], 1100);
+          fg.style.strokeDashoffset = 157 * (1 - pct / 100);
+          countUp(num, pct, 1100);
         }, 250);
       }, 220 + idx * 300);
     });
@@ -742,7 +771,7 @@ body{
     if (restored) {
       typewrite("保存された診断結果です。気になるスクールをチェックしてみてください。");
     } else {
-      typewrite("お待たせしました。あなたの回答から、この2校が最有力です。どちらも無料で詳細を確認できるので、まずは比べてみてください。");
+      typewrite("お待たせしました。あなたの回答をもとに、おすすめをまとめました。気になるものから無料で詳細を確認できますよ。");
       confetti();
     }
   }
