@@ -17,3 +17,9 @@ wp-admin/
 wp-includes/
 wp-content/uploads/
 wp-content/cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

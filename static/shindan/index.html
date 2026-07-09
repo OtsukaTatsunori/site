@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K9TBP05LK2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K9TBP05LK2');
+</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%230f2c4d%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%275.5%27%20r%3D%272%27%20fill%3D%27%23ff5b39%27%2F%3E%3Crect%20x%3D%2715%27%20y%3D%277%27%20width%3D%272%27%20height%3D%273%27%20rx%3D%271%27%20fill%3D%27%239fb2c8%27%2F%3E%3Crect%20x%3D%277.5%27%20y%3D%2710%27%20width%3D%2717%27%20height%3D%2713.5%27%20rx%3D%275.5%27%20fill%3D%27%23e7eef7%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2712.3%27%20width%3D%2712%27%20height%3D%278.4%27%20rx%3D%273%27%20fill%3D%27%2312294a%27%2F%3E%3Ccircle%20cx%3D%2713.4%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2718.6%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2727%27%20r%3D%272.4%27%20fill%3D%27%23ff5b39%27%2F%3E%3C%2Fsvg%3E">
+<title>スクール診断コンシェルジュ｜無料60秒であなたに合う学びが見つかる</title>
+<meta name="description" content="4つの質問に答えるだけで、あなたに合うAIスクール・プログラミングスクールをAIコンシェルジュが無料診断。補助金で最大80%OFFになるかもその場でわかります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f2c4d;
+  --ink:#1e293b;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --accent:#ff5b39;
+  --accent2:#ff8a3d;
+  --cyan:#37d8f0;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{
+  font-family:"Noto Sans JP","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+  color:var(--ink);line-height:1.8;min-height:100dvh;
+  background:linear-gradient(158deg,#081426 0%,#0f2c4d 48%,#16406f 100%);
+  overflow-x:hidden;
+}
+/* ===== 背景：オーロラ＋微粒子 ===== */
+.sx-scene{position:relative;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:4vh 20px 6vh}
+.sx-orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;z-index:0}
+.sx-orb-1{width:54vw;height:54vw;background:#1d4ed8;top:-20vw;left:-14vw;animation:orbA 24s ease-in-out infinite alternate}
+.sx-orb-2{width:46vw;height:46vw;background:#0d9488;bottom:-18vw;right:-12vw;animation:orbB 21s ease-in-out infinite alternate}
+.sx-orb-3{width:30vw;height:30vw;background:#ff5b39;opacity:.2;top:36%;left:62%;animation:orbC 30s ease-in-out infinite alternate}
+@keyframes orbA{from{transform:translate(0,0) scale(1)}to{transform:translate(10vw,8vh) scale(1.18)}}
+@keyframes orbB{from{transform:translate(0,0) scale(1.12)}to{transform:translate(-9vw,-7vh) scale(.94)}}
+@keyframes orbC{from{transform:translate(0,0)}to{transform:translate(-15vw,11vh)}}
+.sx-dust{position:fixed;inset:0;pointer-events:none;z-index:0}
+.sx-dust i{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.35);animation:dust linear infinite}
+@keyframes dust{from{transform:translateY(0);opacity:0}10%{opacity:.7}90%{opacity:.4}to{transform:translateY(-110vh);opacity:0}}
+/* ===== メインカード ===== */
+.sx-card{
+  position:relative;z-index:1;width:100%;max-width:1000px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);
+  border:1px solid rgba(255,255,255,.7);border-radius:30px;
+  box-shadow:0 2px 4px rgba(4,16,36,.16),0 40px 100px rgba(4,16,36,.55);
+  padding:clamp(20px,4.2vw,52px);
+  animation:cardRise .9s var(--ease) both;
+}
+@keyframes cardRise{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+.sx-topbar,.sx-head,.sx-stage,.sx-foot{animation:fadeUp .7s var(--ease) both}
+.sx-topbar{animation-delay:.1s}
+.sx-head{animation-delay:.22s}
+.sx-stage{animation-delay:.38s}
+.sx-foot{animation-delay:.55s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* ===== トップバー ===== */
+.sx-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(16px,3vw,30px)}
+.sx-logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy);font-size:.94rem;letter-spacing:.02em}
+.sx-logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--navy),#1b4f8a);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(15,44,77,.3)}
+.sx-logo-mark svg{width:18px;height:18px}
+.sx-free{font-size:.72rem;font-weight:700;color:var(--navy);background:#eef4fb;border:1px solid #d8e5f3;padding:.35em 1em;border-radius:50px;letter-spacing:.05em;white-space:nowrap}
+/* ===== ヘッダー ===== */
+.sx-head{text-align:center;margin-bottom:clamp(14px,2.6vw,26px)}
+.sx-title{font-size:clamp(1.25rem,3.6vw,2.15rem);font-weight:900;color:var(--navy);line-height:1.42;letter-spacing:.01em}
+.sx-title em{font-style:normal;color:var(--accent);position:relative}
+.sx-title em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:.35em;background:rgba(255,91,57,.15);border-radius:3px;z-index:-1}
+.sx-lead{font-size:clamp(.8rem,1.7vw,.95rem);color:var(--muted);margin-top:.55em}
+/* ===== 進捗 ===== */
+.sx-progress{max-width:400px;margin:clamp(12px,2.2vw,22px) auto 0;display:flex;flex-direction:column;gap:7px}
+.sx-ptrack{height:8px;background:#e8eef5;border-radius:50px;overflow:hidden}
+.sx-pbar{height:100%;width:5%;border-radius:50px;background:linear-gradient(90deg,#1b4f8a,var(--accent));transition:width .8s var(--ease);position:relative;overflow:hidden}
+.sx-pbar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 2.1s linear infinite}
+@keyframes shine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.sx-psteps{display:flex;justify-content:space-between;align-items:center}
+.sx-plabel{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.08em}
+.sx-pdots{display:flex;gap:6px}
+.sx-pdots i{width:8px;height:8px;border-radius:50%;background:#d7e0ea;transition:background .4s,transform .4s var(--spring)}
+.sx-pdots i.on{background:var(--accent);transform:scale(1.3)}
+.sx-pdots i{position:relative}
+@keyframes dotRing{from{transform:scale(.4);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.sx-pdots i.just::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--accent);animation:dotRing .6s ease-out forwards}
+/* ===== ステージ ===== */
+.sx-stage{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(18px,3.4vw,44px);align-items:start;margin-top:clamp(14px,2.4vw,28px)}
+/* ===== 質問 ===== */
+.sx-panel{min-width:0}
+.sx-qwrap.in{animation:qIn .42s var(--ease) both}
+.sx-qwrap.out{animation:qOut .22s ease both}
+@keyframes qIn{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+@keyframes qOut{from{opacity:1}to{opacity:0;transform:translateX(-22px)}}
+.sx-qnum{display:inline-block;font-size:.7rem;font-weight:900;letter-spacing:.16em;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:.3em 1.05em;border-radius:50px;margin-bottom:.75em;box-shadow:0 4px 14px rgba(255,91,57,.32)}
+.sx-back{display:inline-flex;align-items:center;gap:.2em;background:none;border:none;font-family:inherit;font-size:.76rem;font-weight:700;color:var(--muted);cursor:pointer;padding:4px 8px 4px 0;margin-bottom:.4em;border-radius:8px;transition:color .2s,transform .2s}
+.sx-back svg{width:15px;height:15px}
+.sx-back:hover{color:var(--navy);transform:translateX(-3px)}
+.sx-back[hidden]{display:none}
+@keyframes qflip{from{transform:rotateX(85deg);opacity:0}to{transform:rotateX(0);opacity:1}}
+.sx-qnum.flip{animation:qflip .45s var(--ease);transform-origin:50% 100%}
+.sx-q{font-size:clamp(.98rem,2.3vw,1.28rem);font-weight:900;color:var(--navy);line-height:1.55;margin-bottom:1em}
+.sx-choices{display:flex;flex-direction:column;gap:11px}
+.sx-choice{
+  position:relative;display:flex;align-items:center;gap:12px;width:100%;min-height:58px;
+  padding:14px 18px 14px 22px;background:#fff;border:1.5px solid var(--line);border-radius:16px;
+  font-family:inherit;font-size:.94rem;font-weight:700;color:var(--ink);text-align:left;cursor:pointer;
+  box-shadow:0 1px 2px rgba(15,44,77,.05),0 6px 18px rgba(15,44,77,.06);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .25s,opacity .35s;
+  overflow:hidden;opacity:0;animation:chIn .4s var(--ease) forwards;
+}
+@keyframes chIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sx-choice::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%) scaleY(0);width:5px;height:64%;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:0 5px 5px 0;transition:transform .35s var(--spring)}
+.sx-choice:hover{transform:translateY(-3px);border-color:#c6d5e5;box-shadow:0 3px 6px rgba(15,44,77,.07),0 16px 36px rgba(15,44,77,.14)}
+.sx-choice:hover::before{transform:translateY(-50%) scaleY(1)}
+.sx-choice::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(15,44,77,.06),transparent);transform:skewX(-18deg);transition:left .5s ease;pointer-events:none}
+.sx-choice:hover::after{left:140%}
+.sx-choice:focus-visible{outline:3px solid rgba(27,79,138,.35);outline-offset:3px}
+.sx-choice:active{transform:translateY(0) scale(.975)}
+.sx-rip{position:absolute;border-radius:50%;background:rgba(255,91,57,.22);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(3.2);opacity:0}}
+@keyframes pickPop{0%{transform:scale(1)}45%{transform:scale(1.025)}100%{transform:scale(.99)}}
+.sx-check{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;transform:scale(0);transition:transform .4s var(--spring);margin-left:auto;box-shadow:0 3px 8px rgba(255,91,57,.35)}
+.sx-check svg{width:12px;height:12px}
+.sx-choice.picked{border-color:var(--accent);background:#fff8f6;animation:pickPop .35s var(--spring) both}
+.sx-choice.picked .sx-check{transform:scale(1)}
+.sx-choice.faded{opacity:.28!important;pointer-events:none;transform:scale(.985)}
+/* ===== 診断中 ===== */
+.sx-loading{display:none;flex-direction:column;align-items:center;gap:16px;padding:44px 0}
+.sx-scan{position:relative;width:96px;height:96px}
+.sx-scan::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #e4ecf5}
+.sx-scan::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,91,57,.55),transparent 120deg);animation:spin 1.1s linear infinite;-webkit-mask:radial-gradient(farthest-side,transparent 62%,#000 64%);mask:radial-gradient(farthest-side,transparent 62%,#000 64%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sx-scan b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900;color:var(--navy)}
+.sx-loading p{font-size:.88rem;font-weight:700;color:var(--muted)}
+/* ===== 結果 ===== */
+.sx-result{display:none}
+.sx-rtitle{font-size:1.12rem;font-weight:900;color:var(--navy);margin-bottom:1em;display:flex;align-items:center;gap:.5em}
+.sx-rtitle svg{width:22px;height:22px;flex:none}
+.sx-rcard{
+  position:relative;background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:20px 20px 18px;margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(15,44,77,.05),0 12px 32px rgba(15,44,77,.08);
+  opacity:0;transform:translateY(22px);
+}
+.sx-rcard.in{animation:rIn .65s var(--ease) forwards}
+@keyframes rIn{to{opacity:1;transform:none}}
+.sx-rcard.first{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,var(--accent),#ffd84d,var(--accent2),var(--accent)) border-box;background-size:100% 100%,280% 280%;animation:rIn .65s var(--ease) forwards,glowB 5s linear infinite;box-shadow:0 3px 6px rgba(255,91,57,.09),0 18px 44px rgba(255,91,57,.16)}
+@keyframes glowB{to{background-position:0 0,280% 0}}
+.sx-rcard.settled{opacity:1;transform:none;animation:none;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.sx-rcard.settled:hover{transform:translateY(-4px);box-shadow:0 3px 6px rgba(15,44,77,.07),0 18px 42px rgba(15,44,77,.15)}
+.sx-rcard.first.settled{animation:glowB 5s linear infinite}
+@keyframes gaugePop{0%{transform:scale(1)}45%{transform:scale(1.12)}100%{transform:scale(1)}}
+.sx-match.pop{animation:gaugePop .45s var(--spring)}
+.sx-rhead{display:flex;align-items:center;gap:13px;margin-bottom:10px}
+.sx-mono{flex:none;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--navy),#1b4f8a);box-shadow:0 5px 14px rgba(15,44,77,.3)}
+.sx-rcard.first .sx-mono{background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 5px 14px rgba(255,91,57,.35)}
+.sx-rcard.job{border:1.5px dashed #b8c9dc;background:#fbfdff;box-shadow:0 1px 2px rgba(15,44,77,.04),0 8px 22px rgba(15,44,77,.06)}
+.sx-rcard.job .sx-mono{background:linear-gradient(135deg,#1b4f8a,#37d8f0);box-shadow:0 5px 14px rgba(27,79,138,.28)}
+.sx-rcard.job .sx-rank{color:#1b7a99}
+.sx-rcard.job .sx-cta{background:linear-gradient(135deg,#1b4f8a,#2b7fb8);box-shadow:0 8px 22px rgba(27,79,138,.3)}
+.sx-rinfo{min-width:0;flex:1}
+.sx-rank{font-size:.66rem;font-weight:900;letter-spacing:.12em;color:var(--accent)}
+.sx-rname{font-size:1.1rem;font-weight:900;color:var(--navy);line-height:1.3}
+.sx-rtag{font-size:.74rem;color:var(--muted)}
+.sx-match{flex:none;position:relative;width:60px;height:60px}
+.sx-match svg{width:60px;height:60px;transform:rotate(-90deg)}
+.sx-match circle{fill:none;stroke-width:5;stroke-linecap:round}
+.sx-match .bgc{stroke:#eef2f7}
+.sx-match .fgc{stroke:url(#gaugeGrad);stroke-dasharray:157;stroke-dashoffset:157;transition:stroke-dashoffset 1.1s var(--ease)}
+.sx-match b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;color:var(--navy);line-height:1}
+.sx-match small{font-size:.5rem;color:var(--muted);font-weight:700;margin-top:2px}
+.sx-badge{display:inline-flex;align-items:center;gap:.4em;background:#e9faf1;color:#0b7a44;font-size:.73rem;font-weight:700;padding:.35em 1em;border-radius:50px;margin:2px 0 10px}
+.sx-badge svg{width:13px;height:13px}
+.sx-reason{font-size:.85rem;line-height:1.72;color:var(--ink);background:#f6f9fc;border-radius:12px;padding:12px 15px;margin-bottom:12px}
+/* プラン・こんな人に（スペック表） */
+.sx-spec{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.sx-spec-row{display:flex;align-items:stretch}
+.sx-spec-row + .sx-spec-row{border-top:1px solid var(--line)}
+.sx-spec-l{flex:0 0 92px;display:flex;align-items:center;justify-content:center;background:#f0f5fa;color:var(--navy);font-size:.74rem;font-weight:800;padding:9px 6px;text-align:center}
+.sx-spec-v{flex:1;font-size:.82rem;line-height:1.65;color:var(--ink);padding:9px 13px}
+/* 業界展望・注意点 */
+.sx-info{border-radius:14px;padding:16px 18px;margin-top:14px;opacity:0;animation:rIn .65s var(--ease) .5s forwards}
+.sx-info-up{background:#eef7ff;border:1px solid #cfe4f7}
+.sx-info-warn{background:#fff8ec;border:1px solid #f3e2bd}
+.sx-info-head{display:flex;align-items:center;gap:.55em;font-size:.95rem;font-weight:900;color:var(--navy);margin-bottom:.5em}
+.sx-info-ic{flex:none;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff}
+.sx-info-ic svg{width:16px;height:16px}
+.sx-info-ic-up{background:linear-gradient(135deg,#1b4f8a,#2b7fb8)}
+.sx-info-ic-warn{background:linear-gradient(135deg,#e8a020,#d97706)}
+.sx-info p{font-size:.85rem;line-height:1.8;color:var(--ink);margin:0}
+.sx-cta{
+  position:relative;display:flex;align-items:center;justify-content:center;gap:.5em;width:100%;padding:15px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:900;font-size:.98rem;
+  text-decoration:none;border-radius:50px;box-shadow:0 8px 22px rgba(255,91,57,.35);overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.sx-cta::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .6s ease}
+.sx-cta:hover{transform:translateY(-2px);box-shadow:0 13px 32px rgba(255,91,57,.46)}
+.sx-cta:hover::after{left:130%}
+.sx-cta svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+.sx-cta:hover svg{transform:translateX(4px)}
+.sx-cta.pending{background:#c3cedb;box-shadow:none;pointer-events:none}
+.sx-save-row{margin:0 0 18px;text-align:center}
+.sx-save{display:inline-flex;align-items:center;gap:.5em;background:#fff;border:1.5px solid var(--navy);color:var(--navy);font-family:inherit;font-size:.92rem;font-weight:800;padding:12px 24px;border-radius:50px;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,color .2s;box-shadow:0 2px 8px rgba(15,44,77,.08)}
+.sx-save svg{width:17px;height:17px}
+.sx-save:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,44,77,.16)}
+.sx-save.copied{background:#0f9d58;border-color:#0f9d58;color:#fff}
+.sx-save-hint{font-size:.72rem;color:var(--muted);line-height:1.7;margin:.7em auto 0;max-width:420px}
+.sx-restart{display:block;margin:14px auto 0;background:none;border:none;font-family:inherit;font-size:.82rem;color:var(--muted);text-decoration:underline;cursor:pointer;padding:8px}
+.sx-restart:hover{color:var(--navy)}
+/* ===== ロボット・コンシェルジュ ===== */
+.sx-concierge{text-align:center;position:relative}
+.sx-bubble{
+  position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:15px 17px;text-align:left;
+  box-shadow:0 1px 2px rgba(15,44,77,.05),0 10px 28px rgba(15,44,77,.09);margin-bottom:20px;
+  transition:opacity .15s ease,transform .15s ease;min-height:88px;display:flex;align-items:center;
+}
+.sx-bubble.swap{opacity:0;transform:translateY(4px)}
+.sx-bubble::after{content:"";position:absolute;bottom:-9px;left:50%;transform:translateX(-50%) rotate(45deg);width:16px;height:16px;background:#fff;border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.sx-bubble p{font-size:.87rem;line-height:1.7;color:var(--ink);margin:0}
+.sx-cursor{display:inline-block;width:2px;height:1em;background:var(--accent);vertical-align:-2px;margin-left:1px;animation:cur .8s steps(1) infinite}
+@keyframes cur{50%{opacity:0}}
+.sx-dots{display:inline-flex;gap:5px;align-items:center;height:1.2em}
+.sx-dots i{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:dotp 1s ease-in-out infinite}
+.sx-dots i:nth-child(2){animation-delay:.15s}
+.sx-dots i:nth-child(3){animation-delay:.3s}
+@keyframes dotp{0%,100%{transform:scale(.8);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+.sx-char{display:inline-block;animation:floatY 3.8s ease-in-out infinite;will-change:transform}
+.sx-char.jump{animation:jump .7s var(--spring)}
+.sx-char svg{width:clamp(130px,17vw,185px);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 16px 26px rgba(8,24,48,.25))}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes jump{0%{transform:translateY(0)}30%{transform:translateY(-16px) scale(1.04,.96)}55%{transform:translateY(2px) scale(.98,1.02)}75%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+.sx-shadow{width:104px;height:13px;border-radius:50%;background:rgba(8,24,48,.15);margin:8px auto 0;animation:shScale 3.8s ease-in-out infinite}
+@keyframes shScale{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.8)}}
+.sx-eye{transform-origin:center;transform-box:fill-box;animation:blink 4.4s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.06)}}
+.sx-eyehappy{opacity:0}
+.sx-char.happy .sx-eye{opacity:0}
+.sx-char.happy .sx-eyehappy{opacity:1}
+.sx-ant{transform-origin:center;transform-box:fill-box;animation:antP 2.2s ease-in-out infinite}
+@keyframes antP{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.45);opacity:1}}
+.sx-core{transform-origin:center;transform-box:fill-box;animation:coreP 2.6s ease-in-out infinite}
+@keyframes coreP{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.sx-ring1,.sx-ring2{transform-origin:center;transform-box:fill-box}
+.sx-ring1{animation:ringP 3s ease-out infinite}
+.sx-ring2{animation:ringP 3s ease-out 1.5s infinite}
+@keyframes ringP{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+.sx-cname{font-size:.75rem;font-weight:700;color:var(--muted);margin-top:10px;letter-spacing:.04em}
+#sxPupils{transition:transform .18s ease-out}
+@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(2.2deg)}60%{transform:rotate(-1.8deg)}}
+.sx-char.wig svg{animation:wig .75s ease}
+@keyframes bubPop{0%{transform:scale(.98)}55%{transform:scale(1.012)}100%{transform:scale(1)}}
+.sx-bubble.pop{animation:bubPop .35s var(--spring)}
+/* ===== 紙吹雪 ===== */
+.sx-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:30px;z-index:5}
+.sx-confetti i{position:absolute;top:-14px;border-radius:2px;opacity:.95;animation:fall 2.6s ease-in forwards}
+.sx-confetti i.c{border-radius:50%}
+@keyframes fall{to{transform:translate(var(--dx,0),120vh) rotate(640deg);opacity:0}}
+/* ===== フッター ===== */
+.sx-foot{margin-top:clamp(18px,3vw,32px);border-top:1px solid var(--line);padding-top:14px;font-size:.66rem;color:#8899ab;line-height:1.85;text-align:center}
+.sx-flinks{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.sx-flinks a{color:#5f7085;text-decoration:none;font-weight:700;transition:color .2s}
+.sx-flinks a:hover{color:var(--navy);text-decoration:underline}
+.sx-copy{display:block;margin-top:8px;font-size:.62rem;color:#a3b0c0}
+/* ===== モバイル：1画面完結 ===== */
+@media (max-width:760px){
+  .sx-scene{padding:8px;align-items:stretch}
+  .sx-card{border-radius:20px;padding:14px 14px 12px;min-height:calc(100dvh - 16px);display:flex;flex-direction:column}
+  .sx-topbar{margin-bottom:8px}
+  .sx-logo{font-size:.76rem;gap:7px}
+  .sx-logo-mark{width:26px;height:26px;border-radius:8px}
+  .sx-logo-mark svg{width:14px;height:14px}
+  .sx-free{font-size:.62rem;padding:.3em .9em}
+  .sx-head{margin-bottom:8px}
+  .sx-title{font-size:1.02rem;line-height:1.4}
+  .sx-title br{display:none}
+  .sx-lead{display:none}
+  .sx-progress{margin-top:8px;gap:5px;max-width:none}
+  .sx-ptrack{height:6px}
+  .sx-plabel{font-size:.62rem}
+  .sx-stage{display:flex;flex-direction:column;gap:10px;margin-top:8px;flex:1}
+  .sx-concierge{order:-1;display:grid;grid-template-columns:auto 1fr;align-items:end;gap:10px;text-align:left}
+  .sx-charwrap{order:-1}
+  .sx-char svg{width:74px}
+  .sx-char{animation-duration:3.4s}
+  .sx-shadow{width:46px;height:8px;margin-top:3px}
+  .sx-cname{display:none}
+  .sx-bubble{margin-bottom:0;min-height:74px;padding:10px 13px}
+  .sx-bubble p{font-size:.78rem;line-height:1.62}
+  .sx-bubble::after{left:-9px;bottom:20px;transform:rotate(135deg)}
+  .sx-qnum{font-size:.6rem;margin-bottom:.4em}
+  .sx-back{font-size:.7rem;margin-bottom:.3em}
+  .sx-q{font-size:.9rem;margin-bottom:.6em}
+  .sx-choices{gap:7px}
+  .sx-choice{min-height:44px;padding:9px 13px 9px 16px;font-size:.82rem;border-radius:12px;gap:8px}
+  .sx-check{width:19px;height:19px}
+  .sx-foot{margin-top:auto;padding-top:9px;font-size:.56rem;line-height:1.7}
+  .sx-rcard{padding:15px 15px 14px}
+  .sx-reason{font-size:.79rem;padding:10px 12px}
+  .sx-spec-l{flex-basis:76px;font-size:.68rem}
+  .sx-spec-v{font-size:.77rem;padding:8px 11px}
+  .sx-info{padding:13px 14px}
+  .sx-info-head{font-size:.88rem}
+  .sx-info p{font-size:.79rem}
+  .sx-cta{padding:13px;font-size:.9rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .sx-rcard,.sx-qwrap,.sx-choice,.sx-topbar,.sx-head,.sx-stage,.sx-foot{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<div class="sx-scene">
+<span class="sx-orb sx-orb-1"></span>
+<span class="sx-orb sx-orb-2"></span>
+<span class="sx-orb sx-orb-3"></span>
+<div class="sx-dust" id="sxDust"></div>
+<main class="sx-card" id="sxCard">
+  <div class="sx-topbar">
+    <div class="sx-logo">
+      <span class="sx-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.9l-5.5 3.4L8 13.7 3 9.3l6.6-1.1L12 2z" fill="#ffd84d"/></svg></span>
+      スクール診断コンシェルジュ
+    </div>
+    <span class="sx-free">無料・約60秒</span>
+  </div>
+  <header class="sx-head">
+    <h1 class="sx-title">あなたに合う学びなおし、<br><em>4つの質問</em>で診断します。</h1>
+    <p class="sx-lead">補助金で最大80%OFFになるかも、その場でわかります。</p>
+    <div class="sx-progress">
+      <div class="sx-ptrack"><div class="sx-pbar" id="sxBar"></div></div>
+      <div class="sx-psteps">
+        <span class="sx-plabel" id="sxLabel">QUESTION 1 / 4</span>
+        <span class="sx-pdots" id="sxDots"><i class="on"></i><i></i><i></i><i></i></span>
+      </div>
+    </div>
+  </header>
+  <div class="sx-stage">
+    <section class="sx-panel">
+      <div class="sx-qwrap" id="sxQwrap">
+        <button type="button" class="sx-back" id="sxBack" hidden><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>1つ前にもどる</button>
+        <span class="sx-qnum" id="sxQnum">Q1</span>
+        <p class="sx-q" id="sxQ"></p>
+        <div class="sx-choices" id="sxChoices"></div>
+      </div>
+      <div class="sx-loading" id="sxLoading">
+        <div class="sx-scan"><b id="sxPct">0%</b></div>
+        <p>あなたに合うスクールを選定しています…</p>
+      </div>
+      <div class="sx-result" id="sxResult">
+        <p class="sx-rtitle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.9l-5.5 3.4L8 13.7 3 9.3l6.6-1.1L12 2z" fill="#ff5b39"/></svg>診断結果：あなたへのおすすめ</p>
+        <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5b39"/><stop offset="1" stop-color="#ffd84d"/></linearGradient></defs></svg>
+        <div class="sx-save-row">
+          <button type="button" class="sx-save" id="sxSave"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span id="sxSaveTxt">この結果を保存する</span></button>
+          <p class="sx-save-hint" id="sxSaveHint">タップすると保存メニューが開きます（PCはURLをコピー→ Ctrl+D でブックマーク）。</p>
+        </div>
+        <div id="sxCards"></div>
+        <div id="sxInsight"></div>
+        <button type="button" class="sx-restart" id="sxRestart">もう一度診断する</button>
+      </div>
+    </section>
+    <aside class="sx-concierge">
+      <div class="sx-bubble" id="sxBubble"><p id="sxBubbleText"></p></div>
+      <div class="sx-charwrap">
+        <div class="sx-char" id="sxChar">
+          <svg viewBox="0 0 220 235" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="shellG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#d9e4f0"/>
+              </linearGradient>
+              <linearGradient id="faceG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#132a49"/>
+                <stop offset="1" stop-color="#0b1d36"/>
+              </linearGradient>
+            </defs>
+            <circle class="sx-ring1" cx="110" cy="215" r="26" fill="none" stroke="#37d8f0" stroke-width="2" opacity=".5"/>
+            <circle class="sx-ring2" cx="110" cy="215" r="26" fill="none" stroke="#37d8f0" stroke-width="2" opacity=".5"/>
+            <line x1="110" y1="22" x2="110" y2="46" stroke="#9fb2c8" stroke-width="5" stroke-linecap="round"/>
+            <circle class="sx-ant" cx="110" cy="18" r="9" fill="#ff5b39"/>
+            <rect x="42" y="46" width="136" height="102" rx="42" fill="url(#shellG)"/>
+            <rect x="26" y="80" width="14" height="36" rx="7" fill="#c4d3e4"/>
+            <rect x="180" y="80" width="14" height="36" rx="7" fill="#c4d3e4"/>
+            <rect x="56" y="60" width="108" height="74" rx="30" fill="url(#faceG)"/>
+            <g id="sxPupils">
+            <ellipse class="sx-eye" cx="88" cy="94" rx="8" ry="11" fill="#37d8f0"/>
+            <ellipse class="sx-eye" cx="132" cy="94" rx="8" ry="11" fill="#37d8f0"/>
+            <path class="sx-eyehappy" d="M79 96 Q88 86 97 96" stroke="#37d8f0" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path class="sx-eyehappy" d="M123 96 Q132 86 141 96" stroke="#37d8f0" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            </g>
+            <path d="M100 114 Q110 122 120 114" stroke="#37d8f0" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M70 160 C70 148 88 142 110 142 C132 142 150 148 150 160 L150 196 C150 210 132 218 110 218 C88 218 70 210 70 196 Z" fill="url(#shellG)"/>
+            <circle class="sx-core" cx="110" cy="176" r="13" fill="#ff5b39"/>
+            <circle cx="110" cy="176" r="6" fill="#ffd84d"/>
+            <rect x="52" y="158" width="12" height="30" rx="6" fill="#c4d3e4"/>
+            <rect x="156" y="158" width="12" height="30" rx="6" fill="#c4d3e4"/>
+          </svg>
+        </div>
+        <div class="sx-shadow"></div>
+      </div>
+      <p class="sx-cname">AI診断コンシェルジュ｜大人の学びなおし比較</p>
+    </aside>
+  </div>
+  <footer class="sx-foot">
+    本診断は「大人の学びなおし比較」編集部の基準に基づくもので、特定スクールの受講を保証・強制するものではありません。本ページはプロモーション（広告）を含みます。補助金・給付金の受給可否は各制度の要件およびハローワーク等の審査により決まります。料金・制度は変更される場合があるため、申込前に必ず公式サイトをご確認ください。
+    <nav class="sx-flinks">
+      <a href="https://ai-school-guide.com/about/">運営者情報</a>
+      <a href="https://ai-school-guide.com/privacy-policy/">プライバシーポリシー</a>
+      <a href="https://ai-school-guide.com/contact/">お問い合わせ</a>
+    </nav>
+    <span class="sx-copy">&copy; 大人の学びなおし比較</span>
+  </footer>
+</main>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ===== ★アフィリエイトURL（案件確定後にここを差し替え） =====
+  var AFF = {
+    kikagaku: "",
+    shiftai: "",
+    dmmai: "",
+    webcamp: "",
+    techcamp: "",
+    samurai: "",
+    daytra: "",
+    rarejob: "",
+    studysapuri: "",
+    shelikes: "",
+    daytraweb: "",
+    wannabe: "",
+    studying: "",
+    ucan: "",
+    workport: "",
+    mynavi: ""
+  };
+  var FALLBACK = {
+    kikagaku: "https://ai-school-guide.com/ai-reskilling-subsidy/",
+    shiftai: "https://ai-school-guide.com/shift-ai-review/"
+  };
+
+  var SCHOOLS = {
+    kikagaku: { name: "キカガク 長期コース", tag: "AI・データサイエンス／6ヶ月", mono: "キ", subsidy: true,
+      reason: "転職支援つきでAI・データサイエンスを体系的に学べる長期コース。専門実践教育訓練給付金の対象講座です。",
+      plan: "792,000円 → 補助金適用で実質約158,400円／受講期間6ヶ月（動画は無期限視聴）",
+      forWho: "AI・データ分析を本格的に学び、転職やDX推進を目指す人" },
+    shiftai: { name: "SHIFT AI", tag: "生成AI活用／月額制", mono: "S", subsidy: false,
+      reason: "ChatGPTから画像・動画生成まで、生成AI活用を動画1,000本以上で学べる月額制スクール。副業・業務効率化と好相性です。",
+      plan: "月額21,780円〜／継続（いつでも解約可・年間プランで割引）",
+      forWho: "生成AIを仕事や副業に活かしたい人・まず低コストで始めたい人" },
+    dmmai: { name: "DMM 生成AI CAMP", tag: "生成AI活用／短期集中", mono: "D", subsidy: false,
+      reason: "生成AIを実務に落とし込む短期集中プログラム。プロンプト設計から業務活用まで実践重視で学べます。",
+      plan: "コースにより変動／数週間〜の短期集中（公式で最新の料金・給付金対応を要確認）",
+      forWho: "生成AIを実務レベルで使いこなしたいビジネスパーソン" },
+    webcamp: { name: "DMM WEBCAMP", tag: "プログラミング／転職特化", mono: "W", subsidy: true,
+      reason: "転職成功実績が豊富な転職特化型スクール。専属キャリアアドバイザーの支援と教育訓練給付金対象コースが強みです。",
+      plan: "約69万円〜（給付金対象コースは実質負担が大きく下がる）／3〜4ヶ月",
+      forWho: "未経験からエンジニア転職を本気で目指す人" },
+    techcamp: { name: "テックキャンプ", tag: "プログラミング／短期集中", mono: "T", subsidy: true,
+      reason: "未経験からの短期集中学習に定評のある大手スクール。キャリア面談から転職まで一気通貫でサポートします。",
+      plan: "受講料はコースにより変動（教育訓練給付金の対象）／短期集中",
+      forWho: "短期集中で一気にスキルを身につけたい人" },
+    samurai: { name: "侍エンジニア", tag: "マンツーマン／オーダーメイド", mono: "侍", subsidy: true,
+      reason: "現役エンジニアのマンツーマン指導で、目的に合わせたオーダーメイドカリキュラムを組めるのが最大の強みです。",
+      plan: "コースにより変動（給付金対象コースあり）／マンツーマン・期間選択制",
+      forWho: "自分専用カリキュラムで挫折せず学びたい人" },
+    daytra: { name: "デイトラ", tag: "買い切り／低価格", mono: "デ", subsidy: false,
+      reason: "買い切り型で副業向けスキルをコスパよく学べる人気スクール。教材は買い切り後もアップデートされます。",
+      plan: "約9〜13万円（買い切り）／自分のペースで学習",
+      forWho: "コスパよく副業スキルを身につけたい人" },
+    rarejob: { name: "レアジョブ英会話", tag: "オンライン英会話／継続型", mono: "英", subsidy: false,
+      reason: "オンライン英会話の定番。日常英会話からビジネス英語まで幅広く対応し、まずは無料体験から始められます。",
+      plan: "月額数千円台〜／継続（毎日プラン・回数プランなど選択制）",
+      forWho: "続けやすい価格でオンライン英会話を始めたい人" },
+    studysapuri: { name: "スタディサプリENGLISH", tag: "英語アプリ／TOEIC対策", mono: "ス", subsidy: false,
+      reason: "スキマ時間で続けられる英語学習アプリ。特にTOEIC対策コースは実績が豊富です。",
+      plan: "月額約2,000〜3,000円台／継続（コースにより変動）",
+      forWho: "スキマ時間でTOEIC・英語力を上げたい人" },
+    shelikes: { name: "SHElikes（シーライクス）", tag: "女性向け／40職種定額", mono: "S", subsidy: false,
+      reason: "Webデザイン・ライティング・SNS運用など40以上の職種スキルを定額で学べる女性向けキャリアスクールです。",
+      plan: "入会金＋月額制／継続（受け放題プランなど）",
+      forWho: "Web・デザイン・SNSなど幅広く学びたい女性" },
+    daytraweb: { name: "デイトラ Webデザインコース", tag: "Webデザイン／買い切り", mono: "デ", subsidy: false,
+      reason: "実務レベルのWebデザインをコスパよく学べる買い切り型講座。実案件を想定したカリキュラムが特徴です。",
+      plan: "約10万円前後（買い切り）／自分のペースで学習",
+      forWho: "Webデザインで副業を始めたい人" },
+    wannabe: { name: "WANNABE Academy", tag: "Webマーケ・SNS運用／実務型", mono: "M", subsidy: false,
+      reason: "WebマーケティングやSNS運用を、実際の課題を通して実務ベースで学べるスクールです。",
+      plan: "受講料はコースにより変動／数ヶ月（実務研修つき）",
+      forWho: "Webマーケ・SNS運用を実務で学びたい人" },
+    studying: { name: "スタディング", tag: "資格／スマホ完結", mono: "資", subsidy: false,
+      reason: "スマホ完結で学べる低価格のオンライン資格講座。簿記・FP・宅建など幅広い資格に対応しています。",
+      plan: "資格により数千〜数万円／自分のペースで学習",
+      forWho: "スマホで手軽に資格取得を目指したい人" },
+    ucan: { name: "ユーキャン", tag: "通信講座／資格・教養", mono: "ユ", subsidy: false,
+      reason: "通信講座の最大手。資格から実用・教養まで講座数が非常に多く、自分に合った講座が見つかりやすいのが強みです。",
+      plan: "講座により変動（分割払い可）／数ヶ月〜",
+      forWho: "幅広い資格・教養から選んで学びたい人" },
+    workport: { name: "ワークポート", tag: "転職エージェント／未経験IT歓迎", mono: "W", subsidy: false, kind: "job",
+      reason: "IT・Web業界の転職に強く、未経験からの転職支援実績が豊富な転職エージェント。スクールと並行して求人紹介を受ける使い方もおすすめです。",
+      plan: "登録・利用はすべて無料",
+      forWho: "未経験からIT・Web業界へ転職したい人" },
+    mynavi: { name: "マイナビエージェント", tag: "転職エージェント／20〜40代", mono: "M", subsidy: false, kind: "job",
+      reason: "20〜40代の転職に強い大手エージェント。未経験可の求人も多く、書類添削や面接対策など手厚いサポートが受けられます。",
+      plan: "登録・利用はすべて無料",
+      forWho: "20〜40代で未経験も含め転職を考えている人" }
+  };
+
+  // ===== 分野ごとの「業界展望」と「選ぶときの注意点」 =====
+  var FIELDINFO = {
+    ai: { label: "AI活用",
+      outlook: "生成AIは2026年、あらゆる職種で「使える人」が求められる時代に入りました。理系の知識がなくても、日本語で指示できれば仕事に活かせます。早く触れた人ほど、社内での存在感や副業の選択肢が広がっています。",
+      caution: "「AIを作る側（エンジニア）」と「AIを使う側（活用）」でスクールが全く違います。まず自分がどちらを目指すかを決め、無料体験・相談で教材が目的に合うか、高額コースなら補助金対象かを必ず確認しましょう。" },
+    prog: { label: "プログラミング",
+      outlook: "IT人材の不足は続いており、未経験からエンジニアを目指す道は今も開かれています。一度身につければ在宅・フリーランスなど働き方の自由度が高く、努力が収入に反映されやすい分野です。",
+      caution: "「転職保証」の条件（年齢・エリア等）や、給付金の対象かは事前確認が必須です。学習時間を確保できるか、挫折しないサポート体制があるかも、料金以上に重要な判断軸になります。" },
+    english: { label: "英語",
+      outlook: "英語は一度身につくと一生使える普遍的なスキルです。オンライン英会話やアプリの進化で、昔より圧倒的に安く・続けやすくなりました。昇進・転職・海外案件など、リターンの大きい自己投資です。",
+      caution: "「教材の質」より「続けられる仕組み」で選ぶのが失敗しないコツです。まず無料体験でレッスンの相性を確かめ、月額と学習時間が生活に無理なく収まるかを見極めましょう。" },
+    webdesign: { label: "Webデザイン",
+      outlook: "Webデザインは成果物がそのまま実績になり、副業・在宅と相性抜群の分野です。ツールの進化で参入しやすくなった一方、企業のWeb需要は根強く、スキル次第で単価も伸ばせます。",
+      caution: "「作れる」だけでなく「案件が取れる」まで支援があるかが重要です。ポートフォリオ制作や営業サポートの有無、卒業後に教材を見返せるかを確認しましょう。" },
+    sns: { label: "SNS・Webマーケ",
+      outlook: "SNS運用・マーケティングは企業の需要が急拡大している成長分野です。数字で成果を示せるため評価されやすく、副業からでも実績を積みやすいのが魅力です。",
+      caution: "「発信ノウハウ」だけでなく「運用・分析・広告」まで実務で学べるかが鍵です。再現性のあるカリキュラムか、実際の運用を経験できるかを体験や説明会で確認しましょう。" },
+    other: { label: "資格・教養",
+      outlook: "資格や教養の学び直しは、キャリアの土台と自信をつくる堅実な自己投資です。オンライン講座の普及で、忙しい社会人でもスキマ時間で無理なく続けられるようになりました。",
+      caution: "「合格」だけを目的にせず、取得後にどう活かすかまで考えて選ぶと後悔しません。教材の分かりやすさ・サポート・費用のバランスを、無料資料請求で見比べましょう。" }
+  };
+
+  var QUESTIONS = [
+    { key: "subsidy",
+      q: "国の補助金で受講料が最大80%戻る制度、もし使えるなら使いたいですか？",
+      choices: [
+        { v: "yes", label: "ぜひ使いたい", react: "賢明です！知らずに全額自己負担で申し込む方が多いんです。対象になるか、次の質問で確認しますね。" },
+        { v: "learn", label: "制度をよく知らなかった", react: "お伝えできてよかったです。79万円の講座が実質15.8万円になるケースもあるんですよ。一緒に確認しましょう。" },
+        { v: "no", label: "使えなくてもいい（早く始めたい）", react: "承知しました。手続きなしですぐ始められるスクールを中心にご提案しますね。" }
+      ] },
+    { key: "work",
+      q: "現在のお仕事の状況を教えてください。",
+      choices: [
+        { v: "emp1y", label: "会社員・公務員（勤続1年以上）", react: "ありがとうございます。補助金の対象になる可能性が高い状況です。大きなアドバンテージですよ。" },
+        { v: "empShort", label: "会社員（1年未満）・パート", react: "雇用保険の加入期間によっては対象になる場合があります。低コストの選択肢もご用意しますね。" },
+        { v: "free", label: "フリーランス・自営業", react: "給付金の対象からは外れますが、その分、月額制などの身軽な選択肢がフィットしやすいですよ。" },
+        { v: "leaving", label: "離職中・転職活動中", react: "実は離職中の方が使える支援制度もあるんです。学び直しには良いタイミングかもしれません。" },
+        { v: "student", label: "学生", react: "学生のうちからのスキル習得は大きな武器になります。就活や将来に直結する選択肢をご提案しますね。" }
+      ] },
+    { key: "field",
+      q: "どの分野に、より興味がありますか？",
+      choices: [
+        { v: "ai", label: "AI活用（ChatGPT・画像生成など）", react: "いい選択です。AI活用スキルは職種を問わず、今最も需要が伸びている分野です。" },
+        { v: "prog", label: "プログラミング・システム開発", react: "王道ですね。開発スキルは求人数が多く、キャリアの選択肢が一気に広がります。" },
+        { v: "english", label: "英語（英会話・TOEIC）", react: "普遍的な強みですね。英語は一度身につくと長く効く、コスパの高いスキルです。" },
+        { v: "webdesign", label: "Webデザイン・グラフィックデザイン", react: "いいですね。デザインは副業案件が多く、成果物がそのまま実績になります。" },
+        { v: "sns", label: "SNSコンサル・インフルエンサー", react: "これから伸びる分野です。SNS運用は企業の需要も高く、副業にもしやすいですよ。" },
+        { v: "other", label: "その他（資格・教養など）", react: "承知しました。資格や教養は、着実に自信とキャリアの土台をつくってくれます。" }
+      ] },
+    { key: "goal",
+      q: "スキルを身につけて、実現したいことは？",
+      choices: [
+        { v: "career", label: "転職・キャリアチェンジ", react: "本気の一歩ですね。転職支援の実績があるスクールをご提案します。" },
+        { v: "side", label: "副業で収入を増やしたい", react: "堅実です。低リスクで始めて、実践で稼ぎながら学べる形が合いそうです。" },
+        { v: "current", label: "今の仕事で評価を上げたい", react: "素晴らしい。現職×新スキルは、最も再現性の高いキャリア戦略です。" },
+        { v: "vague", label: "まだ漠然と・将来への備え", react: "その感覚、大事です。小さく始めて手応えを掴める形をご提案しますね。" }
+      ] }
+  ];
+
+  // ===== 表示するスクールの決定 =====
+  // ▼ 配列の「順番」がそのまま表示順です。件数は2件以上でもOK（好きな数だけ並べられます）。
+  //   案件が増えたら、この配列にスクールIDを追加・並べ替えしてください。
+  function recommend(a) {
+    var list;
+    switch (a.field) {
+      case "ai": list = a.goal === "career" ? ["kikagaku", "samurai"] : ["shiftai", "dmmai"]; break;
+      case "prog": list = a.goal === "career" ? ["webcamp", "techcamp"] : ["samurai", "daytra"]; break;
+      case "english": list = ["rarejob", "studysapuri"]; break;
+      case "webdesign": list = ["shelikes", "daytraweb"]; break;
+      case "sns": list = ["wannabe", "shelikes"]; break;
+      case "other": list = ["studying", "ucan"]; break;
+      default:
+        list = a.goal === "career" ? ["kikagaku", "webcamp"]
+             : a.goal === "current" ? ["shiftai", "samurai"]
+             : ["shiftai", "daytra"];
+    }
+    // ▼ 転職志望（転職・キャリアチェンジ）の人には、未経験OKの転職サイトを末尾に追加
+    if (a.goal === "career") {
+      list = list.concat([(a.field === "ai" || a.field === "prog") ? "workport" : "mynavi"]);
+    }
+    return list;
+  }
+
+  var state = { step: 0, ans: {} };
+  var busy = false;
+  var typeTimer = null;
+  var started = false;
+
+  // ===== GA4 計測（gtagが読み込まれていれば送信） =====
+  function track(name, params) {
+    try { if (window.gtag) { window.gtag("event", name, params || {}); } } catch (e) {}
+  }
+
+  // ===== 背景の微粒子 =====
+  (function dust() {
+    var box = $("sxDust");
+    for (var i = 0; i < 14; i++) {
+      var p = document.createElement("i");
+      p.style.left = Math.random() * 100 + "%";
+      p.style.bottom = -(Math.random() * 20) + "vh";
+      var s = 2 + Math.random() * 3;
+      p.style.width = s + "px";
+      p.style.height = s + "px";
+      p.style.animationDuration = 14 + Math.random() * 18 + "s";
+      p.style.animationDelay = -(Math.random() * 20) + "s";
+      box.appendChild(p);
+    }
+  })();
+
+  // ===== 吹き出し：タイプライター =====
+  function typewrite(text) {
+    if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+    var bub = $("sxBubble");
+    bub.classList.remove("pop");
+    void bub.offsetWidth;
+    bub.classList.add("pop");
+    var el = $("sxBubbleText");
+    el.innerHTML = "<span class=\"sx-cursor\"></span>";
+    var i = 0;
+    typeTimer = setInterval(function () {
+      i++;
+      if (i > text.length) {
+        clearInterval(typeTimer);
+        typeTimer = null;
+        el.textContent = text;
+        return;
+      }
+      el.innerHTML = escHtml(text.slice(0, i)) + "<span class=\"sx-cursor\"></span>";
+    }, 18);
+  }
+
+  function think() {
+    if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+    $("sxBubbleText").innerHTML = "<span class=\"sx-dots\"><i></i><i></i><i></i></span>";
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  }
+
+  // ===== キャラのリアクション =====
+  function jump() {
+    var ch = $("sxChar");
+    ch.classList.remove("jump");
+    void ch.offsetWidth;
+    ch.classList.add("jump");
+    ch.classList.add("happy");
+    setTimeout(function () { ch.classList.remove("happy"); }, 1100);
+  }
+
+  // ===== 質問描画 =====
+  function renderQ() {
+    var qd = QUESTIONS[state.step];
+    var qn = $("sxQnum");
+    qn.textContent = "Q" + (state.step + 1);
+    qn.classList.remove("flip");
+    void qn.offsetWidth;
+    qn.classList.add("flip");
+    $("sxQ").textContent = qd.q;
+    var wrap = $("sxChoices");
+    wrap.innerHTML = "";
+    qd.choices.forEach(function (c, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "sx-choice";
+      b.style.animationDelay = (0.04 + i * 0.05) + "s";
+      b.innerHTML = "<span>" + c.label + "</span><span class=\"sx-check\"><svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 8.5L6.5 12L13 4.5\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>";
+      b.addEventListener("click", function (ev) { pick(b, qd, c, ev); });
+      wrap.appendChild(b);
+    });
+    var w = $("sxQwrap");
+    w.classList.remove("in", "out");
+    void w.offsetWidth;
+    w.classList.add("in");
+    $("sxLabel").textContent = "QUESTION " + (state.step + 1) + " / 4";
+    var dots = $("sxDots").children;
+    for (var i2 = 0; i2 < dots.length; i2++) {
+      dots[i2].className = i2 < state.step ? "on" : (i2 === state.step ? "on just" : "");
+    }
+    $("sxBar").style.width = ((state.step / 4) * 100) + "%";
+    $("sxBack").hidden = (state.step === 0);
+  }
+
+  // ===== 1つ前にもどる =====
+  function goBack() {
+    if (busy || state.step === 0) { return; }
+    track("back_click", { from_step: state.step + 1 });
+    delete state.ans[QUESTIONS[state.step].key];
+    state.step--;
+    delete state.ans[QUESTIONS[state.step].key];
+    var w = $("sxQwrap");
+    w.classList.add("out");
+    setTimeout(function () {
+      renderQ();
+      typewrite("では、こちらの質問をもう一度どうぞ。");
+    }, 220);
+  }
+
+  // ===== クリック時のリップル =====
+  function ripple(btn, ev) {
+    var r = btn.getBoundingClientRect();
+    var d = Math.max(r.width, r.height);
+    var x = (ev && ev.clientX ? ev.clientX - r.left : r.width / 2) - d / 2;
+    var y = (ev && ev.clientY ? ev.clientY - r.top : r.height / 2) - d / 2;
+    var sp = document.createElement("span");
+    sp.className = "sx-rip";
+    sp.style.width = sp.style.height = d + "px";
+    sp.style.left = x + "px";
+    sp.style.top = y + "px";
+    btn.appendChild(sp);
+    setTimeout(function () { sp.remove(); }, 650);
+  }
+
+  function pick(btn, qd, c, ev) {
+    if (busy) { return; }
+    busy = true;
+    state.ans[qd.key] = c.v;
+    if (!started) { started = true; track("diagnosis_start"); }
+    track("question_answered", {
+      step: state.step + 1,
+      question: qd.key,
+      answer: c.v,
+      answer_label: c.label,
+      choice: "Q" + (state.step + 1) + "：" + c.label
+    });
+    try { if (navigator.vibrate) { navigator.vibrate(12); } } catch (e) {}
+    ripple(btn, ev);
+    var sib = $("sxChoices").children;
+    for (var i = 0; i < sib.length; i++) {
+      if (sib[i] !== btn) { sib[i].classList.add("faded"); }
+    }
+    btn.classList.add("picked");
+    jump();
+    think();
+    $("sxBar").style.width = (((state.step + 1) / 4) * 100) + "%";
+    setTimeout(function () { typewrite(c.react); }, 450);
+    setTimeout(function () {
+      busy = false;
+      if (state.step < QUESTIONS.length - 1) {
+        state.step++;
+        var w = $("sxQwrap");
+        w.classList.add("out");
+        setTimeout(renderQ, 220);
+      } else {
+        diagnose();
+      }
+    }, 1050);
+  }
+
+  function eligible() {
+    return state.ans.work === "emp1y" || state.ans.work === "leaving";
+  }
+
+  function schoolUrl(id) {
+    if (AFF[id]) { return AFF[id]; }
+    if (FALLBACK[id]) { return FALLBACK[id]; }
+    return "";
+  }
+
+  // ===== 診断中（％カウント） =====
+  function diagnose() {
+    $("sxQwrap").style.display = "none";
+    $("sxLoading").style.display = "flex";
+    $("sxLabel").textContent = "ANALYZING…";
+    typewrite("回答ありがとうございました。あなたの状況に合わせて、最適な2校を選定しています…");
+    var pct = 0;
+    var el = $("sxPct");
+    var t = setInterval(function () {
+      pct += Math.floor(3 + Math.random() * 9);
+      if (pct >= 100) { pct = 100; clearInterval(t); }
+      el.textContent = pct + "%";
+    }, 70);
+    setTimeout(showResult, 1400);
+  }
+
+  // ===== 紙吹雪 =====
+  function confetti() {
+    var box = document.createElement("div");
+    box.className = "sx-confetti";
+    var colors = ["#ff5b39", "#ffd84d", "#2dd4bf", "#1b4f8a", "#ff8a3d", "#37d8f0"];
+    for (var i = 0; i < 26; i++) {
+      var p = document.createElement("i");
+      p.style.left = (3 + Math.random() * 94) + "%";
+      p.style.background = colors[i % colors.length];
+      var w = 6 + Math.random() * 6;
+      p.style.width = w + "px";
+      p.style.height = (Math.random() > 0.5 ? w : w * 1.6) + "px";
+      if (Math.random() > 0.6) { p.className = "c"; }
+      p.style.animationDelay = (Math.random() * 0.6) + "s";
+      p.style.animationDuration = (2 + Math.random() * 1.3) + "s";
+      p.style.setProperty("--dx", (Math.random() * 140 - 70) + "px");
+      p.style.transform = "rotate(" + (Math.random() * 360) + "deg)";
+      box.appendChild(p);
+    }
+    $("sxCard").appendChild(box);
+    setTimeout(function () { box.remove(); }, 3600);
+  }
+
+  // ===== マッチ度ゲージ =====
+  function countUp(el, target, ms) {
+    var start = null;
+    function stepFn(ts) {
+      if (!start) { start = ts; }
+      var p = Math.min((ts - start) / ms, 1);
+      el.firstChild.nodeValue = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) { requestAnimationFrame(stepFn); }
+    }
+    requestAnimationFrame(stepFn);
+  }
+
+  // ===== 結果をURLに保存／復元 =====
+  function encodeAns(a) {
+    return [a.subsidy, a.work, a.field, a.goal].join("_");
+  }
+  function decodeAns(str) {
+    var parts = (str || "").split("_");
+    if (parts.length !== 4) { return null; }
+    var a = {};
+    for (var i = 0; i < 4; i++) {
+      var qd = QUESTIONS[i];
+      var ok = qd.choices.some(function (c) { return c.v === parts[i]; });
+      if (!ok) { return null; }
+      a[qd.key] = parts[i];
+    }
+    return a;
+  }
+
+  function showResult(restored) {
+    $("sxLoading").style.display = "none";
+    // 結果をURLに反映（ブックマークで復元可能に）
+    try { history.replaceState(null, "", location.pathname + "?r=" + encodeAns(state.ans)); } catch (e) {}
+    var ids = recommend(state.ans);
+    var wrap = $("sxCards");
+    wrap.innerHTML = "";
+    var schoolIdx = 0;
+    ids.forEach(function (id, idx) {
+      var s = SCHOOLS[id];
+      if (!s) { return; }
+      var isJob = s.kind === "job";
+      var card = document.createElement("div");
+      card.className = "sx-rcard" + (idx === 0 ? " first" : "") + (isJob ? " job" : "");
+      var badge = (!isJob && eligible() && s.subsidy)
+        ? "<span class=\"sx-badge\"><svg viewBox=\"0 0 16 16\" fill=\"none\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#0f9d58\"/><path d=\"M4.5 8.5L7 11L11.5 5.5\" stroke=\"#fff\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>補助金対象の可能性あり（最大80%支給）</span>"
+        : "";
+      var extra = (!isJob && eligible() && s.subsidy)
+        ? " あなたの回答から、給付金の対象になる可能性が高い状況です。無料カウンセリングで受給条件を必ず確認してください。"
+        : "";
+      var url = schoolUrl(id);
+      var ctaLabel = isJob ? "無料で求人を見る" : "詳しく見る（無料）";
+      var cta = url
+        ? "<a class=\"sx-cta\" href=\"" + url + "\" rel=\"nofollow sponsored\" data-sid=\"" + id + "\" data-name=\"" + s.name + "\" data-kind=\"" + (isJob ? "job" : "school") + "\" data-rank=\"" + (idx + 1) + "\">" + ctaLabel + "<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>"
+        : "<span class=\"sx-cta pending\">近日リンク公開</span>";
+      var rankLabel = isJob ? "あわせて｜未経験OKの転職サポート" : ("RECOMMEND " + (schoolIdx + 1));
+      var pct = Math.max(74, 95 - schoolIdx * 6);
+      var gauge = isJob
+        ? ""
+        : "<span class=\"sx-match\"><svg viewBox=\"0 0 60 60\"><circle class=\"bgc\" cx=\"30\" cy=\"30\" r=\"25\"/><circle class=\"fgc\" cx=\"30\" cy=\"30\" r=\"25\"/></svg><b>0<small>マッチ度%</small></b></span>";
+      if (!isJob) { schoolIdx++; }
+      var specs = "<div class=\"sx-spec\">" +
+        "<div class=\"sx-spec-row\"><span class=\"sx-spec-l\">プラン</span><span class=\"sx-spec-v\">" + (s.plan || "公式サイトでご確認ください") + "</span></div>" +
+        "<div class=\"sx-spec-row\"><span class=\"sx-spec-l\">こんな人に</span><span class=\"sx-spec-v\">" + (s.forWho || "") + "</span></div>" +
+        "</div>";
+      card.innerHTML =
+        "<div class=\"sx-rhead\">" +
+        "<span class=\"sx-mono\">" + s.mono + "</span>" +
+        "<div class=\"sx-rinfo\">" +
+        "<div class=\"sx-rank\">" + rankLabel + "</div>" +
+        "<div class=\"sx-rname\">" + s.name + "</div>" +
+        "<div class=\"sx-rtag\">" + s.tag + "</div>" +
+        "</div>" + gauge +
+        "</div>" + badge +
+        "<p class=\"sx-reason\">" + s.reason + extra + "</p>" + specs + cta;
+      wrap.appendChild(card);
+      // 表示回数（CTR算出の分母）
+      track("result_impression", {
+        school_id: id, school_name: s.name, kind: isJob ? "job" : "school",
+        rank: idx + 1, field: state.ans.field, has_link: !!url
+      });
+      card.addEventListener("animationend", function (e) {
+        if (e.animationName === "rIn") {
+          card.classList.remove("in");
+          card.classList.add("settled");
+        }
+      });
+      setTimeout(function () {
+        card.classList.add("in");
+        if (isJob) { return; }
+        var fg = card.querySelector(".fgc");
+        var num = card.querySelector(".sx-match b");
+        setTimeout(function () {
+          fg.style.strokeDashoffset = 157 * (1 - pct / 100);
+          countUp(num, pct, 1100);
+          setTimeout(function () {
+            var g = card.querySelector(".sx-match");
+            if (g) { g.classList.add("pop"); }
+          }, 1150);
+        }, 200);
+      }, 160 + idx * 220);
+    });
+    // 分野ごとの「業界展望」「選ぶときの注意点」
+    var fi = FIELDINFO[state.ans.field] || FIELDINFO.ai;
+    $("sxInsight").innerHTML =
+      "<div class=\"sx-info sx-info-up\">" +
+      "<div class=\"sx-info-head\"><span class=\"sx-info-ic sx-info-ic-up\"><svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M4 16l5-5 4 4 7-8\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M16 7h5v5\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span>" + fi.label + "の業界展望</div>" +
+      "<p>" + fi.outlook + "</p></div>" +
+      "<div class=\"sx-info sx-info-warn\">" +
+      "<div class=\"sx-info-head\"><span class=\"sx-info-ic sx-info-ic-warn\"><svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M12 3l9 16H3L12 3z\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><path d=\"M12 10v4\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/><circle cx=\"12\" cy=\"17\" r=\"1\" fill=\"currentColor\"/></svg></span>" + fi.label + "のスクール・講座を選ぶときの注意点</div>" +
+      "<p>" + fi.caution + "</p></div>";
+    $("sxResult").style.display = "block";
+    $("sxLabel").textContent = "COMPLETE";
+    track("diagnosis_complete", {
+      field: state.ans.field, goal: state.ans.goal, work: state.ans.work,
+      subsidy: state.ans.subsidy, results: ids.join(","), restored: !!restored
+    });
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      setTimeout(function () {
+        $("sxResult").scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 260);
+    }
+    if (restored) {
+      typewrite("保存された診断結果です。気になるスクールをチェックしてみてください。");
+    } else {
+      typewrite("お待たせしました。あなたの回答をもとに、おすすめをまとめました。気になるものから無料で詳細を確認できますよ。");
+      confetti();
+    }
+  }
+
+  // 保存された結果を直接表示
+  function restoreResult(a) {
+    state.ans = a;
+    $("sxQwrap").style.display = "none";
+    $("sxLoading").style.display = "none";
+    $("sxBack").hidden = true;
+    $("sxBar").style.width = "100%";
+    var dots = $("sxDots").children;
+    for (var i = 0; i < dots.length; i++) { dots[i].className = "on"; }
+    showResult(true);
+  }
+
+  // CTAクリック（＝コンバージョン）をGA4に送信
+  $("sxCards").addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest(".sx-cta[href]") : null;
+    if (!a) { return; }
+    track("school_click", {
+      school_id: a.getAttribute("data-sid"),
+      school_name: a.getAttribute("data-name"),
+      kind: a.getAttribute("data-kind"),
+      rank: a.getAttribute("data-rank"),
+      field: state.ans.field
+    });
+  });
+
+  // 保存ボタン：スマホは共有シート、PCはURLコピー
+  $("sxSave").addEventListener("click", function () {
+    track("result_save");
+    var btn = $("sxSave");
+    var url = location.href;
+    function copied() {
+      btn.classList.add("copied");
+      $("sxSaveTxt").textContent = "URLをコピーしました！";
+      $("sxSaveHint").textContent = "Ctrl+D（Macは ⌘+D）でブックマークに登録すれば、いつでもこの結果に戻れます。";
+    }
+    // スマホ等：OSの共有メニューを開く（そこから「ブックマーク」「リーディングリスト」等で保存可）
+    if (navigator.share) {
+      navigator.share({
+        title: "スクール診断の結果",
+        text: "私に合うスクールの診断結果です。",
+        url: url
+      }).catch(function () {});
+      return;
+    }
+    // PC：クリップボードにコピー
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(copied, function () {
+        window.prompt("このURLをコピーしてブックマークしてください：", url);
+      });
+    } else {
+      window.prompt("このURLをコピーしてブックマークしてください：", url);
+    }
+  });
+
+  $("sxRestart").addEventListener("click", function () { track("restart_click"); location.href = location.pathname; });
+  $("sxBack").addEventListener("click", goBack);
+
+  // PC向け：数字キー1〜6で選択、Backspaceで1つ戻る
+  document.addEventListener("keydown", function (e) {
+    if (busy) { return; }
+    if ($("sxQwrap").style.display === "none") { return; }
+    if (e.key === "Backspace") { e.preventDefault(); goBack(); return; }
+    var n = parseInt(e.key, 10);
+    if (!n) { return; }
+    var btns = $("sxChoices").children;
+    if (n >= 1 && n <= btns.length) { btns[n - 1].click(); }
+  });
+
+  // ===== ロボットの視線追従＆アイドル仕草 =====
+  (function alive() {
+    var pupils = document.getElementById("sxPupils");
+    if (!pupils) { return; }
+    var hoverable = window.matchMedia("(hover: hover)").matches;
+    if (hoverable) {
+      var pend = false, mx = 0, my = 0;
+      document.addEventListener("mousemove", function (e) {
+        mx = e.clientX; my = e.clientY;
+        if (pend) { return; }
+        pend = true;
+        requestAnimationFrame(function () {
+          pend = false;
+          var r = $("sxChar").getBoundingClientRect();
+          var cx = r.left + r.width / 2;
+          var cy = r.top + r.height * 0.42;
+          var dx = Math.max(-3, Math.min(3, (mx - cx) / 60));
+          var dy = Math.max(-2, Math.min(2.5, (my - cy) / 80));
+          pupils.style.transform = "translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px)";
+        });
+      });
+    } else {
+      setInterval(function () {
+        if (busy) { return; }
+        var dx = (Math.random() * 6 - 3).toFixed(1);
+        pupils.style.transform = "translate(" + dx + "px,0)";
+        setTimeout(function () { pupils.style.transform = "translate(0,0)"; }, 700);
+      }, 5500);
+    }
+    setInterval(function () {
+      if (busy) { return; }
+      var ch = $("sxChar");
+      ch.classList.add("wig");
+      setTimeout(function () { ch.classList.remove("wig"); }, 800);
+    }, 9000);
+  })();
+
+  // 初期化：URLに保存結果があれば復元、なければ診断開始
+  var saved = null;
+  try { saved = decodeAns(new URLSearchParams(location.search).get("r")); } catch (e) { saved = null; }
+  if (saved) {
+    renderQ();
+    restoreResult(saved);
+  } else {
+    renderQ();
+    setTimeout(function () {
+      typewrite("こんにちは！AIコンシェルジュです。4つの質問で、あなたにぴったりのスクールを2校ご提案します。");
+    }, 700);
+  }
+})();
+</script>
+</body>
+</html>
