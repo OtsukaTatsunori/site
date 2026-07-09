@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K9TBP05LK2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K9TBP05LK2');
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%278%27%20fill%3D%27%230f2c4d%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%275.5%27%20r%3D%272%27%20fill%3D%27%23ff5b39%27%2F%3E%3Crect%20x%3D%2715%27%20y%3D%277%27%20width%3D%272%27%20height%3D%273%27%20rx%3D%271%27%20fill%3D%27%239fb2c8%27%2F%3E%3Crect%20x%3D%277.5%27%20y%3D%2710%27%20width%3D%2717%27%20height%3D%2713.5%27%20rx%3D%275.5%27%20fill%3D%27%23e7eef7%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2712.3%27%20width%3D%2712%27%20height%3D%278.4%27%20rx%3D%273%27%20fill%3D%27%2312294a%27%2F%3E%3Ccircle%20cx%3D%2713.4%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2718.6%27%20cy%3D%2716.5%27%20r%3D%271.7%27%20fill%3D%27%2337d8f0%27%2F%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2727%27%20r%3D%272.4%27%20fill%3D%27%23ff5b39%27%2F%3E%3C%2Fsvg%3E">
 <title>スクール診断コンシェルジュ｜無料60秒であなたに合う学びが見つかる</title>
 <meta name="description" content="4つの質問に答えるだけで、あなたに合うAIスクール・プログラミングスクールをAIコンシェルジュが無料診断。補助金で最大80%OFFになるかもその場でわかります。">
@@ -594,6 +602,12 @@ body{
   var state = { step: 0, ans: {} };
   var busy = false;
   var typeTimer = null;
+  var started = false;
+
+  // ===== GA4 計測（gtagが読み込まれていれば送信） =====
+  function track(name, params) {
+    try { if (window.gtag) { window.gtag("event", name, params || {}); } } catch (e) {}
+  }
 
   // ===== 背景の微粒子 =====
   (function dust() {
@@ -718,6 +732,8 @@ body{
     if (busy) { return; }
     busy = true;
     state.ans[qd.key] = c.v;
+    if (!started) { started = true; track("diagnosis_start"); }
+    track("question_answered", { step: state.step + 1, question: qd.key, answer: c.v });
     try { if (navigator.vibrate) { navigator.vibrate(12); } } catch (e) {}
     ripple(btn, ev);
     var sib = $("sxChoices").children;
@@ -843,7 +859,7 @@ body{
       var url = schoolUrl(id);
       var ctaLabel = isJob ? "無料で求人を見る" : "詳しく見る（無料）";
       var cta = url
-        ? "<a class=\"sx-cta\" href=\"" + url + "\" rel=\"nofollow sponsored\">" + ctaLabel + "<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>"
+        ? "<a class=\"sx-cta\" href=\"" + url + "\" rel=\"nofollow sponsored\" data-sid=\"" + id + "\" data-name=\"" + s.name + "\" data-kind=\"" + (isJob ? "job" : "school") + "\" data-rank=\"" + (idx + 1) + "\">" + ctaLabel + "<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M5 12h14M13 6l6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>"
         : "<span class=\"sx-cta pending\">近日リンク公開</span>";
       var rankLabel = isJob ? "あわせて｜未経験OKの転職サポート" : ("RECOMMEND " + (schoolIdx + 1));
       var pct = Math.max(74, 95 - schoolIdx * 6);
@@ -898,6 +914,10 @@ body{
       "<p>" + fi.caution + "</p></div>";
     $("sxResult").style.display = "block";
     $("sxLabel").textContent = "COMPLETE";
+    track("diagnosis_complete", {
+      field: state.ans.field, goal: state.ans.goal, work: state.ans.work,
+      subsidy: state.ans.subsidy, results: ids.join(","), restored: !!restored
+    });
     if (window.matchMedia("(max-width: 760px)").matches) {
       setTimeout(function () {
         $("sxResult").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -923,8 +943,22 @@ body{
     showResult(true);
   }
 
+  // CTAクリック（＝コンバージョン）をGA4に送信
+  $("sxCards").addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest(".sx-cta[href]") : null;
+    if (!a) { return; }
+    track("school_click", {
+      school_id: a.getAttribute("data-sid"),
+      school_name: a.getAttribute("data-name"),
+      kind: a.getAttribute("data-kind"),
+      rank: a.getAttribute("data-rank"),
+      field: state.ans.field
+    });
+  });
+
   // 保存ボタン：スマホは共有シート、PCはURLコピー
   $("sxSave").addEventListener("click", function () {
+    track("result_save");
     var btn = $("sxSave");
     var url = location.href;
     function copied() {
