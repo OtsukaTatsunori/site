@@ -702,6 +702,7 @@ body{
   // ===== 1つ前にもどる =====
   function goBack() {
     if (busy || state.step === 0) { return; }
+    track("back_click", { from_step: state.step + 1 });
     delete state.ans[QUESTIONS[state.step].key];
     state.step--;
     delete state.ans[QUESTIONS[state.step].key];
@@ -888,6 +889,11 @@ body{
         "</div>" + badge +
         "<p class=\"sx-reason\">" + s.reason + extra + "</p>" + specs + cta;
       wrap.appendChild(card);
+      // 表示回数（CTR算出の分母）
+      track("result_impression", {
+        school_id: id, school_name: s.name, kind: isJob ? "job" : "school",
+        rank: idx + 1, field: state.ans.field, has_link: !!url
+      });
       card.addEventListener("animationend", function (e) {
         if (e.animationName === "rIn") {
           card.classList.remove("in");
@@ -991,7 +997,7 @@ body{
     }
   });
 
-  $("sxRestart").addEventListener("click", function () { location.href = location.pathname; });
+  $("sxRestart").addEventListener("click", function () { track("restart_click"); location.href = location.pathname; });
   $("sxBack").addEventListener("click", goBack);
 
   // PC向け：数字キー1〜6で選択、Backspaceで1つ戻る
