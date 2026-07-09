@@ -733,7 +733,13 @@ body{
     busy = true;
     state.ans[qd.key] = c.v;
     if (!started) { started = true; track("diagnosis_start"); }
-    track("question_answered", { step: state.step + 1, question: qd.key, answer: c.v });
+    track("question_answered", {
+      step: state.step + 1,
+      question: qd.key,
+      answer: c.v,
+      answer_label: c.label,
+      choice: "Q" + (state.step + 1) + "：" + c.label
+    });
     try { if (navigator.vibrate) { navigator.vibrate(12); } } catch (e) {}
     ripple(btn, ev);
     var sib = $("sxChoices").children;
